@@ -1,0 +1,202 @@
+// Gamma-style presentation bot — data model
+// docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ----------------------- ENUMS -----------------------
+
+enum Plan {
+  free
+  pro
+}
+
+enum PresentationStatus {
+  draft
+  outlining
+  outlined
+  generating
+  rendering
+  done
+  failed
+}
+
+enum SlideStatus {
+  pending
+  generated
+  rendered
+}
+
+enum AssetType {
+  image
+  chart
+}
+
+enum AssetStatus {
+  pending
+  done
+  failed
+}
+
+enum ExportFormat {
+  pdf
+  pptx
+  png_zip
+}
+
+enum JobStage {
+  outline
+  cards
+  images
+  render
+}
+
+enum JobStatus {
+  queued
+  active
+  completed
+  failed
+}
+
+// ----------------------- MODELS -----------------------
+
+model User {
+  id           BigInt   @id @default(autoincrement())
+  telegramId   BigInt   @unique @map("telegram_id")
+  username     String?
+  firstName    String?  @map("first_name")
+  languageCode String   @default("uz") @map("language_code")
+  plan         Plan     @default(free)
+  credits      Int      @default(5)
+  createdAt    DateTime @default(now()) @map("created_at")
+  updatedAt    DateTime @updatedAt @map("updated_at")
+
+  presentations Presentation[]
+  session       BotSession?
+
+  @@map("users")
+}
+
+model Theme {
+  id         String   @id @default(uuid()) @db.Uuid
+  name       String
+  isPremium  Boolean  @default(false) @map("is_premium")
+  config     Json // { colors, fonts, spacing, accent }
+  previewUrl String?  @map("preview_url")
+  createdAt  DateTime @default(now()) @map("created_at")
+
+  presentations Presentation[]
+
+  @@map("themes")
+}
+
+model Presentation {
+  id           String             @id @default(uuid()) @db.Uuid
+  userId       BigInt             @map("user_id")
+  themeId      String?            @map("theme_id") @db.Uuid
+  title        String?
+  topicPrompt  String             @map("topic_prompt")
+  language     String             @default("uz")
+  tone         String             @default("professional")
+  slideCount   Int                @default(10) @map("slide_count")
+  status       PresentationStatus @default(draft)
+  outline      Json?
+  errorMessage String?            @map("error_message")
+  createdAt    DateTime           @default(now()) @map("created_at")
+  updatedAt    DateTime           @updatedAt @map("updated_at")
+
+  user    User            @relation(fields: [userId], references: [id])
+  theme   Theme?          @relation(fields: [themeId], references: [id])
+  slides  Slide[]
+  exports Export[]
+  jobs    GenerationJob[]
+
+  @@index([userId])
+  @@index([status])
+  @@map("presentations")
+}
+
+model Slide {
+  id             String      @id @default(uuid()) @db.Uuid
+  presentationId String      @map("presentation_id") @db.Uuid
+  position       Int
+  layout         String
+  content        Json // { title, body, slots: {...} } — the IR
+  status         SlideStatus @default(pending)
+  createdAt      DateTime    @default(now()) @map("created_at")
+
+  presentation Presentation @relation(fields: [presentationId], references: [id], onDelete: Cascade)
+  assets       Asset[]
+
+  @@unique([presentationId, position])
+  @@index([presentationId])
+  @@map("slides")
+}
+
+model Asset {
+  id         String      @id @default(uuid()) @db.Uuid
+  slideId    String?     @map("slide_id") @db.Uuid
+  type       AssetType
+  prompt     String?
+  provider   String? // 'flux-2-pro', 'ideogram-v3', ...
+  storageKey String?     @map("storage_key")
+  url        String?
+  status     AssetStatus @default(pending)
+  meta       Json? // { width, height, costUsd }
+  createdAt  DateTime    @default(now()) @map("created_at")
+
+  slide Slide? @relation(fields: [slideId], references: [id], onDelete: Cascade)
+
+  @@map("assets")
+}
+
+model Export {
+  id             String       @id @default(uuid()) @db.Uuid
+  presentationId String       @map("presentation_id") @db.Uuid
+  format         ExportFormat
+  storageKey     String       @map("storage_key")
+  url            String?
+  fileSize       Int?         @map("file_size")
+  telegramFileId String?      @map("telegram_file_id") // cache to re-send instantly
+  createdAt      DateTime     @default(now()) @map("created_at")
+
+  presentation Presentation @relation(fields: [presentationId], references: [id], onDelete: Cascade)
+
+  @@map("exports")
+}
+
+model GenerationJob {
+  id             String    @id @default(uuid()) @db.Uuid
+  presentationId String    @map("presentation_id") @db.Uuid
+  bullJobId      String?   @map("bull_job_id")
+  stage          JobStage
+  status         JobStatus @default(queued)
+  modelUsed      String?   @map("model_used")
+  tokensUsed     Int?      @map("tokens_used")
+  costUsd        Decimal?  @map("cost_usd") @db.Decimal(10, 5)
+  startedAt      DateTime? @map("started_at")
+  finishedAt     DateTime? @map("finished_at")
+  createdAt      DateTime  @default(now()) @map("created_at")
+
+  presentation Presentation @relation(fields: [presentationId], references: [id], onDelete: Cascade)
+
+  @@index([presentationId])
+  @@map("generation_jobs")
+}
+
+model BotSession {
+  userId    BigInt   @id @map("user_id")
+  state     String? // FSM state, e.g. 'awaiting_topic'
+  context   Json? // transient collected data
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  user User @relation(fields: [userId], references: [id])
+
+  @@map("bot_sessions")
+}
