@@ -10,6 +10,7 @@ export enum BotState {
   AWAITING_LANGUAGE = 'awaiting_language',
   AWAITING_TONE = 'awaiting_tone',
   AWAITING_THEME = 'awaiting_theme',
+  OUTLINING = 'outlining',
   AWAITING_OUTLINE_CONFIRM = 'awaiting_outline_confirm',
   GENERATING = 'generating',
 }

@@ -21,6 +21,15 @@ export class MessageHandler {
         await ctx.reply(QUESTIONS.slideCount, { reply_markup: slideCountKeyboard() });
         return;
       }
+
+      case BotState.GENERATING:
+        await ctx.reply('\u23F3 Iltimos kuting, jarayon davom etmoqda...');
+        return;
+
+      case BotState.AWAITING_OUTLINE_CONFIRM:
+        await ctx.reply('Yuqoridagi tugmalardan birini tanlang: \u2705 yoki \u{1F504}');
+        return;
+
       default:
         await ctx.reply("Boshlash uchun /start buyrug'ini yuboring.");
     }

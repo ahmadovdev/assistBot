@@ -1,11 +1,12 @@
 import {
+  Inject,
   Injectable,
   Logger,
   OnApplicationBootstrap,
   OnModuleDestroy,
 } from '@nestjs/common';
-import { ConfigService } from '@nestjs/config';
 import { Bot } from 'grammy';
+import { BOT } from './bot.provider';
 import { BotContext } from './bot.types';
 import { UsersService } from '../users/users.service';
 import { StartHandler } from './handlers/start.handler';
@@ -15,10 +16,9 @@ import { CallbackHandler } from './handlers/callback.handler';
 @Injectable()
 export class BotService implements OnApplicationBootstrap, OnModuleDestroy {
   private readonly logger = new Logger(BotService.name);
-  private bot?: Bot<BotContext>;
 
   constructor(
-    private readonly config: ConfigService,
+    @Inject(BOT) private readonly bot: Bot<BotContext>,
     private readonly users: UsersService,
     private readonly startHandler: StartHandler,
     private readonly messageHandler: MessageHandler,
@@ -26,14 +26,6 @@ export class BotService implements OnApplicationBootstrap, OnModuleDestroy {
   ) {}
 
   async onApplicationBootstrap(): Promise<void> {
-    const token = this.config.get<string>('app.telegram.botToken');
-    if (!token) {
-      this.logger.warn('TELEGRAM_BOT_TOKEN missing \u2014 bot not started');
-      return;
-    }
-
-    this.bot = new Bot<BotContext>(token);
-
     // 1) Auth middleware: resolve/attach our DB user on every update.
     this.bot.use(async (ctx, next) => {
       if (ctx.from && !ctx.from.is_bot) {
@@ -62,6 +54,6 @@ export class BotService implements OnApplicationBootstrap, OnModuleDestroy {
   }
 
   async onModuleDestroy(): Promise<void> {
-    await this.bot?.stop();
+    await this.bot.stop();
   }
 }

@@ -1,8 +1,12 @@
 import { Global, Module } from '@nestjs/common';
 import { BullModule } from '@nestjs/bullmq';
 import { ConfigService } from '@nestjs/config';
-import { QUEUES } from './queue.constants';
 
+/**
+ * Global BullMQ connection config only.
+ * Each feature module registers the specific queues it needs
+ * via BullModule.registerQueue(...) — both for producers and processors.
+ */
 @Global()
 @Module({
   imports: [
@@ -22,12 +26,6 @@ import { QUEUES } from './queue.constants';
         },
       }),
     }),
-    BullModule.registerQueue(
-      { name: QUEUES.OUTLINE },
-      { name: QUEUES.CARDS },
-      { name: QUEUES.IMAGES },
-      { name: QUEUES.RENDER },
-    ),
   ],
   exports: [BullModule],
 })

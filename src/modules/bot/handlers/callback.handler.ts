@@ -1,9 +1,13 @@
 import { Injectable, Logger } from '@nestjs/common';
+import { InjectQueue } from '@nestjs/bullmq';
+import { Queue } from 'bullmq';
 import { BotContext, WizardContext } from '../bot.types';
 import { SessionService } from '../session.service';
 import { BotState } from '../bot.constants';
 import { ThemesService } from '../../themes/themes.service';
 import { PresentationsService } from '../../presentations/presentations.service';
+import { QUEUES } from '../../../infra/queue/queue.constants';
+import { OutlineJobData } from '../../../infra/queue/queue.types';
 import {
   QUESTIONS,
   LANG_LABELS,
@@ -21,13 +25,12 @@ export class CallbackHandler {
     private readonly session: SessionService,
     private readonly themes: ThemesService,
     private readonly presentations: PresentationsService,
+    @InjectQueue(QUEUES.OUTLINE) private readonly outlineQueue: Queue<OutlineJobData>,
   ) {}
 
   async handle(ctx: BotContext): Promise<void> {
     const data = ctx.callbackQuery?.data;
     if (!data) return;
-
-    // Stop the button's loading spinner immediately.
     await ctx.answerCallbackQuery();
 
     const [action, value] = data.split(':');
@@ -62,34 +65,62 @@ export class CallbackHandler {
         if (state !== BotState.AWAITING_THEME) return;
         const theme = await this.themes.findByKey(value);
         if (!theme) {
-          await ctx.editMessageText("Tema topilmadi. /start dan qayta boshlang.");
+          await ctx.editMessageText('Tema topilmadi. /start dan qayta boshlang.');
           await this.session.reset(userId);
           return;
         }
 
         const merged: WizardContext = { ...context, themeKey: value };
-        const presentation = await this.presentations.createFromWizard(
-          userId,
-          theme.id,
-          merged,
-        );
+        const presentation = await this.presentations.createFromWizard(userId, theme.id, merged);
 
         await this.session.patchContext(userId, {
           themeKey: value,
           presentationId: presentation.id,
         });
-        // Phase 3 will transition to outline generation instead of IDLE.
-        await this.session.setState(userId, BotState.IDLE);
+        await this.session.setState(userId, BotState.GENERATING);
 
         await ctx.editMessageText(
-          `\u2705 Hammasi tayyor!\n\n` +
+          `\u2705 Parametrlar tayyor!\n\n` +
             `\u{1F4CC} Mavzu: ${merged.topic ?? '-'}\n` +
             `\u{1F4CA} Slaydlar: ${merged.slideCount ?? '-'}\n` +
             `\u{1F310} Til: ${LANG_LABELS[merged.language ?? ''] ?? merged.language}\n` +
             `\u{1F3A8} Uslub: ${TONE_LABELS[merged.tone ?? ''] ?? merged.tone}\n` +
             `\u{1F5BC} Tema: ${theme.name}\n\n` +
-            `(Keyingi bosqich \u2014 reja generatsiyasi, Faza 3.)`,
+            `\u23F3 Reja tayyorlanmoqda...`,
         );
+
+        await this.outlineQueue.add(
+          'generate',
+          { presentationId: presentation.id },
+          { attempts: 1 },
+        );
+        return;
+      }
+
+      case 'outline': {
+        if (state !== BotState.AWAITING_OUTLINE_CONFIRM) return;
+        const original = ctx.callbackQuery?.message?.text ?? '';
+
+        if (value === 'confirm') {
+          await this.session.setState(userId, BotState.IDLE);
+          await ctx.editMessageText(
+            `${original}\n\n\u2705 Reja tasdiqlandi! (Keyingi bosqich \u2014 slaydlar generatsiyasi, Faza 4)`,
+          );
+          return;
+        }
+
+        if (value === 'regenerate') {
+          const presentationId = (context as WizardContext).presentationId;
+          if (!presentationId) {
+            await ctx.editMessageText('Sessiya topilmadi. /start dan qayta boshlang.');
+            await this.session.reset(userId);
+            return;
+          }
+          await this.session.setState(userId, BotState.GENERATING);
+          await ctx.editMessageText('\u23F3 Boshqa reja tayyorlanmoqda...');
+          await this.outlineQueue.add('generate', { presentationId }, { attempts: 1 });
+          return;
+        }
         return;
       }
 

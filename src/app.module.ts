@@ -5,6 +5,8 @@ import { PrismaModule } from './infra/prisma/prisma.module';
 import { QueueModule } from './infra/queue/queue.module';
 import { UsersModule } from './modules/users/users.module';
 import { BotModule } from './modules/bot/bot.module';
+import { AiModule } from './modules/ai/ai.module';
+import { GenerationModule } from './modules/generation/generation.module';
 
 @Module({
   imports: [
@@ -24,9 +26,9 @@ import { BotModule } from './modules/bot/bot.module';
 
     // --- Feature modules ---
     UsersModule, // Phase 1
-    BotModule, // Phase 1
-    // AiModule,             // Phase 3
-    // PresentationModule,   // Phase 3-4
+    BotModule, // Phase 1-2
+    AiModule, // Phase 3
+    GenerationModule, // Phase 3
     // RenderModule,         // Phase 5
     // StorageModule,        // Phase 6
   ],

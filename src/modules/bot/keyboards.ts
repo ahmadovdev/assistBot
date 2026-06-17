@@ -52,3 +52,9 @@ export function themeKeyboard(themes: Theme[]): InlineKeyboard {
   });
   return kb;
 }
+
+export function outlineKeyboard(): InlineKeyboard {
+  return new InlineKeyboard()
+    .text('\u2705 Tasdiqlash', 'outline:confirm')
+    .text('\u{1F504} Boshqacha reja', 'outline:regenerate');
+}

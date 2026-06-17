@@ -59,8 +59,8 @@ prisma/
 
 - [x] Phase 0 — foundation (config, prisma, queue, logging)
 - [ ] Phase 1 — bot + user registration + FSM
-- [ ] Phase 2 — parameter collection (inline keyboards)
-- [ ] Phase 3 — outline generation + review
+- [x] Phase 2 — parameter collection (inline keyboards)
+- [x] Phase 3 — outline generation + review
 - [ ] Phase 4 — card generation + queue workers
 - [ ] Phase 5 — HTML -> PDF render (Tier 1 layouts, 1 theme)
 - [ ] Phase 6 — image generation + storage

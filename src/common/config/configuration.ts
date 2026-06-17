@@ -6,7 +6,13 @@ export interface AppConfig {
   database: { url: string };
   redis: { host: string; port: number; password?: string };
   telegram: { botToken: string };
-  ai: { openrouterApiKey?: string; anthropicApiKey?: string; falApiKey?: string };
+  ai: {
+    provider: 'anthropic' | 'openrouter';
+    openrouterApiKey?: string;
+    anthropicApiKey?: string;
+    falApiKey?: string;
+    outlineModel: string;
+  };
   storage: { endpoint?: string; accessKey?: string; secretKey?: string; bucket: string };
 }
 
@@ -24,9 +30,11 @@ export function configuration(): { app: AppConfig } {
       redis: { host: env.REDIS_HOST, port: env.REDIS_PORT, password: env.REDIS_PASSWORD },
       telegram: { botToken: env.TELEGRAM_BOT_TOKEN },
       ai: {
+        provider: env.AI_PROVIDER,
         openrouterApiKey: env.OPENROUTER_API_KEY,
         anthropicApiKey: env.ANTHROPIC_API_KEY,
         falApiKey: env.FAL_API_KEY,
+        outlineModel: env.AI_OUTLINE_MODEL,
       },
       storage: {
         endpoint: env.S3_ENDPOINT,
