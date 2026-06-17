@@ -85,6 +85,7 @@ model User {
 
 model Theme {
   id         String   @id @default(uuid()) @db.Uuid
+  key        String   @unique // stable slug used in code/callbacks: 'midnight', 'corporate'...
   name       String
   isPremium  Boolean  @default(false) @map("is_premium")
   config     Json // { colors, fonts, spacing, accent }

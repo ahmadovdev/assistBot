@@ -10,6 +10,7 @@ import { BotContext } from './bot.types';
 import { UsersService } from '../users/users.service';
 import { StartHandler } from './handlers/start.handler';
 import { MessageHandler } from './handlers/message.handler';
+import { CallbackHandler } from './handlers/callback.handler';
 
 @Injectable()
 export class BotService implements OnApplicationBootstrap, OnModuleDestroy {
@@ -21,6 +22,7 @@ export class BotService implements OnApplicationBootstrap, OnModuleDestroy {
     private readonly users: UsersService,
     private readonly startHandler: StartHandler,
     private readonly messageHandler: MessageHandler,
+    private readonly callbackHandler: CallbackHandler,
   ) {}
 
   async onApplicationBootstrap(): Promise<void> {
@@ -43,6 +45,7 @@ export class BotService implements OnApplicationBootstrap, OnModuleDestroy {
     // 2) Routes.
     this.bot.command('start', (ctx) => this.startHandler.handle(ctx));
     this.bot.on('message:text', (ctx) => this.messageHandler.handle(ctx));
+    this.bot.on('callback_query:data', (ctx) => this.callbackHandler.handle(ctx));
 
     // 3) Central error boundary so a single bad update never crashes polling.
     this.bot.catch((err) => {
