@@ -17,7 +17,7 @@ import { CallbackHandler } from './handlers/callback.handler';
     UsersModule,
     ThemesModule,
     PresentationsModule,
-    BullModule.registerQueue({ name: QUEUES.OUTLINE }),
+    BullModule.registerQueue({ name: QUEUES.OUTLINE }, { name: QUEUES.CARDS }),
   ],
   providers: [
     botProvider,

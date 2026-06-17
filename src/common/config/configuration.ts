@@ -12,6 +12,7 @@ export interface AppConfig {
     anthropicApiKey?: string;
     falApiKey?: string;
     outlineModel: string;
+    cardModel: string;
   };
   storage: { endpoint?: string; accessKey?: string; secretKey?: string; bucket: string };
 }
@@ -35,6 +36,7 @@ export function configuration(): { app: AppConfig } {
         anthropicApiKey: env.ANTHROPIC_API_KEY,
         falApiKey: env.FAL_API_KEY,
         outlineModel: env.AI_OUTLINE_MODEL,
+        cardModel: env.AI_CARD_MODEL,
       },
       storage: {
         endpoint: env.S3_ENDPOINT,

@@ -1,11 +1,11 @@
 import { Inject, Injectable, Logger } from '@nestjs/common';
-import { ZodSchema } from 'zod';
+import { ZodType } from 'zod';
 import { LlmMessage, LlmProvider, LlmResult, LLM_PROVIDER } from './llm.types';
 
 interface GenerateStructuredOptions<T> {
   system: string;
   user: string;
-  schema: ZodSchema<T>;
+  schema: ZodType<T, any, any>;
   model: string;
   maxRepairs?: number;
 }

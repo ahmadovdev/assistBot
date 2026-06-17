@@ -7,7 +7,7 @@ import { BotState } from '../bot.constants';
 import { ThemesService } from '../../themes/themes.service';
 import { PresentationsService } from '../../presentations/presentations.service';
 import { QUEUES } from '../../../infra/queue/queue.constants';
-import { OutlineJobData } from '../../../infra/queue/queue.types';
+import { OutlineJobData, CardsJobData } from '../../../infra/queue/queue.types';
 import {
   QUESTIONS,
   LANG_LABELS,
@@ -26,6 +26,7 @@ export class CallbackHandler {
     private readonly themes: ThemesService,
     private readonly presentations: PresentationsService,
     @InjectQueue(QUEUES.OUTLINE) private readonly outlineQueue: Queue<OutlineJobData>,
+    @InjectQueue(QUEUES.CARDS) private readonly cardsQueue: Queue<CardsJobData>,
   ) {}
 
   async handle(ctx: BotContext): Promise<void> {
@@ -102,10 +103,15 @@ export class CallbackHandler {
         const original = ctx.callbackQuery?.message?.text ?? '';
 
         if (value === 'confirm') {
-          await this.session.setState(userId, BotState.IDLE);
-          await ctx.editMessageText(
-            `${original}\n\n\u2705 Reja tasdiqlandi! (Keyingi bosqich \u2014 slaydlar generatsiyasi, Faza 4)`,
-          );
+          const presentationId = (context as WizardContext).presentationId;
+          if (!presentationId) {
+            await ctx.editMessageText('Sessiya topilmadi. /start dan qayta boshlang.');
+            await this.session.reset(userId);
+            return;
+          }
+          await this.session.setState(userId, BotState.GENERATING);
+          await ctx.editMessageText(`${original}\n\n\u23F3 Slaydlar tayyorlanmoqda...`);
+          await this.cardsQueue.add('generate', { presentationId }, { attempts: 1 });
           return;
         }
 

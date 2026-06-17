@@ -3,3 +3,7 @@
 export interface OutlineJobData {
   presentationId: string;
 }
+
+export interface CardsJobData {
+  presentationId: string;
+}

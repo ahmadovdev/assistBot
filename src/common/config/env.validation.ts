@@ -22,6 +22,7 @@ export const envSchema = z.object({
   // AI providers (optional until the relevant phase)
   AI_PROVIDER: z.enum(['anthropic', 'openrouter']).default('anthropic'),
   AI_OUTLINE_MODEL: z.string().default('claude-sonnet-4-6'),
+  AI_CARD_MODEL: z.string().default('claude-sonnet-4-6'),
   OPENROUTER_API_KEY: z.string().optional(),
   ANTHROPIC_API_KEY: z.string().optional(),
   FAL_API_KEY: z.string().optional(),
