@@ -1,5 +1,6 @@
 import { Inject, Injectable } from '@nestjs/common';
-import { Bot, InlineKeyboard } from 'grammy';
+import { Bot, InlineKeyboard, InputFile } from 'grammy';
+import { Message } from 'grammy/types';
 import { BOT } from './bot.provider';
 import { BotContext } from './bot.types';
 
@@ -15,5 +16,14 @@ export class BotSender {
     return this.bot.api.sendMessage(chatId, text, {
       reply_markup: keyboard,
     });
+  }
+
+  sendDocument(
+    chatId: number,
+    buffer: Buffer,
+    filename: string,
+    caption?: string,
+  ): Promise<Message.DocumentMessage> {
+    return this.bot.api.sendDocument(chatId, new InputFile(buffer, filename), { caption });
   }
 }

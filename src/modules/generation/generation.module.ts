@@ -16,7 +16,11 @@ import { CardsProcessor } from './cards.processor';
     BotModule,
     PresentationsModule,
     SlidesModule,
-    BullModule.registerQueue({ name: QUEUES.OUTLINE }, { name: QUEUES.CARDS }),
+    BullModule.registerQueue(
+      { name: QUEUES.OUTLINE },
+      { name: QUEUES.CARDS },
+      { name: QUEUES.RENDER },
+    ),
   ],
   providers: [OutlineService, OutlineProcessor, CardService, CardsProcessor],
 })

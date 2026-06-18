@@ -12,6 +12,7 @@ import { UsersService } from '../users/users.service';
 import { StartHandler } from './handlers/start.handler';
 import { MessageHandler } from './handlers/message.handler';
 import { CallbackHandler } from './handlers/callback.handler';
+import { DebugHandler } from './handlers/debug.handler';
 
 @Injectable()
 export class BotService implements OnApplicationBootstrap, OnModuleDestroy {
@@ -23,6 +24,7 @@ export class BotService implements OnApplicationBootstrap, OnModuleDestroy {
     private readonly startHandler: StartHandler,
     private readonly messageHandler: MessageHandler,
     private readonly callbackHandler: CallbackHandler,
+    private readonly debugHandler: DebugHandler,
   ) {}
 
   async onApplicationBootstrap(): Promise<void> {
@@ -36,6 +38,7 @@ export class BotService implements OnApplicationBootstrap, OnModuleDestroy {
 
     // 2) Routes.
     this.bot.command('start', (ctx) => this.startHandler.handle(ctx));
+    this.bot.command('debug', (ctx) => this.debugHandler.handle(ctx));
     this.bot.on('message:text', (ctx) => this.messageHandler.handle(ctx));
     this.bot.on('callback_query:data', (ctx) => this.callbackHandler.handle(ctx));
 

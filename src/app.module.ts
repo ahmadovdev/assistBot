@@ -7,6 +7,7 @@ import { UsersModule } from './modules/users/users.module';
 import { BotModule } from './modules/bot/bot.module';
 import { AiModule } from './modules/ai/ai.module';
 import { GenerationModule } from './modules/generation/generation.module';
+import { RenderModule } from './modules/render/render.module';
 
 @Module({
   imports: [
@@ -28,8 +29,8 @@ import { GenerationModule } from './modules/generation/generation.module';
     UsersModule, // Phase 1
     BotModule, // Phase 1-2
     AiModule, // Phase 3
-    GenerationModule, // Phase 3
-    // RenderModule,         // Phase 5
+    GenerationModule, // Phase 3-4
+    RenderModule, // Phase 5
     // StorageModule,        // Phase 6
   ],
 })

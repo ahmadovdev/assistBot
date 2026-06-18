@@ -1,8 +1,8 @@
 import { Logger } from '@nestjs/common';
-import { Processor, WorkerHost } from '@nestjs/bullmq';
-import { Job } from 'bullmq';
+import { Processor, WorkerHost, InjectQueue } from '@nestjs/bullmq';
+import { Job, Queue } from 'bullmq';
 import { QUEUES } from '../../infra/queue/queue.constants';
-import { CardsJobData } from '../../infra/queue/queue.types';
+import { CardsJobData, RenderJobData } from '../../infra/queue/queue.types';
 import { CardService } from './card.service';
 import { mapLimit } from './map-limit';
 import { PresentationsService } from '../presentations/presentations.service';
@@ -24,6 +24,7 @@ export class CardsProcessor extends WorkerHost {
     private readonly slides: SlidesService,
     private readonly session: SessionService,
     private readonly sender: BotSender,
+    @InjectQueue(QUEUES.RENDER) private readonly renderQueue: Queue<RenderJobData>,
   ) {
     super();
   }
@@ -76,11 +77,12 @@ export class CardsProcessor extends WorkerHost {
         tokensUsed: tokens,
       });
 
-      await this.session.setState(presentation.userId, BotState.IDLE);
+      await this.session.setState(presentation.userId, BotState.GENERATING);
       await this.sender.sendMessage(
         chatId,
-        `\u2705 ${total} ta slayd tayyor! (Keyingi bosqich \u2014 PDF render, Faza 5)`,
+        `\u2705 ${total} ta slayd tayyor. PDF yig'ilmoqda...`,
       );
+      await this.renderQueue.add('render', { presentationId }, { attempts: 1 });
     } catch (err) {
       this.logger.error(`Card generation failed for ${presentationId}: ${String(err)}`);
       await this.presentations.setStatus(presentationId, 'failed', String(err));

@@ -7,3 +7,7 @@ export interface OutlineJobData {
 export interface CardsJobData {
   presentationId: string;
 }
+
+export interface RenderJobData {
+  presentationId: string;
+}

@@ -27,6 +27,9 @@ export const envSchema = z.object({
   ANTHROPIC_API_KEY: z.string().optional(),
   FAL_API_KEY: z.string().optional(),
 
+  // Render
+  PUPPETEER_EXECUTABLE_PATH: z.string().optional(),
+
   // Storage (MinIO / S3) — used from Phase 6
   S3_ENDPOINT: z.string().optional(),
   S3_ACCESS_KEY: z.string().optional(),

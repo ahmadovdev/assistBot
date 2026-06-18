@@ -14,6 +14,7 @@ export interface AppConfig {
     outlineModel: string;
     cardModel: string;
   };
+  render: { puppeteerExecutablePath?: string };
   storage: { endpoint?: string; accessKey?: string; secretKey?: string; bucket: string };
 }
 
@@ -38,6 +39,7 @@ export function configuration(): { app: AppConfig } {
         outlineModel: env.AI_OUTLINE_MODEL,
         cardModel: env.AI_CARD_MODEL,
       },
+      render: { puppeteerExecutablePath: env.PUPPETEER_EXECUTABLE_PATH },
       storage: {
         endpoint: env.S3_ENDPOINT,
         accessKey: env.S3_ACCESS_KEY,
