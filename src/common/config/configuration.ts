@@ -7,9 +7,10 @@ export interface AppConfig {
   redis: { host: string; port: number; password?: string };
   telegram: { botToken: string };
   ai: {
-    provider: 'anthropic' | 'openrouter';
+    provider: 'anthropic' | 'openrouter' | 'gemini';
     openrouterApiKey?: string;
     anthropicApiKey?: string;
+    geminiApiKey?: string;
     falApiKey?: string;
     outlineModel: string;
     cardModel: string;
@@ -35,6 +36,7 @@ export function configuration(): { app: AppConfig } {
         provider: env.AI_PROVIDER,
         openrouterApiKey: env.OPENROUTER_API_KEY,
         anthropicApiKey: env.ANTHROPIC_API_KEY,
+        geminiApiKey: env.GEMINI_API_KEY,
         falApiKey: env.FAL_API_KEY,
         outlineModel: env.AI_OUTLINE_MODEL,
         cardModel: env.AI_CARD_MODEL,
