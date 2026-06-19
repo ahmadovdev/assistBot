@@ -1,36 +1,39 @@
 import { esc } from './escape';
+import { ThemeConfig } from './theme';
+import { imagePanel, statsViz } from './visuals';
 
 type Dict = Record<string, any>;
 
-function imageBlock(image: Dict | undefined | null): string {
+function panel(theme: ThemeConfig, image: Dict | undefined | null): string {
   if (image && image.url) {
     return `<div class="img"><img src="${esc(image.url)}" alt=""/></div>`;
   }
-  return `<div class="img placeholder"><div class="ph-ic">&#128444;</div><div class="ph-cap">AI illustration</div></div>`;
+  return imagePanel(theme);
 }
 
-function cover(c: Dict): string {
+function cover(c: Dict, t: ThemeConfig): string {
   const tags = Array.isArray(c.tags) ? c.tags : [];
-  const pills = tags.map((t: string) => `<span class="pill">${esc(t)}</span>`).join('');
+  const pills = tags.map((x: string) => `<span class="pill">${esc(x)}</span>`).join('');
   return `<div class="cover">
     <div class="cover-left">
+      <div class="eyebrow">${tags[0] ? esc(tags[0]) : 'PREZENTATSIYA'}</div>
       <h1 class="title cover-title">${esc(c.title)}</h1>
       <p class="subtitle">${esc(c.subtitle)}</p>
       ${pills ? `<div class="pills">${pills}</div>` : ''}
     </div>
-    <div class="cover-right">${imageBlock(c.image)}</div>
+    <div class="cover-right">${panel(t, c.image)}</div>
   </div>`;
 }
 
-function leadParagraph(c: Dict): string {
+function leadParagraph(c: Dict, t: ThemeConfig): string {
   return `<h1 class="title">${esc(c.title)}</h1>
     <div class="lead-row">
       <div class="lead-body"><p class="body">${esc(c.body)}</p></div>
-      ${c.image ? `<div class="lead-img">${imageBlock(c.image)}</div>` : ''}
+      <div class="lead-img">${panel(t, c.image)}</div>
     </div>`;
 }
 
-function bulletList(c: Dict): string {
+function bulletList(c: Dict, _t: ThemeConfig): string {
   const bullets = (c.bullets ?? [])
     .map(
       (b: Dict, i: number) =>
@@ -42,21 +45,15 @@ function bulletList(c: Dict): string {
     <div class="bullets">${bullets}</div>`;
 }
 
-function statsGrid(c: Dict): string {
-  const stats = (c.stats ?? [])
-    .map(
-      (s: Dict) =>
-        `<div class="card stat"><div class="stat-value">${esc(s.value)}</div><div class="stat-label">${esc(s.label)}</div>${s.desc ? `<div class="stat-desc">${esc(s.desc)}</div>` : ''}</div>`,
-    )
-    .join('');
+function statsGrid(c: Dict, t: ThemeConfig): string {
   return `<h1 class="title">${esc(c.title)}</h1>
     ${c.body ? `<p class="subtitle">${esc(c.body)}</p>` : ''}
-    <div class="stats">${stats}</div>`;
+    ${statsViz(t, c.stats ?? [], esc)}`;
 }
 
-function imageText(c: Dict): string {
+function imageText(c: Dict, t: ThemeConfig): string {
   const points = Array.isArray(c.points) ? c.points : [];
-  const media = `<div class="imgtext-media">${imageBlock(c.image)}</div>`;
+  const media = `<div class="imgtext-media">${panel(t, c.image)}</div>`;
   const body = `<div class="imgtext-body">
       <p class="body">${esc(c.body)}</p>
       ${points.length ? `<ul class="points">${points.map((p: string) => `<li>${esc(p)}</li>`).join('')}</ul>` : ''}
@@ -66,7 +63,7 @@ function imageText(c: Dict): string {
     <div class="imgtext">${left ? media + body : body + media}</div>`;
 }
 
-function threeColumns(c: Dict): string {
+function threeColumns(c: Dict, _t: ThemeConfig): string {
   const cols = (c.columns ?? [])
     .map(
       (col: Dict) =>
@@ -78,7 +75,7 @@ function threeColumns(c: Dict): string {
     <div class="cols">${cols}</div>`;
 }
 
-function splitConclusion(c: Dict): string {
+function splitConclusion(c: Dict, _t: ThemeConfig): string {
   const summary = (c.summary ?? [])
     .map(
       (s: Dict) =>
@@ -98,17 +95,13 @@ function splitConclusion(c: Dict): string {
     </div>`;
 }
 
-const RENDERERS: Record<string, (c: Dict) => string> = {
-  cover,
-  lead_paragraph: leadParagraph,
-  bullet_list: bulletList,
-  stats_grid: statsGrid,
-  image_text: imageText,
-  three_columns: threeColumns,
+const RENDERERS: Record<string, (c: Dict, t: ThemeConfig) => string> = {
+  cover, lead_paragraph: leadParagraph, bullet_list: bulletList,
+  stats_grid: statsGrid, image_text: imageText, three_columns: threeColumns,
   split_conclusion: splitConclusion,
 };
 
-export function renderSlideInner(layout: string, content: unknown): string {
+export function renderSlideInner(layout: string, content: unknown, theme: ThemeConfig): string {
   const fn = RENDERERS[layout] ?? leadParagraph;
-  return fn((content ?? {}) as Dict);
+  return fn((content ?? {}) as Dict, theme);
 }

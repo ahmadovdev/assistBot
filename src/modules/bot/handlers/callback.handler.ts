@@ -5,6 +5,7 @@ import { BotContext, WizardContext } from '../bot.types';
 import { SessionService } from '../session.service';
 import { BotState } from '../bot.constants';
 import { ThemesService } from '../../themes/themes.service';
+import { buildThemePreviewMedia } from '../theme-previews';
 import { PresentationsService } from '../../presentations/presentations.service';
 import { QUEUES } from '../../../infra/queue/queue.constants';
 import { OutlineJobData, CardsJobData } from '../../../infra/queue/queue.types';
@@ -58,7 +59,16 @@ export class CallbackHandler {
         await this.session.patchContext(userId, { tone: value });
         await this.session.setState(userId, BotState.AWAITING_THEME);
         const themes = await this.themes.findAll();
-        await ctx.editMessageText(QUESTIONS.theme, { reply_markup: themeKeyboard(themes) });
+        await ctx.editMessageText('\u{1F5BC} Dizayn tanlang \u2014 5 ta namuna quyida \u{1F447}');
+        const media = buildThemePreviewMedia(themes);
+        if (media.length) {
+          try {
+            await ctx.replyWithMediaGroup(media);
+          } catch {
+            /* album optional; fall through to keyboard */
+          }
+        }
+        await ctx.reply(QUESTIONS.theme, { reply_markup: themeKeyboard(themes) });
         return;
       }
 
