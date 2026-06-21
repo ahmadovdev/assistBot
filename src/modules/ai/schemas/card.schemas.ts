@@ -13,7 +13,17 @@ const title = z.object({
 const stats = z.object({
   title: z.string().min(1),
   subtitle: z.string().optional(),
-  stats: z.array(kv).min(2).max(5),
+  stats: z
+    .array(
+      z.object({
+        value: z.string().min(1),
+        label: z.string().min(1),
+        description: z.string().optional(),
+      }),
+    )
+    .min(2)
+    .max(4),
+  insight: z.string().optional(),
 });
 
 const problem = z.object({

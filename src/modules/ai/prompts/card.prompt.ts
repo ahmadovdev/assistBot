@@ -27,6 +27,7 @@ NON-NEGOTIABLE RULES:
 - You MAY wrap at most ONE key phrase per text field in <strong>...</strong> for emphasis. Use NO other HTML.
 - QUOTE slides: the author must be a PLAUSIBLE PERSONA relevant to the topic (e.g. a role + realistic name), NEVER a real, named public figure. "initials" must match the name.
 - Use KEY_POINTS as the backbone but expand them into polished content.
+- FILL the slide with substance: when a field for context exists (subtitle, description, body, insight), provide genuine, specific content rather than leaving it empty \u2014 empty fields make slides look sparse and unfinished. Add real context, never filler.
 
 You receive DECK context, the slide SPEC (type, title, key_points), the exact JSON STRUCTURE, and one EXAMPLE (English style reference; your output must be in OUTPUT_LANGUAGE). Produce JSON for THIS slide only.`;
 
@@ -38,16 +39,16 @@ const SPECS: Record<SlideType, Spec> = {
     example: '{"kicker":"AI Presentation Generator","title":"Turn one prompt into a board-ready deck","subtitle":"Built for teams who care how it looks.","meta":[{"label":"Sector","value":"SaaS"},{"label":"Year","value":"2026"}]}',
   },
   STATS: {
-    structure: '{ "title": string, "subtitle"?: string, "stats": [{ "value": string, "label": string }] (2-5) }',
-    example: '{"title":"The measurable impact","subtitle":"Across 12,000 decks last quarter.","stats":[{"value":"94%","label":"rated client-ready with no edits"},{"value":"2.4x","label":"faster outline to finished"},{"value":"18h","label":"saved per deck"}]}',
+    structure: '{ "title": string, "subtitle": string (framing sentence, REQUIRED), "stats": [{ "value": string, "label": string, "description": string (one short line of context, REQUIRED) }] (2-4), "insight": string (one-line takeaway under the numbers, REQUIRED) }',
+    example: '{"title":"The measurable impact","subtitle":"Across 12,000 decks built last quarter, the gains were consistent.","stats":[{"value":"94%","label":"client-ready","description":"rated ready to send with no manual edits"},{"value":"2.4x","label":"faster","description":"from first outline to finished deck"},{"value":"18h","label":"saved / deck","description":"reclaimed from manual formatting work"}],"insight":"The bottleneck was never ideas \u2014 it was the production cost of clarity."}',
   },
   PROBLEM: {
     structure: '{ "kicker"?: string, "statement": string, "context"?: [{ "value": string, "description": string }] (0-3) }',
     example: '{"kicker":"The problem","statement":"Decks fail less from weak ideas than from the high cost of making them clear.","context":[{"value":"5.2 hrs","description":"median time spent per deck on layout, not analysis."},{"value":"68%","description":"of decks miss their review window."}]}',
   },
   INSIGHT: {
-    structure: '{ "kicker"?: string, "statement": string, "body"?: string }',
-    example: '{"kicker":"The insight","statement":"Design is not decoration \u2014 it is how trust is transferred.","body":"When the format is effortless to read, the argument feels more credible before a word is spoken."}',
+    structure: '{ "kicker"?: string, "statement": string, "body": string (2-3 sentences of substance that develop the statement, REQUIRED) }',
+    example: '{"kicker":"The insight","statement":"Design is not decoration \u2014 it is how trust is transferred.","body":"When a format is effortless to read, the argument feels more credible before a single word is processed. Teams that invest in clarity win more decisions, not because their data is better, but because it lands."}',
   },
   COMPARISON: {
     structure: '{ "title": string, "subtitle"?: string, "before": { "label": string, "title"?: string, "items": string[] (2-5) }, "after": { "label": string, "title"?: string, "items": string[] (2-5) } }',

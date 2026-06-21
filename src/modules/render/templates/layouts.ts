@@ -23,7 +23,8 @@ export interface TitleData extends SlideMeta {
 export interface StatsData extends SlideMeta {
   title: string;
   subtitle?: string;
-  stats: { value: string; label: string }[];
+  stats: { value: string; label: string; description?: string }[];
+  insight?: string;
 }
 
 export interface ProblemData extends SlideMeta {
@@ -160,14 +161,18 @@ export function renderStats(d: StatsData, theme: Theme): string {
         <h2 class="h2">${safe(d.title)}</h2>
         ${d.subtitle ? `<p class="lead" style="margin-top:14px">${safe(d.subtitle)}</p>` : ''}
       </header>
-      <div class="content-block__body ${gridForCount(d.stats.length)}"
-           style="border-top:1px solid var(--border);padding-top:36px">
-        ${d.stats.map(s => `
-          <div class="metric">
-            <div class="metric__num">${safe(s.value)}</div>
-            <div class="metric__lbl">${safe(s.label)}</div>
-          </div>
-        `).join('')}
+      <div style="display:flex;flex-direction:column;gap:34px;
+                  border-top:1px solid var(--border);padding-top:36px">
+        <div class="${gridForCount(d.stats.length)}">
+          ${d.stats.map(s => `
+            <div class="metric">
+              <div class="metric__num">${safe(s.value)}</div>
+              <div class="metric__lbl">${safe(s.label)}</div>
+              ${s.description ? `<p class="text--sm muted" style="margin-top:6px">${safe(s.description)}</p>` : ''}
+            </div>
+          `).join('')}
+        </div>
+        ${d.insight ? `<p class="lead" style="max-width:980px">${safe(d.insight)}</p>` : ''}
       </div>
     </div>
   `);
