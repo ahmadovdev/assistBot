@@ -15,6 +15,7 @@ import { CallbackHandler } from './handlers/callback.handler';
 import { DebugHandler } from './handlers/debug.handler';
 import { HelpHandler } from './handlers/help.handler';
 import { HistoryHandler } from './handlers/history.handler';
+import { OutlineEditHandler } from './handlers/outline-edit.handler';
 
 @Injectable()
 export class BotService implements OnApplicationBootstrap, OnModuleDestroy {
@@ -29,6 +30,7 @@ export class BotService implements OnApplicationBootstrap, OnModuleDestroy {
     private readonly debugHandler: DebugHandler,
     private readonly helpHandler: HelpHandler,
     private readonly historyHandler: HistoryHandler,
+    private readonly outlineEditHandler: OutlineEditHandler,
   ) {}
 
   async onApplicationBootstrap(): Promise<void> {
@@ -46,6 +48,7 @@ export class BotService implements OnApplicationBootstrap, OnModuleDestroy {
     this.bot.command('history', (ctx) => this.historyHandler.handle(ctx));
     this.bot.command('debug', (ctx) => this.debugHandler.handle(ctx));
     this.bot.callbackQuery(/^history:/, (ctx) => this.historyHandler.handleCallback(ctx));
+    this.bot.callbackQuery(/^oe:/, (ctx) => this.outlineEditHandler.handleCallback(ctx));
     this.bot.on('message:text', (ctx) => this.messageHandler.handle(ctx));
     this.bot.on('callback_query:data', (ctx) => this.callbackHandler.handle(ctx));
 

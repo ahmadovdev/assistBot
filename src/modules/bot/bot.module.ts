@@ -14,6 +14,7 @@ import { CallbackHandler } from './handlers/callback.handler';
 import { DebugHandler } from './handlers/debug.handler';
 import { HelpHandler } from './handlers/help.handler';
 import { HistoryHandler } from './handlers/history.handler';
+import { OutlineEditHandler } from './handlers/outline-edit.handler';
 
 @Module({
   imports: [
@@ -33,6 +34,7 @@ import { HistoryHandler } from './handlers/history.handler';
     DebugHandler,
     HelpHandler,
     HistoryHandler,
+    OutlineEditHandler,
   ],
   exports: [BotSender, SessionService],
 })

@@ -17,4 +17,8 @@ export interface WizardContext {
   tone?: string;
   themeKey?: string;
   presentationId?: string;
+  // outline-edit transient state
+  editIndex?: number;
+  pendingTitle?: string;
+  editMsgId?: number;
 }

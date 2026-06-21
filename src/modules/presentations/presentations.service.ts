@@ -127,6 +127,14 @@ export class PresentationsService {
     });
   }
 
+  async getOutlineRaw(id: string): Promise<unknown> {
+    const p = await this.prisma.presentation.findUnique({
+      where: { id },
+      select: { outline: true },
+    });
+    return p?.outline ?? null;
+  }
+
   saveOutline(id: string, outline: unknown): Promise<Presentation> {
     return this.prisma.presentation.update({
       where: { id },

@@ -3,10 +3,14 @@ import { BotContext } from '../bot.types';
 import { SessionService } from '../session.service';
 import { BotState } from '../bot.constants';
 import { QUESTIONS, slideCountKeyboard } from '../keyboards';
+import { OutlineEditHandler } from './outline-edit.handler';
 
 @Injectable()
 export class MessageHandler {
-  constructor(private readonly session: SessionService) {}
+  constructor(
+    private readonly session: SessionService,
+    private readonly outlineEdit: OutlineEditHandler,
+  ) {}
 
   async handle(ctx: BotContext): Promise<void> {
     const text = ctx.message?.text?.trim();
@@ -22,12 +26,17 @@ export class MessageHandler {
         return;
       }
 
+      case BotState.AWAITING_SLIDE_TITLE_EDIT:
+      case BotState.AWAITING_NEW_SLIDE_TITLE:
+        await this.outlineEdit.handleText(ctx, state);
+        return;
+
       case BotState.GENERATING:
         await ctx.reply('\u23F3 Iltimos kuting, jarayon davom etmoqda...');
         return;
 
       case BotState.AWAITING_OUTLINE_CONFIRM:
-        await ctx.reply('Yuqoridagi tugmalardan birini tanlang: \u2705 yoki \u{1F504}');
+        await ctx.reply('Yuqoridagi tugmalardan birini tanlang \u{1F446}');
         return;
 
       default:

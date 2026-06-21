@@ -12,5 +12,7 @@ export enum BotState {
   AWAITING_THEME = 'awaiting_theme',
   OUTLINING = 'outlining',
   AWAITING_OUTLINE_CONFIRM = 'awaiting_outline_confirm',
+  AWAITING_SLIDE_TITLE_EDIT = 'awaiting_slide_title_edit',
+  AWAITING_NEW_SLIDE_TITLE = 'awaiting_new_slide_title',
   GENERATING = 'generating',
 }
