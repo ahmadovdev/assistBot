@@ -17,7 +17,7 @@ export const SLIDE_GUIDE: Record<SlideType, string> = {
   TITLE: 'Opening slide: deck title + subtitle (slide 1 only).',
   STATS: 'A grid of 2-5 key numbers/metrics.',
   PROBLEM: 'A single bold problem statement, optional 3 supporting figures.',
-  INSIGHT: 'One sharp realization/thesis with a short explanation.',
+  INSIGHT: 'One sharp realization/thesis with a short explanation. Also ideal as a CLOSING takeaway that wraps up the whole deck.',
   COMPARISON: 'Before vs after / old vs new, two columns of points.',
   PROCESS: 'A sequence of 3-5 steps (how it works).',
   TIMELINE: 'Dated milestones across time (3-5).',
@@ -26,5 +26,5 @@ export const SLIDE_GUIDE: Record<SlideType, string> = {
   CASE_STUDY: 'A concrete example/customer with 2-4 result metrics.',
   QUOTE: 'A memorable statement with a persona attribution (not a real public figure).',
   ROADMAP: 'Phased plan ahead (3 phases with items).',
-  CTA: 'Closing slide: call to action + next steps (last slide).',
+  CTA: 'Call to action (contact, sign up, invest). ONLY for sales/pitch/proposal decks \u2014 never for purely informational or educational topics.',
 };
