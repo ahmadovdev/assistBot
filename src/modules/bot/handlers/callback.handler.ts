@@ -13,6 +13,9 @@ import {
   QUESTIONS,
   LANG_LABELS,
   TONE_LABELS,
+  EXAMPLE_TOPICS,
+  examplesKeyboard,
+  slideCountKeyboard,
   languageKeyboard,
   toneKeyboard,
   themeKeyboard,
@@ -40,6 +43,40 @@ export class CallbackHandler {
     const { state, context } = await this.session.get(userId);
 
     switch (action) {
+      case 'ex': {
+        if (state !== BotState.AWAITING_TOPIC) return;
+        const topic = EXAMPLE_TOPICS[Number(value)];
+        if (!topic) return;
+        await this.session.patchContext(userId, { topic });
+        await this.session.setState(userId, BotState.AWAITING_SLIDE_COUNT);
+        await ctx.editMessageText(`\u{1F4CC} Mavzu: ${topic}\n\n${QUESTIONS.slideCount}`, {
+          reply_markup: slideCountKeyboard(),
+        });
+        return;
+      }
+
+      case 'back': {
+        switch (value) {
+          case 'topic':
+            await this.session.setState(userId, BotState.AWAITING_TOPIC);
+            await ctx.editMessageText(QUESTIONS.topic, { reply_markup: examplesKeyboard() });
+            return;
+          case 'slides':
+            await this.session.setState(userId, BotState.AWAITING_SLIDE_COUNT);
+            await ctx.editMessageText(QUESTIONS.slideCount, { reply_markup: slideCountKeyboard() });
+            return;
+          case 'lang':
+            await this.session.setState(userId, BotState.AWAITING_LANGUAGE);
+            await ctx.editMessageText(QUESTIONS.language, { reply_markup: languageKeyboard() });
+            return;
+          case 'tone':
+            await this.session.setState(userId, BotState.AWAITING_TONE);
+            await ctx.editMessageText(QUESTIONS.tone, { reply_markup: toneKeyboard() });
+            return;
+        }
+        return;
+      }
+
       case 'slides':
         if (state !== BotState.AWAITING_SLIDE_COUNT) return;
         await this.session.patchContext(userId, { slideCount: Number(value) });

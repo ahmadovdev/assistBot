@@ -22,7 +22,7 @@ export class DebugHandler {
       tone: p.tone,
       status: p.status,
       outline: p.outline,
-      slides: p.slides.map((s) => ({
+      slides: p.slides.map((s: { position: number; layout: string; content: unknown }) => ({
         position: s.position,
         layout: s.layout,
         content: s.content,

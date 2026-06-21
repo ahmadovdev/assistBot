@@ -91,7 +91,7 @@ export class PresentationsService {
         where: { presentationId, telegramFileId: { not: null }, presentation: { userId } },
         orderBy: { createdAt: 'desc' },
       })
-      .then((e) => e?.telegramFileId ?? null);
+      .then((e: { telegramFileId: string | null } | null) => e?.telegramFileId ?? null);
   }
 
   recordExport(

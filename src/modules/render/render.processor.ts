@@ -35,7 +35,7 @@ export class RenderProcessor extends WorkerHost {
       await this.presentations.setStatus(presentationId, 'rendering');
       await this.sender.sendMessage(chatId, '\u23F3 PDF tayyorlanmoqda...');
 
-      const slides = p.slides.map((s) => ({ type: s.layout, content: s.content }));
+      const slides = p.slides.map((s: { layout: string; content: unknown }) => ({ type: s.layout, content: s.content }));
       const themeId = p.theme?.key ?? 'dark_premium';
       const pdf = await this.render.renderPdf(themeId, slides);
 
