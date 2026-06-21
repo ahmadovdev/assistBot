@@ -52,7 +52,9 @@ export function slideCountKeyboard(): InlineKeyboard {
 export function languageKeyboard(): InlineKeyboard {
   return new InlineKeyboard()
     .text(LANG_LABELS.uz, 'lang:uz')
+    .row()
     .text(LANG_LABELS.ru, 'lang:ru')
+    .row()
     .text(LANG_LABELS.en, 'lang:en')
     .row()
     .text(BACK, 'back:slides');
@@ -61,7 +63,9 @@ export function languageKeyboard(): InlineKeyboard {
 export function toneKeyboard(): InlineKeyboard {
   return new InlineKeyboard()
     .text(TONE_LABELS.professional, 'tone:professional')
+    .row()
     .text(TONE_LABELS.casual, 'tone:casual')
+    .row()
     .text(TONE_LABELS.academic, 'tone:academic')
     .row()
     .text(BACK, 'back:lang');
@@ -69,11 +73,10 @@ export function toneKeyboard(): InlineKeyboard {
 
 export function themeKeyboard(themes: Theme[]): InlineKeyboard {
   const kb = new InlineKeyboard();
-  themes.forEach((t, i) => {
-    kb.text(t.name, `theme:${t.key}`);
-    if ((i + 1) % 2 === 0) kb.row();
+  themes.forEach((t) => {
+    kb.text(t.name, `theme:${t.key}`).row();
   });
-  kb.row().text(BACK, 'back:tone');
+  kb.text(BACK, 'back:tone');
   return kb;
 }
 
