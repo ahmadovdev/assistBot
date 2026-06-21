@@ -13,6 +13,8 @@ import { StartHandler } from './handlers/start.handler';
 import { MessageHandler } from './handlers/message.handler';
 import { CallbackHandler } from './handlers/callback.handler';
 import { DebugHandler } from './handlers/debug.handler';
+import { HelpHandler } from './handlers/help.handler';
+import { HistoryHandler } from './handlers/history.handler';
 
 @Injectable()
 export class BotService implements OnApplicationBootstrap, OnModuleDestroy {
@@ -25,6 +27,8 @@ export class BotService implements OnApplicationBootstrap, OnModuleDestroy {
     private readonly messageHandler: MessageHandler,
     private readonly callbackHandler: CallbackHandler,
     private readonly debugHandler: DebugHandler,
+    private readonly helpHandler: HelpHandler,
+    private readonly historyHandler: HistoryHandler,
   ) {}
 
   async onApplicationBootstrap(): Promise<void> {
@@ -38,7 +42,10 @@ export class BotService implements OnApplicationBootstrap, OnModuleDestroy {
 
     // 2) Routes.
     this.bot.command('start', (ctx) => this.startHandler.handle(ctx));
+    this.bot.command('help', (ctx) => this.helpHandler.handle(ctx));
+    this.bot.command('history', (ctx) => this.historyHandler.handle(ctx));
     this.bot.command('debug', (ctx) => this.debugHandler.handle(ctx));
+    this.bot.callbackQuery(/^history:/, (ctx) => this.historyHandler.handleCallback(ctx));
     this.bot.on('message:text', (ctx) => this.messageHandler.handle(ctx));
     this.bot.on('callback_query:data', (ctx) => this.callbackHandler.handle(ctx));
 
@@ -49,7 +56,18 @@ export class BotService implements OnApplicationBootstrap, OnModuleDestroy {
       );
     });
 
-    // 4) Long polling. Do NOT await: start() resolves only when the bot stops.
+    // 4) Telegram command menu (the "Menu" button + "/" list).
+    try {
+      await this.bot.api.setMyCommands([
+        { command: 'start', description: '\u{1F3AF} Yangi taqdimot yaratish' },
+        { command: 'history', description: '\u{1F4C2} Mening taqdimotlarim' },
+        { command: 'help', description: '\u2753 Yordam va qo\u2018llanma' },
+      ]);
+    } catch (err) {
+      this.logger.warn(`setMyCommands failed: ${String(err)}`);
+    }
+
+    // 5) Long polling. Do NOT await: start() resolves only when the bot stops.
     void this.bot.start({
       onStart: (info) =>
         this.logger.log(`Bot @${info.username} started (long polling)`),

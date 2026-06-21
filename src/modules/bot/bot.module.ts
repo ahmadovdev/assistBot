@@ -12,6 +12,8 @@ import { StartHandler } from './handlers/start.handler';
 import { MessageHandler } from './handlers/message.handler';
 import { CallbackHandler } from './handlers/callback.handler';
 import { DebugHandler } from './handlers/debug.handler';
+import { HelpHandler } from './handlers/help.handler';
+import { HistoryHandler } from './handlers/history.handler';
 
 @Module({
   imports: [
@@ -29,6 +31,8 @@ import { DebugHandler } from './handlers/debug.handler';
     MessageHandler,
     CallbackHandler,
     DebugHandler,
+    HelpHandler,
+    HistoryHandler,
   ],
   exports: [BotSender, SessionService],
 })

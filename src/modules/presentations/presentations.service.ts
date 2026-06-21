@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import {
+  Export,
   ExportFormat,
   JobStage,
   JobStatus,
@@ -66,6 +67,31 @@ export class PresentationsService {
       where: { id },
       include: { user: true, theme: true, slides: { orderBy: { position: 'asc' } } },
     });
+  }
+
+  /** Recent presentations for /history, with the latest cached PDF file id. */
+  listRecent(userId: bigint, limit = 8): Promise<(Presentation & { exports: Export[] })[]> {
+    return this.prisma.presentation.findMany({
+      where: { userId },
+      orderBy: { createdAt: 'desc' },
+      take: limit,
+      include: {
+        exports: {
+          where: { telegramFileId: { not: null } },
+          orderBy: { createdAt: 'desc' },
+          take: 1,
+        },
+      },
+    });
+  }
+
+  latestFileId(presentationId: string, userId: bigint): Promise<string | null> {
+    return this.prisma.export
+      .findFirst({
+        where: { presentationId, telegramFileId: { not: null }, presentation: { userId } },
+        orderBy: { createdAt: 'desc' },
+      })
+      .then((e) => e?.telegramFileId ?? null);
   }
 
   recordExport(
