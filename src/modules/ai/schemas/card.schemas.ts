@@ -1,88 +1,106 @@
 import { z } from 'zod';
-import { Tier1Layout } from '../layout.catalog';
+import { SlideType } from '../layout.catalog';
 
-/** Reusable image slot: AI writes an English prompt; url is filled in Phase 6. */
-const imageSlot = z.object({
-  prompt: z.string().min(1),
-  url: z.string().nullable().default(null),
-});
+const kv = z.object({ value: z.string().min(1), label: z.string().min(1) });
 
-const coverSchema = z.object({
+const title = z.object({
+  kicker: z.string().optional(),
   title: z.string().min(1),
-  subtitle: z.string().min(1),
-  tags: z.array(z.string()).max(4).default([]),
-  image: imageSlot,
+  subtitle: z.string().optional(),
+  meta: z.array(z.object({ label: z.string().min(1), value: z.string().min(1) })).max(4).default([]),
 });
 
-const leadParagraphSchema = z.object({
+const stats = z.object({
+  title: z.string().min(1),
+  subtitle: z.string().optional(),
+  stats: z.array(kv).min(2).max(5),
+});
+
+const problem = z.object({
+  kicker: z.string().optional(),
+  statement: z.string().min(1),
+  context: z.array(z.object({ value: z.string().min(1), description: z.string().min(1) })).max(3).default([]),
+});
+
+const insight = z.object({
+  kicker: z.string().optional(),
+  statement: z.string().min(1),
+  body: z.string().optional(),
+});
+
+const sideCol = z.object({
+  label: z.string().min(1),
+  title: z.string().optional(),
+  items: z.array(z.string().min(1)).min(2).max(5),
+});
+const comparison = z.object({
+  title: z.string().min(1),
+  subtitle: z.string().optional(),
+  before: sideCol,
+  after: sideCol,
+});
+
+const process = z.object({
+  title: z.string().min(1),
+  subtitle: z.string().optional(),
+  steps: z.array(z.object({ label: z.string().optional(), title: z.string().min(1), body: z.string().min(1) })).min(2).max(5),
+});
+
+const timeline = z.object({
+  title: z.string().min(1),
+  subtitle: z.string().optional(),
+  steps: z.array(z.object({ date: z.string().min(1), title: z.string().min(1), body: z.string().min(1) })).min(2).max(5),
+});
+
+const solution = z.object({
+  kicker: z.string().optional(),
+  title: z.string().min(1),
+  body: z.string().optional(),
+  features: z.array(z.object({ title: z.string().min(1), body: z.string().min(1) })).max(3).default([]),
+});
+
+const opportunity = z.object({
+  title: z.string().min(1),
+  subtitle: z.string().optional(),
+  big: kv,
+  supports: z.array(kv).max(4).default([]),
+});
+
+const caseStudy = z.object({
+  kicker: z.string().optional(),
   title: z.string().min(1),
   body: z.string().min(1),
-  image: imageSlot.optional(),
+  customer: z.string().optional(),
+  metrics: z.array(kv).min(2).max(4),
 });
 
-const bulletListSchema = z.object({
+const quote = z.object({
+  kicker: z.string().optional(),
+  quote: z.string().min(1),
+  author: z.object({ initials: z.string().min(1).max(3), name: z.string().min(1), role: z.string().min(1) }),
+});
+
+const roadmap = z.object({
+  title: z.string().min(1),
+  subtitle: z.string().optional(),
+  phases: z.array(z.object({
+    date: z.string().min(1), title: z.string().min(1), body: z.string().min(1),
+    items: z.array(z.string().min(1)).max(4).default([]),
+  })).min(2).max(4),
+});
+
+const cta = z.object({
+  kicker: z.string().optional(),
   title: z.string().min(1),
   body: z.string().optional(),
-  bullets: z.array(z.object({ text: z.string().min(1) })).min(2).max(6),
+  actions: z.array(z.object({ label: z.string().min(1), primary: z.boolean().optional() })).min(1).max(3),
+  footnote: z.string().optional(),
 });
 
-const statsGridSchema = z.object({
-  title: z.string().min(1),
-  body: z.string().optional(),
-  stats: z
-    .array(
-      z.object({
-        value: z.string().min(1),
-        label: z.string().min(1),
-        desc: z.string().optional(),
-      }),
-    )
-    .min(2)
-    .max(4),
-});
-
-const imageTextSchema = z.object({
-  title: z.string().min(1),
-  body: z.string().min(1),
-  points: z.array(z.string()).max(4).default([]),
-  image: imageSlot,
-  image_side: z.enum(['left', 'right']).default('right'),
-});
-
-const threeColumnsSchema = z.object({
-  title: z.string().min(1),
-  body: z.string().optional(),
-  columns: z
-    .array(
-      z.object({
-        heading: z.string().min(1),
-        text: z.string().min(1),
-        icon: z.string().optional(),
-      }),
-    )
-    .length(3),
-});
-
-const splitConclusionSchema = z.object({
-  title: z.string().min(1),
-  summary: z
-    .array(z.object({ heading: z.string().min(1), text: z.string().min(1) }))
-    .min(2)
-    .max(4),
-  next_steps: z
-    .array(z.object({ number: z.string().min(1), text: z.string().min(1) }))
-    .min(1)
-    .max(4),
-});
-
-export const cardSchemaByLayout: Record<Tier1Layout, z.ZodTypeAny> = {
-  cover: coverSchema,
-  lead_paragraph: leadParagraphSchema,
-  bullet_list: bulletListSchema,
-  stats_grid: statsGridSchema,
-  image_text: imageTextSchema,
-  three_columns: threeColumnsSchema,
-  split_conclusion: splitConclusionSchema,
+export const cardSchemaByType: Record<SlideType, z.ZodTypeAny> = {
+  TITLE: title, STATS: stats, PROBLEM: problem, INSIGHT: insight, COMPARISON: comparison,
+  PROCESS: process, TIMELINE: timeline, SOLUTION: solution, OPPORTUNITY: opportunity,
+  CASE_STUDY: caseStudy, QUOTE: quote, ROADMAP: roadmap, CTA: cta,
 };
 
 export type CardContent = Record<string, unknown>;

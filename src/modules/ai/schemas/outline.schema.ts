@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { TIER1_LAYOUTS } from '../layout.catalog';
+import { SLIDE_TYPES } from '../layout.catalog';
 
 export const outlineSchema = z.object({
   deck_title: z.string().min(1),
@@ -7,7 +7,7 @@ export const outlineSchema = z.object({
     .array(
       z.object({
         position: z.number().int().positive(),
-        layout: z.enum(TIER1_LAYOUTS),
+        type: z.enum(SLIDE_TYPES),
         title: z.string().min(1),
         key_points: z.array(z.string()).default([]),
       }),

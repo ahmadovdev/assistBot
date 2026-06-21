@@ -1,78 +1,134 @@
-export type ThemeStyle = 'aurora' | 'editorial' | 'bento' | 'softglass' | 'earthy';
+// theme.ts
+// Design tokens for all 5 presentation themes.
+// Pure data — no rendering logic here.
 
-export interface ThemeConfig {
-  key: string;
-  name: string;
-  style: ThemeStyle;
+export type ThemeStyle = 'minimal' | 'dark' | 'editorial' | 'pastel' | 'bento';
+
+export interface ThemeColors {
   bg: string;
   surface: string;
-  surface2: string;
-  accent: string;
-  accent2: string;
   text: string;
-  muted: string;
-  fontHeading: string;
-  fontBody: string;
+  textMuted: string;
+  accent: string;
+  accentSoft: string;
+  border: string;
 }
 
-export const THEMES: Record<string, ThemeConfig> = {
-  aurora: {
-    key: 'aurora', name: '\u{1F303} Midnight Aurora', style: 'aurora',
-    bg: '#161a26', surface: '#20243a', surface2: '#2a3047',
-    accent: '#ec4899', accent2: '#8b5cf6', text: '#e8eaf0', muted: '#9aa1b2',
-    fontHeading: 'Playfair Display', fontBody: 'Inter',
-  },
-  editorial: {
-    key: 'editorial', name: '\u{1F4F0} Bold Editorial', style: 'editorial',
-    bg: '#f7f3ec', surface: '#efe9df', surface2: '#e6dfd2',
-    accent: '#ff3b1f', accent2: '#15120d', text: '#15120d', muted: '#7c756a',
-    fontHeading: 'Archivo', fontBody: 'Inter',
-  },
-  bento: {
-    key: 'bento', name: '\u{1F9E9} Bento', style: 'bento',
-    bg: '#0e1014', surface: '#181b22', surface2: '#1f2330',
-    accent: '#34d399', accent2: '#22d3ee', text: '#f2f4f5', muted: '#8b93a1',
-    fontHeading: 'Space Grotesk', fontBody: 'Inter',
-  },
-  softglass: {
-    key: 'softglass', name: '\u{1F388} Soft Glass', style: 'softglass',
-    bg: '#ece9ff', surface: '#ffffff', surface2: '#f3f0ff',
-    accent: '#7c6cf0', accent2: '#ff8fab', text: '#2b2740', muted: '#6f6a86',
-    fontHeading: 'Fraunces', fontBody: 'Inter',
-  },
-  earthy: {
-    key: 'earthy', name: '\u{1F342} Earthy Warm', style: 'earthy',
-    bg: '#f3ece1', surface: '#e8ddcb', surface2: '#ded2bd',
-    accent: '#c4622d', accent2: '#3c6e57', text: '#2e2a22', muted: '#7a7264',
-    fontHeading: 'Spectral', fontBody: 'Inter',
-  },
-};
-
-export const DEFAULT_THEME = THEMES.aurora;
-
-export function resolveTheme(config: unknown): ThemeConfig {
-  const c = (config ?? {}) as Partial<ThemeConfig>;
-  if (c.key && THEMES[c.key]) return { ...THEMES[c.key], ...c } as ThemeConfig;
-  if (c.style) return { ...DEFAULT_THEME, ...c } as ThemeConfig;
-  return DEFAULT_THEME;
+export interface ThemeFonts {
+  display: string; // Google Fonts family name, e.g. "IBM Plex Sans"
+  body: string;
 }
 
-export function themeCssVars(t: ThemeConfig): string {
-  return [
-    `--bg:${t.bg}`, `--surface:${t.surface}`, `--surface2:${t.surface2}`,
-    `--accent:${t.accent}`, `--accent2:${t.accent2}`,
-    `--text:${t.text}`, `--muted:${t.muted}`,
-    `--font-heading:'${t.fontHeading}',Georgia,serif`,
-    `--font-body:'${t.fontBody}',-apple-system,Segoe UI,Roboto,sans-serif`,
-  ].join(';');
+export interface ThemeRadius {
+  sm: string;
+  md: string;
+  lg: string;
 }
 
-export function googleFontsUrl(t: ThemeConfig): string {
-  const fam = (name: string, weights: string) =>
-    `family=${encodeURIComponent(name).replace(/%20/g, '+')}:wght@${weights}`;
-  return (
-    'https://fonts.googleapis.com/css2?' +
-    fam(t.fontHeading, '600;700;800') + '&' +
-    fam(t.fontBody, '400;600;700') + '&display=swap'
-  );
+export interface Theme {
+  id: string;
+  name: string;
+  colors: ThemeColors;
+  fonts: ThemeFonts;
+  radius: ThemeRadius;
+  style: ThemeStyle;
+}
+
+export const THEMES = {
+  editorial_minimal: {
+    id: 'editorial_minimal',
+    name: 'Editorial Minimal',
+    colors: {
+      bg:         '#FAFAF7',
+      surface:    '#FFFFFF',
+      text:       '#0A2540',
+      textMuted:  '#8A8A80',
+      accent:     '#0A2540',
+      accentSoft: '#44566C',
+      border:     '#D8D8CF',
+    },
+    fonts:  { display: 'IBM Plex Sans', body: 'Inter' },
+    radius: { sm: '2px', md: '4px', lg: '8px' },
+    style:  'minimal' as ThemeStyle,
+  },
+
+  dark_premium: {
+    id: 'dark_premium',
+    name: 'Dark Premium',
+    colors: {
+      bg:         '#0A0A0F',
+      surface:    'rgba(255,255,255,0.04)',
+      text:       '#EDEDF2',
+      textMuted:  '#9A9AB0',
+      accent:     '#7C5CFF',
+      accentSoft: '#00D4FF',
+      border:     'rgba(255,255,255,0.09)',
+    },
+    fonts:  { display: 'Inter', body: 'Inter' },
+    radius: { sm: '8px', md: '16px', lg: '20px' },
+    style:  'dark' as ThemeStyle,
+  },
+
+  bold_editorial: {
+    id: 'bold_editorial',
+    name: 'Bold Editorial',
+    colors: {
+      bg:         '#FFFDF5',
+      surface:    '#FFFFFF',
+      text:       '#1A1A1A',
+      textMuted:  '#454540',
+      accent:     '#FFD93D',
+      accentSoft: '#1A1A1A',
+      border:     '#1A1A1A',
+    },
+    fonts:  { display: 'Space Grotesk', body: 'Inter' },
+    radius: { sm: '0px', md: '0px', lg: '0px' },
+    style:  'editorial' as ThemeStyle,
+  },
+
+  soft_pastel: {
+    id: 'soft_pastel',
+    name: 'Soft Pastel',
+    colors: {
+      bg:         '#FFF8F1',
+      surface:    '#FFFFFF',
+      text:       '#4A463F',
+      textMuted:  '#7C776E',
+      accent:     '#F4A88B',
+      accentSoft: '#A8C09A',
+      border:     'rgba(0,0,0,0.08)',
+    },
+    fonts:  { display: 'DM Serif Display', body: 'Inter' },
+    radius: { sm: '14px', md: '20px', lg: '28px' },
+    style:  'pastel' as ThemeStyle,
+  },
+
+  bento_modern: {
+    id: 'bento_modern',
+    name: 'Bento Modern',
+    colors: {
+      bg:         '#F2F2F0',
+      surface:    '#FFFFFF',
+      text:       '#111111',
+      textMuted:  '#6B6B68',
+      accent:     '#FF6B35',
+      accentSoft: '#2D6BFF',
+      border:     '#E4E4E0',
+    },
+    fonts:  { display: 'Inter', body: 'Inter' },
+    radius: { sm: '8px', md: '12px', lg: '16px' },
+    style:  'bento' as ThemeStyle,
+  },
+} as const satisfies Record<string, Theme>;
+
+export type ThemeId = keyof typeof THEMES;
+
+export function getTheme(id: string): Theme {
+  const theme = (THEMES as Record<string, Theme>)[id];
+  if (!theme) throw new Error(`Unknown theme: ${id}`);
+  return theme;
+}
+
+export function listThemes(): Theme[] {
+  return Object.values(THEMES);
 }

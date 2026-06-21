@@ -1,11 +1,11 @@
 import { InlineKeyboard } from 'grammy';
 import { Outline } from '../ai/schemas/outline.schema';
-import { LAYOUT_EMOJI } from '../ai/layout.catalog';
+import { SLIDE_EMOJI } from '../ai/layout.catalog';
 
 export function formatOutline(outline: Outline): string {
   const lines = [...outline.slides]
     .sort((a, b) => a.position - b.position)
-    .map((s) => `${s.position}. ${LAYOUT_EMOJI[s.layout] ?? ''} ${s.title}`);
+    .map((s) => `${s.position}. ${SLIDE_EMOJI[s.type] ?? ''} ${s.title}`);
   return `\u{1F4CB} Taqdimot rejasi:\n\n${lines.join('\n')}\n\nReja ma'qulmi?`;
 }
 

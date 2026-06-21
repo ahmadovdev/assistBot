@@ -35,8 +35,9 @@ export class RenderProcessor extends WorkerHost {
       await this.presentations.setStatus(presentationId, 'rendering');
       await this.sender.sendMessage(chatId, '\u23F3 PDF tayyorlanmoqda...');
 
-      const slides = p.slides.map((s) => ({ layout: s.layout, content: s.content }));
-      const pdf = await this.render.renderPdf(p.theme?.config, slides);
+      const slides = p.slides.map((s) => ({ type: s.layout, content: s.content }));
+      const themeId = p.theme?.key ?? 'dark_premium';
+      const pdf = await this.render.renderPdf(themeId, slides);
 
       const filename = `${(p.title ?? 'taqdimot').slice(0, 40).replace(/[^\w\-]+/g, '_')}.pdf`;
       const msg = await this.sender.sendDocument(

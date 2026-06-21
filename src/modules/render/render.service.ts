@@ -1,15 +1,13 @@
 import { Injectable } from '@nestjs/common';
 import { BrowserService } from './browser.service';
-import { buildDocument, RenderSlide } from './templates/document';
-import { resolveTheme } from './templates/theme';
+import { buildDeck, DeckSlide } from './templates/deck';
 
 @Injectable()
 export class RenderService {
   constructor(private readonly browser: BrowserService) {}
 
-  async renderPdf(themeConfig: unknown, slides: RenderSlide[]): Promise<Buffer> {
-    const theme = resolveTheme(themeConfig);
-    const html = buildDocument(theme, slides);
+  async renderPdf(themeId: string, slides: DeckSlide[]): Promise<Buffer> {
+    const html = buildDeck(themeId, slides);
     return this.browser.htmlToPdf(html);
   }
 }

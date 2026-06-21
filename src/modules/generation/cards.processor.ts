@@ -56,7 +56,7 @@ export class CardsProcessor extends WorkerHost {
           position: slide.position,
           title: slide.title,
           keyPoints: slide.key_points,
-          layout: slide.layout,
+          type: slide.type,
         }),
       );
 
@@ -64,7 +64,7 @@ export class CardsProcessor extends WorkerHost {
         presentationId,
         outline.slides.map((slide, i) => ({
           position: slide.position,
-          layout: slide.layout,
+          layout: slide.type,
           content: results[i].data,
         })),
       );

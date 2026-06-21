@@ -1,112 +1,254 @@
-import { ThemeConfig } from './theme';
+// visuals.ts
+// Returns inline SVG strings for theme-appropriate decorations.
+// Drop into <div class="slide__visual">{html}</div> on any slide
+// for personality without changing the layout.
 
-/* ---- Generative visuals: fill the "image" area without photos. ---- */
+import { getTheme, ThemeColors } from './theme';
 
-function rings(cx: number, cy: number, color: string, radii: number[], op = 0.4): string {
-  return radii
-    .map((r) => `<circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="${color}" stroke-opacity="${op}" stroke-width="1.4"/>`)
-    .join('');
-}
+export type VisualVariant = 'hero' | 'corner' | 'background';
 
-function dots(cx: number, cy: number, color: string, specs: [number, number][]): string {
-  return specs
-    .map(([ang, r]) => {
-      const x = cx + r * Math.cos((ang * Math.PI) / 180);
-      const y = cy + r * Math.sin((ang * Math.PI) / 180);
-      return `<circle cx="${x.toFixed(0)}" cy="${y.toFixed(0)}" r="7" fill="${color}"/>`;
-    })
-    .join('');
-}
-
-function auroraPanel(t: ThemeConfig): string {
-  const svg = `<svg viewBox="0 0 440 480" preserveAspectRatio="xMidYMid slice" width="100%" height="100%">
-    ${rings(250, 200, t.accent, [60, 115, 175, 240, 310])}
-    ${dots(250, 200, t.accent, [[20, 115], [140, 175], [255, 240], [70, 240]])}
-  </svg>`;
-  return `<div class="viz viz-aurora">${svg}</div>`;
-}
-
-function glassPanel(t: ThemeConfig): string {
-  const svg = `<svg viewBox="0 0 440 480" preserveAspectRatio="xMidYMid slice" width="100%" height="100%">
-    ${rings(220, 240, t.accent, [70, 130, 195, 260], 0.5)}
-    ${dots(220, 240, t.accent2, [[35, 130], [200, 195], [300, 260]])}
-  </svg>`;
-  return `<div class="viz viz-glass">${svg}</div>`;
-}
-
-function earthyPanel(t: ThemeConfig): string {
-  const svg = `<svg viewBox="0 0 440 480" preserveAspectRatio="xMidYMid meet" width="100%" height="100%">
-    <circle cx="220" cy="240" r="170" fill="${t.surface2}"/>
-    ${rings(220, 240, t.accent, [60, 105, 150], 0.35)}
-    <path d="M 220 70 A 170 170 0 0 1 390 240" fill="none" stroke="${t.accent}" stroke-width="9" stroke-linecap="round"/>
-    <path d="M 390 240 A 170 170 0 0 1 220 410" fill="none" stroke="${t.accent2}" stroke-width="9" stroke-linecap="round"/>
-    <circle cx="220" cy="240" r="40" fill="${t.accent}"/>
-  </svg>`;
-  return `<div class="viz viz-flat">${svg}</div>`;
-}
-
-function editorialMark(t: ThemeConfig): string {
-  const svg = `<svg viewBox="0 0 440 480" preserveAspectRatio="xMidYMid meet" width="100%" height="100%">
-    <path d="M 80 400 A 320 320 0 0 1 400 80" fill="none" stroke="${t.accent}" stroke-width="14" stroke-linecap="round"/>
-    <path d="M 150 400 A 250 250 0 0 1 400 150" fill="none" stroke="${t.text}" stroke-opacity="0.25" stroke-width="6"/>
-    <circle cx="400" cy="80" r="18" fill="${t.accent}"/>
-  </svg>`;
-  return `<div class="viz viz-flat">${svg}</div>`;
-}
-
-function bentoMark(t: ThemeConfig): string {
-  const svg = `<svg viewBox="0 0 440 480" preserveAspectRatio="xMidYMid slice" width="100%" height="100%">
-    ${rings(220, 240, '#04201a', [70, 130, 200], 0.45)}
-    ${dots(220, 240, '#04201a', [[30, 130], [180, 200], [290, 200]])}
-    <circle cx="220" cy="240" r="34" fill="#04201a" fill-opacity="0.25"/>
-  </svg>`;
-  return `<div class="viz viz-bento">${svg}</div>`;
-}
-
-export function imagePanel(theme: ThemeConfig): string {
-  switch (theme.style) {
-    case 'aurora': return auroraPanel(theme);
-    case 'softglass': return glassPanel(theme);
-    case 'earthy': return earthyPanel(theme);
-    case 'editorial': return editorialMark(theme);
-    case 'bento': return bentoMark(theme);
-    default: return auroraPanel(theme);
-  }
-}
-
-/* ---- Themed stats: donut rings, bento cards, or big-number row ---- */
-
-function donut(value: string, label: string, desc: string | undefined, pct: number, t: ThemeConfig): string {
-  const r = 58, c = 2 * Math.PI * r, dash = c * pct, gap = c - dash;
-  return `<div class="stat-donut">
-    <svg viewBox="0 0 160 160" width="160" height="160">
-      <circle cx="80" cy="80" r="${r}" fill="none" stroke="${t.muted}" stroke-opacity="0.18" stroke-width="12"/>
-      <circle cx="80" cy="80" r="${r}" fill="none" stroke="${t.accent}" stroke-width="12" stroke-linecap="round"
-        stroke-dasharray="${dash.toFixed(1)} ${gap.toFixed(1)}" transform="rotate(-90 80 80)"/>
-      <text x="80" y="91" text-anchor="middle" fill="${t.text}" font-family="'${t.fontHeading}',serif" font-size="26" font-weight="700">${value}</text>
-    </svg>
-    <div class="stat-label">${label}</div>
-    ${desc ? `<div class="stat-desc">${desc}</div>` : ''}
-  </div>`;
-}
-
-const PCTS = [0.82, 0.6, 0.7, 0.45];
-
-export function statsViz(
-  theme: ThemeConfig,
-  stats: { value: string; label: string; desc?: string }[],
-  esc: (s: unknown) => string,
+/**
+ * Returns an SVG string for the given theme and variant.
+ * `instanceId` is appended to internal SVG IDs (gradients, patterns)
+ * to prevent collisions when multiple visuals are placed in the
+ * same HTML document. Pass a per-slide identifier (e.g. slide index).
+ */
+export function getThemeVisual(
+  themeId: string,
+  variant: VisualVariant,
+  instanceId: string = '0',
 ): string {
-  if (theme.style === 'aurora' || theme.style === 'softglass' || theme.style === 'earthy') {
-    return `<div class="stats stats-donut">${stats
-      .map((s, i) => donut(esc(s.value), esc(s.label), s.desc ? esc(s.desc) : undefined, PCTS[i % PCTS.length], theme))
-      .join('')}</div>`;
+  const t = getTheme(themeId);
+  switch (t.style) {
+    case 'minimal':   return minimalVisual(variant, t.colors, instanceId);
+    case 'dark':      return darkVisual(variant, t.colors, instanceId);
+    case 'editorial': return editorialVisual(variant, t.colors, instanceId);
+    case 'pastel':    return pastelVisual(variant, t.colors, instanceId);
+    case 'bento':     return bentoVisual(variant, t.colors, instanceId);
   }
-  // bento + editorial: bold number cards / row
-  return `<div class="stats stats-num">${stats
-    .map(
-      (s) =>
-        `<div class="card stat"><div class="stat-value">${esc(s.value)}</div><div class="stat-label">${esc(s.label)}</div>${s.desc ? `<div class="stat-desc">${esc(s.desc)}</div>` : ''}</div>`,
-    )
-    .join('')}</div>`;
+}
+
+const uid = (prefix: string, instance: string) => `${prefix}-${instance}`;
+
+// ============================================================
+// MINIMAL — thin geometric lines
+// ============================================================
+function minimalVisual(v: VisualVariant, c: ThemeColors, i: string): string {
+  switch (v) {
+    case 'hero':
+      return `<svg viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg"
+                   style="width:100%;height:100%">
+        <g stroke="${c.accent}" stroke-width="1" fill="none">
+          <line x1="40"  y1="60"  x2="560" y2="60"/>
+          <line x1="40"  y1="60"  x2="40"  y2="340"/>
+          <circle cx="300" cy="200" r="120"/>
+          <circle cx="300" cy="200" r="80"/>
+          <line x1="180" y1="200" x2="420" y2="200"/>
+          <line x1="300" y1="80"  x2="300" y2="320"/>
+        </g>
+      </svg>`;
+
+    case 'corner':
+      return `<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"
+                   style="width:100%;height:100%">
+        <g stroke="${c.accent}" stroke-width="1" fill="none" opacity="0.4">
+          <path d="M 0 100 L 200 100"/>
+          <path d="M 100 0 L 100 200"/>
+          <circle cx="100" cy="100" r="60"/>
+        </g>
+      </svg>`;
+
+    case 'background': {
+      const id = uid('grid', i);
+      return `<svg viewBox="0 0 1280 720" xmlns="http://www.w3.org/2000/svg"
+                   preserveAspectRatio="none" style="width:100%;height:100%">
+        <defs>
+          <pattern id="${id}" width="80" height="80" patternUnits="userSpaceOnUse">
+            <path d="M 80 0 L 0 0 L 0 80" fill="none"
+                  stroke="${c.border}" stroke-width="1"/>
+          </pattern>
+        </defs>
+        <rect width="1280" height="720" fill="url(#${id})" opacity="0.4"/>
+      </svg>`;
+    }
+  }
+}
+
+// ============================================================
+// DARK — glowing orbs, gradient meshes
+// ============================================================
+function darkVisual(v: VisualVariant, c: ThemeColors, i: string): string {
+  switch (v) {
+    case 'hero': {
+      const a = uid('orb-a', i), b = uid('orb-b', i);
+      return `<svg viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg"
+                   style="width:100%;height:100%">
+        <defs>
+          <radialGradient id="${a}" cx="50%" cy="50%" r="50%">
+            <stop offset="0%"   stop-color="${c.accent}" stop-opacity="0.9"/>
+            <stop offset="50%"  stop-color="${c.accent}" stop-opacity="0.3"/>
+            <stop offset="100%" stop-color="${c.accent}" stop-opacity="0"/>
+          </radialGradient>
+          <radialGradient id="${b}" cx="50%" cy="50%" r="50%">
+            <stop offset="0%"   stop-color="${c.accentSoft}" stop-opacity="0.85"/>
+            <stop offset="50%"  stop-color="${c.accentSoft}" stop-opacity="0.25"/>
+            <stop offset="100%" stop-color="${c.accentSoft}" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <circle cx="200" cy="180" r="180" fill="url(#${a})"/>
+        <circle cx="420" cy="250" r="150" fill="url(#${b})"/>
+      </svg>`;
+    }
+
+    case 'corner': {
+      const id = uid('cnr', i);
+      return `<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"
+                   style="width:100%;height:100%">
+        <defs>
+          <radialGradient id="${id}" cx="50%" cy="50%" r="50%">
+            <stop offset="0%"   stop-color="${c.accent}" stop-opacity="0.6"/>
+            <stop offset="100%" stop-color="${c.accent}" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <circle cx="100" cy="100" r="100" fill="url(#${id})"/>
+      </svg>`;
+    }
+
+    case 'background': {
+      const m1 = uid('mesh-a', i), m2 = uid('mesh-b', i);
+      return `<svg viewBox="0 0 1280 720" xmlns="http://www.w3.org/2000/svg"
+                   preserveAspectRatio="none" style="width:100%;height:100%">
+        <defs>
+          <radialGradient id="${m1}" cx="78%" cy="-10%" r="60%">
+            <stop offset="0%"   stop-color="${c.accent}" stop-opacity="0.22"/>
+            <stop offset="100%" stop-color="${c.accent}" stop-opacity="0"/>
+          </radialGradient>
+          <radialGradient id="${m2}" cx="8%" cy="110%" r="55%">
+            <stop offset="0%"   stop-color="${c.accentSoft}" stop-opacity="0.14"/>
+            <stop offset="100%" stop-color="${c.accentSoft}" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <rect width="1280" height="720" fill="url(#${m1})"/>
+        <rect width="1280" height="720" fill="url(#${m2})"/>
+      </svg>`;
+    }
+  }
+}
+
+// ============================================================
+// EDITORIAL — solid color blocks, dots pattern
+// ============================================================
+function editorialVisual(v: VisualVariant, c: ThemeColors, i: string): string {
+  switch (v) {
+    case 'hero':
+      return `<svg viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg"
+                   style="width:100%;height:100%">
+        <rect x="40"  y="40"  width="180" height="180" fill="${c.accent}"/>
+        <rect x="240" y="120" width="280" height="80"  fill="${c.text}"/>
+        <rect x="40"  y="240" width="280" height="120" fill="${c.text}"/>
+        <rect x="340" y="240" width="180" height="120" fill="${c.accent}"/>
+      </svg>`;
+
+    case 'corner':
+      return `<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"
+                   style="width:100%;height:100%">
+        <rect x="0"  y="0"  width="120" height="120" fill="${c.accent}"/>
+        <rect x="80" y="80" width="120" height="120" fill="${c.text}"/>
+      </svg>`;
+
+    case 'background': {
+      const id = uid('dots-ed', i);
+      return `<svg viewBox="0 0 1280 720" xmlns="http://www.w3.org/2000/svg"
+                   preserveAspectRatio="none" style="width:100%;height:100%">
+        <defs>
+          <pattern id="${id}" width="32" height="32" patternUnits="userSpaceOnUse">
+            <circle cx="2" cy="2" r="2" fill="${c.text}" opacity="0.08"/>
+          </pattern>
+        </defs>
+        <rect width="1280" height="720" fill="url(#${id})"/>
+      </svg>`;
+    }
+  }
+}
+
+// ============================================================
+// PASTEL — organic blob shapes
+// ============================================================
+function pastelVisual(v: VisualVariant, c: ThemeColors, _i: string): string {
+  switch (v) {
+    case 'hero':
+      return `<svg viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg"
+                   style="width:100%;height:100%">
+        <path d="M 120 80 C 180 40 260 60 320 100 C 380 140 420 220 380 280
+                 C 340 340 240 360 180 320 C 120 280 80 200 100 140
+                 C 110 110 110 95 120 80 Z"
+              fill="${c.accent}" opacity="0.55"/>
+        <path d="M 320 160 C 380 140 440 180 460 240 C 480 300 440 360 380 360
+                 C 320 360 280 320 280 260 C 280 220 290 180 320 160 Z"
+              fill="${c.accentSoft}" opacity="0.5"/>
+        <path d="M 80 240 C 110 220 150 240 160 280 C 170 320 140 360 100 350
+                 C 60 340 50 290 70 260 C 73 254 76 248 80 240 Z"
+              fill="${c.accent}" opacity="0.35"/>
+      </svg>`;
+
+    case 'corner':
+      return `<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"
+                   style="width:100%;height:100%">
+        <path d="M 100 20 C 150 20 180 70 170 120 C 160 170 100 190 60 170
+                 C 20 150 20 90 50 50 C 65 30 80 22 100 20 Z"
+              fill="${c.accent}" opacity="0.5"/>
+      </svg>`;
+
+    case 'background':
+      return `<svg viewBox="0 0 1280 720" xmlns="http://www.w3.org/2000/svg"
+                   preserveAspectRatio="none" style="width:100%;height:100%">
+        <path d="M 1100 -80 C 1240 -40 1340 120 1280 240
+                 C 1220 360 1060 320 980 220 C 900 120 960 -120 1100 -80 Z"
+              fill="${c.accent}" opacity="0.35"/>
+        <path d="M -60 600 C 80 540 220 620 220 720 L -60 720 Z"
+              fill="${c.accentSoft}" opacity="0.35"/>
+      </svg>`;
+  }
+}
+
+// ============================================================
+// BENTO — rounded cards, dotted background
+// ============================================================
+function bentoVisual(v: VisualVariant, c: ThemeColors, i: string): string {
+  switch (v) {
+    case 'hero':
+      return `<svg viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg"
+                   style="width:100%;height:100%">
+        <rect x="40"  y="40"  width="260" height="160" rx="16" fill="${c.text}"/>
+        <rect x="320" y="40"  width="240" height="160" rx="16" fill="${c.accent}"/>
+        <rect x="40"  y="220" width="160" height="140" rx="16" fill="${c.accentSoft}"/>
+        <rect x="220" y="220" width="160" height="140" rx="16"
+              fill="${c.surface}" stroke="${c.border}" stroke-width="1"/>
+        <rect x="400" y="220" width="160" height="140" rx="16"
+              fill="${c.surface}" stroke="${c.border}" stroke-width="1"/>
+      </svg>`;
+
+    case 'corner':
+      return `<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"
+                   style="width:100%;height:100%">
+        <rect x="20"  y="20"  width="80" height="80" rx="12" fill="${c.accent}"/>
+        <rect x="110" y="20"  width="70" height="70" rx="12" fill="${c.accentSoft}"/>
+        <rect x="20"  y="110" width="70" height="70" rx="12" fill="${c.text}"/>
+        <rect x="100" y="100" width="80" height="80" rx="12"
+              fill="${c.surface}" stroke="${c.border}" stroke-width="1"/>
+      </svg>`;
+
+    case 'background': {
+      const id = uid('bento-dots', i);
+      return `<svg viewBox="0 0 1280 720" xmlns="http://www.w3.org/2000/svg"
+                   preserveAspectRatio="none" style="width:100%;height:100%">
+        <defs>
+          <pattern id="${id}" width="24" height="24" patternUnits="userSpaceOnUse">
+            <circle cx="2" cy="2" r="1.5" fill="${c.text}" opacity="0.08"/>
+          </pattern>
+        </defs>
+        <rect width="1280" height="720" fill="url(#${id})"/>
+      </svg>`;
+    }
+  }
 }

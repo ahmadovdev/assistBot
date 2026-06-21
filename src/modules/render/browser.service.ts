@@ -34,7 +34,8 @@ export class BrowserService implements OnModuleInit, OnModuleDestroy {
     const page = await this.browser.newPage();
     try {
       await page.setViewport({ width: 1280, height: 720, deviceScaleFactor: 2 });
-      await page.setContent(html, { waitUntil: 'networkidle0', timeout: 30000 });
+      await page.setContent(html, { waitUntil: 'networkidle0', timeout: 45000 });
+      await page.evaluateHandle('document.fonts.ready');
       const pdf = await page.pdf({
         width: '1280px',
         height: '720px',
