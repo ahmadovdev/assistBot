@@ -33,27 +33,46 @@ export class RenderProcessor extends WorkerHost {
 
     try {
       await this.presentations.setStatus(presentationId, 'rendering');
-      await this.sender.sendMessage(chatId, '\u23F3 PDF tayyorlanmoqda...');
+      await this.sender.sendMessage(chatId, '\u23F3 PDF va PowerPoint tayyorlanmoqda...');
 
       const slides = p.slides.map((s: { layout: string; content: unknown }) => ({ type: s.layout, content: s.content }));
       const themeId = p.theme?.key ?? 'dark_premium';
-      const pdf = await this.render.renderPdf(themeId, slides);
+      const base = (p.title ?? 'taqdimot').slice(0, 40).replace(/[^\w\-]+/g, '_');
 
-      const filename = `${(p.title ?? 'taqdimot').slice(0, 40).replace(/[^\w\-]+/g, '_')}.pdf`;
-      const msg = await this.sender.sendDocument(
+      // --- PDF ---
+      const pdf = await this.render.renderPdf(themeId, slides);
+      const pdfMsg = await this.sender.sendDocument(
         chatId,
         pdf,
-        filename,
-        '\u2705 Taqdimotingiz tayyor!',
+        `${base}.pdf`,
+        '\u2705 PDF tayyor!',
       );
-
-      const fileId = msg.document?.file_id;
       await this.presentations.recordExport(presentationId, {
         format: 'pdf',
-        storageKey: fileId ?? 'telegram',
-        telegramFileId: fileId,
+        storageKey: pdfMsg.document?.file_id ?? 'telegram',
+        telegramFileId: pdfMsg.document?.file_id,
         fileSize: pdf.length,
       });
+
+      // --- PPTX (editable) ---
+      try {
+        const pptx = await this.render.renderPptx(themeId, slides);
+        const pptxMsg = await this.sender.sendDocument(
+          chatId,
+          pptx,
+          `${base}.pptx`,
+          '\u2705 PowerPoint (tahrirlanadigan) tayyor!',
+        );
+        await this.presentations.recordExport(presentationId, {
+          format: 'pptx',
+          storageKey: pptxMsg.document?.file_id ?? 'telegram',
+          telegramFileId: pptxMsg.document?.file_id,
+          fileSize: pptx.length,
+        });
+      } catch (e) {
+        this.logger.error(`PPTX render failed for ${presentationId}: ${String(e)}`);
+        await this.sender.sendMessage(chatId, '\u26A0\uFE0F PowerPoint tayyorlashda muammo bo\u2018ldi, lekin PDF tayyor.');
+      }
 
       await this.presentations.setStatus(presentationId, 'done');
       await this.session.setState(p.userId, BotState.IDLE);
