@@ -37,7 +37,8 @@
     "puppeteer": "^23.0.0",
     "reflect-metadata": "^0.2.2",
     "rxjs": "^7.8.1",
-    "zod": "^3.24.0"
+    "zod": "^3.24.0",
+    "pptxgenjs": "^4.0.1"
   },
   "devDependencies": {
     "@nestjs/cli": "^11.0.0",
