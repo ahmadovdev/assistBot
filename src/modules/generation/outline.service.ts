@@ -4,6 +4,7 @@ import { LlmService } from '../ai/llm.service';
 import { LlmResult } from '../ai/llm.types';
 import { outlineSchema, Outline } from '../ai/schemas/outline.schema';
 import { OUTLINE_SYSTEM, buildOutlineUser } from '../ai/prompts/outline.prompt';
+import { sanitizeUzbekScript } from '../ai/uzbek-script.sanitizer';
 
 export interface OutlineInput {
   topic: string;
@@ -26,6 +27,7 @@ export class OutlineService {
       user: buildOutlineUser(input),
       schema: outlineSchema,
       model,
+      postprocess: input.language === 'uz' ? sanitizeUzbekScript : undefined,
     });
   }
 }

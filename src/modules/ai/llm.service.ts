@@ -8,6 +8,8 @@ interface GenerateStructuredOptions<T> {
   schema: ZodType<T, any, any>;
   model: string;
   maxRepairs?: number;
+  /** Applied to the validated data before it's returned, e.g. language-specific text cleanup. */
+  postprocess?: (data: T) => T;
 }
 
 @Injectable()
@@ -37,7 +39,8 @@ export class LlmService {
       if (parsed.ok) {
         const result = schema.safeParse(parsed.value);
         if (result.success) {
-          return { data: result.data, model: usedModel, usage };
+          const data = opts.postprocess ? opts.postprocess(result.data) : result.data;
+          return { data, model: usedModel, usage };
         }
         lastError = result.error.issues
           .map((i) => `${i.path.join('.')}: ${i.message}`)

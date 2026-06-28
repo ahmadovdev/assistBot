@@ -1,4 +1,4 @@
-import { SlideType } from '../layout.catalog';
+import { SlideType, languageGuide } from '../layout.catalog';
 
 export interface CardInput {
   deckTitle: string;
@@ -47,16 +47,16 @@ const SPECS: Record<SlideType, Spec> = {
     example: '{"kicker":"The problem","statement":"Decks fail less from weak ideas than from the high cost of making them clear.","stat":{"value":"68%","label":"of decks miss their review window"},"statSource":"Internal survey, 2025","impact":"Every delayed deck pushes the decision — and the deal — a week further out.","context":[{"value":"5.2 hrs","description":"median time spent per deck on layout, not analysis."},{"value":"3x","description":"more revision cycles when design isn\'t baked in early."}]}',
   },
   INSIGHT: {
-    structure: '{ "kicker"?: string, "statement": string, "body": string (2-3 sentences of substance that develop the statement, REQUIRED) }',
-    example: '{"kicker":"The insight","statement":"Design is not decoration \u2014 it is how trust is transferred.","body":"When a format is effortless to read, the argument feels more credible before a single word is processed. Teams that invest in clarity win more decisions, not because their data is better, but because it lands."}',
+    structure: '{ "kicker"?: string, "statement": string, "body": string (2-3 sentences of substance that develop the statement, REQUIRED), "dataPoint"?: { "value": string, "label": string } (ONE number that grounds the insight in evidence, RECOMMENDED), "source"?: string (short citation, e.g. "Internal analysis, 2025"), "implications"?: string[] (2-4 short "so what" takeaways this insight leads to, RECOMMENDED) }',
+    example: '{"kicker":"The insight","statement":"Design is not decoration \u2014 it is how trust is transferred.","body":"When a format is effortless to read, the argument feels more credible before a single word is processed. Teams that invest in clarity win more decisions, not because their data is better, but because it lands.","dataPoint":{"value":"2.3x","label":"more likely to be approved on first review"},"source":"Internal analysis, 2025","implications":["Invest design time before the first draft, not after","Treat formatting as part of the argument, not a finishing touch","Train reviewers to separate clarity bias from substance"]}',
   },
   COMPARISON: {
-    structure: '{ "title": string, "subtitle"?: string, "before": { "label": string, "title"?: string, "items": string[] (2-5) }, "after": { "label": string, "title"?: string, "items": string[] (2-5) } }',
-    example: '{"title":"Old way vs new way","before":{"label":"Before","title":"Manual decks","items":["Hours in slide tools","Inconsistent branding","Rebuilt from scratch"]},"after":{"label":"After","title":"Generated decks","items":["Minutes from prompt","On-brand by default","Edit, don\'t rebuild"]}}',
+    structure: '{ "title": string, "subtitle"?: string, "before": { "label": string, "title"?: string, "items": string[] (2-5) }, "after": { "label": string, "title"?: string, "items": string[] (2-5) }, "metrics"?: [{ "label": string, "beforeVal": string, "afterVal": string }] (0-4, quantified head-to-head numbers, RECOMMENDED), "winner"?: "before" | "after" (which side wins overall, almost always "after", RECOMMENDED) }',
+    example: '{"title":"Old way vs new way","before":{"label":"Before","title":"Manual decks","items":["Hours in slide tools","Inconsistent branding","Rebuilt from scratch"]},"after":{"label":"After","title":"Generated decks","items":["Minutes from prompt","On-brand by default","Edit, don\'t rebuild"]},"metrics":[{"label":"Time per deck","beforeVal":"6 hrs","afterVal":"20 min"},{"label":"Revision cycles","beforeVal":"4-5","afterVal":"1-2"}],"winner":"after"}',
   },
   PROCESS: {
-    structure: '{ "title": string, "subtitle"?: string, "steps": [{ "label"?: string, "title": string, "body": string }] (2-5) }',
-    example: '{"title":"How it works","steps":[{"label":"Step 1","title":"Describe","body":"Type your topic and audience."},{"label":"Step 2","title":"Generate","body":"AI drafts a structured outline."},{"label":"Step 3","title":"Refine","body":"Tweak, then export to PDF."}]}',
+    structure: '{ "title": string, "subtitle"?: string, "steps": [{ "label"?: string, "title": string, "body": string, "duration"?: string (how long this step takes, e.g. "30 sec", "2 days", RECOMMENDED), "outcome"?: string (what this step produces/achieves, RECOMMENDED), "tools"?: string[] (0-3, concrete tools/resources used in this step) }] (2-5) }',
+    example: '{"title":"How it works","steps":[{"label":"Step 1","title":"Describe","body":"Type your topic and audience.","duration":"30 sec","outcome":"A clear brief the AI can act on.","tools":["Telegram"]},{"label":"Step 2","title":"Generate","body":"AI drafts a structured outline.","duration":"20 sec","outcome":"A ready-to-edit slide outline.","tools":["Claude"]},{"label":"Step 3","title":"Refine","body":"Tweak, then export to PDF.","duration":"2 min","outcome":"A client-ready deck.","tools":["PDF export","PPTX export"]}]}',
   },
   TIMELINE: {
     structure: '{ "title": string, "subtitle"?: string, "steps": [{ "date": string, "title": string, "body": string }] (2-5) }',
@@ -93,7 +93,7 @@ export function buildCardUser(input: CardInput): string {
   return [
     `DECK_TITLE: ${input.deckTitle}`,
     `TOPIC: ${input.topic}`,
-    `OUTPUT_LANGUAGE: ${input.language}`,
+    `OUTPUT_LANGUAGE: ${languageGuide(input.language)}`,
     `TONE: ${input.tone}`,
     `TOTAL_SLIDES: ${input.totalSlides}`,
     '',

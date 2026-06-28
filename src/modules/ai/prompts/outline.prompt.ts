@@ -1,4 +1,4 @@
-import { SLIDE_TYPES, SLIDE_GUIDE } from '../layout.catalog';
+import { SLIDE_TYPES, SLIDE_GUIDE, languageGuide } from '../layout.catalog';
 
 export interface OutlineParams {
   topic: string;
@@ -36,7 +36,7 @@ Required JSON shape:
 export function buildOutlineUser(p: OutlineParams): string {
   return [
     `TOPIC: ${p.topic}`,
-    `OUTPUT_LANGUAGE: ${p.language}`,
+    `OUTPUT_LANGUAGE: ${languageGuide(p.language)}`,
     `TONE: ${p.tone}`,
     `SLIDE_COUNT: ${p.slideCount}`,
   ].join('\n');

@@ -114,16 +114,35 @@ function rProblem(s: Slide, t: PptxTheme, d: any): void {
 
 function rInsight(s: Slide, t: PptxTheme, d: any): void {
   kicker(s, t, d.kicker ?? 'Asosiy g\u2018oya');
-  s.addText(clean(d.statement), { x: M - 0.02, y: 1.6, w: CW, h: 2.4, fontFace: t.display, fontSize: 36, color: t.text, bold: true, valign: 'top', lineSpacingMultiple: 1.05 });
-  if (d.body) s.addText(clean(d.body), { x: M, y: 4.4, w: CW * 0.9, h: 2.2, fontFace: t.body, fontSize: 18, color: t.muted, valign: 'top', lineSpacingMultiple: 1.15 });
+  const hasDataPoint = !!d.dataPoint;
+  const implications = Array.isArray(d.implications) ? d.implications.slice(0, 4) : [];
+  const hasRow = hasDataPoint || implications.length > 0;
+  s.addText(clean(d.statement), { x: M - 0.02, y: 1.6, w: CW, h: hasRow ? 1.9 : 2.4, fontFace: t.display, fontSize: 36, color: t.text, bold: true, valign: 'top', lineSpacingMultiple: 1.05 });
+  if (d.body) {
+    s.addText(clean(d.body), { x: M, y: hasRow ? 3.7 : 4.4, w: CW * 0.9, h: hasRow ? 1.5 : 2.2, fontFace: t.body, fontSize: 18, color: t.muted, valign: 'top', lineSpacingMultiple: 1.15 });
+  }
+  if (hasRow) {
+    const rowY = 5.3;
+    const dpW = hasDataPoint ? 2.8 : 0, gap = 0.5;
+    const impX = M + (hasDataPoint ? dpW + gap : 0);
+    const impW = hasDataPoint ? CW - dpW - gap : CW;
+    if (hasDataPoint) {
+      s.addText(clean(d.dataPoint.value), { x: M, y: rowY, w: dpW, h: 0.7, fontFace: t.display, fontSize: 34, color: t.numColor, bold: true, valign: 'top' });
+      s.addText(clean(d.dataPoint.label), { x: M, y: rowY + 0.7, w: dpW, h: 0.55, fontFace: t.body, fontSize: 13, color: t.muted, valign: 'top', lineSpacingMultiple: 1.15 });
+      if (d.source) s.addText(clean(d.source), { x: M, y: rowY + 1.25, w: dpW, h: 0.35, fontFace: t.body, fontSize: 9, color: t.muted, valign: 'top' });
+    }
+    if (implications.length) {
+      s.addText(bullets(implications, t, t.muted), { x: impX, y: rowY, w: impW, h: 1.5, fontFace: t.body, valign: 'top', lineSpacingMultiple: 1.15 });
+    }
+  }
 }
 
-function sideCard(s: Slide, t: PptxTheme, x: number, w: number, col: any, accentFill: boolean): void {
-  const y = 1.9, h = 4.6;
+function sideCard(s: Slide, t: PptxTheme, x: number, y: number, w: number, h: number, col: any, accentFill: boolean, isWinner: boolean): void {
   card(s, t, x, y, w, h, accentFill ? t.accent : t.surface);
   const fg = accentFill ? t.onAccent : t.text;
   const mut = accentFill ? t.onAccent : t.muted;
-  s.addText(clean(col.label).toUpperCase(), { x: x + 0.3, y: y + 0.3, w: w - 0.6, h: 0.3, fontFace: t.body, fontSize: 11, color: accentFill ? t.onAccent : t.numColor, bold: true, charSpacing: 2 });
+  const label = clean(col.label).toUpperCase() + (isWinner ? ' ★' : '');
+  s.addText(label, { x: x + 0.3, y: y + 0.3, w: w - 0.6, h: 0.3, fontFace: t.body, fontSize: 11, color: accentFill ? t.onAccent : t.numColor, bold: true, charSpacing: 2 });
   if (col.title) s.addText(clean(col.title), { x: x + 0.3, y: y + 0.65, w: w - 0.6, h: 0.5, fontFace: t.display, fontSize: 18, color: fg, bold: true });
   const items = (Array.isArray(col.items) ? col.items : []).slice(0, 5);
   s.addText(bullets(items, t, mut), { x: x + 0.3, y: y + 1.35, w: w - 0.6, h: h - 1.6, fontFace: t.body, valign: 'top', lineSpacingMultiple: 1.1 });
@@ -132,10 +151,23 @@ function sideCard(s: Slide, t: PptxTheme, x: number, w: number, col: any, accent
 function rComparison(s: Slide, t: PptxTheme, d: any): void {
   s.addText(clean(d.title), { x: M, y: 0.6, w: CW, h: 0.7, fontFace: t.display, fontSize: 28, color: t.text, bold: true });
   if (d.subtitle) s.addText(clean(d.subtitle), { x: M, y: 1.3, w: CW, h: 0.5, fontFace: t.body, fontSize: 15, color: t.muted });
+  const metrics = (Array.isArray(d.metrics) ? d.metrics : []).slice(0, 4);
   const gap = 0.5;
   const w = (CW - gap) / 2;
-  sideCard(s, t, M, w, d.before ?? {}, false);
-  sideCard(s, t, M + w + gap, w, d.after ?? {}, true);
+  const cardY = 1.9, cardH = metrics.length ? 3.3 : 4.6;
+  sideCard(s, t, M, cardY, w, cardH, d.before ?? {}, false, d.winner === 'before');
+  sideCard(s, t, M + w + gap, cardY, w, cardH, d.after ?? {}, true, d.winner === 'after');
+  if (metrics.length) {
+    const rowTop = cardY + cardH + 0.3;
+    const rowH = 0.34;
+    const colW = CW / 3;
+    metrics.forEach((m: any, i: number) => {
+      const y = rowTop + i * rowH;
+      s.addText(clean(m.label), { x: M, y, w: colW, h: rowH, fontFace: t.body, fontSize: 12, color: t.muted, valign: 'middle' });
+      s.addText(clean(m.beforeVal), { x: M + colW, y, w: colW, h: rowH, align: 'center', fontFace: t.display, fontSize: 15, color: t.text, bold: true, valign: 'middle' });
+      s.addText(clean(m.afterVal), { x: M + colW * 2, y, w: colW, h: rowH, align: 'center', fontFace: t.display, fontSize: 15, color: t.accent, bold: true, valign: 'middle' });
+    });
+  }
 }
 
 function rProcess(s: Slide, t: PptxTheme, d: any): void {
@@ -145,9 +177,25 @@ function rProcess(s: Slide, t: PptxTheme, d: any): void {
   const top = 2.1, rowH = (H - top - 0.5) / Math.max(steps.length, 1);
   steps.forEach((st: any, i: number) => {
     const y = top + i * rowH;
-    s.addText(clean(st.label ?? `0${i + 1}`), { x: M, y, w: 1.1, h: rowH, fontFace: t.display, fontSize: 26, color: t.numColor, bold: true, valign: 'middle' });
-    s.addText(clean(st.title), { x: M + 1.2, y: y + 0.1, w: CW - 1.2, h: 0.45, fontFace: t.display, fontSize: 18, color: t.text, bold: true });
-    s.addText(clean(st.body), { x: M + 1.2, y: y + 0.55, w: CW - 1.2, h: rowH - 0.6, fontFace: t.body, fontSize: 14, color: t.muted, valign: 'top' });
+    const tools = (Array.isArray(st.tools) ? st.tools : []).slice(0, 3);
+    if (st.duration) {
+      s.addText(clean(st.label ?? `0${i + 1}`), { x: M, y, w: 1.1, h: rowH - 0.3, fontFace: t.display, fontSize: 26, color: t.numColor, bold: true, valign: 'top' });
+      s.addText(clean(st.duration), { x: M, y: y + rowH - 0.3, w: 1.1, h: 0.3, fontFace: t.body, fontSize: 10, color: t.muted, valign: 'top' });
+    } else {
+      s.addText(clean(st.label ?? `0${i + 1}`), { x: M, y, w: 1.1, h: rowH, fontFace: t.display, fontSize: 26, color: t.numColor, bold: true, valign: 'middle' });
+    }
+    s.addText(clean(st.title), { x: M + 1.2, y: y + 0.1, w: CW - 1.2, h: 0.4, fontFace: t.display, fontSize: 18, color: t.text, bold: true });
+    const extraLines = (st.outcome ? 1 : 0) + (tools.length ? 1 : 0);
+    const bodyH = Math.max(rowH - 0.55 - extraLines * 0.3, 0.25);
+    s.addText(clean(st.body), { x: M + 1.2, y: y + 0.5, w: CW - 1.2, h: bodyH, fontFace: t.body, fontSize: 14, color: t.muted, valign: 'top' });
+    let cursorY = y + 0.5 + bodyH + 0.03;
+    if (st.outcome) {
+      s.addText(clean(st.outcome), { x: M + 1.2, y: cursorY, w: CW - 1.2, h: 0.26, fontFace: t.body, fontSize: 12, color: t.accent, bold: true, valign: 'top' });
+      cursorY += 0.28;
+    }
+    if (tools.length) {
+      s.addText(tools.map((tl: unknown) => clean(tl)).join('   ·   '), { x: M + 1.2, y: cursorY, w: CW - 1.2, h: 0.24, fontFace: t.body, fontSize: 10, color: t.muted, valign: 'top' });
+    }
   });
 }
 
