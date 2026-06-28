@@ -43,8 +43,8 @@ const SPECS: Record<SlideType, Spec> = {
     example: '{"title":"The measurable impact","subtitle":"Across 12,000 decks built last quarter, the gains were consistent.","stats":[{"value":"94%","label":"client-ready","description":"rated ready to send with no manual edits"},{"value":"2.4x","label":"faster","description":"from first outline to finished deck"},{"value":"18h","label":"saved / deck","description":"reclaimed from manual formatting work"}],"insight":"The bottleneck was never ideas \u2014 it was the production cost of clarity."}',
   },
   PROBLEM: {
-    structure: '{ "kicker"?: string, "statement": string, "context"?: [{ "value": string, "description": string }] (0-3) }',
-    example: '{"kicker":"The problem","statement":"Decks fail less from weak ideas than from the high cost of making them clear.","context":[{"value":"5.2 hrs","description":"median time spent per deck on layout, not analysis."},{"value":"68%","description":"of decks miss their review window."}]}',
+    structure: '{ "kicker"?: string, "statement": string, "stat"?: { "value": string, "label": string } (ONE prominent number that proves this problem is real, RECOMMENDED), "statSource"?: string (short citation for the stat, e.g. "McKinsey, 2025"), "impact"?: string (1 sentence: the cost of NOT solving this, RECOMMENDED), "context"?: [{ "value": string, "description": string }] (0-3, supporting numbers distinct from "stat") }',
+    example: '{"kicker":"The problem","statement":"Decks fail less from weak ideas than from the high cost of making them clear.","stat":{"value":"68%","label":"of decks miss their review window"},"statSource":"Internal survey, 2025","impact":"Every delayed deck pushes the decision — and the deal — a week further out.","context":[{"value":"5.2 hrs","description":"median time spent per deck on layout, not analysis."},{"value":"3x","description":"more revision cycles when design isn\'t baked in early."}]}',
   },
   INSIGHT: {
     structure: '{ "kicker"?: string, "statement": string, "body": string (2-3 sentences of substance that develop the statement, REQUIRED) }',

@@ -30,6 +30,9 @@ export interface StatsData extends SlideMeta {
 export interface ProblemData extends SlideMeta {
   kicker?: string;
   statement: string;
+  stat?: { value: string; label: string };
+  statSource?: string;
+  impact?: string;
   context?: { value: string; description: string }[];
 }
 
@@ -183,10 +186,19 @@ export function renderProblem(d: ProblemData, theme: Theme): string {
     <div style="display:grid;grid-template-rows:auto 1fr auto;height:100%;
                 padding:var(--pad-y) var(--pad-x);gap:32px">
       <div>${d.kicker ? `<div class="kicker">${safe(d.kicker)}</div>` : ''}</div>
-      <div style="align-self:center">
-        <h2 class="h1" style="font-size:60px;line-height:1.04;max-width:1020px">
-          ${safe(d.statement)}
-        </h2>
+      <div style="align-self:center;display:grid;grid-template-columns:${d.stat ? '1fr auto' : '1fr'};gap:48px;align-items:center">
+        <div style="display:flex;flex-direction:column;gap:20px">
+          <h2 class="h1" style="font-size:60px;line-height:1.04;max-width:1020px">
+            ${safe(d.statement)}
+          </h2>
+          ${d.impact ? `<p class="problem-impact">${safe(d.impact)}</p>` : ''}
+        </div>
+        ${d.stat ? `
+          <div class="problem-stat">
+            <div class="problem-stat__num">${safe(d.stat.value)}</div>
+            <div class="problem-stat__lbl">${safe(d.stat.label)}</div>
+            ${d.statSource ? `<div class="problem-stat__src">${safe(d.statSource)}</div>` : ''}
+          </div>` : ''}
       </div>
       <div>${d.context?.length
         ? `<div class="grid-3" style="border-top:1px solid var(--border);padding-top:26px">

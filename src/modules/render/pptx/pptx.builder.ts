@@ -87,7 +87,20 @@ function rStats(s: Slide, t: PptxTheme, d: any): void {
 
 function rProblem(s: Slide, t: PptxTheme, d: any): void {
   kicker(s, t, d.kicker ?? 'Muammo');
-  s.addText(clean(d.statement), { x: M - 0.02, y: 1.3, w: CW, h: 2.4, fontFace: t.display, fontSize: 34, color: t.text, bold: true, valign: 'top', lineSpacingMultiple: 1.05 });
+  const hasStat = !!d.stat;
+  const statW = 2.6, statGap = 0.4;
+  const textW = hasStat ? CW - statW - statGap : CW;
+  s.addText(clean(d.statement), { x: M - 0.02, y: 1.3, w: textW, h: 1.6, fontFace: t.display, fontSize: 34, color: t.text, bold: true, valign: 'top', lineSpacingMultiple: 1.05 });
+  if (d.impact) {
+    s.addText(clean(d.impact), { x: M, y: 3.05, w: textW, h: 0.6, fontFace: t.body, fontSize: 15, color: t.muted, valign: 'top', lineSpacingMultiple: 1.2 });
+  }
+  if (hasStat) {
+    const sx = M + textW + statGap, sy = 1.3, sh = 2.4;
+    card(s, t, sx, sy, statW, sh, t.surface);
+    s.addText(clean(d.stat.value), { x: sx + 0.25, y: sy + 0.25, w: statW - 0.5, h: 1.0, fontFace: t.display, fontSize: 38, color: t.numColor, bold: true, valign: 'top' });
+    s.addText(clean(d.stat.label), { x: sx + 0.25, y: sy + 1.25, w: statW - 0.5, h: 0.8, fontFace: t.body, fontSize: 13, color: t.muted, valign: 'top', lineSpacingMultiple: 1.2 });
+    if (d.statSource) s.addText(clean(d.statSource), { x: sx + 0.25, y: sy + sh - 0.45, w: statW - 0.5, h: 0.35, fontFace: t.body, fontSize: 9, color: t.muted, valign: 'top' });
+  }
   const ctx = (Array.isArray(d.context) ? d.context : []).slice(0, 3);
   const n = ctx.length || 1;
   const gap = 0.4;

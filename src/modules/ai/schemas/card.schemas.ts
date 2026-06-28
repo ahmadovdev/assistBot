@@ -29,6 +29,9 @@ const stats = z.object({
 const problem = z.object({
   kicker: z.string().optional(),
   statement: z.string().min(1),
+  stat: z.object({ value: z.string().min(1), label: z.string().min(1) }).optional(),
+  statSource: z.string().optional(),
+  impact: z.string().optional(),
   context: z.array(z.object({ value: z.string().min(1), description: z.string().min(1) })).max(3).default([]),
 });
 
