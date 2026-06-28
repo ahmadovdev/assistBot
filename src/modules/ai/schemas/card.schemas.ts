@@ -39,6 +39,9 @@ const insight = z.object({
   kicker: z.string().optional(),
   statement: z.string().min(1),
   body: z.string().optional(),
+  dataPoint: z.object({ value: z.string().min(1), label: z.string().min(1) }).optional(),
+  source: z.string().optional(),
+  implications: z.array(z.string().min(1)).max(4).default([]),
 });
 
 const sideCol = z.object({
@@ -51,12 +54,23 @@ const comparison = z.object({
   subtitle: z.string().optional(),
   before: sideCol,
   after: sideCol,
+  metrics: z.array(z.object({
+    label: z.string().min(1), beforeVal: z.string().min(1), afterVal: z.string().min(1),
+  })).max(4).default([]),
+  winner: z.enum(['before', 'after']).optional(),
 });
 
 const process = z.object({
   title: z.string().min(1),
   subtitle: z.string().optional(),
-  steps: z.array(z.object({ label: z.string().optional(), title: z.string().min(1), body: z.string().min(1) })).min(2).max(5),
+  steps: z.array(z.object({
+    label: z.string().optional(),
+    title: z.string().min(1),
+    body: z.string().min(1),
+    duration: z.string().optional(),
+    outcome: z.string().optional(),
+    tools: z.array(z.string().min(1)).max(3).default([]),
+  })).min(2).max(5),
 });
 
 const timeline = z.object({

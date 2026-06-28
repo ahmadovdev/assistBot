@@ -40,6 +40,9 @@ export interface InsightData extends SlideMeta {
   kicker?: string;
   statement: string;
   body?: string;
+  dataPoint?: { value: string; label: string };
+  source?: string;
+  implications?: string[];
 }
 
 export interface ComparisonData extends SlideMeta {
@@ -47,12 +50,14 @@ export interface ComparisonData extends SlideMeta {
   subtitle?: string;
   before: { label: string; title?: string; items: string[] };
   after:  { label: string; title?: string; items: string[] };
+  metrics?: { label: string; beforeVal: string; afterVal: string }[];
+  winner?: 'before' | 'after';
 }
 
 export interface ProcessData extends SlideMeta {
   title: string;
   subtitle?: string;
-  steps: { label?: string; title: string; body: string }[];
+  steps: { label?: string; title: string; body: string; duration?: string; outcome?: string; tools?: string[] }[];
 }
 
 export interface TimelineData extends SlideMeta {
@@ -215,14 +220,29 @@ export function renderProblem(d: ProblemData, theme: Theme): string {
 }
 
 export function renderInsight(d: InsightData, theme: Theme): string {
+  const hasRow = !!d.dataPoint || !!d.implications?.length;
   return slide(theme, d.pageNo, `
-    <div style="display:grid;grid-template-rows:auto 1fr;height:100%;
+    <div style="display:grid;grid-template-rows:auto 1fr${hasRow ? ' auto' : ''};height:100%;
                 padding:var(--pad-y) var(--pad-x);gap:32px">
       <div>${d.kicker ? `<div class="kicker">${safe(d.kicker)}</div>` : ''}</div>
       <div style="align-self:center;max-width:1020px;display:flex;flex-direction:column;gap:28px">
         <h2 class="h1" style="font-size:56px">${safe(d.statement)}</h2>
         ${d.body ? `<p class="lead" style="max-width:760px">${safe(d.body)}</p>` : ''}
       </div>
+      ${hasRow ? `
+        <div style="display:grid;grid-template-columns:${d.dataPoint ? '1fr 1.6fr' : '1fr'};
+                    gap:48px;border-top:1px solid var(--border);padding-top:26px">
+          ${d.dataPoint ? `
+            <div class="metric">
+              <div class="metric__num" style="font-size:48px">${safe(d.dataPoint.value)}</div>
+              <div class="metric__lbl">${safe(d.dataPoint.label)}</div>
+              ${d.source ? `<div class="text--sm muted" style="margin-top:2px">${safe(d.source)}</div>` : ''}
+            </div>` : ''}
+          ${d.implications?.length ? `
+            <ul class="insight-implications">
+              ${d.implications.map(i => `<li><span>→</span><span>${safe(i)}</span></li>`).join('')}
+            </ul>` : ''}
+        </div>` : ''}
     </div>
   `);
 }
@@ -234,21 +254,33 @@ export function renderComparison(d: ComparisonData, theme: Theme): string {
         <h2 class="h2">${safe(d.title)}</h2>
         ${d.subtitle ? `<p class="lead" style="margin-top:12px">${safe(d.subtitle)}</p>` : ''}
       </header>
-      <div class="content-block__body compare">
-        <div class="compare__col compare__col--now">
-          <span class="kicker" style="color:inherit">${safe(d.before.label)}</span>
-          ${d.before.title ? `<h3 class="h3">${safe(d.before.title)}</h3>` : ''}
-          <ul class="compare__list">
-            ${d.before.items.map(i => `<li><span>—</span><span>${safe(i)}</span></li>`).join('')}
-          </ul>
+      <div class="content-block__body" style="display:flex;flex-direction:column;gap:28px;width:100%">
+        <div class="compare">
+          <div class="compare__col compare__col--now">
+            <span class="kicker" style="color:inherit">${safe(d.before.label)}</span>${d.winner === 'before' ? '<span class="compare__winner">★</span>' : ''}
+            ${d.before.title ? `<h3 class="h3">${safe(d.before.title)}</h3>` : ''}
+            <ul class="compare__list">
+              ${d.before.items.map(i => `<li><span>—</span><span>${safe(i)}</span></li>`).join('')}
+            </ul>
+          </div>
+          <div class="compare__col compare__col--next">
+            <span class="kicker" style="color:inherit">${safe(d.after.label)}</span>${d.winner === 'after' ? '<span class="compare__winner">★</span>' : ''}
+            ${d.after.title ? `<h3 class="h3">${safe(d.after.title)}</h3>` : ''}
+            <ul class="compare__list">
+              ${d.after.items.map(i => `<li><span>→</span><span>${safe(i)}</span></li>`).join('')}
+            </ul>
+          </div>
         </div>
-        <div class="compare__col compare__col--next">
-          <span class="kicker" style="color:inherit">${safe(d.after.label)}</span>
-          ${d.after.title ? `<h3 class="h3">${safe(d.after.title)}</h3>` : ''}
-          <ul class="compare__list">
-            ${d.after.items.map(i => `<li><span>→</span><span>${safe(i)}</span></li>`).join('')}
-          </ul>
-        </div>
+        ${d.metrics?.length ? `
+          <div class="compare-metrics">
+            ${d.metrics.map(m => `
+              <div class="compare-metrics__row">
+                <div class="compare-metrics__label">${safe(m.label)}</div>
+                <div class="compare-metrics__val">${safe(m.beforeVal)}</div>
+                <div class="compare-metrics__val compare-metrics__val--after">${safe(m.afterVal)}</div>
+              </div>
+            `).join('')}
+          </div>` : ''}
       </div>
     </div>
   `);
@@ -265,9 +297,11 @@ export function renderProcess(d: ProcessData, theme: Theme): string {
         ${d.steps.map((s, i) => `
           <div class="step">
             <div class="step__node">${i + 1}</div>
-            ${s.label ? `<div class="step__date">${safe(s.label)}</div>` : ''}
+            ${(s.label || s.duration) ? `<div class="step__date">${[s.label, s.duration].filter(Boolean).map(v => safe(v as string)).join(' · ')}</div>` : ''}
             <div class="step__title">${safe(s.title)}</div>
             <p class="step__body">${safe(s.body)}</p>
+            ${s.outcome ? `<p class="step__outcome">${safe(s.outcome)}</p>` : ''}
+            ${s.tools?.length ? `<div class="step__tools">${s.tools.map(tool => `<span class="step__tool">${safe(tool)}</span>`).join('')}</div>` : ''}
           </div>
         `).join('')}
       </div>

@@ -28,3 +28,14 @@ export const SLIDE_GUIDE: Record<SlideType, string> = {
   ROADMAP: 'Phased plan ahead (3 phases with items).',
   CTA: 'Call to action (contact, sign up, invest). ONLY for sales/pitch/proposal decks \u2014 never for purely informational or educational topics.',
 };
+
+/** Per-language writing guidance, injected into OUTPUT_LANGUAGE in the outline + card prompts. */
+export const LANGUAGE_GUIDE: Record<string, string> = {
+  uz: "Uzbek (o'zbek tili). Write in the Latin alphabet ONLY \u2014 never mix in Cyrillic. Use correct case and possessive suffixes with proper vowel harmony (e.g. \"kompaniyaning\", \"bozorda\", \"mijozlarga\"), natural word order (Subject + Object + Verb), and standard literary Uzbek. Do NOT produce literal word-for-word translations from Russian or English \u2014 rephrase naturally as a native speaker would.",
+  ru: 'Russian (\u0440\u0443\u0441\u0441\u043a\u0438\u0439 \u044f\u0437\u044b\u043a). Use natural, grammatically correct Russian with correct case endings and agreement.',
+  en: 'English.',
+};
+
+export function languageGuide(code: string): string {
+  return LANGUAGE_GUIDE[code] ?? code;
+}

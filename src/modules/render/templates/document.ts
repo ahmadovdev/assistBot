@@ -250,6 +250,21 @@ body { font-family: var(--font-body); color: var(--text); }
 }
 
 /* ============================================================
+   INSIGHT
+   ============================================================ */
+.insight-implications {
+  list-style: none; display: flex; flex-direction: column; gap: 12px;
+}
+.insight-implications li {
+  display: flex; gap: 12px;
+  font-size: 15px; line-height: 1.5;
+  color: var(--text-muted);
+}
+.insight-implications li span:first-child {
+  color: var(--accent); font-weight: 600; flex-shrink: 0;
+}
+
+/* ============================================================
    STEPS  (used by process + timeline)
    ============================================================ */
 .step {
@@ -274,6 +289,14 @@ body { font-family: var(--font-body); color: var(--text); }
 }
 .step__title { font-size: 20px; font-weight: 700; letter-spacing: -0.01em; color: var(--text); }
 .step__body  { font-size: 14px; color: var(--text-muted); line-height: 1.55; }
+.step__outcome { font-size: 13px; font-weight: 600; color: var(--accent); line-height: 1.4; }
+.step__tools { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; }
+.step__tool {
+  font-size: 11px; font-weight: 600;
+  padding: 4px 10px; border-radius: 999px;
+  background: var(--bg); border: 1px solid var(--border);
+  color: var(--text-muted);
+}
 
 /* ============================================================
    COMPARISON
@@ -288,6 +311,23 @@ body { font-family: var(--font-body); color: var(--text); }
 .compare__col--next { background: var(--accent);  color: var(--bg); }
 .compare__list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
 .compare__list li { display: flex; gap: 12px; font-size: 15.5px; line-height: 1.5; }
+.compare__winner { color: inherit; margin-left: 8px; font-size: 15px; }
+
+.compare-metrics {
+  display: flex; flex-direction: column; gap: 10px;
+  border-top: 1px solid var(--border); padding-top: 20px;
+}
+.compare-metrics__row {
+  display: grid; grid-template-columns: 1.2fr 1fr 1fr;
+  align-items: center; gap: 16px;
+}
+.compare-metrics__label { font-size: 14px; color: var(--text-muted); }
+.compare-metrics__val {
+  font-family: var(--font-display);
+  font-size: 22px; font-weight: 700;
+  color: var(--text); text-align: center;
+}
+.compare-metrics__val--after { color: var(--accent); }
 
 /* ============================================================
    QUOTE

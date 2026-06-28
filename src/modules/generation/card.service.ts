@@ -4,6 +4,7 @@ import { LlmService } from '../ai/llm.service';
 import { LlmResult } from '../ai/llm.types';
 import { cardSchemaByType, CardContent } from '../ai/schemas/card.schemas';
 import { CARD_SYSTEM, buildCardUser, CardInput } from '../ai/prompts/card.prompt';
+import { sanitizeUzbekScript } from '../ai/uzbek-script.sanitizer';
 
 @Injectable()
 export class CardService {
@@ -20,6 +21,7 @@ export class CardService {
       user: buildCardUser(input),
       schema,
       model,
+      postprocess: input.language === 'uz' ? sanitizeUzbekScript : undefined,
     });
   }
 }
