@@ -226,6 +226,30 @@ body { font-family: var(--font-body); color: var(--text); }
 .metric__lbl { font-size: 15px; color: var(--text-muted); line-height: 1.5; }
 
 /* ============================================================
+   PROBLEM
+   ============================================================ */
+.problem-stat {
+  display: flex; flex-direction: column; gap: 10px;
+  padding: 28px 32px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  min-width: 220px;
+}
+.problem-stat__num {
+  font-family: var(--font-display);
+  font-size: 56px; font-weight: 700;
+  letter-spacing: -0.03em; line-height: 1;
+  color: var(--accent);
+}
+.problem-stat__lbl { font-size: 14px; color: var(--text-muted); line-height: 1.4; }
+.problem-stat__src { font-size: 11px; color: var(--text-muted); letter-spacing: 0.04em; opacity: 0.75; }
+.problem-impact {
+  font-size: 17px; color: var(--text); line-height: 1.5;
+  max-width: 640px;
+}
+
+/* ============================================================
    STEPS  (used by process + timeline)
    ============================================================ */
 .step {
