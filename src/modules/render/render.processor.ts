@@ -8,6 +8,7 @@ import { PresentationsService } from '../presentations/presentations.service';
 import { SessionService } from '../bot/session.service';
 import { BotSender } from '../bot/bot.sender';
 import { BotState } from '../bot/bot.constants';
+import { RateLimitService } from '../ratelimit/rate-limit.service';
 
 @Processor(QUEUES.RENDER)
 export class RenderProcessor extends WorkerHost {
@@ -18,6 +19,7 @@ export class RenderProcessor extends WorkerHost {
     private readonly presentations: PresentationsService,
     private readonly session: SessionService,
     private readonly sender: BotSender,
+    private readonly rateLimit: RateLimitService,
   ) {
     super();
   }
@@ -54,20 +56,25 @@ export class RenderProcessor extends WorkerHost {
         fileSize: pdf.length,
       });
 
-      // --- PPTX (editable) ---
+      // --- PPTX (hybrid by default: pixel-accurate background + editable
+      // title/body/footer overlay \u2014 see RenderPptxOptions in render.service.ts) ---
       try {
-        const pptx = await this.render.renderPptx(themeId, slides);
-        const pptxMsg = await this.sender.sendDocument(
-          chatId,
-          pptx,
-          `${base}.pptx`,
-          '\u2705 PowerPoint (tahrirlanadigan) tayyor!',
-        );
+        const pptx = await this.render.renderPptx(themeId, slides, { debug: true });
+        if (pptx.warnings.length) {
+          this.logger.warn(`PPTX (${pptx.mode}) warnings for ${presentationId}: ${pptx.warnings.join('; ')}`);
+        }
+        if (pptx.fallbackReason) {
+          this.logger.warn(`PPTX fell back from hybrid to ${pptx.mode} for ${presentationId}: ${pptx.fallbackReason}`);
+        }
+        const caption = pptx.mode === 'editable'
+          ? '\u2705 PowerPoint (tahrirlanadigan) tayyor!'
+          : '\u2705 PowerPoint tayyor!';
+        const pptxMsg = await this.sender.sendDocument(chatId, pptx.buffer, `${base}.pptx`, caption);
         await this.presentations.recordExport(presentationId, {
           format: 'pptx',
           storageKey: pptxMsg.document?.file_id ?? 'telegram',
           telegramFileId: pptxMsg.document?.file_id,
-          fileSize: pptx.length,
+          fileSize: pptx.buffer.length,
         });
       } catch (e) {
         this.logger.error(`PPTX render failed for ${presentationId}: ${String(e)}`);
@@ -75,10 +82,13 @@ export class RenderProcessor extends WorkerHost {
       }
 
       await this.presentations.setStatus(presentationId, 'done');
+      // Pipeline finished successfully — release the slot, keep the quota spent.
+      await this.rateLimit.finishGeneration(p.userId, { refund: false });
       await this.session.setState(p.userId, BotState.IDLE);
     } catch (err) {
       this.logger.error(`Render failed for ${presentationId}: ${String(err)}`);
       await this.presentations.setStatus(presentationId, 'failed', String(err));
+      await this.rateLimit.finishGeneration(p.userId, { refund: true });
       await this.session.setState(p.userId, BotState.IDLE);
       await this.sender.sendMessage(
         chatId,

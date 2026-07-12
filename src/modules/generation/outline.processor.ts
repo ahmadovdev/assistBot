@@ -8,7 +8,9 @@ import { PresentationsService } from '../presentations/presentations.service';
 import { SessionService } from '../bot/session.service';
 import { BotSender } from '../bot/bot.sender';
 import { BotState } from '../bot/bot.constants';
+import { RateLimitService } from '../ratelimit/rate-limit.service';
 import { formatOutline, outlineConfirmKeyboard } from './outline.formatter';
+import { estimateCostUsd } from '../ai/model-pricing';
 
 @Processor(QUEUES.OUTLINE)
 export class OutlineProcessor extends WorkerHost {
@@ -19,6 +21,7 @@ export class OutlineProcessor extends WorkerHost {
     private readonly presentations: PresentationsService,
     private readonly session: SessionService,
     private readonly sender: BotSender,
+    private readonly rateLimit: RateLimitService,
   ) {
     super();
   }
@@ -40,7 +43,6 @@ export class OutlineProcessor extends WorkerHost {
         topic: presentation.topicPrompt,
         slideCount: presentation.slideCount,
         language: presentation.language,
-        tone: presentation.tone,
       });
 
       await this.presentations.saveOutline(presentationId, result.data);
@@ -49,6 +51,9 @@ export class OutlineProcessor extends WorkerHost {
         status: 'completed',
         modelUsed: result.model,
         tokensUsed: result.usage.totalTokens,
+        promptTokens: result.usage.promptTokens,
+        completionTokens: result.usage.completionTokens,
+        costUsd: estimateCostUsd(result.model, result.usage),
       });
 
       await this.session.setState(presentation.userId, BotState.AWAITING_OUTLINE_CONFIRM);
@@ -64,6 +69,8 @@ export class OutlineProcessor extends WorkerHost {
         stage: 'outline',
         status: 'failed',
       });
+      // Pipeline failed before it produced anything — free the slot and refund.
+      await this.rateLimit.finishGeneration(presentation.userId, { refund: true });
       await this.session.setState(presentation.userId, BotState.IDLE);
       await this.sender.sendMessage(
         chatId,

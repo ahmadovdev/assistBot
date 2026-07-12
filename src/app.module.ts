@@ -3,6 +3,8 @@ import { LoggerModule } from 'nestjs-pino';
 import { AppConfigModule } from './common/config/config.module';
 import { PrismaModule } from './infra/prisma/prisma.module';
 import { QueueModule } from './infra/queue/queue.module';
+import { RedisModule } from './infra/redis/redis.module';
+import { RateLimitModule } from './modules/ratelimit/ratelimit.module';
 import { UsersModule } from './modules/users/users.module';
 import { BotModule } from './modules/bot/bot.module';
 import { AiModule } from './modules/ai/ai.module';
@@ -24,6 +26,8 @@ import { RenderModule } from './modules/render/render.module';
     }),
     PrismaModule,
     QueueModule,
+    RedisModule,
+    RateLimitModule,
 
     // --- Feature modules ---
     UsersModule, // Phase 1

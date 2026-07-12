@@ -9,6 +9,16 @@ import { OutlineService } from './outline.service';
 import { OutlineProcessor } from './outline.processor';
 import { CardService } from './card.service';
 import { CardsProcessor } from './cards.processor';
+import { BriefService } from './brief.service';
+import { WikimediaService } from '../visuals/wikimedia.service';
+import { VisualValidatorService } from '../visuals/visual-validator.service';
+import { ImageScriptGuardService } from '../visuals/image-script-guard.service';
+import { TopicVisualService } from '../visuals/topic-visual.service';
+import { runsWorkers } from '../../common/config/role';
+
+// BullMQ processors attach workers that consume jobs — only register them in
+// processes that should run workers ('all'/'worker'), never in the bot process.
+const processors = runsWorkers() ? [OutlineProcessor, CardsProcessor] : [];
 
 @Module({
   imports: [
@@ -22,6 +32,15 @@ import { CardsProcessor } from './cards.processor';
       { name: QUEUES.RENDER },
     ),
   ],
-  providers: [OutlineService, OutlineProcessor, CardService, CardsProcessor],
+  providers: [
+    OutlineService,
+    CardService,
+    BriefService,
+    TopicVisualService,
+    WikimediaService,
+    VisualValidatorService,
+    ImageScriptGuardService,
+    ...processors,
+  ],
 })
 export class GenerationModule {}

@@ -1,0 +1,286 @@
+<!doctype html><html lang="uz"><head><meta charset="utf-8">
+<title>Academic — Foundation</title>
+<style>@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=PT+Serif:ital@0;1&display=swap');
+
+:root {
+  /* ---- Surfaces (spec §Color palette) ---- */
+  --primary-dark:    #0f172a;
+  --surface-base:    #ffffff;
+  --surface-raised:  #f8fafc;
+  --surface-sunken:  #f1f5f9;
+
+  /* ---- Text ---- */
+  --text-primary:    #0f172a;
+  --text-secondary:  #475569;
+  --text-muted:      #94a3b8;
+  --text-on-dark:    #ffffff;
+
+  /* ---- Accent (single accent per slide) ---- */
+  --accent:          #10b981;
+  --accent-strong:   #059669;
+  --accent-deep:     #065f46;
+  --accent-muted:    #d1fae5;
+
+  /* ---- Borders ---- */
+  --border:          #e2e8f0;
+  --border-strong:   #cbd5e1;
+
+  /* ---- Semantic status (problems / warnings / ref dots) ---- */
+  --danger:          #dc2626;
+  --danger-soft:     #fef2f2;
+  --success-soft:    #f0fdf4;
+  --warning:         #ea580c;
+  --info:            #2563eb;
+  --info-soft:       #dbeafe;
+
+  /* ---- Typography ---- */
+  --font-sans:  'Inter', system-ui, -apple-system, sans-serif;
+  --font-serif: 'PT Serif', Georgia, serif;
+
+  /* Type scale (px, 1920x1080 canvas) */
+  --type-display-1: 128px; /* STATS big number */
+  --type-display-2: 96px;  /* CLOSING / FINDING number */
+  --type-hero:      72px;   /* TITLE topic / DEFINITION term */
+  --type-h1:        56px;   /* main slide title (agenda/stats headers) */
+  --type-h2:        48px;   /* standard content-slide title */
+  --type-h3:        32px;   /* section header / quote */
+  --type-h4:        24px;   /* subsection / callouts */
+  --type-body:      20px;   /* body + bullets */
+  --type-small:     16px;   /* small body / notes */
+  --type-label:     14px;   /* meta / captions / source */
+  --type-micro:     12px;   /* uppercase eyebrow labels */
+  --type-nano:      10px;   /* ministry line on TITLE */
+
+  --lh-tight: 1.1;
+  --lh-snug:  1.25;
+  --lh-body:  1.5;
+  --lh-loose: 1.6;
+  --ls-label: 0.15em;  /* uppercase meta tracking */
+  --ls-tight: -0.02em; /* large titles */
+
+  /* Spacing scale — 8px baseline grid */
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 32px;
+  --space-5: 40px;
+  --space-6: 48px;
+  --space-7: 56px;
+  --space-8: 64px;
+  --space-9: 80px;
+  --space-10: 96px;
+
+  /* Radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;   /* pills */
+  --radius-full: 999px;
+
+  /* Stroke */
+  --stroke-1: 1px;
+  --stroke-2: 2px;
+  --stroke-4: 4px;
+
+  /* Canvas */
+  --canvas-w: 1920px;
+  --canvas-h: 1080px;
+  --safe: 96px;
+}
+
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html, body {
+  background: #64748b;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: geometricPrecision;
+  print-color-adjust: exact;
+  -webkit-print-color-adjust: exact;
+}
+img, svg { display: block; max-width: 100%; }
+
+body {
+  font-family: var(--font-sans);
+  color: var(--text-primary);
+  font-feature-settings: 'cv11', 'ss01';
+}
+
+/* ---- Deck stage (screen preview: slides stacked) ---- */
+.a-deck {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 48px;
+  padding: 48px 0;
+}
+
+/* ---- Slide canvas: fixed 1920x1080, overflow clipped ---- */
+.a-slide {
+  position: relative;
+  width: var(--canvas-w);
+  height: var(--canvas-h);
+  background: var(--surface-base);
+  color: var(--text-primary);
+  overflow: hidden;
+  flex: none;
+}
+
+/* Safe-area content region (96px inset on all sides) */
+.a-safe {
+  position: absolute;
+  inset: var(--safe);
+  display: flex;
+  flex-direction: column;
+}
+
+@page { size: 1920px 1080px; margin: 0; }
+@media print {
+  html, body { background: #fff; }
+  .a-deck { gap: 0; padding: 0; }
+  .a-slide { break-after: page; page-break-after: always; }
+  .a-slide:last-child { break-after: auto; page-break-after: auto; }
+}
+
+
+/* ---- Safe-area zone layout ---- */
+.a-body {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+/* ---- SlideHeader ---- */
+.a-head {
+  flex: none;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+.a-head__id { display: flex; flex-direction: column; gap: 4px; }
+.a-head__num,
+.a-head__label {
+  font-size: var(--type-label);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: var(--ls-label);
+  color: var(--text-muted);
+  line-height: 1.2;
+}
+.a-head__label { font-weight: 600; }
+
+.a-dots { display: flex; align-items: center; gap: 6px; padding-top: 6px; }
+.a-dot {
+  width: 8px; height: 8px;
+  border-radius: var(--radius-full);
+  background: transparent;
+  border: var(--stroke-1) solid var(--border-strong);
+}
+.a-dot.is-active { background: var(--accent); border-color: var(--accent); }
+
+/* ---- SlideFooter ---- */
+.a-foot {
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+.a-foot__univ,
+.a-foot__page {
+  font-size: var(--type-label);
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+}
+.a-foot__univ { text-transform: uppercase; letter-spacing: var(--ls-label); }
+
+/* ---- CitationPill ---- */
+.a-cite-inline {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+.a-cite {
+  display: inline-block;
+  font-size: 13px;
+  color: var(--text-secondary);
+  background: var(--surface-raised);
+  border: var(--stroke-1) solid var(--border);
+  padding: 8px 16px;
+}
+.a-cite--pill  { border-radius: var(--radius-lg); }
+.a-cite--block { border-radius: var(--radius-sm); }
+
+/* ---- PlaceholderChip ---- */
+.a-placeholder {
+  display: inline-block;
+  font-size: var(--type-label);
+  font-weight: 500;
+  color: var(--text-muted);
+  background: transparent;
+  border: var(--stroke-1) dashed var(--border-strong);
+  border-radius: var(--radius-sm);
+  padding: 6px 14px;
+}
+
+/* ---- Shared inline icon sizing (reuses templates/icons.ts <svg class="ico">) ---- */
+.ico { flex: none; }
+
+/* preview-only: scale the 1920px slides to fit typical screens */
+.a-deck { transform: scale(0.6); transform-origin: top center; }
+</style></head>
+<body><div class="a-deck">
+  <section class="a-slide">
+    <div class="a-safe">
+      
+  <header class="a-head">
+    <div class="a-head__id">
+      <span class="a-head__num">02</span>
+      <span class="a-head__label">Mavzuning dolzarbligi</span>
+    </div>
+    <div class="a-dots"><span class="a-dot"></span><span class="a-dot is-active"></span><span class="a-dot"></span><span class="a-dot"></span><span class="a-dot"></span><span class="a-dot"></span></div>
+  </header>
+      <div class="a-body">
+  <h1 style="font-size:var(--type-h2);font-weight:600;letter-spacing:var(--ls-tight);margin-top:var(--space-6)">
+    Mavzuning dolzarbligi
+  </h1>
+  <p style="font-size:var(--type-body);color:var(--text-secondary);line-height:var(--lh-body);margin-top:var(--space-3);max-width:1100px">
+    Bu — SlideFrame karkasining namoyishi: 96px xavfsiz maydon, yuqorida header
+    zonasi (bo‘lim raqami + blok yorlig‘i + pozitsiya nuqtalari), pastda footer
+    (universitet qisqartmasi + sahifa raqami).
+  </p>
+  <div style="display:flex;gap:var(--space-2);align-items:center;flex-wrap:wrap;margin-top:var(--space-6)">
+    <span class="a-cite a-cite--pill">[1] O‘zbekiston Respublikasi Konstitutsiyasi, 2023-yil</span>
+    <span class="a-cite a-cite--block">[3] Karimov A. A., Toshkent: Adolat, 2022. — B. 24.</span>
+    <span class="a-placeholder">[manba: to‘ldiring]</span>
+  </div>
+  <div style="margin-top:var(--space-4)">
+    <span class="a-cite-inline">[2] Saidov A. X., 2021 — inline iqtibos varianti</span>
+  </div>
+  <div style="margin-top:var(--space-6);display:flex;gap:var(--space-2);flex-wrap:wrap">
+    <span style="font-size:var(--type-micro);text-transform:uppercase;letter-spacing:var(--ls-label);color:var(--text-muted)">Rang tokenlari:</span>
+    <span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--text-secondary)"><span style="width:22px;height:22px;border-radius:6px;border:1px solid var(--border);background:var(--surface-raised)"></span>--surface-raised</span><span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--text-secondary)"><span style="width:22px;height:22px;border-radius:6px;border:1px solid var(--border);background:var(--surface-sunken)"></span>--surface-sunken</span><span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--text-secondary)"><span style="width:22px;height:22px;border-radius:6px;border:1px solid var(--border);background:var(--accent)"></span>--accent</span><span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--text-secondary)"><span style="width:22px;height:22px;border-radius:6px;border:1px solid var(--border);background:var(--accent-muted)"></span>--accent-muted</span><span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--text-secondary)"><span style="width:22px;height:22px;border-radius:6px;border:1px solid var(--border);background:var(--accent-strong)"></span>--accent-strong</span><span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--text-secondary)"><span style="width:22px;height:22px;border-radius:6px;border:1px solid var(--border);background:var(--border)"></span>--border</span><span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--text-secondary)"><span style="width:22px;height:22px;border-radius:6px;border:1px solid var(--border);background:var(--border-strong)"></span>--border-strong</span><span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--text-secondary)"><span style="width:22px;height:22px;border-radius:6px;border:1px solid var(--border);background:var(--danger)"></span>--danger</span><span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--text-secondary)"><span style="width:22px;height:22px;border-radius:6px;border:1px solid var(--border);background:var(--warning)"></span>--warning</span><span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--text-secondary)"><span style="width:22px;height:22px;border-radius:6px;border:1px solid var(--border);background:var(--info)"></span>--info</span>
+  </div>
+</div>
+      
+  <footer class="a-foot">
+    <span class="a-foot__univ">TDYU</span>
+    <span class="a-foot__page">03 / 18</span>
+  </footer>
+    </div>
+  </section>
+
+  <section class="a-slide is-cover">
+    <div class="a-safe">
+      
+      <div class="a-body"><div style="height:100%;display:flex;flex-direction:column;justify-content:center">
+     <span style="font-size:var(--type-micro);text-transform:uppercase;letter-spacing:var(--ls-label);color:var(--accent);font-weight:600">Cover rejimi</span>
+     <h1 style="font-size:var(--type-hero);font-weight:700;line-height:var(--lh-tight);letter-spacing:var(--ls-tight);margin-top:var(--space-3);max-width:1200px">
+       Header/footer‘siz to‘liq maydon — TITLE va CLOSING uchun
+     </h1>
+     <div style="width:64px;height:3px;background:var(--accent);margin-top:var(--space-5)"></div>
+   </div></div>
+      
+    </div>
+  </section></div></body></html>

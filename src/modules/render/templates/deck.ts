@@ -1,9 +1,13 @@
 import { Theme, getTheme, THEMES } from './theme';
 import { getDocumentCss } from './document';
+import { WIKIMEDIA_VISUAL_CSS } from './wikimedia-visual';
 import {
-  renderTitle, renderStats, renderProblem, renderInsight, renderComparison,
-  renderProcess, renderTimeline, renderSolution, renderOpportunity,
-  renderCaseStudy, renderQuote, renderRoadmap, renderCta,
+  renderTitle, renderStats, renderInsight, renderComparison,
+  renderProcess, renderTimeline, renderAgenda,
+  renderContent, renderDefinition, renderConclusion, renderReferences, renderClosing,
+  renderBatafsil, renderMisol, renderTurlar,
+  renderRelevance, renderAimTasks, renderObjectSubject, renderFinding,
+  renderProblemsSolutions,
 } from './layouts';
 
 export interface DeckSlide {
@@ -15,18 +19,24 @@ type Renderer = (data: any, theme: Theme) => string;
 
 const RENDERERS: Record<string, Renderer> = {
   TITLE: renderTitle,
-  STATS: renderStats,
-  PROBLEM: renderProblem,
-  INSIGHT: renderInsight,
+  AGENDA: renderAgenda,
+  CONTENT: renderContent,
+  DEFINITION: renderDefinition,
+  BATAFSIL: renderBatafsil,
+  MISOL: renderMisol,
+  TURLAR: renderTurlar,
   COMPARISON: renderComparison,
   PROCESS: renderProcess,
   TIMELINE: renderTimeline,
-  SOLUTION: renderSolution,
-  OPPORTUNITY: renderOpportunity,
-  CASE_STUDY: renderCaseStudy,
-  QUOTE: renderQuote,
-  ROADMAP: renderRoadmap,
-  CTA: renderCta,
+  STATS: renderStats,
+  CONCLUSION: renderConclusion,
+  REFERENCES: renderReferences,
+  CLOSING: renderClosing,
+  RELEVANCE: renderRelevance,
+  AIM_TASKS: renderAimTasks,
+  OBJECT_SUBJECT: renderObjectSubject,
+  FINDING: renderFinding,
+  PROBLEMS_SOLUTIONS: renderProblemsSolutions,
 };
 
 const DEFAULT_THEME_ID = 'dark_premium';
@@ -49,7 +59,7 @@ function renderOne(theme: Theme, slide: DeckSlide, pageNo: number): string {
 export function buildDeck(themeId: string, slides: DeckSlide[]): string {
   const id = safeThemeId(themeId);
   const theme = getTheme(id);
-  const css = getDocumentCss(id);
+  const css = `${getDocumentCss(id)}\n${WIKIMEDIA_VISUAL_CSS}`;
   const body = slides.map((s, i) => renderOne(theme, s, i + 1)).join('\n');
   return `<!doctype html>
 <html lang="uz"><head><meta charset="utf-8"><style>${css}</style></head>

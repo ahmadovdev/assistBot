@@ -1,6 +1,12 @@
 export interface LlmMessage {
   role: 'system' | 'user' | 'assistant';
   content: string;
+  /** Anthropic prompt caching (see anthropic.provider.ts) — marks this block
+   *  as a cache breakpoint when it (plus everything before it) is stable
+   *  across repeated calls, e.g. the same deck's per-slide card generations.
+   *  Ignored by providers that don't support it (Gemini, OpenRouter) — the
+   *  field is simply absent from the request they build. */
+  cacheControl?: boolean;
 }
 
 export interface LlmUsage {

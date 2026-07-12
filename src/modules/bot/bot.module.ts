@@ -15,6 +15,9 @@ import { DebugHandler } from './handlers/debug.handler';
 import { HelpHandler } from './handlers/help.handler';
 import { HistoryHandler } from './handlers/history.handler';
 import { OutlineEditHandler } from './handlers/outline-edit.handler';
+import { TestSlideHandler } from './handlers/testslide.handler';
+import { BrowserService } from '../render/browser.service';
+import { RenderService } from '../render/render.service';
 
 @Module({
   imports: [
@@ -35,6 +38,14 @@ import { OutlineEditHandler } from './handlers/outline-edit.handler';
     HelpHandler,
     HistoryHandler,
     OutlineEditHandler,
+    // /testslide (admin-only debug command) — its own isolated Browser +
+    // Render instances, deliberately NOT sharing RenderModule's/
+    // GenerationModule's, since both of those already import BotModule and
+    // importing them back here would create a circular module graph. The
+    // extra idle Puppeteer instance is an acceptable cost for a debug tool.
+    TestSlideHandler,
+    BrowserService,
+    RenderService,
   ],
   exports: [BotSender, SessionService],
 })

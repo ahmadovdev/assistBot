@@ -50,6 +50,8 @@ export class GeminiProvider implements LlmProvider {
       method: 'POST',
       headers: { 'x-goog-api-key': apiKey, 'Content-Type': 'application/json' },
       body: JSON.stringify(body),
+      // Hard cap so a stalled connection can't hang the worker forever.
+      signal: AbortSignal.timeout(120_000),
     });
 
     if (!res.ok) {

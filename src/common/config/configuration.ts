@@ -1,8 +1,12 @@
 import { validateEnv } from './env.validation';
 
+export type AppRole = 'all' | 'bot' | 'worker';
+
 export interface AppConfig {
   nodeEnv: string;
   port: number;
+  role: AppRole;
+  rateLimit: { enabled: boolean; daily: number; lockTtlSec: number };
   database: { url: string };
   redis: { host: string; port: number; password?: string };
   telegram: { botToken: string };
@@ -15,7 +19,8 @@ export interface AppConfig {
     outlineModel: string;
     cardModel: string;
   };
-  render: { puppeteerExecutablePath?: string };
+  render: { puppeteerExecutablePath?: string; engine: 'legacy' | 'academic' };
+  visuals: { wikimediaUserAgent: string; timeoutMs: number };
   storage: { endpoint?: string; accessKey?: string; secretKey?: string; bucket: string };
 }
 
@@ -29,6 +34,12 @@ export function configuration(): { app: AppConfig } {
     app: {
       nodeEnv: env.NODE_ENV,
       port: env.PORT,
+      role: env.APP_ROLE,
+      rateLimit: {
+        enabled: env.RATE_LIMIT_ENABLED,
+        daily: env.RATE_LIMIT_DAILY,
+        lockTtlSec: env.GENERATION_LOCK_TTL_SEC,
+      },
       database: { url: env.DATABASE_URL },
       redis: { host: env.REDIS_HOST, port: env.REDIS_PORT, password: env.REDIS_PASSWORD },
       telegram: { botToken: env.TELEGRAM_BOT_TOKEN },
@@ -41,7 +52,11 @@ export function configuration(): { app: AppConfig } {
         outlineModel: env.AI_OUTLINE_MODEL,
         cardModel: env.AI_CARD_MODEL,
       },
-      render: { puppeteerExecutablePath: env.PUPPETEER_EXECUTABLE_PATH },
+      render: { puppeteerExecutablePath: env.PUPPETEER_EXECUTABLE_PATH, engine: env.RENDER_ENGINE },
+      visuals: {
+        wikimediaUserAgent: env.WIKIMEDIA_USER_AGENT,
+        timeoutMs: env.WIKIMEDIA_TIMEOUT_MS,
+      },
       storage: {
         endpoint: env.S3_ENDPOINT,
         accessKey: env.S3_ACCESS_KEY,

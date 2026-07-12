@@ -32,6 +32,8 @@ export class OpenRouterProvider implements LlmProvider {
         response_format: { type: 'json_object' },
         temperature: 0.7,
       }),
+      // Hard cap so a stalled connection can't hang the worker forever.
+      signal: AbortSignal.timeout(120_000),
     });
 
     if (!res.ok) {

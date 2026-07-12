@@ -8,6 +8,23 @@ export const envSchema = z.object({
   NODE_ENV: z.enum(['development', 'production', 'test']).default('development'),
   PORT: z.coerce.number().int().positive().default(3000),
 
+  // Process role for the bot/worker split. 'all' (default) runs everything in
+  // one process (dev / current behaviour). In production run two PM2 apps:
+  // one 'bot' (Telegram long-polling + enqueues jobs) and one 'worker' (runs
+  // the BullMQ processors) so a heavy render can never freeze the bot.
+  APP_ROLE: z.enum(['all', 'bot', 'worker']).default('all'),
+
+  // Per-user rate limiting (cost + abuse protection on a public bot).
+  RATE_LIMIT_ENABLED: z
+    .enum(['true', 'false'])
+    .default('true')
+    .transform((v) => v === 'true'),
+  // Max completed/attempted generations per user per calendar day (UTC).
+  RATE_LIMIT_DAILY: z.coerce.number().int().positive().default(10),
+  // Safety TTL (seconds) on the per-user "generation in progress" lock, so a
+  // crashed pipeline self-heals even if the explicit release is missed.
+  GENERATION_LOCK_TTL_SEC: z.coerce.number().int().positive().default(1800),
+
   // PostgreSQL
   DATABASE_URL: z.string().url(),
 
@@ -30,6 +47,16 @@ export const envSchema = z.object({
 
   // Render
   PUPPETEER_EXECUTABLE_PATH: z.string().optional(),
+  // Rendering engine: 'legacy' (default, existing 5 themes) or 'academic'
+  // (new modern_academic HTML renderer). Off by default — nothing changes.
+  RENDER_ENGINE: z.enum(['legacy', 'academic']).default('legacy'),
+
+  // Wikimedia Commons visual layer. A product URL in User-Agent satisfies
+  // Wikimedia's identification policy without requiring an API key.
+  WIKIMEDIA_USER_AGENT: z.string().min(10).default(
+    'LumioPresentationBot/1.0 (https://t.me/LumioApp_bot)',
+  ),
+  WIKIMEDIA_TIMEOUT_MS: z.coerce.number().int().min(1000).max(30000).default(8000),
 
   // Storage (MinIO / S3) — used from Phase 6
   S3_ENDPOINT: z.string().optional(),

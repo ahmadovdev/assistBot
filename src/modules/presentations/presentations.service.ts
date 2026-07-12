@@ -153,6 +153,9 @@ export class PresentationsService {
       status: JobStatus;
       modelUsed?: string;
       tokensUsed?: number;
+      promptTokens?: number;
+      completionTokens?: number;
+      costUsd?: number;
     },
   ): Promise<void> {
     return this.prisma.generationJob
@@ -163,9 +166,35 @@ export class PresentationsService {
           status: data.status,
           modelUsed: data.modelUsed,
           tokensUsed: data.tokensUsed,
+          promptTokens: data.promptTokens,
+          completionTokens: data.completionTokens,
+          costUsd: data.costUsd,
           finishedAt: new Date(),
         },
       })
       .then(() => undefined);
+  }
+
+  /** Sums tokens/cost across every completed GenerationJob row for one
+   *  presentation (outline + cards stages — render has no LLM calls) — for
+   *  server-log observability only, see model-pricing.ts. `totalCostUsd` is
+   *  null only when NO stage had a computable cost (unknown model), so it
+   *  isn't mistaken for a real $0. */
+  async getJobTotals(presentationId: string): Promise<{
+    totalTokens: number;
+    promptTokens: number;
+    completionTokens: number;
+    totalCostUsd: number | null;
+  }> {
+    const jobs = await this.prisma.generationJob.findMany({
+      where: { presentationId, status: 'completed' },
+      select: { tokensUsed: true, promptTokens: true, completionTokens: true, costUsd: true },
+    });
+    const totalTokens = jobs.reduce((sum, j) => sum + (j.tokensUsed ?? 0), 0);
+    const promptTokens = jobs.reduce((sum, j) => sum + (j.promptTokens ?? 0), 0);
+    const completionTokens = jobs.reduce((sum, j) => sum + (j.completionTokens ?? 0), 0);
+    const known = jobs.filter((j) => j.costUsd !== null);
+    const totalCostUsd = known.length ? known.reduce((sum, j) => sum + Number(j.costUsd), 0) : null;
+    return { totalTokens, promptTokens, completionTokens, totalCostUsd };
   }
 }

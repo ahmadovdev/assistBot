@@ -1,0 +1,324 @@
+{
+  "topic": "Fotosintez",
+  "slides": {
+    "TITLE": {
+      "layout": "classical_centered",
+      "title": "Fotosintez: yorug‘lik energiyasining kimyoviy energiyaga aylanishi"
+    },
+    "AGENDA": {
+      "title": "Reja",
+      "items": [
+        {
+          "text": "Fotosintez tushunchasi va asosiy tenglamasi"
+        },
+        {
+          "text": "Yorug‘likka bog‘liq reaksiyalar"
+        },
+        {
+          "text": "Kalvin sikli va glyukoza sintezi"
+        },
+        {
+          "text": "Fotosintez turlari va moslanishlar"
+        }
+      ]
+    },
+    "RELEVANCE": {
+      "kicker": "Dolzarblik",
+      "title": "Fotosintez oziq zanjirlari va kislorod aylanishining asosidir",
+      "lead": "Jarayonni tushunish ekologiya, qishloq xo‘jaligi va iqlim tadqiqotlari uchun zarur.",
+      "points": [
+        {
+          "text": "O‘simlik biomassasi ko‘plab ekotizimlarda birlamchi energiya manbaini yaratadi."
+        },
+        {
+          "text": "Karbonat angidridning yutilishi global uglerod aylanishiga bevosita ta’sir qiladi."
+        },
+        {
+          "text": "Hosildorlik yorug‘lik, suv va haroratga bog‘liq fotosintetik samaradorlik bilan cheklanadi."
+        }
+      ]
+    },
+    "AIM_TASKS": {
+      "kicker": "Tadqiqot yo‘nalishi",
+      "title": "Maqsad va vazifalar",
+      "aim": "Ishning maqsadi — fotosintez bosqichlari, mahsulotlari va ekologik rolini tizimli tushuntirish.",
+      "tasks": [
+        "Fotosintezning biologik mohiyatini yoritish",
+        "Yorug‘lik reaksiyalarini ketma-ket tahlil qilish",
+        "Kalvin siklining vazifasini izohlash",
+        "C3, C4 va CAM yo‘llarini qiyoslash",
+        "Jarayonning biosferadagi ahamiyatini umumlashtirish"
+      ]
+    },
+    "OBJECT_SUBJECT": {
+      "kicker": "Tadqiqot chegarasi",
+      "title": "Tadqiqot obyekti va predmeti",
+      "object": {
+        "label": "Obyekt",
+        "text": "Yashil o‘simliklar va boshqa fotosintetik organizmlarda kechadigan fotosintez jarayoni."
+      },
+      "subject": {
+        "label": "Predmet",
+        "text": "Yorug‘lik energiyasining ATP, NADPH va organik moddalarga aylanish mexanizmi."
+      }
+    },
+    "DEFINITION": {
+      "kicker": "Asosiy tushuncha",
+      "term": "Fotosintez",
+      "definition": "Yashil o‘simliklar, suv o‘tlari va ayrim bakteriyalar yorug‘lik energiyasi yordamida karbonat angidrid hamda suvdan organik modda hosil qiladigan jarayon.",
+      "aspects": [
+        {
+          "icon": "sun",
+          "label": "Energiya",
+          "text": "Boshlang‘ich energiya manbai — quyosh nuri."
+        },
+        {
+          "icon": "leaf",
+          "label": "Mahsulot",
+          "text": "Kimyoviy energiya glyukoza tarkibida saqlanadi."
+        },
+        {
+          "icon": "atom",
+          "label": "Joylashuv",
+          "text": "O‘simlik hujayrasida xloroplastlarda kechadi."
+        }
+      ]
+    },
+    "CONTENT": {
+      "kicker": "Asosiy mexanizm",
+      "title": "Xlorofill yorug‘likni yutib elektronlar oqimini boshlaydi",
+      "lead": "Pigmentlar foton energiyasini reaksion markazlarga uzatadi.",
+      "points": [
+        {
+          "icon": "sun",
+          "heading": "Foton yutilishi",
+          "text": "Xlorofill asosan qizil va ko‘k to‘lqin uzunliklarini samarali yutadi."
+        },
+        {
+          "icon": "arrow",
+          "heading": "Elektron oqimi",
+          "text": "Qo‘zg‘algan elektronlar tashuvchilar zanjiri bo‘ylab energiya uzatadi."
+        },
+        {
+          "icon": "water",
+          "heading": "Suv parchalanishi",
+          "text": "Fotoliz elektron, proton va molekulyar kislorod hosil qiladi."
+        }
+      ]
+    },
+    "PROCESS": {
+      "title": "Fotosintez uchta bog‘liq energiya bosqichida kechadi",
+      "steps": [
+        {
+          "title": "Yorug‘likni yutish",
+          "body": "Pigmentlar fotonlarni yutib elektronlarni yuqori energiya holatiga o‘tkazadi."
+        },
+        {
+          "title": "ATP va NADPH",
+          "body": "Elektron tashish zanjiri energiyani ATP va NADPH ko‘rinishida jamlaydi."
+        },
+        {
+          "title": "Uglerodni bog‘lash",
+          "body": "Kalvin sikli karbonat angidridni organik birikmalarga aylantiradi."
+        }
+      ]
+    },
+    "BATAFSIL": {
+      "kicker": "Batafsil",
+      "title": "Kalvin sikli stromada ugleroddan organik modda hosil qiladi",
+      "body": "RuBisCO fermenti karbonat angidridni besh uglerodli RuBP molekulasiga biriktiradi. Yorug‘lik reaksiyalarida hosil bo‘lgan ATP va NADPH oraliq birikmalarni qaytaradi. Natijada G3P hosil bo‘ladi, uning bir qismi uglevodlar sinteziga sarflanadi, qolgan qismi esa RuBPni tiklaydi.",
+      "points": [
+        {
+          "text": "Jarayon xloroplast stromasida kechadi"
+        },
+        {
+          "text": "ATP energiya, NADPH elektron beradi"
+        },
+        {
+          "text": "G3P uglevodlar uchun boshlang‘ich modda"
+        }
+      ]
+    },
+    "TURLAR": {
+      "kicker": "Fotosintetik yo‘llar",
+      "title": "O‘simliklar uch asosiy uglerod bog‘lash yo‘lidan foydalanadi",
+      "items": [
+        {
+          "icon": "leaf",
+          "label": "C3 yo‘li",
+          "text": "Karbonat angidrid to‘g‘ridan-to‘g‘ri Kalvin sikliga kiradi; eng keng tarqalgan yo‘l."
+        },
+        {
+          "icon": "sun",
+          "label": "C4 yo‘li",
+          "text": "CO₂ avval to‘rt uglerodli birikmada jamlanadi; issiq va yorug‘ sharoitda samarali."
+        },
+        {
+          "icon": "water",
+          "label": "CAM yo‘li",
+          "text": "Og‘izchalar tunda ochiladi; suv tanqisligiga moslashgan o‘simliklarda uchraydi."
+        }
+      ]
+    },
+    "COMPARISON": {
+      "kicker": "Bosqichlar qiyosi",
+      "title": "Yorug‘lik reaksiyalari va Kalvin sikli turli vazifani bajaradi",
+      "subtitle": "Birinchi bosqich energiyani jamlaydi, ikkinchisi esa uglerodni organik modda tarkibiga kiritadi.",
+      "left": {
+        "label": "Yorug‘lik reaksiyalari",
+        "title": "Tilakoid membranada",
+        "items": [
+          "Yorug‘likka bevosita bog‘liq",
+          "Suv fotolizi va kislorod ajralishi",
+          "ATP hamda NADPH hosil bo‘lishi"
+        ]
+      },
+      "right": {
+        "label": "Kalvin sikli",
+        "title": "Stromada",
+        "items": [
+          "Yorug‘likni bevosita talab qilmaydi",
+          "Karbonat angidrid bog‘lanadi",
+          "G3P va keyinchalik uglevodlar hosil bo‘ladi"
+        ]
+      }
+    },
+    "MISOL": {
+      "kicker": "Misol",
+      "title": "Bitta bargning tuzilishi yorug‘likni maksimal ushlashga moslashgan",
+      "body": "Bargning yassi shakli katta sirt maydonini yaratadi. Ustki to‘qimalardan o‘tgan yorug‘lik mezofill hujayralaridagi xloroplastlarga yetadi. Tomirlar suv olib keladi, og‘izchalar esa karbonat angidridning kirishini boshqaradi.",
+      "icon": "leaf",
+      "takeaway": "Barg tuzilishi fotosintez uchun yorug‘lik, gaz almashinuvi va suv oqimini birlashtiradi."
+    },
+    "STATS": {
+      "title": "Fotosintezning asosiy sxemasi bir nechta aniq nisbatlarga ega",
+      "subtitle": "Ko‘rsatkichlar umumiy kimyoviy tenglama va jarayon bosqichlarini ifodalaydi.",
+      "stats": [
+        {
+          "value": "6",
+          "unit": "CO₂",
+          "label": "karbonat angidrid",
+          "description": "umumiy tenglamada sarflanadigan molekulalar"
+        },
+        {
+          "value": "6",
+          "unit": "H₂O",
+          "label": "suv",
+          "description": "reaksiya uchun boshlang‘ich modda"
+        },
+        {
+          "value": "1",
+          "unit": "C₆H₁₂O₆",
+          "label": "glyukoza",
+          "description": "kimyoviy energiya saqlanadigan mahsulot"
+        },
+        {
+          "value": "6",
+          "unit": "O₂",
+          "label": "kislorod",
+          "description": "umumiy tenglamada ajraladigan molekulalar"
+        }
+      ],
+      "insight": "Tenglama jarayonning umumiy balansini ko‘rsatadi; real mexanizm ko‘p bosqichli.",
+      "source": "Campbell Biology, fotosintezning umumiy tenglamasi"
+    },
+    "TIMELINE": {
+      "title": "Fotosintez haqidagi bilim tajribalar orqali bosqichma-bosqich shakllandi",
+      "steps": [
+        {
+          "date": "1770-yillar",
+          "title": "Jozef Pristli",
+          "body": "O‘simliklar sham yonishi buzgan havoni tiklay olishini ko‘rsatdi."
+        },
+        {
+          "date": "1779",
+          "title": "Yan Ingenhauz",
+          "body": "Kislorod faqat yorug‘likda va yashil qismlarda ajralishini aniqladi."
+        },
+        {
+          "date": "1930-yillar",
+          "title": "Kornelis van Nil",
+          "body": "Ajraladigan kislorod karbonat angidriddan emas, suvdan kelishini asoslagan."
+        },
+        {
+          "date": "1940–1950-yillar",
+          "title": "Melvin Kalvin guruhi",
+          "body": "Radioaktiv uglerod yordamida karbonat angidridning aylanish yo‘lini ochdi."
+        }
+      ]
+    },
+    "FINDING": {
+      "kicker": "Natija",
+      "title": "Fotosintetik samaradorlik bitta omil emas, omillar majmuasi bilan cheklanadi",
+      "evidence": "Yorug‘lik kuchi oshganda fotosintez tezligi avval ortadi, keyin esa to‘yinish darajasiga yetadi. Karbonat angidrid yetishmasligi, yuqori harorat yoki suv tanqisligi davom etsa, yorug‘likning ko‘payishi jarayonni tezlashtirmaydi. Demak, hosildorlikni baholashda barcha cheklovchi omillar birgalikda ko‘rilishi kerak.",
+      "points": [
+        {
+          "text": "Yorug‘lik ta’siri to‘yinish nuqtasigacha kuchayadi"
+        },
+        {
+          "text": "Suv tanqisligi og‘izchalarning yopilishiga olib keladi"
+        }
+      ],
+      "interpretation": "Fotosintezni oshirish uchun faqat bitta resursni ko‘paytirish yetarli emas; muvozanatli sharoit zarur.",
+      "source": "Taiz et al., Plant Physiology and Development"
+    },
+    "PROBLEMS_SOLUTIONS": {
+      "kicker": "Amaliy tahlil",
+      "title": "Fotosintezni cheklovchi omillar boshqariladigan yechimlarni talab qiladi",
+      "subtitle": "Qishloq xo‘jaligida sharoitni muvofiqlashtirish o‘simlikning energiya almashinuvini barqarorlashtiradi.",
+      "pairs": [
+        {
+          "problem": "Suv tanqisligi og‘izchalarni yopib, CO₂ kirishini kamaytiradi",
+          "solution": "Tomchilatib sug‘orish va namlikni monitoring qilish"
+        },
+        {
+          "problem": "Haddan tashqari issiqlik fermentlar faoliyatini pasaytiradi",
+          "solution": "Soyador to‘r, shamollatish va mos navlardan foydalanish"
+        },
+        {
+          "problem": "Mineral oziqa yetishmasligi xlorofill sintezini cheklaydi",
+          "solution": "Tuproq tahliliga asoslangan muvozanatli oziqlantirish"
+        }
+      ]
+    },
+    "CONCLUSION": {
+      "kicker": "Yakuniy xulosa",
+      "title": "Xulosa",
+      "points": [
+        "Fotosintez yorug‘lik energiyasini organik moddalarda saqlanadigan kimyoviy energiyaga aylantiradi.",
+        "Yorug‘lik reaksiyalari ATP va NADPH hosil qiladi, Kalvin sikli esa uglerodni bog‘laydi.",
+        "C3, C4 va CAM yo‘llari turli ekologik sharoitlarga moslashgan.",
+        "Jarayon oziq zanjirlari, kislorod va uglerod aylanishining biologik asosidir."
+      ],
+      "closing": "Fotosintez biosferadagi energiya oqimini boshlaydigan markaziy biologik jarayondir."
+    },
+    "REFERENCES": {
+      "title": "Foydalanilgan adabiyotlar",
+      "items": [
+        {
+          "text": "Urry L. et al. Campbell Biology. 12th ed. — Pearson, 2020.",
+          "type": "book"
+        },
+        {
+          "text": "Taiz L. et al. Plant Physiology and Development. 6th ed. — Sinauer, 2015.",
+          "type": "book"
+        },
+        {
+          "text": "Raven P., Evert R., Eichhorn S. Biology of Plants. 8th ed. — W.H. Freeman, 2012.",
+          "type": "book"
+        },
+        {
+          "text": "Khan Academy. Photosynthesis. khanacademy.org",
+          "type": "web"
+        },
+        {
+          "text": "Encyclopaedia Britannica. Photosynthesis. britannica.com",
+          "type": "web"
+        }
+      ]
+    },
+    "CLOSING": {
+      "title": "E’tiboringiz uchun rahmat!"
+    }
+  }
+}

@@ -1,0 +1,1232 @@
+<!doctype html>
+<html lang="uz"><head><meta charset="utf-8"><style>@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=PT+Serif:ital@0;1&display=swap');
+
+:root {
+  /* ---- Surfaces (spec §Color palette) ---- */
+  --primary-dark:    #0f172a;
+  --surface-base:    #ffffff;
+  --surface-raised:  #f8fafc;
+  --surface-sunken:  #f1f5f9;
+
+  /* ---- Text ---- */
+  --text-primary:    #0f172a;
+  --text-secondary:  #475569;
+  --text-muted:      #94a3b8;
+  --text-on-dark:    #ffffff;
+
+  /* ---- Accent (single accent per slide) ---- */
+  --accent:          #10b981;
+  --accent-strong:   #059669;
+  --accent-deep:     #065f46;
+  --accent-muted:    #d1fae5;
+
+  /* ---- Borders ---- */
+  --border:          #e2e8f0;
+  --border-strong:   #cbd5e1;
+
+  /* ---- Semantic status (problems / warnings / ref dots) ---- */
+  --danger:          #dc2626;
+  --danger-soft:     #fef2f2;
+  --success-soft:    #f0fdf4;
+  --warning:         #ea580c;
+  --info:            #2563eb;
+  --info-soft:       #dbeafe;
+
+  /* ---- Typography ---- */
+  --font-sans:  'Inter', system-ui, -apple-system, sans-serif;
+  --font-serif: 'PT Serif', Georgia, serif;
+
+  /* Type scale (px, 1920x1080 canvas) */
+  --type-display-1: 128px; /* STATS big number */
+  --type-display-2: 96px;  /* CLOSING / FINDING number */
+  --type-hero:      72px;   /* TITLE topic / DEFINITION term */
+  --type-h1:        56px;   /* main slide title (agenda/stats headers) */
+  --type-h2:        48px;   /* standard content-slide title */
+  --type-h3:        32px;   /* section header / quote */
+  --type-h4:        24px;   /* subsection / callouts */
+  --type-body:      20px;   /* body + bullets */
+  --type-small:     16px;   /* small body / notes */
+  --type-label:     14px;   /* meta / captions / source */
+  --type-micro:     12px;   /* uppercase eyebrow labels */
+  --type-nano:      10px;   /* ministry line on TITLE */
+
+  --lh-tight: 1.1;
+  --lh-snug:  1.25;
+  --lh-body:  1.5;
+  --lh-loose: 1.6;
+  --ls-label: 0.15em;  /* uppercase meta tracking */
+  --ls-tight: -0.02em; /* large titles */
+
+  /* Spacing scale — 8px baseline grid */
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 32px;
+  --space-5: 40px;
+  --space-6: 48px;
+  --space-7: 56px;
+  --space-8: 64px;
+  --space-9: 80px;
+  --space-10: 96px;
+
+  /* Radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;   /* pills */
+  --radius-full: 999px;
+
+  /* Stroke */
+  --stroke-1: 1px;
+  --stroke-2: 2px;
+  --stroke-4: 4px;
+
+  /* Canvas */
+  --canvas-w: 1920px;
+  --canvas-h: 1080px;
+  --safe: 96px;
+}
+
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html, body {
+  background: #64748b;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: geometricPrecision;
+  print-color-adjust: exact;
+  -webkit-print-color-adjust: exact;
+}
+img, svg { display: block; max-width: 100%; }
+
+body {
+  font-family: var(--font-sans);
+  color: var(--text-primary);
+  font-feature-settings: 'cv11', 'ss01';
+}
+
+/* ---- Deck stage (screen preview: slides stacked) ---- */
+.a-deck {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 48px;
+  padding: 48px 0;
+}
+
+/* ---- Slide canvas: fixed 1920x1080, overflow clipped ---- */
+.a-slide {
+  position: relative;
+  width: var(--canvas-w);
+  height: var(--canvas-h);
+  background: var(--surface-base);
+  color: var(--text-primary);
+  overflow: hidden;
+  flex: none;
+}
+
+/* Safe-area content region (96px inset on all sides) */
+.a-safe {
+  position: absolute;
+  inset: var(--safe);
+  display: flex;
+  flex-direction: column;
+}
+
+@page { size: 1920px 1080px; margin: 0; }
+@media print {
+  html, body { background: #fff; }
+  .a-deck { gap: 0; padding: 0; }
+  .a-slide { break-after: page; page-break-after: always; }
+  .a-slide:last-child { break-after: auto; page-break-after: auto; }
+}
+
+
+/* ---- Safe-area zone layout ---- */
+.a-body {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+/* ---- SlideHeader ---- */
+.a-head {
+  flex: none;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+.a-head__id { display: flex; flex-direction: column; gap: 4px; }
+.a-head__num,
+.a-head__label {
+  font-size: var(--type-label);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: var(--ls-label);
+  color: var(--text-muted);
+  line-height: 1.2;
+}
+.a-head__label { font-weight: 600; }
+
+.a-dots { display: flex; align-items: center; gap: 6px; padding-top: 6px; }
+.a-dot {
+  width: 8px; height: 8px;
+  border-radius: var(--radius-full);
+  background: transparent;
+  border: var(--stroke-1) solid var(--border-strong);
+}
+.a-dot.is-active { background: var(--accent); border-color: var(--accent); }
+
+/* ---- SlideFooter ---- */
+.a-foot {
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+.a-foot__univ,
+.a-foot__page {
+  font-size: var(--type-label);
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+}
+.a-foot__univ { text-transform: uppercase; letter-spacing: var(--ls-label); }
+
+/* ---- CitationPill ---- */
+.a-cite-inline {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+.a-cite {
+  display: inline-block;
+  font-size: 13px;
+  color: var(--text-secondary);
+  background: var(--surface-raised);
+  border: var(--stroke-1) solid var(--border);
+  padding: 8px 16px;
+}
+.a-cite--pill  { border-radius: var(--radius-lg); }
+.a-cite--block { border-radius: var(--radius-sm); }
+
+/* ---- PlaceholderChip ---- */
+.a-placeholder {
+  display: inline-block;
+  font-size: var(--type-label);
+  font-weight: 500;
+  color: var(--text-muted);
+  background: transparent;
+  border: var(--stroke-1) dashed var(--border-strong);
+  border-radius: var(--radius-sm);
+  padding: 6px 14px;
+}
+
+/* ---- Shared inline icon sizing (reuses templates/icons.ts <svg class="ico">) ---- */
+.ico { flex: none; }
+
+
+/* ---- shared slide primitives ---- */
+.a-h1 {
+  font-size: var(--type-h2);
+  font-weight: 600;
+  line-height: var(--lh-snug);
+  letter-spacing: var(--ls-tight);
+  color: var(--text-primary);
+}
+.a-eyebrow {
+  display: block;
+  font-size: var(--type-micro);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: var(--ls-label);
+  color: var(--text-secondary);
+}
+.a-eyebrow--accent { color: var(--accent); }
+.a-accent-line {
+  display: block;
+  width: 64px;
+  height: var(--stroke-2);
+  background: var(--accent);
+  margin-top: var(--space-3);
+}
+.a-accent-line--center { margin-left: auto; margin-right: auto; }
+
+/* ============ TITLE (editorial_split) ============ */
+.a-slide.is-title { background: var(--surface-base); }
+.a-title { display: flex; width: 100%; height: 100%; }
+.a-title__left {
+  width: 40%;
+  background: var(--primary-dark);
+  color: var(--text-on-dark);
+  padding: var(--space-10) var(--space-8);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.a-title__ministry {
+  font-size: var(--type-nano);
+  text-transform: uppercase;
+  letter-spacing: var(--ls-label);
+  line-height: 1.5;
+  opacity: 0.6;
+}
+.a-title__univ { font-size: 20px; font-weight: 600; line-height: 1.3; margin-top: var(--space-4); }
+.a-title__sub { font-size: var(--type-small); line-height: 1.4; opacity: 0.85; margin-top: var(--space-1); }
+.a-title__rule { display: block; width: 120px; height: 1px; background: rgba(255,255,255,0.2); margin-bottom: var(--space-3); }
+.a-title__eyebrow {
+  font-size: var(--type-micro);
+  text-transform: uppercase;
+  letter-spacing: var(--ls-label);
+  opacity: 0.6;
+  margin-bottom: 6px;
+}
+.a-title__name { font-size: 18px; font-weight: 500; }
+.a-title__name--sm { font-size: var(--type-small); }
+.a-title__meta { font-size: var(--type-label); opacity: 0.7; margin-top: 4px; }
+.a-title__foot .a-title__meta { opacity: 0.6; }
+
+.a-title__right {
+  width: 60%;
+  padding: var(--space-10);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.a-title__badge {
+  align-self: flex-start;
+  background: var(--accent-muted);
+  color: var(--accent-strong);
+  font-size: var(--type-micro);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  padding: 8px 16px;
+  border-radius: 6px;
+  margin-bottom: var(--space-6);
+}
+.a-title__topic {
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: var(--ls-tight);
+  color: var(--text-primary);
+  max-width: 95%;
+}
+.a-title__accent { display: block; width: 64px; height: var(--stroke-2); background: var(--accent); margin-top: var(--space-6); }
+.a-title__deco { position: absolute; right: var(--space-10); bottom: var(--space-10); display: flex; flex-direction: column; gap: 10px; align-items: flex-end; }
+.a-title__deco span { display: block; height: 1px; background: var(--text-muted); }
+.a-title__deco span:nth-child(1) { width: 80px; }
+.a-title__deco span:nth-child(2) { width: 60px; }
+.a-title__deco span:nth-child(3) { width: 40px; }
+
+/* ============ CONTENT ============ */
+.a-content { position: relative; height: 100%; display: flex; flex-direction: column; justify-content: center; }
+.a-content__main { position: relative; z-index: 1; max-width: 1360px; }
+.a-content__lead {
+  border-left: var(--stroke-4) solid var(--accent);
+  padding-left: var(--space-3);
+  font-size: var(--type-h4);
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--text-primary);
+  margin-top: var(--space-4);
+}
+.a-bullets { list-style: none; margin-top: var(--space-6); display: flex; flex-direction: column; gap: 20px; }
+.a-bullet { display: flex; align-items: flex-start; gap: var(--space-2); }
+.a-bullet__ico {
+  flex: none;
+  width: 40px; height: 40px;
+  display: grid; place-items: center;
+  background: var(--accent-muted);
+  color: var(--accent-strong);
+  border-radius: var(--radius-sm);
+}
+.a-bullet__text { font-size: 22px; line-height: 1.5; color: var(--text-primary); padding-top: 6px; }
+.a-bullet__head { font-weight: 600; }
+.a-content__cite { margin-top: var(--space-6); }
+.a-content__ghost {
+  position: absolute;
+  right: -12px; top: 50%;
+  transform: translateY(-50%);
+  font-size: 200px;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--surface-sunken);
+  text-transform: uppercase;
+  letter-spacing: -0.04em;
+  z-index: 0;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+/* ---- CONTENT variant 2: two-column ---- */
+.a-content2 { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-6); margin-top: var(--space-6); flex: 1; }
+.a-bullets--col { display: flex; flex-direction: column; gap: 18px; }
+.a-bullets--col .a-bullet__text { font-size: 20px; }
+
+/* ---- CONTENT variant 3: numbered-steps ---- */
+.a-csteps { display: flex; flex-direction: column; gap: var(--space-3); margin-top: var(--space-6); }
+.a-csteps__row { display: flex; align-items: flex-start; gap: var(--space-4); }
+.a-csteps__num { flex: none; font-size: var(--type-h3); font-weight: 700; color: var(--accent); line-height: 1.2; }
+.a-csteps__head { font-size: 20px; font-weight: 600; color: var(--text-primary); }
+.a-csteps__text { font-size: var(--type-small); line-height: 1.5; color: var(--text-secondary); margin-top: 4px; }
+
+/* ---- CONTENT variant 4: lead-focus ---- */
+.a-cfocus__statement {
+  font-size: var(--type-h3);
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--text-primary);
+  border-left: var(--stroke-4) solid var(--accent);
+  padding-left: var(--space-4);
+  margin-top: var(--space-6);
+  max-width: 1400px;
+}
+.a-cfocus__support { display: flex; gap: var(--space-3); flex-wrap: wrap; margin-top: var(--space-6); }
+.a-cfocus__chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--surface-raised);
+  border: var(--stroke-1) solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 10px 18px;
+  font-size: var(--type-small);
+  color: var(--text-primary);
+}
+.a-cfocus__chip .ico { color: var(--accent); }
+
+/* ============ DEFINITION ============ */
+.a-def { display: flex; gap: var(--space-8); height: 100%; align-items: center; }
+.a-def__term { width: 40%; }
+.a-def__word {
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: var(--ls-tight);
+  color: var(--text-primary);
+  margin-top: var(--space-3);
+}
+.a-def__body { width: 60%; }
+.a-def__text {
+  font-size: 22px;
+  line-height: 1.55;
+  color: var(--text-primary);
+  margin-top: var(--space-2);
+}
+.a-def__note {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background: var(--surface-raised);
+  border: var(--stroke-1) solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 20px 24px;
+  margin-top: var(--space-3);
+}
+.a-def__note-lbl {
+  font-size: var(--type-micro);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: var(--ls-label);
+  color: var(--text-muted);
+}
+.a-def__note-txt { font-size: var(--type-small); line-height: 1.5; color: var(--text-secondary); }
+.a-def__cite { margin-top: var(--space-4); }
+
+/* ============ CONCLUSION ============ */
+.a-concl { height: 100%; display: flex; flex-direction: column; justify-content: center; text-align: center; }
+.a-concl__title { text-align: center; }
+.a-concl__summary {
+  font-size: var(--type-h3);
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--text-primary);
+  max-width: 1200px;
+  margin: var(--space-6) auto 0;
+  text-align: left;
+}
+.a-concl__cards { display: flex; gap: 20px; margin-top: var(--space-8); }
+.a-concl__card {
+  flex: 1;
+  background: var(--surface-base);
+  border: var(--stroke-1) solid var(--border);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  text-align: left;
+}
+.a-concl__ico { color: var(--accent); }
+.a-concl__ctext { font-size: 18px; line-height: 1.5; color: var(--text-primary); margin-top: var(--space-2); }
+
+/* ============ AGENDA ============ */
+.a-agenda__title { margin-top: var(--space-4); }
+.a-agenda { display: flex; gap: var(--space-8); margin-top: var(--space-6); flex: 1; min-height: 0; }
+.a-agenda__list { list-style: none; flex: 0 0 60%; }
+.a-agenda__row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: 20px 0;
+  border-bottom: var(--stroke-1) solid var(--border);
+}
+.a-agenda__num { flex: none; width: 48px; font-size: var(--type-h3); font-weight: 600; color: var(--accent); }
+.a-agenda__text { font-size: 22px; line-height: 1.4; color: var(--text-primary); }
+.a-agenda__detail { display: block; font-size: var(--type-small); color: var(--text-secondary); margin-top: 4px; }
+.a-agenda__side { flex: 0 0 30%; display: flex; flex-direction: column; justify-content: center; gap: var(--space-2); }
+.a-agenda__bars { display: flex; flex-direction: column; gap: 12px; }
+.a-agenda__bar { width: 80px; height: 16px; border-radius: 6px; background: var(--border); }
+.a-agenda__bar.is-active { background: var(--accent); }
+.a-agenda__count { font-size: var(--type-label); text-transform: uppercase; letter-spacing: var(--ls-label); color: var(--text-muted); margin-top: var(--space-3); }
+
+/* ============ RELEVANCE ============ */
+.a-rel__lead {
+  border-left: var(--stroke-4) solid var(--accent);
+  padding-left: var(--space-4);
+  font-size: var(--type-h4);
+  font-style: italic;
+  line-height: 1.4;
+  color: var(--text-primary);
+  margin-top: var(--space-5);
+  max-width: 1500px;
+}
+.a-rel__cards { display: flex; gap: var(--space-3); margin-top: var(--space-7); }
+.a-rel__card {
+  flex: 1;
+  background: var(--surface-base);
+  border: var(--stroke-1) solid var(--border);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+}
+.a-rel__num { font-size: var(--type-h3); font-weight: 700; color: var(--accent); }
+.a-rel__ctext { font-size: var(--type-body); line-height: 1.5; color: var(--text-primary); margin-top: var(--space-2); }
+.a-rel__card--stat { background: var(--primary-dark); border-color: var(--primary-dark); flex: 0 0 26%; }
+.a-rel__card--stat .a-rel__ctext { color: var(--text-on-dark); }
+.a-rel__stat-val { display: block; font-size: var(--type-display-2); font-weight: 700; line-height: 1; color: var(--accent); }
+.a-rel__stat-unit { font-size: var(--type-h3); margin-left: 4px; }
+.a-rel__cite { margin-top: var(--space-6); }
+
+/* ============ AIM_TASKS ============ */
+.a-aim__goal { margin-top: var(--space-5); }
+.a-aim__aim { font-size: var(--type-h4); font-weight: 500; line-height: 1.4; color: var(--text-primary); margin-top: var(--space-2); max-width: 1500px; }
+.a-aim__divider { display: flex; align-items: center; margin: var(--space-5) 0; }
+.a-aim__divider::before { content: ''; flex: 1; height: 1px; background: var(--border); }
+.a-aim__divider span { width: 32px; height: var(--stroke-2); background: var(--accent); }
+.a-aim__divider::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+.a-aim__grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-3); margin-top: var(--space-3); }
+.a-aim__cell {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+  background: var(--surface-raised);
+  border-radius: var(--radius-md);
+  padding: var(--space-3);
+}
+.a-aim__badge {
+  flex: none;
+  width: 40px; height: 40px;
+  display: grid; place-items: center;
+  background: var(--accent);
+  color: var(--text-on-dark);
+  font-size: 18px; font-weight: 700;
+  border-radius: var(--radius-full);
+}
+.a-aim__ctext { font-size: 18px; line-height: 1.4; color: var(--text-primary); padding-top: 6px; }
+
+/* ============ STATS ============ */
+.a-stats__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-4); margin-top: var(--space-7); }
+.a-stats__card {
+  background: var(--surface-base);
+  border: var(--stroke-1) solid var(--border);
+  border-radius: var(--radius-md);
+  padding: var(--space-6) var(--space-4);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.a-stats__label { font-size: var(--type-micro); font-weight: 600; text-transform: uppercase; letter-spacing: var(--ls-label); color: var(--text-secondary); }
+.a-stats__num { font-size: var(--type-display-1); font-weight: 700; line-height: 1; color: var(--accent); margin-top: var(--space-3); }
+.a-stats__unit { font-size: var(--type-h4); font-weight: 500; color: var(--text-secondary); margin-left: 6px; }
+.a-stats__rule { width: 32px; height: 1px; background: var(--border); margin: var(--space-4) 0 var(--space-2); }
+.a-stats__ctext { font-size: var(--type-small); line-height: 1.4; color: var(--text-primary); }
+.a-stats__insight {
+  display: inline-block;
+  background: var(--accent-muted);
+  color: var(--accent-deep);
+  font-size: var(--type-label);
+  font-weight: 500;
+  padding: 12px 20px;
+  border-radius: var(--radius-lg);
+  margin-top: var(--space-5);
+}
+.a-stats__cite { margin-top: var(--space-4); }
+
+/* ============ REFERENCES ============ */
+.a-ref__std {
+  display: inline-block;
+  background: var(--surface-sunken);
+  border: var(--stroke-1) solid var(--border);
+  border-radius: var(--radius-lg);
+  font-size: var(--type-micro);
+  font-weight: 500;
+  color: var(--text-secondary);
+  padding: 6px 12px;
+  margin-top: var(--space-2);
+}
+.a-ref__list {
+  list-style: none;
+  columns: 2;
+  column-gap: var(--space-6);
+  margin-top: var(--space-5);
+}
+.a-ref__item {
+  display: flex;
+  gap: var(--space-2);
+  break-inside: avoid;
+  padding: 12px 0 16px;
+  border-bottom: var(--stroke-1) solid var(--surface-sunken);
+}
+.a-ref__num {
+  flex: none;
+  position: relative;
+  width: 36px; height: 36px;
+  display: grid; place-items: center;
+  background: var(--surface-raised);
+  border: var(--stroke-1) solid var(--border);
+  border-radius: var(--radius-full);
+  font-size: var(--type-label);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+.a-ref__num::before {
+  content: '';
+  position: absolute;
+  top: -2px; left: -2px;
+  width: 10px; height: 10px;
+  border-radius: var(--radius-full);
+}
+.a-ref__num--law::before     { background: var(--accent); }
+.a-ref__num--book::before    { background: var(--info); }
+.a-ref__num--article::before { background: var(--warning); }
+.a-ref__num--web::before     { background: var(--text-muted); }
+.a-ref__text { font-size: var(--type-label); line-height: 1.5; color: var(--text-primary); }
+.a-ref__foot { display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); margin-top: var(--space-4); }
+.a-ref__legend { display: flex; gap: var(--space-3); flex-wrap: wrap; }
+.a-ref__leg { display: inline-flex; align-items: center; gap: 8px; font-size: var(--type-micro); color: var(--text-secondary); }
+.a-ref__dot { width: 10px; height: 10px; border-radius: var(--radius-full); }
+.a-ref__dot--law     { background: var(--accent); }
+.a-ref__dot--book    { background: var(--info); }
+.a-ref__dot--article { background: var(--warning); }
+.a-ref__dot--web     { background: var(--text-muted); }
+
+/* ============ BATAFSIL ============ */
+.a-bat__intro { font-size: var(--type-body); line-height: 1.5; color: var(--text-secondary); margin-top: var(--space-3); max-width: 1500px; }
+.a-bat__grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-3); margin-top: var(--space-6); }
+.a-bat__card {
+  position: relative;
+  background: var(--surface-base);
+  border: var(--stroke-1) solid var(--border);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+}
+.a-bat__badge {
+  display: grid; place-items: center;
+  width: 36px; height: 36px;
+  background: var(--accent-muted);
+  color: var(--accent-strong);
+  font-size: var(--type-label);
+  font-weight: 700;
+  border-radius: var(--radius-full);
+}
+.a-bat__corner {
+  position: absolute; top: var(--space-4); right: var(--space-4);
+  width: 24px; height: 24px;
+  border-top: var(--stroke-2) solid var(--accent);
+  border-right: var(--stroke-2) solid var(--accent);
+}
+.a-bat__ctext { font-size: 18px; line-height: 1.5; color: var(--text-primary); margin-top: var(--space-3); }
+
+/* ============ MISOL ============ */
+.a-misol { display: flex; gap: var(--space-6); height: 100%; align-items: stretch; }
+.a-misol__left { flex: 0 0 58%; display: flex; flex-direction: column; justify-content: center; }
+.a-misol__heading { font-size: var(--type-h3); font-weight: 600; line-height: 1.25; color: var(--text-primary); margin-top: var(--space-2); }
+.a-misol__body { font-size: var(--type-body); line-height: 1.6; color: var(--text-primary); margin-top: var(--space-4); max-width: 900px; }
+.a-misol__insight {
+  flex: 1;
+  background: var(--primary-dark);
+  border-radius: var(--radius-md);
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.a-misol__ilabel {
+  display: flex; align-items: center; gap: 10px;
+  font-size: var(--type-micro);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: var(--ls-label);
+  color: var(--accent);
+}
+.a-misol__itext { font-size: var(--type-h4); font-weight: 500; line-height: 1.4; color: var(--text-on-dark); margin-top: var(--space-3); }
+.a-misol__iline { width: 48px; height: var(--stroke-2); background: var(--accent); margin-top: var(--space-5); }
+
+/* ============ TURLAR ============ */
+.a-turlar__crit {
+  display: inline-block;
+  background: var(--surface-sunken);
+  border: var(--stroke-1) solid var(--border);
+  border-radius: var(--radius-lg);
+  font-size: var(--type-label);
+  font-weight: 500;
+  color: var(--text-secondary);
+  padding: 8px 16px;
+  margin-top: var(--space-3);
+}
+.a-turlar__grid { display: grid; gap: var(--space-3); margin-top: var(--space-6); flex: 1; align-content: center; }
+.a-turlar__card {
+  background: var(--surface-base);
+  border: var(--stroke-1) solid var(--border);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.a-turlar__ico {
+  width: 64px; height: 64px;
+  display: grid; place-items: center;
+  background: var(--accent-muted);
+  color: var(--accent-strong);
+  border-radius: var(--radius-full);
+}
+.a-turlar__label { font-size: var(--type-h4); font-weight: 600; color: var(--text-primary); margin-top: var(--space-3); }
+.a-turlar__text { font-size: var(--type-small); line-height: 1.5; color: var(--text-secondary); margin-top: var(--space-1); }
+
+/* ============ IQTIBOS ============ */
+.a-quote { height: 100%; display: flex; flex-direction: column; justify-content: center; max-width: 1400px; margin: 0 auto; position: relative; }
+.a-quote__mark {
+  font-family: var(--font-serif);
+  font-size: 200px;
+  font-weight: 700;
+  line-height: 0.6;
+  color: var(--accent-muted);
+  height: 90px;
+}
+.a-quote__text {
+  font-family: var(--font-serif);
+  font-size: 40px;
+  font-style: italic;
+  line-height: 1.4;
+  color: var(--text-primary);
+  margin-top: var(--space-4);
+}
+.a-quote__attr { margin-top: var(--space-6); }
+.a-quote__author { font-size: var(--type-h4); font-weight: 600; color: var(--text-primary); margin-top: var(--space-2); }
+.a-quote__cite { margin-top: var(--space-4); }
+
+/* ============ PROCESS ============ */
+.a-proc__flow { display: flex; align-items: stretch; gap: 8px; margin-top: var(--space-7); }
+.a-proc__step {
+  flex: 1;
+  background: var(--surface-base);
+  border: var(--stroke-1) solid var(--border);
+  border-radius: var(--radius-md);
+  padding: var(--space-3);
+  display: flex;
+  flex-direction: column;
+}
+.a-proc__num { font-size: var(--type-h3); font-weight: 700; color: var(--accent); }
+.a-proc__name { font-size: 18px; font-weight: 600; line-height: 1.3; color: var(--text-primary); margin-top: var(--space-3); }
+.a-proc__desc { font-size: var(--type-label); line-height: 1.5; color: var(--text-secondary); margin-top: var(--space-1); }
+.a-proc__arrow { flex: none; display: flex; align-items: center; color: var(--border-strong); }
+.a-proc__bar { position: relative; height: 4px; border-radius: 2px; background: var(--surface-sunken); margin-top: var(--space-6); }
+.a-proc__bar span { position: absolute; inset: 0; border-radius: 2px; background: var(--accent); }
+
+/* ============ COMPARISON ============ */
+.a-cmp { margin-top: var(--space-5); border: var(--stroke-1) solid var(--border); border-radius: var(--radius-md); overflow: hidden; }
+.a-cmp__head { display: grid; grid-template-columns: 1fr 1fr; }
+.a-cmp__hcell {
+  padding: var(--space-3) var(--space-4);
+  font-size: var(--type-h4);
+  font-weight: 700;
+  color: var(--text-primary);
+  border-bottom: var(--stroke-2) solid var(--border-strong);
+}
+.a-cmp__hcell span { display: block; font-size: var(--type-label); font-weight: 400; color: var(--text-secondary); margin-top: 4px; }
+.a-cmp__hcell--a { background: var(--surface-raised); border-right: var(--stroke-1) solid var(--border); border-bottom-color: var(--accent); }
+.a-cmp__hcell--b { background: var(--surface-base); }
+.a-cmp__row { display: grid; grid-template-columns: 1fr 1fr; border-top: var(--stroke-1) solid var(--border); }
+.a-cmp__row:first-child { border-top: 0; }
+.a-cmp__cell { padding: var(--space-3) var(--space-4); font-size: var(--type-body); line-height: 1.4; color: var(--text-primary); }
+.a-cmp__cell--a { background: var(--surface-raised); border-right: var(--stroke-1) solid var(--border); }
+.a-cmp__insight {
+  display: inline-block;
+  background: var(--accent-muted);
+  color: var(--accent-deep);
+  font-size: var(--type-label);
+  font-weight: 500;
+  padding: 12px 20px;
+  border-radius: var(--radius-lg);
+  margin-top: var(--space-5);
+}
+
+/* ============ TIMELINE ============ */
+.a-tl { position: relative; height: 560px; margin-top: var(--space-6); display: flex; }
+.a-tl__axis { position: absolute; left: 0; right: 0; top: 50%; height: 4px; background: var(--border-strong); border-radius: 2px; }
+.a-tl__event { flex: 1; position: relative; }
+.a-tl__node {
+  position: absolute; left: 50%; top: 50%;
+  transform: translate(-50%, -50%);
+  width: 24px; height: 24px;
+  border-radius: var(--radius-full);
+  background: var(--accent);
+  border: 4px solid var(--surface-base);
+  z-index: 2;
+}
+.a-tl__date { position: absolute; left: 50%; transform: translateX(-50%); font-size: var(--type-h2); font-weight: 700; color: var(--accent); }
+.a-tl__card {
+  position: absolute; left: 50%;
+  transform: translateX(-50%);
+  width: 280px;
+  background: var(--surface-base);
+  border: var(--stroke-1) solid var(--border);
+  border-radius: var(--radius-md);
+  padding: var(--space-3);
+}
+.a-tl__name { font-size: var(--type-small); font-weight: 600; color: var(--text-primary); }
+.a-tl__desc { font-size: var(--type-label); line-height: 1.5; color: var(--text-secondary); margin-top: 8px; }
+.a-tl__event--up   .a-tl__date { top: calc(50% - 72px); }
+.a-tl__event--up   .a-tl__card { bottom: calc(50% + 96px); }
+.a-tl__event--down .a-tl__date { top: calc(50% + 36px); }
+.a-tl__event--down .a-tl__card { top: calc(50% + 96px); }
+.a-tl__caption { text-align: center; font-size: var(--type-label); color: var(--text-muted); margin-top: var(--space-4); }
+
+/* ============ FINDING ============ */
+.a-find__intro { font-size: var(--type-small); color: var(--text-secondary); margin-top: var(--space-2); }
+.a-find__list { display: flex; flex-direction: column; gap: var(--space-3); margin-top: var(--space-6); }
+.a-find__row {
+  display: flex; align-items: center; gap: var(--space-4);
+  background: var(--surface-raised);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+}
+.a-find__num { flex: none; width: 120px; font-size: var(--type-display-2); font-weight: 700; line-height: 1; color: var(--accent); text-align: center; }
+.a-find__div { flex: none; width: 2px; align-self: stretch; background: var(--border-strong); }
+.a-find__text { font-size: 22px; font-weight: 500; line-height: 1.5; color: var(--text-primary); }
+.a-find__cite { margin-top: var(--space-5); }
+
+/* ============ PROBLEMS_SOLUTIONS ============ */
+.a-ps { display: flex; flex-direction: column; gap: var(--space-3); margin-top: var(--space-6); }
+.a-ps__row { display: flex; align-items: stretch; gap: var(--space-3); }
+.a-ps__card { flex: 1; border-radius: var(--radius-md); padding: var(--space-4); border: var(--stroke-1) solid var(--border); }
+.a-ps__card--problem { background: var(--danger-soft); border-left: var(--stroke-4) solid var(--danger); }
+.a-ps__card--solution { background: var(--success-soft); border-left: var(--stroke-4) solid var(--accent); }
+.a-ps__arrow { flex: none; display: flex; align-items: center; color: var(--text-muted); }
+.a-ps__label { display: block; font-size: var(--type-micro); font-weight: 700; text-transform: uppercase; letter-spacing: var(--ls-label); }
+.a-ps__label--problem { color: var(--danger); }
+.a-ps__label--solution { color: var(--accent-strong); }
+.a-ps__text { font-size: var(--type-body); line-height: 1.5; color: var(--text-primary); margin-top: var(--space-2); }
+
+/* ============ RECOMMENDATIONS ============ */
+.a-rec__intro { font-size: var(--type-small); color: var(--text-secondary); margin-top: var(--space-2); }
+.a-rec__list { display: flex; flex-direction: column; gap: var(--space-2); margin-top: var(--space-5); }
+.a-rec__card {
+  display: flex; align-items: center; gap: var(--space-3);
+  background: var(--surface-base);
+  border: var(--stroke-1) solid var(--border);
+  border-left: var(--stroke-4) solid var(--accent);
+  border-radius: var(--radius-md);
+  padding: var(--space-3) var(--space-4);
+}
+.a-rec__badge {
+  flex: none;
+  width: 40px; height: 40px;
+  display: grid; place-items: center;
+  background: var(--accent-muted);
+  border: var(--stroke-1) solid var(--accent);
+  color: var(--accent-strong);
+  font-size: 18px; font-weight: 700;
+  border-radius: var(--radius-full);
+}
+.a-rec__body { flex: 1; }
+.a-rec__to { display: block; font-size: var(--type-micro); font-weight: 600; text-transform: uppercase; letter-spacing: var(--ls-label); color: var(--accent); margin-bottom: 4px; }
+.a-rec__text { font-size: 22px; font-weight: 500; line-height: 1.4; color: var(--text-primary); }
+.a-rec__ico { flex: none; color: var(--accent); }
+.a-rec__sum {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: var(--surface-raised);
+  color: var(--text-secondary);
+  font-size: var(--type-label);
+  padding: 14px 22px;
+  border-radius: var(--radius-sm);
+  margin-top: var(--space-5);
+}
+.a-rec__sum .ico { color: var(--accent); }
+
+/* ============ OBJECT_SUBJECT ============ */
+.a-os { display: flex; align-items: stretch; gap: var(--space-4); margin-top: var(--space-6); flex: 1; }
+.a-os__card { flex: 1; border-radius: var(--radius-md); padding: var(--space-6); display: flex; flex-direction: column; }
+.a-os__card--object { background: var(--surface-base); border: var(--stroke-1) solid var(--border-strong); }
+.a-os__card--subject { background: var(--surface-raised); border: var(--stroke-2) solid var(--accent); }
+.a-os__text { font-size: 22px; line-height: 1.5; color: var(--text-primary); margin-top: var(--space-3); flex: 1; }
+.a-os__tag { font-size: var(--type-micro); color: var(--text-muted); margin-top: var(--space-3); }
+.a-os__tag--accent { color: var(--accent-strong); }
+.a-os__arrow { flex: none; display: flex; align-items: center; color: var(--text-muted); }
+
+/* ============ CLOSING ============ */
+.a-slide.is-closing { background: var(--surface-base); }
+.a-closing { display: flex; width: 100%; height: 100%; }
+.a-closing__left {
+  flex: 0 0 60%;
+  padding: var(--safe);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.a-closing__msg {
+  font-size: var(--type-display-2);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: var(--ls-tight);
+  color: var(--text-primary);
+  margin-top: var(--space-4);
+  max-width: 900px;
+}
+.a-closing__line { width: 96px; height: 3px; background: var(--accent); margin-top: var(--space-5); }
+.a-closing__sub { font-size: var(--type-h4); line-height: 1.5; color: var(--text-secondary); margin-top: var(--space-4); }
+.a-closing__author { font-size: 18px; font-weight: 500; color: var(--text-primary); margin-top: var(--space-6); }
+.a-closing__right {
+  flex: 0 0 40%;
+  background: var(--primary-dark);
+  color: var(--text-on-dark);
+  padding: var(--safe) var(--space-8);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  text-align: right;
+}
+.a-closing__qlabel { font-size: var(--type-nano); font-weight: 600; text-transform: uppercase; letter-spacing: 0.2em; opacity: 0.5; }
+.a-closing__q { font-size: 220px; font-weight: 700; line-height: 1; color: var(--accent); margin: var(--space-4) 0; }
+.a-closing__univ { font-size: var(--type-label); opacity: 0.6; }
+.a-closing__year { font-size: var(--type-label); opacity: 0.6; margin-top: 8px; }
+</style></head>
+<body><div class="a-deck">
+  <section class="a-slide is-title">
+    <div class="a-title">
+      <aside class="a-title__left">
+        <div class="a-title__org">
+          <p class="a-title__ministry">O‘ZBEKISTON RESPUBLIKASI OLIY TA‘LIM, FAN VA INNOVATSIYALAR VAZIRLIGI</p>
+          <p class="a-title__univ">Toshkent davlat yuridik universiteti</p>
+          <p class="a-title__sub">Davlat-huquqiy fanlar fakulteti</p>
+          <p class="a-title__sub">«Konstitutsiyaviy huquq» kafedrasi</p>
+        </div>
+        <div class="a-title__people">
+          <span class="a-title__rule"></span>
+          
+            <p class="a-title__eyebrow">Bajardi</p>
+            <p class="a-title__name">Shahzod Ismoilov</p>
+            <p class="a-title__meta">YHK-21-04 guruh</p>
+          
+            <p class="a-title__eyebrow" style="margin-top:var(--space-3)">Ilmiy rahbar</p>
+            <p class="a-title__name a-title__name--sm">d.f.d. N. R. Yo‘ldoshev</p>
+        </div>
+        <div class="a-title__foot">
+          <span class="a-title__rule"></span>
+          <p class="a-title__meta">Toshkent — 2025</p>
+        </div>
+      </aside>
+      <main class="a-title__right">
+        <span class="a-title__badge">Seminar doklad</span>
+        <h1 class="a-title__topic" style="font-size:72px">Konstitutsiyaviy huquq asoslari</h1>
+        <span class="a-title__accent"></span>
+        <div class="a-title__deco"><span></span><span></span><span></span></div>
+      </main>
+    </div></section>
+
+  <section class="a-slide is-agenda">
+    <div class="a-safe">
+      
+  <header class="a-head">
+    <div class="a-head__id">
+      <span class="a-head__num">01</span>
+      <span class="a-head__label">REJA</span>
+    </div>
+    <div class="a-dots"><span class="a-dot is-active"></span><span class="a-dot"></span><span class="a-dot"></span><span class="a-dot"></span><span class="a-dot"></span><span class="a-dot"></span><span class="a-dot"></span></div>
+  </header>
+      <div class="a-body">
+    <h1 class="a-h1 a-agenda__title">Reja</h1>
+    <div class="a-agenda">
+      <ol class="a-agenda__list">
+      <li class="a-agenda__row">
+        <span class="a-agenda__num">01</span>
+        <span class="a-agenda__text">Konstitutsiyaviy huquq tushunchasi</span>
+      </li>
+      <li class="a-agenda__row">
+        <span class="a-agenda__num">02</span>
+        <span class="a-agenda__text">Manbalari tizimi</span>
+      </li>
+      <li class="a-agenda__row">
+        <span class="a-agenda__num">03</span>
+        <span class="a-agenda__text">Normalar turlari</span>
+      </li>
+      <li class="a-agenda__row">
+        <span class="a-agenda__num">04</span>
+        <span class="a-agenda__text">Xulosa va adabiyotlar</span>
+      </li></ol>
+      <aside class="a-agenda__side">
+        <div class="a-agenda__bars"><span class="a-agenda__bar is-active"></span><span class="a-agenda__bar"></span><span class="a-agenda__bar"></span><span class="a-agenda__bar"></span></div>
+        <p class="a-agenda__count">4 bo‘lim</p>
+      </aside>
+    </div></div>
+      
+  <footer class="a-foot">
+    <span class="a-foot__univ">TDYU</span>
+    <span class="a-foot__page">02 / 09</span>
+  </footer>
+    </div>
+  </section>
+
+  <section class="a-slide is-relevance">
+    <div class="a-safe">
+      
+  <header class="a-head">
+    <div class="a-head__id">
+      <span class="a-head__num">02</span>
+      <span class="a-head__label">MAVZUNING DOLZARBLIGI</span>
+    </div>
+    <div class="a-dots"><span class="a-dot"></span><span class="a-dot is-active"></span><span class="a-dot"></span><span class="a-dot"></span><span class="a-dot"></span><span class="a-dot"></span><span class="a-dot"></span></div>
+  </header>
+      <div class="a-body">
+    <h1 class="a-h1">Mavzuning dolzarbligi</h1>
+    <p class="a-rel__lead">Yangi tahrirdagi Konstitutsiya normalarni chuqur o‘rganishni dolzarb vazifaga aylantirdi.</p>
+    <div class="a-rel__cards">
+      <div class="a-rel__card">
+        <span class="a-rel__num">01</span>
+        <p class="a-rel__ctext">Islohotlar inson huquqlari kafolatlarini kengaytirdi.</p>
+      </div>
+      <div class="a-rel__card">
+        <span class="a-rel__num">02</span>
+        <p class="a-rel__ctext">Fuqarolarning konstitutsiyaviy savodxonligi muhim ahamiyatga ega.</p>
+      </div></div>
+    <div class="a-rel__cite"><span class="a-cite a-cite--pill">[1] O‘z.R Konstitutsiyasi, 2023</span></div></div>
+      
+  <footer class="a-foot">
+    <span class="a-foot__univ">TDYU</span>
+    <span class="a-foot__page">03 / 09</span>
+  </footer>
+    </div>
+  </section>
+
+  <section class="a-slide is-content">
+    <div class="a-safe">
+      
+  <header class="a-head">
+    <div class="a-head__id">
+      <span class="a-head__num">03</span>
+      <span class="a-head__label">MAZMUNIY QISM</span>
+    </div>
+    <div class="a-dots"><span class="a-dot"></span><span class="a-dot"></span><span class="a-dot is-active"></span><span class="a-dot"></span><span class="a-dot"></span><span class="a-dot"></span><span class="a-dot"></span></div>
+  </header>
+      <div class="a-body">
+    <div class="a-content">
+      <div class="a-content__main">
+        <h1 class="a-h1">Konstitutsiyaviy huquqning predmeti</h1>
+        <p class="a-content__lead">Konstitutsiyaviy huquq davlat va jamiyat hayotining asosiy munosabatlarini tartibga soladi.</p>
+        <ul class="a-bullets">
+    <li class="a-bullet">
+      <span class="a-bullet__ico"><svg class="ico" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 4 5v6c0 5 3.4 8.5 8 10 4.6-1.5 8-5 8-10V5l-8-3Z"/><path d="m9 12 2 2 4-4"/></svg></span>
+      <span class="a-bullet__text">
+        davlat tuzilishi asoslari;
+      </span>
+    </li>
+    <li class="a-bullet">
+      <span class="a-bullet__ico"><svg class="ico" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.9"/><path d="M16 3.1a4 4 0 0 1 0 7.8"/></svg></span>
+      <span class="a-bullet__text">
+        inson va fuqaroning huquqiy maqomi;
+      </span>
+    </li>
+    <li class="a-bullet">
+      <span class="a-bullet__ico"><svg class="ico" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="5" cy="6" r="2.5"/><circle cx="19" cy="6" r="2.5"/><circle cx="12" cy="18" r="2.5"/><path d="M7 7.5 10.5 16M17 7.5 13.5 16M7 6h10"/></svg></span>
+      <span class="a-bullet__text">
+        davlat hokimiyati organlari.
+      </span>
+    </li></ul>
+        
+      </div>
+      <span class="a-content__ghost">Predmet</span>
+    </div></div>
+      
+  <footer class="a-foot">
+    <span class="a-foot__univ">TDYU</span>
+    <span class="a-foot__page">04 / 09</span>
+  </footer>
+    </div>
+  </section>
+
+  <section class="a-slide is-definition">
+    <div class="a-safe">
+      
+  <header class="a-head">
+    <div class="a-head__id">
+      <span class="a-head__num">04</span>
+      <span class="a-head__label">TA'RIF</span>
+    </div>
+    <div class="a-dots"><span class="a-dot"></span><span class="a-dot"></span><span class="a-dot"></span><span class="a-dot is-active"></span><span class="a-dot"></span><span class="a-dot"></span><span class="a-dot"></span></div>
+  </header>
+      <div class="a-body">
+    <div class="a-def">
+      <div class="a-def__term">
+        <span class="a-eyebrow a-eyebrow--accent">Atama</span>
+        <h1 class="a-def__word" style="font-size:72px">Konstitutsiyaviy huquq</h1>
+        <span class="a-accent-line"></span>
+      </div>
+      <div class="a-def__body">
+        <span class="a-eyebrow">Ta'rifi</span>
+        <p class="a-def__text">— bu davlat tuzilishi asoslarini va inson huquqiy maqomini tartibga soluvchi milliy huquqning yetakchi tarmog‘idir.</p>
+        
+      <div class="a-def__note">
+        <span class="a-def__note-lbl">Izoh</span>
+        <span class="a-def__note-txt">Boshqa barcha huquq sohalari uchun poydevor vazifasini bajaradi.</span>
+      </div>
+        <div class="a-def__cite"><span class="a-placeholder">[manba: to‘ldiring]</span></div>
+      </div>
+    </div></div>
+      
+  <footer class="a-foot">
+    <span class="a-foot__univ">TDYU</span>
+    <span class="a-foot__page">05 / 09</span>
+  </footer>
+    </div>
+  </section>
+
+  <section class="a-slide is-stats">
+    <div class="a-safe">
+      
+  <header class="a-head">
+    <div class="a-head__id">
+      <span class="a-head__num">05</span>
+      <span class="a-head__label">ASOSIY KO‘RSATKICHLAR</span>
+    </div>
+    <div class="a-dots"><span class="a-dot"></span><span class="a-dot"></span><span class="a-dot"></span><span class="a-dot"></span><span class="a-dot is-active"></span><span class="a-dot"></span><span class="a-dot"></span></div>
+  </header>
+      <div class="a-body">
+    <h1 class="a-h1">Asosiy ko‘rsatkichlar</h1>
+    <div class="a-stats__grid">
+      <div class="a-stats__card">
+        <span class="a-stats__label">Moddalar</span>
+        <span class="a-stats__num">155<span class="a-stats__unit">modda</span></span>
+        <span class="a-stats__rule"></span>
+        <p class="a-stats__ctext">Yangi tahrir moddalari</p>
+      </div>
+      <div class="a-stats__card">
+        <span class="a-stats__label">Yangilanish</span>
+        <span class="a-stats__num">65<span class="a-stats__unit">%</span></span>
+        <span class="a-stats__rule"></span>
+        <p class="a-stats__ctext">Yangilangan normalar</p>
+      </div>
+      <div class="a-stats__card">
+        <span class="a-stats__label">Qabul</span>
+        <span class="a-stats__num">1992<span class="a-stats__unit">yil</span></span>
+        <span class="a-stats__rule"></span>
+        <p class="a-stats__ctext">Birinchi Konstitutsiya</p>
+      </div></div>
+    
+    <div class="a-stats__cite"><span class="a-placeholder">[manba: to‘ldiring]</span></div></div>
+      
+  <footer class="a-foot">
+    <span class="a-foot__univ">TDYU</span>
+    <span class="a-foot__page">06 / 09</span>
+  </footer>
+    </div>
+  </section>
+
+  <section class="a-slide is-conclusion">
+    <div class="a-safe">
+      
+  <header class="a-head">
+    <div class="a-head__id">
+      <span class="a-head__num">06</span>
+      <span class="a-head__label">XULOSA</span>
+    </div>
+    <div class="a-dots"><span class="a-dot"></span><span class="a-dot"></span><span class="a-dot"></span><span class="a-dot"></span><span class="a-dot"></span><span class="a-dot is-active"></span><span class="a-dot"></span></div>
+  </header>
+      <div class="a-body">
+    <div class="a-concl">
+      <h1 class="a-h1 a-concl__title">Xulosa</h1>
+      <span class="a-accent-line a-accent-line--center"></span>
+      <p class="a-concl__summary">Konstitutsiyaviy huquqning predmeti, manbalari va normalari ko‘rib chiqildi.</p>
+      <div class="a-concl__cards">
+      <div class="a-concl__card">
+        <span class="a-concl__ico"><svg class="ico" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8.5 12.5l2.5 2.5 4.5-5"/></svg></span>
+        <p class="a-concl__ctext">Yetakchi tarmoq hisoblanadi;</p>
+      </div>
+      <div class="a-concl__card">
+        <span class="a-concl__ico"><svg class="ico" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8.5 12.5l2.5 2.5 4.5-5"/></svg></span>
+        <p class="a-concl__ctext">Normalari oliy yuridik kuchga ega;</p>
+      </div>
+      <div class="a-concl__card">
+        <span class="a-concl__ico"><svg class="ico" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8.5 12.5l2.5 2.5 4.5-5"/></svg></span>
+        <p class="a-concl__ctext">Savodxonlikni oshirish dolzarb vazifa.</p>
+      </div></div>
+    </div></div>
+      
+  <footer class="a-foot">
+    <span class="a-foot__univ">TDYU</span>
+    <span class="a-foot__page">07 / 09</span>
+  </footer>
+    </div>
+  </section>
+
+  <section class="a-slide is-references">
+    <div class="a-safe">
+      
+  <header class="a-head">
+    <div class="a-head__id">
+      <span class="a-head__num">07</span>
+      <span class="a-head__label">FOYDALANILGAN ADABIYOTLAR</span>
+    </div>
+    <div class="a-dots"><span class="a-dot"></span><span class="a-dot"></span><span class="a-dot"></span><span class="a-dot"></span><span class="a-dot"></span><span class="a-dot"></span><span class="a-dot is-active"></span></div>
+  </header>
+      <div class="a-body">
+    <h1 class="a-h1">Foydalanilgan adabiyotlar</h1>
+    <span class="a-ref__std">GOST 7.1–2003 talablariga muvofiq</span>
+    <ol class="a-ref__list">
+      <li class="a-ref__item">
+        <span class="a-ref__num a-ref__num--law">1</span>
+        <span class="a-ref__text">O‘zbekiston Respublikasining Konstitutsiyasi. — Toshkent, 2023.</span>
+      </li>
+      <li class="a-ref__item">
+        <span class="a-ref__num a-ref__num--book">2</span>
+        <span class="a-ref__text">Saidov A. X. Davlat va huquq nazariyasi. — Adolat, 2021.</span>
+      </li></ol>
+    <div class="a-ref__foot">
+      <div class="a-ref__legend"><span class="a-ref__leg"><span class="a-ref__dot a-ref__dot--law"></span>Normativ</span><span class="a-ref__leg"><span class="a-ref__dot a-ref__dot--book"></span>Kitob/darslik</span><span class="a-ref__leg"><span class="a-ref__dot a-ref__dot--article"></span>Maqola</span><span class="a-ref__leg"><span class="a-ref__dot a-ref__dot--web"></span>Elektron manba</span></div>
+      <span class="a-placeholder">[o‘z manbalaringizni qo‘shing]</span>
+    </div></div>
+      
+  <footer class="a-foot">
+    <span class="a-foot__univ">TDYU</span>
+    <span class="a-foot__page">08 / 09</span>
+  </footer>
+    </div>
+  </section>
+
+  <section class="a-slide is-closing">
+    <div class="a-closing">
+      <div class="a-closing__left">
+        <span class="a-eyebrow a-eyebrow--accent">Taqdimot yakuni</span>
+        <h1 class="a-closing__msg">E’tiboringiz uchun rahmat</h1>
+        <span class="a-closing__line"></span>
+        <p class="a-closing__sub">Savollaringizga javob berishga tayyorman.</p>
+        <p class="a-closing__author">Shahzod Ismoilov, YHK-21-04</p>
+      </div>
+      <aside class="a-closing__right">
+        <span class="a-closing__qlabel">Savol-javob qismi</span>
+        <span class="a-closing__q">?</span>
+        <p class="a-closing__univ">TDYU</p>
+        <p class="a-closing__year">2025</p>
+      </aside>
+    </div></section></div></body></html>

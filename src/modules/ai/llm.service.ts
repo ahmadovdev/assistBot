@@ -4,6 +4,13 @@ import { LlmMessage, LlmProvider, LlmResult, LLM_PROVIDER } from './llm.types';
 
 interface GenerateStructuredOptions<T> {
   system: string;
+  /** Optional second system block, appended after `system` and marked as an
+   *  Anthropic cache breakpoint — for content that's stable across a BATCH
+   *  of calls (e.g. every slide of one deck sharing the same deck-context
+   *  preamble) but not necessarily forever (unlike `system` itself, which
+   *  callers might reuse across totally unrelated requests). Ignored by
+   *  providers that don't support caching. */
+  systemCacheable?: string;
   user: string;
   schema: ZodType<T, any, any>;
   model: string;
@@ -23,10 +30,11 @@ export class LlmService {
    * and runs a repair loop (feeding the validation error back) until valid.
    */
   async generateStructured<T>(opts: GenerateStructuredOptions<T>): Promise<LlmResult<T>> {
-    const { system, user, schema, model, maxRepairs = 2 } = opts;
+    const { system, systemCacheable, user, schema, model, maxRepairs = 2 } = opts;
 
     const messages: LlmMessage[] = [
       { role: 'system', content: system },
+      ...(systemCacheable ? [{ role: 'system' as const, content: systemCacheable, cacheControl: true }] : []),
       { role: 'user', content: user },
     ];
 

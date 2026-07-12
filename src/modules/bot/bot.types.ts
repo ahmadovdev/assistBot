@@ -17,8 +17,17 @@ export interface WizardContext {
   tone?: string;
   themeKey?: string;
   presentationId?: string;
+  // Optional title-page (1-bet) metadata collected from the user.
+  titulEnabled?: boolean;
+  titulUniversity?: string;
+  titulFaculty?: string;
+  titulStudent?: string;
   // outline-edit transient state
   editIndex?: number;
   pendingTitle?: string;
   editMsgId?: number;
+  // Content style chosen once per deck, right after outline confirm —
+  // 'cards' (default, points/bullets) vs 'prose' (continuous paragraph, only
+  // for the types that support it — see card.prompt.prose.ts).
+  contentMode?: 'cards' | 'prose';
 }
