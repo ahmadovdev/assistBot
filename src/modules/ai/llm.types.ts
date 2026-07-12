@@ -34,3 +34,12 @@ export interface LlmProvider {
 
 /** DI token for the active provider, chosen at runtime by AI_PROVIDER. */
 export const LLM_PROVIDER = Symbol('LLM_PROVIDER');
+
+/** A secondary provider+model used only when the primary fails. */
+export interface LlmFallback {
+  provider: LlmProvider;
+  model: string;
+}
+
+/** DI token for the optional fallback (null when AI_FALLBACK_PROVIDER=none). */
+export const LLM_FALLBACK = Symbol('LLM_FALLBACK');

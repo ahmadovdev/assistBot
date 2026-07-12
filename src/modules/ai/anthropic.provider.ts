@@ -1,6 +1,7 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { LlmChatResult, LlmMessage, LlmProvider } from './llm.types';
+import { CacheStatsService } from './cache-stats.service';
 
 interface AnthropicResponse {
   content?: { type: string; text?: string }[];
@@ -36,7 +37,10 @@ export class AnthropicProvider implements LlmProvider {
    * the fetch aborts and the caller's try/catch handles it (card fallback). */
   private readonly requestTimeoutMs = 120_000;
 
-  constructor(private readonly config: ConfigService) {}
+  constructor(
+    private readonly config: ConfigService,
+    private readonly cacheStats: CacheStatsService,
+  ) {}
 
   /**
    * Plain string when there's exactly one system message and it isn't
@@ -103,6 +107,12 @@ export class AnthropicProvider implements LlmProvider {
     if (cacheRead > 0 || cacheWrite > 0) {
       this.logger.debug(`Prompt cache: read=${cacheRead} write=${cacheWrite} tokens`);
     }
+    // Feed the running cache hit-rate metric (input_tokens = non-cached input).
+    this.cacheStats.record({
+      cacheRead,
+      cacheWrite,
+      freshInput: json.usage?.input_tokens ?? 0,
+    });
 
     return {
       content,

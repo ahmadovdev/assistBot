@@ -14,6 +14,14 @@ const PRICE_PER_MILLION_USD: Record<string, { input: number; output: number }> =
   'claude-sonnet-5': { input: 2.0, output: 10.0 }, // intro pricing through 2026-08-31
   'claude-opus-4-8': { input: 5.0, output: 25.0 },
   'claude-haiku-4-5': { input: 1.0, output: 5.0 },
+  'claude-haiku-4-5-20251001': { input: 1.0, output: 5.0 }, // dated alias of the above (AI_CARD_MODEL)
+  // Gemini fallback models (Google AI Studio list price, approximate). The
+  // fallback uses the `gemini-flash-latest` alias; the API returns the resolved
+  // concrete version (e.g. gemini-2.5-flash / gemini-3.5-flash) for cost lookup.
+  'gemini-2.5-flash': { input: 0.3, output: 2.5 },
+  'gemini-3.5-flash': { input: 0.3, output: 2.5 },
+  'gemini-2.5-pro': { input: 1.25, output: 10.0 },
+  'gemini-2.5-flash-lite': { input: 0.1, output: 0.4 },
 };
 
 /** Returns undefined for a model not in the table above, rather than

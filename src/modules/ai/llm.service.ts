@@ -1,6 +1,13 @@
-import { Inject, Injectable, Logger } from '@nestjs/common';
+import { Inject, Injectable, Logger, Optional } from '@nestjs/common';
 import { ZodType } from 'zod';
-import { LlmMessage, LlmProvider, LlmResult, LLM_PROVIDER } from './llm.types';
+import {
+  LlmMessage,
+  LlmProvider,
+  LlmResult,
+  LlmFallback,
+  LLM_PROVIDER,
+  LLM_FALLBACK,
+} from './llm.types';
 
 interface GenerateStructuredOptions<T> {
   system: string;
@@ -23,15 +30,46 @@ interface GenerateStructuredOptions<T> {
 export class LlmService {
   private readonly logger = new Logger(LlmService.name);
 
-  constructor(@Inject(LLM_PROVIDER) private readonly provider: LlmProvider) {}
+  constructor(
+    @Inject(LLM_PROVIDER) private readonly provider: LlmProvider,
+    @Optional() @Inject(LLM_FALLBACK) private readonly fallback: LlmFallback | null = null,
+  ) {}
 
   /**
-   * Calls the active provider in JSON mode, validates against a zod schema,
-   * and runs a repair loop (feeding the validation error back) until valid.
+   * Calls the active provider in JSON mode, validates against a zod schema, and
+   * runs a repair loop until valid. If the primary provider fails entirely
+   * (network/timeout error, or invalid JSON after all repairs) and a fallback
+   * provider is configured, the whole request is retried once on the fallback
+   * (e.g. Claude -> Gemini) — for resilience and provider-outage survival.
    */
   async generateStructured<T>(opts: GenerateStructuredOptions<T>): Promise<LlmResult<T>> {
-    const { system, systemCacheable, user, schema, model, maxRepairs = 2 } = opts;
+    try {
+      return await this.attempt(this.provider, opts.model, opts);
+    } catch (primaryErr) {
+      if (!this.fallback) throw primaryErr;
+      this.logger.warn(
+        `Primary LLM (${opts.model}) failed: ${String(primaryErr)}. ` +
+          `Falling back to ${this.fallback.model}.`,
+      );
+      try {
+        return await this.attempt(this.fallback.provider, this.fallback.model, opts);
+      } catch (fallbackErr) {
+        this.logger.error(`Fallback LLM (${this.fallback.model}) also failed: ${String(fallbackErr)}`);
+        throw fallbackErr;
+      }
+    }
+  }
 
+  /** One provider's full attempt: generate + validate + repair loop. */
+  private async attempt<T>(
+    provider: LlmProvider,
+    model: string,
+    opts: GenerateStructuredOptions<T>,
+  ): Promise<LlmResult<T>> {
+    const { system, systemCacheable, user, schema, maxRepairs = 2 } = opts;
+
+    // Built fresh per attempt so a fallback starts from a clean conversation,
+    // not the primary's failed repair turns.
     const messages: LlmMessage[] = [
       { role: 'system', content: system },
       ...(systemCacheable ? [{ role: 'system' as const, content: systemCacheable, cacheControl: true }] : []),
@@ -41,7 +79,7 @@ export class LlmService {
     let lastError = 'unknown error';
 
     for (let attempt = 0; attempt <= maxRepairs; attempt++) {
-      const { content, usage, model: usedModel } = await this.provider.chatJson(messages, model);
+      const { content, usage, model: usedModel } = await provider.chatJson(messages, model);
 
       const parsed = this.tryParse(content);
       if (parsed.ok) {

@@ -40,6 +40,11 @@ export const envSchema = z.object({
   AI_PROVIDER: z.enum(['anthropic', 'openrouter', 'gemini']).default('anthropic'),
   AI_OUTLINE_MODEL: z.string().default('claude-sonnet-4-6'),
   AI_CARD_MODEL: z.string().default('claude-sonnet-4-6'),
+  // Automatic failover: if the primary provider errors or can't produce valid
+  // output, retry once with this provider+model (e.g. Claude -> Gemini). Also
+  // keeps the bot alive if the primary provider has an outage. 'none' = off.
+  AI_FALLBACK_PROVIDER: z.enum(['none', 'anthropic', 'openrouter', 'gemini']).default('none'),
+  AI_FALLBACK_MODEL: z.string().optional(),
   OPENROUTER_API_KEY: z.string().optional(),
   ANTHROPIC_API_KEY: z.string().optional(),
   GEMINI_API_KEY: z.string().optional(),

@@ -18,6 +18,8 @@ export interface AppConfig {
     falApiKey?: string;
     outlineModel: string;
     cardModel: string;
+    fallbackProvider: 'none' | 'anthropic' | 'openrouter' | 'gemini';
+    fallbackModel?: string;
   };
   render: { puppeteerExecutablePath?: string; engine: 'legacy' | 'academic' };
   visuals: { wikimediaUserAgent: string; timeoutMs: number };
@@ -51,6 +53,8 @@ export function configuration(): { app: AppConfig } {
         falApiKey: env.FAL_API_KEY,
         outlineModel: env.AI_OUTLINE_MODEL,
         cardModel: env.AI_CARD_MODEL,
+        fallbackProvider: env.AI_FALLBACK_PROVIDER,
+        fallbackModel: env.AI_FALLBACK_MODEL,
       },
       render: { puppeteerExecutablePath: env.PUPPETEER_EXECUTABLE_PATH, engine: env.RENDER_ENGINE },
       visuals: {
