@@ -2,6 +2,10 @@ import { VisualSlideInput } from './visual.types';
 
 const VISUAL_LAYOUTS = new Set(['CONTENT']);
 
+function hasProseParagraph(slide: VisualSlideInput): boolean {
+  return typeof slide.content?.paragraph === 'string' && slide.content.paragraph.trim().length > 0;
+}
+
 export function imageCountForSlideCount(slideCount: number): 0 | 1 | 2 {
   if (slideCount < 10) return 0;
   if (slideCount < 15) return 1;
@@ -26,7 +30,11 @@ export function rankVisualCandidates(
   const total = Math.max(slides.length, 1);
 
   return slides
-    .filter((slide) => VISUAL_LAYOUTS.has(slide.layout) && !excludedPositions.has(slide.position))
+    .filter((slide) =>
+      VISUAL_LAYOUTS.has(slide.layout) &&
+      !hasProseParagraph(slide) &&
+      !excludedPositions.has(slide.position),
+    )
     .map((slide) => {
       const normalizedPosition = slide.position / total;
       return { slide, score: Math.abs(normalizedPosition - anchor) };

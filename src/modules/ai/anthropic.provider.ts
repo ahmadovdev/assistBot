@@ -34,8 +34,8 @@ export class AnthropicProvider implements LlmProvider {
   private readonly maxTokens = 4096;
   /** Hard cap per request so a stalled/black-holed connection can't hang the
    * worker forever (undici's fetch has no default response timeout). On timeout
-   * the fetch aborts and the caller's try/catch handles it (card fallback). */
-  private readonly requestTimeoutMs = 120_000;
+   * the fetch aborts and the generation job fails explicitly. */
+  private readonly defaultTimeoutMs = 45_000;
 
   constructor(
     private readonly config: ConfigService,
@@ -85,7 +85,9 @@ export class AnthropicProvider implements LlmProvider {
         system,
         messages: turns,
       }),
-      signal: AbortSignal.timeout(this.requestTimeoutMs),
+      signal: AbortSignal.timeout(
+        this.config.get<number>('app.ai.requestTimeoutMs') ?? this.defaultTimeoutMs,
+      ),
     });
 
     if (!res.ok) {

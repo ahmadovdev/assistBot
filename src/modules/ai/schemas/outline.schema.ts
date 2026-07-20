@@ -9,7 +9,7 @@ export const outlineSchema = z.object({
         position: z.number().int().positive(),
         type: z.enum(SLIDE_TYPES),
         title: z.string().min(1),
-        key_points: z.array(z.string()).default([]),
+        key_points: z.array(z.string()),
       }),
     )
     .min(1),
@@ -60,7 +60,6 @@ export function buildOutlineSchema(slideCount: number): z.ZodType<Outline, any, 
     if (data.slides.length <= 8) {
       const ritualTypes = new Set([
         'RELEVANCE',
-        'AIM_TASKS',
         'OBJECT_SUBJECT',
         'REFERENCES',
       ]);

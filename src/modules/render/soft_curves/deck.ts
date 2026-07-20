@@ -1,5 +1,4 @@
 import { DeckSlide } from '../templates/deck';
-import { WIKIMEDIA_VISUAL_CSS } from '../templates/wikimedia-visual';
 import {
   SOFT_CURVES_CSS,
   renderAgenda,
@@ -21,7 +20,6 @@ import {
   renderTimeline,
   renderTitle,
   renderTurlar,
-  renderFallback,
 } from './slides';
 
 type Renderer = (data: any) => string;
@@ -56,14 +54,12 @@ export function buildSoftCurvesDeck(_themeId: string, slides: DeckSlide[]): stri
       pageNo: String(index + 1).padStart(2, '0'),
       total,
     };
-    try {
-      return (RENDERERS[slide.type] ?? renderFallback)(data);
-    } catch {
-      return renderFallback(data);
-    }
+    const renderer = RENDERERS[slide.type];
+    if (!renderer) throw new Error(`No soft-curves renderer registered for slide type: ${slide.type}`);
+    return renderer(data);
   }).join('\n');
 
   return `<!doctype html>
-<html lang="uz"><head><meta charset="utf-8"><style>${SOFT_CURVES_CSS}\n${WIKIMEDIA_VISUAL_CSS}</style></head>
+<html lang="uz"><head><meta charset="utf-8"><style>${SOFT_CURVES_CSS}</style></head>
 <body><main class="sc-deck">${body}</main></body></html>`;
 }

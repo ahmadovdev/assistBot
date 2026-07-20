@@ -17,6 +17,7 @@ import { HelpHandler } from './handlers/help.handler';
 import { HistoryHandler } from './handlers/history.handler';
 import { OutlineEditHandler } from './handlers/outline-edit.handler';
 import { TestSlideHandler } from './handlers/testslide.handler';
+import { FullTypesHandler } from './handlers/fulltypes.handler';
 import { runsBot } from '../../common/config/role';
 
 @Injectable()
@@ -35,6 +36,7 @@ export class BotService implements OnApplicationBootstrap, OnModuleDestroy {
     private readonly historyHandler: HistoryHandler,
     private readonly outlineEditHandler: OutlineEditHandler,
     private readonly testSlideHandler: TestSlideHandler,
+    private readonly fullTypesHandler: FullTypesHandler,
   ) {}
 
   async onApplicationBootstrap(): Promise<void> {
@@ -60,10 +62,12 @@ export class BotService implements OnApplicationBootstrap, OnModuleDestroy {
     this.bot.command('history', (ctx) => this.historyHandler.handle(ctx));
     this.bot.command('debug', (ctx) => this.debugHandler.handle(ctx));
     this.bot.command('testslide', (ctx) => this.testSlideHandler.handleCommand(ctx));
+    this.bot.command('fulltypes', (ctx) => this.fullTypesHandler.handleCommand(ctx));
     this.bot.callbackQuery(/^history:/, (ctx) => this.historyHandler.handleCallback(ctx));
     this.bot.callbackQuery(/^oe:/, (ctx) => this.outlineEditHandler.handleCallback(ctx));
     this.bot.callbackQuery(/^tstype:/, (ctx) => this.testSlideHandler.handleCallback(ctx));
     this.bot.callbackQuery(/^tstheme:/, (ctx) => this.testSlideHandler.handleCallback(ctx));
+    this.bot.callbackQuery(/^fttheme:/, (ctx) => this.fullTypesHandler.handleCallback(ctx));
     this.bot.on('message:text', (ctx) => this.messageHandler.handle(ctx));
     this.bot.on('callback_query:data', (ctx) => this.callbackHandler.handle(ctx));
 

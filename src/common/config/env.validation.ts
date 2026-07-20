@@ -14,6 +14,17 @@ export const envSchema = z.object({
   // the BullMQ processors) so a heavy render can never freeze the bot.
   APP_ROLE: z.enum(['all', 'bot', 'worker']).default('all'),
 
+  // Telegram accounts with operational admin privileges. Admins bypass only
+  // the daily generation quota; in-flight and global VPS safety limits remain.
+  ADMIN_TELEGRAM_IDS: z.string()
+    .default('')
+    .refine(
+      (value) => !value.trim() || /^\s*\d+(?:\s*,\s*\d+)*\s*$/.test(value),
+      'ADMIN_TELEGRAM_IDS must be a comma-separated list of Telegram numeric IDs',
+    ),
+  // Kept as a validated legacy alias for the existing admin-only test tools.
+  TESTSLIDE_ADMIN_ID: z.string().regex(/^\d+$/).optional(),
+
   // Per-user rate limiting (cost + abuse protection on a public bot).
   RATE_LIMIT_ENABLED: z
     .enum(['true', 'false'])
@@ -24,6 +35,9 @@ export const envSchema = z.object({
   // Safety TTL (seconds) on the per-user "generation in progress" lock, so a
   // crashed pipeline self-heals even if the explicit release is missed.
   GENERATION_LOCK_TTL_SEC: z.coerce.number().int().positive().default(1800),
+  // Global expensive-pipeline slots for the whole server. Keep this at 1 on a
+  // small VPS; raise only after adding CPU/RAM or more worker capacity.
+  GENERATION_GLOBAL_CONCURRENCY: z.coerce.number().int().positive().default(1),
 
   // PostgreSQL
   DATABASE_URL: z.string().url(),
@@ -37,14 +51,16 @@ export const envSchema = z.object({
   TELEGRAM_BOT_TOKEN: z.string().min(1, 'TELEGRAM_BOT_TOKEN is required'),
 
   // AI providers (optional until the relevant phase)
-  AI_PROVIDER: z.enum(['anthropic', 'openrouter', 'gemini']).default('anthropic'),
-  AI_OUTLINE_MODEL: z.string().default('claude-sonnet-4-6'),
-  AI_CARD_MODEL: z.string().default('claude-sonnet-4-6'),
-  // Automatic failover: if the primary provider errors or can't produce valid
-  // output, retry once with this provider+model (e.g. Claude -> Gemini). Also
-  // keeps the bot alive if the primary provider has an outage. 'none' = off.
-  AI_FALLBACK_PROVIDER: z.enum(['none', 'anthropic', 'openrouter', 'gemini']).default('none'),
-  AI_FALLBACK_MODEL: z.string().optional(),
+  AI_PROVIDER: z.enum(['anthropic', 'openrouter', 'gemini']).default('openrouter'),
+  AI_OUTLINE_MODEL: z.string().default('openai/gpt-4.1'),
+  AI_CARD_MODEL: z.string().default('google/gemini-2.5-flash'),
+  AI_RESPONSE_CACHE_ENABLED: z
+    .enum(['true', 'false'])
+    .default('true')
+    .transform((v) => v === 'true'),
+  AI_RESPONSE_CACHE_TTL_SEC: z.coerce.number().int().positive().default(7 * 24 * 60 * 60),
+  AI_REQUEST_TIMEOUT_MS: z.coerce.number().int().min(10_000).max(180_000).default(45_000),
+  IMAGE_LAB_TOKEN: z.string().min(16).optional(),
   OPENROUTER_API_KEY: z.string().optional(),
   ANTHROPIC_API_KEY: z.string().optional(),
   GEMINI_API_KEY: z.string().optional(),
@@ -55,7 +71,6 @@ export const envSchema = z.object({
   // Rendering engine: 'legacy' (default, existing 5 themes) or 'academic'
   // (new modern_academic HTML renderer). Off by default — nothing changes.
   RENDER_ENGINE: z.enum(['legacy', 'academic']).default('legacy'),
-
   // Wikimedia Commons visual layer. A product URL in User-Agent satisfies
   // Wikimedia's identification policy without requiring an API key.
   WIKIMEDIA_USER_AGENT: z.string().min(10).default(

@@ -93,7 +93,6 @@ function buildHybridPlan(slide: DeckSlide, index: number, image: Buffer, themeId
       color: t.text,
       bold: true,
       transparency: 100,
-      fitPolicy: 'fixed',
       z: 1,
     });
   }
@@ -113,7 +112,6 @@ function buildHybridPlan(slide: DeckSlide, index: number, image: Buffer, themeId
       fontSize: 16,
       color: t.text,
       transparency: 100,
-      fitPolicy: 'fixed',
       z: 1,
     });
   }
@@ -133,7 +131,6 @@ function buildHybridPlan(slide: DeckSlide, index: number, image: Buffer, themeId
       fontSize: 10,
       color: t.muted,
       transparency: 100,
-      fitPolicy: 'fixed',
       z: 1,
     });
   }

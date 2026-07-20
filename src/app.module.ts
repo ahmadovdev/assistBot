@@ -10,6 +10,7 @@ import { BotModule } from './modules/bot/bot.module';
 import { AiModule } from './modules/ai/ai.module';
 import { GenerationModule } from './modules/generation/generation.module';
 import { RenderModule } from './modules/render/render.module';
+import { ImageLabModule } from './modules/image-lab/image-lab.module';
 
 @Module({
   imports: [
@@ -35,6 +36,7 @@ import { RenderModule } from './modules/render/render.module';
     AiModule, // Phase 3
     GenerationModule, // Phase 3-4
     RenderModule, // Phase 5
+    ImageLabModule,
     // StorageModule,        // Phase 6
   ],
 })

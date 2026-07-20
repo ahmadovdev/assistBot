@@ -21,9 +21,10 @@ async function bootstrap(): Promise<void> {
   // so they don't collide on the same TCP port.
   const basePort = config.get<number>('app.port') ?? 3000;
   const port = role === 'worker' ? basePort + 1 : basePort;
+  const host = role === 'worker' ? '127.0.0.1' : '0.0.0.0';
 
-  await app.listen(port);
-  app.get(Logger).log(`Application running (role=${role}) on http://localhost:${port}`);
+  await app.listen(port, host);
+  app.get(Logger).log(`Application running (role=${role}) on http://${host}:${port}`);
 }
 
 void bootstrap();

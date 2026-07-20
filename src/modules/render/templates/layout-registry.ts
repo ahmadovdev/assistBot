@@ -55,9 +55,9 @@ export const createDeckState = (): DeckState => ({ usedLayouts: new Map() });
 // LAST — it wins only when the concept doesn't fit (wrong theme or shape).
 
 export const STATS_LAYOUTS: LayoutOption<StatsData>[] = [
-  // gradient_cards renders fine for any count via gridForCount(), but reads
-  // best up to 4 cards (matches the shipped gradient-class cycle of 4).
-  { key: 'gradient_cards', themeRestriction: ['dark_premium'], matches: (d) => Array.isArray(d.stats) && d.stats.length <= 4 },
+  // One dominant figure plus supporting evidence creates hierarchy instead
+  // of giving every metric identical card weight.
+  { key: 'evidence_dashboard', themeRestriction: ['dark_premium'], matches: (d) => Array.isArray(d.stats) && d.stats.length >= 1 && d.stats.length <= 4 },
   { key: 'default', matches: () => true },
 ];
 
@@ -67,17 +67,23 @@ export const TURLAR_LAYOUTS: LayoutOption<TurlarData>[] = [
 ];
 
 export const DEFINITION_LAYOUTS: LayoutOption<DefinitionData>[] = [
-  // glass_hero only renders term+definition — it silently drops `aspects`, so
-  // it's only offered when there are none to lose.
+  // Prose definitions rotate through term-dominant compositions. Their visual
+  // grammar intentionally differs from CONTENT's editorial reading layouts.
+  { key: 'term_axis', themeRestriction: ['dark_premium'], matches: (d) => typeof d.paragraph === 'string' },
+  { key: 'lexicon_split', themeRestriction: ['dark_premium'], matches: (d) => typeof d.paragraph === 'string' },
+  { key: 'concept_frame', themeRestriction: ['dark_premium'], matches: (d) => typeof d.paragraph === 'string' },
   { key: 'glass_hero', themeRestriction: ['dark_premium'], matches: (d) => !d.aspects || d.aspects.length === 0 },
+  // Structured definitions with aspects still get a term-first alternate.
+  { key: 'term_axis', themeRestriction: ['dark_premium'], matches: (d) => Array.isArray(d.aspects) && d.aspects.length > 0 },
+  { key: 'nafis_lexicon', themeRestriction: ['premium_academic'], matches: (d) => typeof d.paragraph === 'string' },
+  { key: 'nafis_concept_plate', themeRestriction: ['premium_academic'], matches: () => true },
+  { key: 'curve_lexicon', themeRestriction: ['soft_curves_research'], matches: (d) => typeof d.paragraph === 'string' },
+  { key: 'curve_concept', themeRestriction: ['soft_curves_research'], matches: () => true },
   { key: 'default', matches: () => true },
 ];
 
 export const FINDING_LAYOUTS: LayoutOption<FindingData>[] = [
-  // z_stack needs 2 points (front card = evidence, back two = points[0..1]).
-  // findingZStack() itself also falls back internally if this is violated —
-  // this is a belt-and-suspenders content-shape filter, not the only guard.
-  { key: 'z_stack', themeRestriction: ['dark_premium'], matches: (d) => (d.points?.length ?? 0) >= 2 },
+  { key: 'research_brief', themeRestriction: ['dark_premium'], matches: () => true },
   { key: 'default', matches: () => true },
 ];
 
@@ -93,10 +99,19 @@ export const TIMELINE_LAYOUTS: LayoutOption<TimelineData>[] = [
 // entry FIRST, 'default' LAST (see the ORDER MATTERS note above — 'default'
 // always matches, so it must never be first or it wins on every occurrence).
 export const CONTENT_LAYOUTS: LayoutOption<ContentData>[] = [
-  // Defensive optional chaining: `points` is absent on prose-mode content,
-  // though in practice prose bypasses this registry entirely (see
-  // cards.processor.ts) — this guard is a second layer, not the only one.
+  // Paragraph slides rotate through four reading patterns before any variant
+  // can repeat inside the same deck.
+  { key: 'editorial_prose', themeRestriction: ['dark_premium'], matches: (d) => typeof d.paragraph === 'string' },
+  { key: 'chapter_columns', themeRestriction: ['dark_premium'], matches: (d) => typeof d.paragraph === 'string' },
+  { key: 'focus_statement', themeRestriction: ['dark_premium'], matches: (d) => typeof d.paragraph === 'string' },
+  { key: 'open_manifesto', themeRestriction: ['dark_premium'], matches: (d) => typeof d.paragraph === 'string' },
   { key: 'changelog_lines', themeRestriction: ['dark_premium'], matches: (d) => (d.points?.length ?? 0) >= 2 },
+  { key: 'nafis_columns', themeRestriction: ['premium_academic'], matches: (d) => typeof d.paragraph === 'string' },
+  { key: 'nafis_margin_note', themeRestriction: ['premium_academic'], matches: (d) => typeof d.paragraph === 'string' },
+  { key: 'nafis_evidence_lines', themeRestriction: ['premium_academic'], matches: (d) => (d.points?.length ?? 0) >= 2 },
+  { key: 'curve_editorial', themeRestriction: ['soft_curves_research'], matches: (d) => typeof d.paragraph === 'string' },
+  { key: 'curve_statement', themeRestriction: ['soft_curves_research'], matches: (d) => typeof d.paragraph === 'string' },
+  { key: 'curve_lanes', themeRestriction: ['soft_curves_research'], matches: (d) => (d.points?.length ?? 0) >= 2 },
   { key: 'default', matches: () => true },
 ];
 
@@ -104,11 +119,15 @@ export const BATAFSIL_LAYOUTS: LayoutOption<BatafsilData>[] = [
   // marginalia's right-hand margin column is empty without points — only
   // offer it when there's something to put there.
   { key: 'marginalia', themeRestriction: ['dark_premium'], matches: (d) => !!d.points?.length },
+  { key: 'nafis_annotation', themeRestriction: ['premium_academic'], matches: () => true },
+  { key: 'curve_margin', themeRestriction: ['soft_curves_research'], matches: () => true },
   { key: 'default', matches: () => true },
 ];
 
 export const MISOL_LAYOUTS: LayoutOption<MisolData>[] = [
-  { key: 'signal_ping', themeRestriction: ['dark_premium'], matches: () => true },
+  { key: 'case_study', themeRestriction: ['dark_premium'], matches: () => true },
+  { key: 'nafis_case_note', themeRestriction: ['premium_academic'], matches: () => true },
+  { key: 'curve_case', themeRestriction: ['soft_curves_research'], matches: () => true },
   { key: 'default', matches: () => true },
 ];
 
@@ -125,7 +144,7 @@ export const PROCESS_LAYOUTS: LayoutOption<ProcessData>[] = [
 ];
 
 export const PROBLEMS_SOLUTIONS_LAYOUTS: LayoutOption<ProblemsSolutionsData>[] = [
-  { key: 'diff_view', themeRestriction: ['dark_premium'], matches: (d) => Array.isArray(d.pairs) && d.pairs.length <= 4 },
+  { key: 'matrix', themeRestriction: ['dark_premium'], matches: (d) => Array.isArray(d.pairs) && d.pairs.length <= 3 },
   { key: 'default', matches: () => true },
 ];
 
@@ -173,7 +192,14 @@ export function selectLayout<T>(
 
   const themeOk = options.filter((o) => !o.themeRestriction || o.themeRestriction.includes(themeId));
   const contentOk = themeOk.filter((o) => o.matches(data));
-  const pool = contentOk.length > 0 ? contentOk : themeOk.length > 0 ? themeOk : options;
+  const matchingPreferred = contentOk.filter((o) => o.key !== 'default');
+  const pool = matchingPreferred.length > 0
+    ? matchingPreferred
+    : contentOk.length > 0
+      ? contentOk
+      : themeOk.length > 0
+        ? themeOk
+        : options;
 
   const usedForType = deckState.usedLayouts.get(slideType) ?? [];
   const unused = pool.filter((o) => !usedForType.includes(o.key));

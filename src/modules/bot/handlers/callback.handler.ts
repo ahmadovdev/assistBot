@@ -180,11 +180,13 @@ export class CallbackHandler {
 
         // Rate-limit gate: this is where the expensive pipeline (LLM + render)
         // actually starts, so guard cost/abuse here before creating anything.
-        const decision = await this.rateLimit.startGeneration(userId);
+        const decision = await this.rateLimit.startGeneration(userId, ctx.user.telegramId);
         if (!decision.allowed) {
           const msg =
             decision.reason === 'inflight'
               ? '⏳ Avvalgi taqdimotingiz hali tayyorlanmoqda. Tugashini kuting, keyin yangisini boshlaysiz.'
+              : decision.reason === 'busy'
+                ? '⏳ Server hozir bitta taqdimot tayyorlayapti. Iltimos, bir necha daqiqadan keyin qayta urinib ko‘ring.'
               : `\u{1F6D1} Bugungi limit tugadi (${decision.limit} ta/kun). ` +
                 `Ertaga (UTC ${decision.resetsAt.getUTCHours().toString().padStart(2, '0')}:00 dan keyin) qayta urinib ko‘ring.`;
           await this.replaceSelectionMessage(ctx, msg);
@@ -217,13 +219,10 @@ export class CallbackHandler {
             `\u23F3 Reja tayyorlanmoqda...`,
         );
 
-        // attempts: 3 (inherits exponential backoff from the queue default).
-        // Processors catch their own errors, so retries only fire for
-        // pre-processing/infra blips (e.g. a transient DB read) — safe to retry.
         await this.outlineQueue.add(
           'generate',
           { presentationId: presentation.id },
-          { attempts: 3 },
+          { attempts: 1 },
         );
         return;
       }
@@ -257,7 +256,7 @@ export class CallbackHandler {
           }
           await this.session.setState(userId, BotState.GENERATING);
           await ctx.editMessageText('\u23F3 Boshqa reja tayyorlanmoqda...');
-          await this.outlineQueue.add('generate', { presentationId }, { attempts: 3 });
+          await this.outlineQueue.add('generate', { presentationId }, { attempts: 1 });
           return;
         }
         return;
@@ -290,7 +289,7 @@ export class CallbackHandler {
             },
             contentMode,
           },
-          { attempts: 3 },
+          { attempts: 1 },
         );
         return;
       }

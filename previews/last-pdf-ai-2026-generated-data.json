@@ -1,0 +1,399 @@
+{
+  "id": "06d61821-6627-44f7-a925-e2e6255adf9b",
+  "theme": "dark_premium",
+  "title": null,
+  "topic": "Sunʼiy intellekt 2026: holat va kelajak",
+  "language": "uz",
+  "slideCount": 15,
+  "status": "done",
+  "outline": {
+    "slides": [
+      {
+        "type": "TITLE",
+        "title": "Sun'iy intellekt 2026: Holat va kelajak",
+        "position": 1,
+        "key_points": [
+          "Tadqiqot mavzusi",
+          "Muallif va rahbar",
+          "2026-yil"
+        ]
+      },
+      {
+        "type": "AGENDA",
+        "title": "Taqdimot rejasi",
+        "position": 2,
+        "key_points": [
+          "AI holati va dolzarbligi",
+          "Texnologik o'zgarishlar",
+          "Sektorlarga ta'siri",
+          "Kelajak ko'rinishi"
+        ]
+      },
+      {
+        "type": "RELEVANCE",
+        "title": "Nima uchun bu muhim?",
+        "position": 3,
+        "key_points": [
+          "Iqtisodiyotning raqamli transformatsiyasi",
+          "Jamiyatdagi o'zgarishlar sur'ati",
+          "Texnologik raqobatbardoshlik"
+        ]
+      },
+      {
+        "type": "DEFINITION",
+        "title": "Zamonaviy AI tushunchasi",
+        "position": 4,
+        "key_points": [
+          "Generativ intellekt mohiyati",
+          "Agentic AI (agentiv aql)",
+          "O'z-o'zini takomillashtirish qobiliyati"
+        ]
+      },
+      {
+        "type": "PROCESS",
+        "title": "Chatbotlardan agentlarga o'tish",
+        "position": 5,
+        "key_points": [
+          "Reaktiv javob berishdan faol harakatga",
+          "Ko'p bosqichli rejalashtirish",
+          "Tashqi tizimlarni boshqarish"
+        ]
+      },
+      {
+        "type": "CONTENT",
+        "title": "2026-yilgacha kutilayotgan yutuqlar",
+        "position": 6,
+        "key_points": [
+          "Katta modellar samaradorligi",
+          "Kichik va maxsus modellar rivoji",
+          "Ko'p modallilikning integratsiyasi"
+        ]
+      },
+      {
+        "type": "TURLAR",
+        "title": "AI qo'llaniladigan asosiy sohalar",
+        "position": 7,
+        "key_points": [
+          "Sog'liqni saqlash va farmatsevtika",
+          "Ta'lim va shaxsiylashtirish",
+          "Ishlab chiqarish va logistika",
+          "Moliya va xavfsizlik"
+        ]
+      },
+      {
+        "type": "CONTENT",
+        "title": "Tizimlar bilan o'zaro ta'sir mexanizmi",
+        "position": 8,
+        "key_points": [
+          "API va veb-xizmatlar orqali ulanish",
+          "Ma'lumotlar bazasini real vaqtda tahlil qilish",
+          "Jarayonlarni avtomatlashtirish zanjiri"
+        ]
+      },
+      {
+        "type": "MISOL",
+        "title": "Sog'liqni saqlashdagi amaliy holat",
+        "position": 9,
+        "key_points": [
+          "Tashxis qo'yishda yordamchi tizim",
+          "Bemor ma'lumotlarini shaxsiylashtirish",
+          "Davolash rejasi optimallashuvi"
+        ]
+      },
+      {
+        "type": "CONTENT",
+        "title": "Ta'limda shaxsiylashtirish ta'siri",
+        "position": 10,
+        "key_points": [
+          "O'quvchiga moslashtirilgan darslar",
+          "Ko'nikmalarni aniqlash va rivojlantirish",
+          "O'qituvchilarning vazifasini o'zgartirish"
+        ]
+      },
+      {
+        "type": "PROBLEMS_SOLUTIONS",
+        "title": "Etik xavflar va boshqaruv",
+        "position": 11,
+        "key_points": [
+          "Muammo: Biased (to'g'ri kelmagan) qarorlar",
+          "Yechim: Shaffoflik standartlari",
+          "Muammo: Maxfiylik buzilishi",
+          "Yechim: Kuchli ma'lumot himoyasi qonunchiligi"
+        ]
+      },
+      {
+        "type": "COMPARISON",
+        "title": "Hamkorlik va avtomatlashtirish",
+        "position": 12,
+        "key_points": [
+          "Inson-AI hamkorligi: Ijodiy va tahliliy vazifalar",
+          "To'liq avtomatlashtirish: Rutina va takrorlanuvchi ishlar",
+          "Har bir yondashuvning afzalliklari"
+        ]
+      },
+      {
+        "type": "CONTENT",
+        "title": "Infrastruktur va maxfiylik muammolari",
+        "position": 13,
+        "key_points": [
+          "Hisoblash quvvatlari talabi",
+          "Energiya resurslarini tejash",
+          "Ma'lumotlar xavfsizligi kafolatlari"
+        ]
+      },
+      {
+        "type": "CONCLUSION",
+        "title": "Xulosa: Asosiy xulosalar",
+        "position": 14,
+        "key_points": [
+          "AI jamiyatning ajralmas qismiga aylandi",
+          "Texnologik yutuqlar etika bilan muvozanat talab qiladi",
+          "Kelajak inson va mashina hamkorligida"
+        ]
+      },
+      {
+        "type": "CLOSING",
+        "title": "E'tiboringiz uchun rahmat!",
+        "position": 15,
+        "key_points": [
+          "Savollar va muhokama"
+        ]
+      }
+    ],
+    "deck_title": "Sun'iy intellekt 2026: Holat va kelajak"
+  },
+  "slides": [
+    {
+      "position": 1,
+      "type": "TITLE",
+      "content": {
+        "title": "Sun'iy intellekt 2026: Holat va kelajak",
+        "layout": "typographic_statement"
+      }
+    },
+    {
+      "position": 2,
+      "type": "AGENDA",
+      "content": {
+        "items": [
+          {
+            "text": "AI holati va dolzarbligi"
+          },
+          {
+            "text": "Texnologik o'zgarishlar"
+          },
+          {
+            "text": "Sektorlarga ta'siri"
+          },
+          {
+            "text": "Kelajak ko'rinishi"
+          }
+        ],
+        "title": "Taqdimot rejasi"
+      }
+    },
+    {
+      "position": 3,
+      "type": "RELEVANCE",
+      "content": {
+        "title": "AI iqtisodiy transformatsiya va raqobatbardoshlikni belgilaydi",
+        "kicker": "Dolzarblik",
+        "paragraph": "Sun'iy intellektning tez sur'atlar bilan rivojlanishi global iqtisodiyotning raqamli transformatsiyasini keskin tezlashtirib, biznes jarayonlarini tubdan o'zgartirmoqda. Bu o'z navbatida jamiyatdagi o'zgarishlar sur'atini oshiradi, chunki an'anaviy usullar zamonaviy talablarga javob bera olmaydi va raqobatbardoshlikni saqlab qolish uchun innovatsion yechimlarga bo'lgan ehtiyoj ortib bormoqda. Natijada texnologik yetakchilik faqat raqamlar o'yini emas, balki mamlakatning global bozordagi istiqboli va barqaror rivojlanish garantiyasiga aylanadi."
+      }
+    },
+    {
+      "position": 4,
+      "type": "DEFINITION",
+      "content": {
+        "term": "Zamonaviy AI tushunchasi",
+        "layout": "term_axis",
+        "paragraph": "Zamonaviy sun'iy intellekt faqat ma'lumotlarni qayta ishlash vositasi emas, balki murakkab muammolarni hal qiluvchi faol agentdir. U generativ modellarga asoslanib, tashqi muhitni tahlil qiladi va ko'p bosqichli rejalashtirish orqali mustaqil harakat qiladi. Bu o'z navbatida, tizimning xatolarini tahlil qilib, o'z algoritmlarini takomillashtirish qobiliyati hisobiga doimiy ravishda o'z-o'zini rivojlantirish imkonini beradi. Natijada, AI oddiy dasturiy ta'minotdan farqli o'laroq, dinamik sharoitda moslashuvchan qarorlar qabul qiladi va maqsadga yo'naltirilgan jarayonlarni avtomatik boshqaradi."
+      }
+    },
+    {
+      "position": 5,
+      "type": "PROCESS",
+      "content": {
+        "steps": [
+          {
+            "body": "An'anaviy chatbotlar foydalanuvchi so'roviga faqat reaktiv tarzda javob qaytaradi va oldindan belgilangan skriptlar asosida ishlaydi.",
+            "title": "Reaktiv javob berish"
+          },
+          {
+            "body": "Agentlar murakkab maqsadga erishish uchun ko'p bosqichli rejalashtirish orqali harakatlar ketma-ketligini mustaqil ravishda tuzadi.",
+            "title": "Ko'p bosqichli rejalashtirish"
+          },
+          {
+            "body": "Shu sababli, sun'iy intellekt tashqi dasturlar bilan o'zaro ta'sirlashib, jarayonlarni avtomatlashtiruvchi faol kuchga aylanadi.",
+            "title": "Tashqi tizimlarni boshqarish"
+          }
+        ],
+        "title": "AI reaktiv javobdan faol agentiv harakatga evolyutsiya qiladi",
+        "layout": "switchback_path"
+      }
+    },
+    {
+      "position": 6,
+      "type": "CONTENT",
+      "content": {
+        "title": "Modellar samaradorligi oshadi va ko'p modallilik integratsiyalanadi",
+        "layout": "editorial_prose",
+        "paragraph": "Katta tildagi modellar (LLM) optimallashtirish natijasida hisoblash resurslarini tejash bilan birga ancha yuqori tezlikda ishlaydi, bu esa ularni real vaqtda talab qiladigan tizimlarda qo'llashni imkoniyatini yaratadi. Shu bilan birga, kichikroq va maxsus sohalarga mo'ljallangan modellarning rivojlanishi katta resurslarsiz ham yuqori aniqlikdagi natijalarga erishish imkonini beradi. Bundan tashqari, matn, ovoz va tasvirni birlashtiruvchi ko'p modallilikning integratsiyasi sun'iy intellektning atrof-muhitni chuqurroq tushunishiga va murakkab vazifalarni hal qilishdagi ishonchliligini oshirishiga xizmat qiladi."
+      }
+    },
+    {
+      "position": 7,
+      "type": "TURLAR",
+      "content": {
+        "items": [
+          {
+            "icon": "health",
+            "text": "Tibbiy diagnostika aniqligi va farmatsevtika tadqiqotlarini tezlashtiradi.",
+            "label": "Sog'liqni saqlash"
+          },
+          {
+            "icon": "education",
+            "text": "Talabalar uchun individual o'quv yo'nalishlarini shakllantiradi.",
+            "label": "Ta'lim"
+          },
+          {
+            "icon": "gear",
+            "text": "Logistika optimallashuvi va ishlab chiqarish jarayonlarini avtomatlashtiradi.",
+            "label": "Ishlab chiqarish"
+          },
+          {
+            "icon": "money",
+            "text": "Moliyaviy xavfsizlikni ta'minlash va risklarni oldini olish imkonini beradi.",
+            "label": "Moliya"
+          }
+        ],
+        "title": "AI turli sohalarni raqamli transformatsiya qiladi",
+        "kicker": "Turlari",
+        "layout": "squircle_bento"
+      }
+    },
+    {
+      "position": 8,
+      "type": "CONTENT",
+      "content": {
+        "title": "Agentic AI tizimlar API orqali boshqariladi",
+        "layout": "chapter_columns",
+        "paragraph": "Zamonaviy sun'iy intellekt agentlari mustaqil harakat qilish uchun API va veb-xizmatlar orqali tashqi tizimlarga ulanadi. Bu ulanish agentga ma'lumotlar bazasini real vaqtda tahlil qilish imkonini beradi, shu orqali u dinamik ma'lumotlarga asoslanib qaror qabul qiladi. Natijada, agent turli tizimlar o'rtasida ma'lumot almashishni avtomatlashtirish zanjirini yaratadi. Bu jarayon inson aralashuvisiz murakkab ko'p bosqichli vazifalarni bajarishga imkon beradi."
+      }
+    },
+    {
+      "position": 9,
+      "type": "MISOL",
+      "content": {
+        "icon": "health",
+        "title": "Sun'iy intellekt tibbiyotda tashxis va davolashni optimallashtiradi",
+        "layout": "case_study",
+        "takeaway": "AI tibbiyotda tashxis aniqligi va davolash samaradorligini oshiradi.",
+        "paragraph": "Tibbiyot sohasida sun'iy intellekt tashxis qo'yishda yordamchi tizim sifatida faoliyat yuritadi, bu esa shifokorlarning aniqligini oshiradi. Shu bilan birga, bemorlarning shaxsiy ma'lumotlarini tahlil qilish orqali individual davolash rejasi ishlab chiqiladi. Natijada, dori vositalarining samaradorligi ortadi va nojo'ya ta'sirlar xavfi kamayadi. Buning ustiga, davolash jarayoni optimallashtirilgani sababli, kasalxona xarajatlari ham pasayadi. Shu sababli, AI tibbiy yordam sifatini va samaradorligini bir vaqtning o'zida oshiradi."
+      }
+    },
+    {
+      "position": 10,
+      "type": "CONTENT",
+      "content": {
+        "title": "AI ta'limda shaxsiylashtirishni ta'minlaydi",
+        "layout": "focus_statement",
+        "paragraph": "Sun'iy intellekt o'quvchining individual ehtiyojlari asosida dars rejalarini moslashtiradi, bu esa har bir talaba uchun optimal o'qish sur'atini ta'minlaydi. Tizimlar ko'nikmalarni real vaqt rejimida tahlil qilib, zaif tomonlarni aniqlaydi va shu sababli o'quv jarayoni ancha samarali bo'ladi. Buning ustiga, AI rutina vazifalarni bajarish orqali o'qituvchilarning vaqtini tejaydi. Natijada, mutaxassislar o'quvchilarning ijodiy va tanqidiy fikrlashini rivojlantirishga ko'proq e'tibor qaratish imkoniyatiga ega bo'ladi."
+      }
+    },
+    {
+      "position": 11,
+      "type": "PROBLEMS_SOLUTIONS",
+      "content": {
+        "pairs": [
+          {
+            "problem": "Ma'lumotlardagi og'ish tizim noto'g'ri qaror qabul qilishiga olib keladi",
+            "solution": "Shaffoflik standartlarini joriy etib, qaror qabul qilish jarayonini tekshirishni ta'minlash"
+          },
+          {
+            "problem": "Foydalanuvchi ma'lumotlarining xavfsizligi buzilishi xususiylikni tahdid qiladi",
+            "solution": "Kuchli ma'lumot himoyasi qonunchiligini joriy etib, shaxsiy ma'lumotlarni himoya qilishni ta'minlash"
+          },
+          {
+            "problem": "Tizimlar ishonchsizligi foydalanuvchilarning AI texnologiyasiga bo'lgan ishonchini kamaytiradi",
+            "solution": "Tizimlar xavfsizligini ta'minlovchi texnik standartlarni ishlab chiqish va joriy etish"
+          }
+        ],
+        "title": "Etik xavflar va boshqaruv",
+        "layout": "matrix",
+        "subtitle": "AI tizimlaridagi adolat va maxfiylik muammolarini hal qilish yo'llari."
+      }
+    },
+    {
+      "position": 12,
+      "type": "COMPARISON",
+      "content": {
+        "left": {
+          "items": [
+            "Murakkab tahlil va strategik qarorlar",
+            "Ijodiy yechimlar va innovatsiyalar",
+            "Empatiya va axloqiy baholash talab etiladi"
+          ],
+          "label": "Inson-AI hamkorligi"
+        },
+        "right": {
+          "items": [
+            "Yuklangan hisob-kitob va ma'lumot tahlili",
+            "Takrorlanuvchi jarayonlarni tez bajarish",
+            "Xatoliklarni minimallashtirish va barqarorlik"
+          ],
+          "label": "To'liq avtomatlashtirish"
+        },
+        "title": "Avtomatlashtirish rutina, hamkorlik ijodiy vazifalar uchun",
+        "layout": "toggle_spectrum"
+      }
+    },
+    {
+      "position": 13,
+      "type": "CONTENT",
+      "content": {
+        "title": "AI infratuzilmasi hisoblash, energiya va xavfsizlik cheklovlariga duch keladi",
+        "layout": "open_manifesto",
+        "paragraph": "Agentic AI tizimlari murakkab rejalashtirish uchun katta hisoblash quvvatlarini talab qiladi, bu esa mavjud infratuzilmani quvvatlashda qiyinchilik tug'diradi. Shu sababli, energiya resurslarini tejovchi yechimlarsiz tizimlarning ekologik va iqtisodiy ishlashi qiyinlashadi. Buning ustiga, ma'lumotlar xavfsizligi kafolatlari bo'lmasa, maxfiylik muammolari yuzaga kelib, tizimga bo'lgan ishonch pasayadi. Natijada, barqaror rivojlanish uchun texnik quvvatlar, energiya samaradorligi va axborot himoyasini muvozanatlashtirish zarur."
+      }
+    },
+    {
+      "position": 14,
+      "type": "CONCLUSION",
+      "content": {
+        "title": "Xulosa: Asosiy xulosalar",
+        "kicker": "Xulosa",
+        "closing": "Texnologiya, etika va insoniy hamkorlik barqaror kelajakning kalitidir.",
+        "paragraph": "Sun'iy intellektning 2026-yildagi evolyutsiyasi uni oddiy vositadan tashqi tizimlarni boshqaruvchi faol agentga aylantirdi, natijada u iqtisodiyotning ajralmas qismiga aylandi. Shu bilan birga, keng qo'llanilish keltirib chiqaradigan etika, maxfiylik va xavfsizlik muammolarini hal qilish texnologik yutuqlar bilan muvozanat talab qiladi. Buning ustiga, barqaror rivojlanish inson va mashina hamkorligiga asoslanadi, bu esa kelajak viziyasining asosini tashkil etadi."
+      }
+    },
+    {
+      "position": 15,
+      "type": "CLOSING",
+      "content": {
+        "title": "E'tiboringiz uchun rahmat!",
+        "layout": "default"
+      }
+    }
+  ],
+  "generation": [
+    {
+      "stage": "outline",
+      "status": "completed",
+      "model": "qwen/qwen3.6-35b-a3b",
+      "tokens": 11802,
+      "promptTokens": 8253,
+      "completionTokens": 3549,
+      "costUsd": 0.0047
+    },
+    {
+      "stage": "cards",
+      "status": "completed",
+      "model": "qwen/qwen3.6-35b-a3b",
+      "tokens": 66069,
+      "promptTokens": 52329,
+      "completionTokens": 13740,
+      "costUsd": 0.02899
+    }
+  ]
+}

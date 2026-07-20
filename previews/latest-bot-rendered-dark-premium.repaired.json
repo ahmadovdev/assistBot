@@ -1,0 +1,205 @@
+{
+  "id": "0cc86ed5-f9bc-4496-8f10-7c5796fe31ab",
+  "theme": "dark_premium",
+  "repair": {
+    "changed": false,
+    "passes": 0,
+    "warnings": [
+      "render-fit repair skipped"
+    ]
+  },
+  "slides": [
+    {
+      "position": 1,
+      "type": "TITLE",
+      "content": {
+        "title": "Sunʼiy intellekt 2026: holat va kelajak",
+        "layout": "typographic_statement"
+      }
+    },
+    {
+      "position": 2,
+      "type": "AGENDA",
+      "content": {
+        "items": [
+          {
+            "text": "Sunʼiy intellektning dolzarbligi"
+          },
+          {
+            "text": "Asosiy tushuncha va turlari"
+          },
+          {
+            "text": "2026-yil uchun prognoz va yo'nalishlar"
+          },
+          {
+            "text": "Muammolar va yechimlar"
+          }
+        ],
+        "title": "Reja"
+      }
+    },
+    {
+      "position": 3,
+      "type": "RELEVANCE",
+      "content": {
+        "lead": "Sunʼiy intellekt hozirgi.",
+        "title": "Sunʼiy intellekt hozirgi.",
+        "kicker": "Dolzarblik",
+        "points": [
+          {
+            "text": "AI sanoat, tibbiyot."
+          },
+          {
+            "text": "Yangi kasblar va iqtisodiy."
+          },
+          {
+            "text": "2023-yilda jahon AI bozori."
+          }
+        ],
+        "source": "2023-yilgi bozor hisoboti",
+        "paragraph": "Sunʼiy intellekt inson aqliy faoliyatini taqlid qiluvchi tizimlar majmui bo‘lib, hozirgi kunda sanoat, tibbiyot."
+      }
+    },
+    {
+      "position": 4,
+      "type": "DEFINITION",
+      "content": {
+        "term": "Sunʼiy intellekt (SI)",
+        "aspects": [
+          {
+            "text": "Sunʼiy intellekt.",
+            "label": "Sunʼiy intellekt (SI)"
+          },
+          {
+            "text": "O‘rganish.",
+            "label": "O‘rganish."
+          },
+          {
+            "text": "Ma’lumotlar bilan ishlash.",
+            "label": "Ma’lumotlar bilan ishlash."
+          }
+        ],
+        "paragraph": "Sunʼiy intellekt (SI) — inson aqliy faoliyatini taqlid qiluvchi.",
+        "definition": "Sunʼiy intellekt nima? Sunʼiy intellekt inson aqliy."
+      }
+    },
+    {
+      "position": 5,
+      "type": "TURLAR",
+      "content": {
+        "items": [
+          {
+            "icon": "brain",
+            "text": "Ushbu tur faqat muayyan.",
+            "label": "Tor sunʼiy intellekt (ANI)"
+          },
+          {
+            "icon": "brain",
+            "text": "AGI nazariy jihatdan inson.",
+            "label": "Umumiy sunʼiy intellekt."
+          },
+          {
+            "icon": "brain",
+            "text": "Bu turdagi SI inson ongidan.",
+            "label": "Super sunʼiy intellekt (ASI)"
+          }
+        ],
+        "title": "Sunʼiy intellektning asosiy.",
+        "kicker": "Turlari"
+      }
+    },
+    {
+      "position": 6,
+      "type": "CONTENT",
+      "content": {
+        "lead": "2023-yilda AI startaplariga sarmoya.",
+        "title": "Sunʼiy intellekt bozoridagi.",
+        "points": [
+          {
+            "text": "2023-yilda AI."
+          },
+          {
+            "text": "AI texnologiyalari."
+          },
+          {
+            "text": "AI yordamida ishlab."
+          }
+        ],
+        "visual": {
+          "alt": "Geometric decoration for Sunʼiy intellekt bozoridagi asosiy raqamlar",
+          "fit": "cover",
+          "url": "",
+          "query": "Sunʼiy intellekt 2026: holat va kelajak Sunʼiy intellekt bozoridagi asosiy raqamlar slot-1",
+          "author": "Generated geometric layout",
+          "license": "decorative visual",
+          "provider": "Lumio Geometry"
+        }
+      }
+    },
+    {
+      "position": 7,
+      "type": "CONTENT",
+      "content": {
+        "lead": "2026-yilda sunʼiy intellektda texnologik taraqqiyot jadallashadi AI.",
+        "title": "2026-yilda sunʼiy intellektda.",
+        "points": [
+          {
+            "text": "AI algoritmlari yanada."
+          },
+          {
+            "text": "Bulutli hisoblash va AI."
+          },
+          {
+            "text": "Tarmoqlararo AI ishlanmalar."
+          }
+        ],
+        "paragraph": "2026-yilga kelib sunʼiy intellekt algoritmlari yanada aniq va tez ishlaydi."
+      }
+    },
+    {
+      "position": 8,
+      "type": "BATAFSIL",
+      "content": {
+        "body": "Sunʼiy intellekt rivojining ustuvor yo‘nalishlari AI tibbiyotda diagnostika, sanoatda avtomatlashtirish.",
+        "title": "Sunʼiy intellekt rivojining.",
+        "points": [
+          {
+            "text": "AI tibbiyotda diagnostika."
+          },
+          {
+            "text": "Tibbiyotda genom tahlili."
+          }
+        ]
+      }
+    },
+    {
+      "position": 9,
+      "type": "PROBLEMS_SOLUTIONS",
+      "content": {
+        "pairs": [
+          {
+            "problem": "Ma’lumotlarning maxfiyligi.",
+            "solution": "Kuchli shifrlash usullari."
+          },
+          {
+            "problem": "AI qabul qilgan.",
+            "solution": "Tushuntiriladigan AI (XAI)."
+          },
+          {
+            "problem": "Avtomatlashtirish.",
+            "solution": "Yangi kasblarga qayta."
+          }
+        ],
+        "title": "Sunʼiy intellekt sohasidagi."
+      }
+    },
+    {
+      "position": 10,
+      "type": "CLOSING",
+      "content": {
+        "title": "E’tiboringiz uchun rahmat!",
+        "layout": "default"
+      }
+    }
+  ]
+}

@@ -1,0 +1,103 @@
+{
+  "id": "process-adaptive-qa",
+  "theme": "dark_premium",
+  "language": "uz",
+  "slides": [
+    {
+      "position": 1,
+      "layout": "PROCESS",
+      "content": {
+        "layout": "switchback_path",
+        "title": "Ikki bosqichli jarayon keng izoh bilan tushuntiriladi",
+        "steps": [
+          {
+            "title": "Tahlil qilish",
+            "body": "Boshlang‘ich ma’lumotlar tekshirilib, muammoning sababi va keyingi qarorga ta’sir qiladigan asosiy omillar aniqlanadi."
+          },
+          {
+            "title": "Qaror chiqarish",
+            "body": "Tahlil natijasiga tayangan holda amaliy yechim tanlanadi, mas’ullar belgilanadi va bajarish mezonlari aniqlashtiriladi."
+          }
+        ]
+      }
+    },
+    {
+      "position": 2,
+      "layout": "PROCESS",
+      "content": {
+        "layout": "switchback_path",
+        "title": "Plastik chiqindi uch bosqichda qayta xomashyoga aylanadi",
+        "steps": [
+          {
+            "title": "Saralash va yuvish",
+            "body": "Chiqindilar turi bo‘yicha ajratilib, iflosliklardan tozalanadi va keyingi ishlov uchun bir xil sifatga keltiriladi."
+          },
+          {
+            "title": "Granulatsiya",
+            "body": "Tozalangan plastik maydalanib eritiladi, so‘ng ishlab chiqarishda qayta ishlatiladigan mustahkam granulalarga aylantiriladi."
+          },
+          {
+            "title": "Yangi mahsulot",
+            "body": "Tayyor granulalardan qadoqlash buyumlari, qurilish detallari yoki sintetik tolalar ishlab chiqariladi."
+          }
+        ]
+      }
+    },
+    {
+      "position": 3,
+      "layout": "PROCESS",
+      "content": {
+        "layout": "switchback_path",
+        "title": "To‘rt bosqich material aylanishini to‘liq boshqaradi",
+        "steps": [
+          {
+            "title": "Yig‘ish",
+            "body": "Chiqindilar alohida konteynerlar orqali markazlashgan punktlarga yetkaziladi."
+          },
+          {
+            "title": "Saralash",
+            "body": "Materiallar tarkibi va qayta ishlash xususiyatiga ko‘ra guruhlarga ajratiladi."
+          },
+          {
+            "title": "Qayta ishlash",
+            "body": "Har bir materialga mos mexanik yoki termik texnologiya izchil qo‘llanadi."
+          },
+          {
+            "title": "Qayta foydalanish",
+            "body": "Olingan xomashyo yangi mahsulot ishlab chiqarish zanjiriga qaytariladi."
+          }
+        ]
+      }
+    },
+    {
+      "position": 4,
+      "layout": "PROCESS",
+      "content": {
+        "layout": "switchback_path",
+        "title": "Besh bosqichli nazorat chiqindi oqimini tartibga soladi",
+        "steps": [
+          {
+            "title": "Manbada ajratish",
+            "body": "Chiqindi hosil bo‘lgan joyning o‘zida material turi bo‘yicha ajratiladi."
+          },
+          {
+            "title": "Yig‘ib olish",
+            "body": "Belgilangan transport chiqindini xavfsiz tarzda qayta ishlash markaziga olib boradi."
+          },
+          {
+            "title": "Sifat nazorati",
+            "body": "Yaroqsiz aralashmalar chiqarilib, qayta ishlanadigan material sifati tekshiriladi."
+          },
+          {
+            "title": "Texnik ishlov",
+            "body": "Material maydalash, eritish yoki presslash orqali yangi xomashyoga aylantiriladi."
+          },
+          {
+            "title": "Bozorga qaytarish",
+            "body": "Tayyor xomashyo yangi mahsulot ishlab chiqaruvchi korxonalarga yetkaziladi."
+          }
+        ]
+      }
+    }
+  ]
+}

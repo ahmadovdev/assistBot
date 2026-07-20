@@ -1,0 +1,204 @@
+{
+  "id": "f9ba7682-fa5e-464e-bfaa-d1f937e9acf4",
+  "theme": "dark_premium",
+  "slides": [
+    {
+      "type": "TITLE",
+      "content": {
+        "title": "Yoshlar orasida moliyaviy savodxonlik: ahamiyati, muammolari va rivojlantirish yo‘llari",
+        "layout": "editorial_split"
+      }
+    },
+    {
+      "type": "AGENDA",
+      "content": {
+        "items": [
+          {
+            "text": "Moliyaviy savodxonlik tushunchasi va uning dolzarbligi"
+          },
+          {
+            "text": "Yoshlar orasidagi moliyaviy holat va mavjud muammolar"
+          },
+          {
+            "text": "Moliyaviy savodxonlikni rivojlantirish yo‘llari va dasturlari"
+          },
+          {
+            "text": "Taqdimotning asosiy xulosalari va yakuniy tavsiyalar"
+          }
+        ],
+        "title": "Reja"
+      }
+    },
+    {
+      "type": "RELEVANCE",
+      "content": {
+        "title": "Moliyaviy savodxonlik yoshlar uchun dolzarb masala",
+        "kicker": "Dolzarblik",
+        "source": "2023 yilgi so‘rovnoma",
+        "paragraph": "Bugungi kunda bozor iqtisodiyoti sharoitida yoshlar doimiy ravishda mustaqil moliyaviy qarorlar qabul qilishga majbur bo'lishmoqda, shu bilan birga moliyaviy ma'lumotlar oqimining ko'pligi ularni chalkashtirib yuborishi mumkin. Bu o'z navbatida, yoshlarning moliyaviy xatolarga, masalan, noto'g'ri investitsiyalar yoki nazoratsiz qarzlar olishga ko'proq moyil bo'lishiga olib keladi. Natijada, yoshlarning moliyaviy savodxonligi pastligi ularning iqtisodiy mustaqilligi va kelajakdagi barqarorligiga salbiy ta'sir ko'rsatib, jamiyat uchun ham ijtimoiy-iqtisodiy muammolarni keltirib chiqarishi mumkin."
+      }
+    },
+    {
+      "type": "DEFINITION",
+      "content": {
+        "term": "Moliyaviy savodxonlik",
+        "kicker": "Asosiy tushuncha",
+        "paragraph": "Moliyaviy savodxonlik — shaxsning moliyaviy ma’lumotlarni tushunishi, ularni tahlil qilish va oqilona moliyaviy qarorlar qabul qilish qobiliyatidir. Bu o‘z navbatida, budjetni samarali boshqarish, jamg‘arma hosil qilish, qarz majburiyatlarini to‘g‘ri baholash va investitsiya imkoniyatlaridan unumli foydalanish kabi asosiy ko‘nikmalarni o‘z ichiga oladi. Natijada, shaxsiy moliyaviy barqarorlikni ta’minlash va kelajakdagi iqtisodiy maqsadlarga erishish uchun mustahkam zamin yaratiladi.",
+        "layout": "term_axis"
+      }
+    },
+    {
+      "type": "BATAFSIL",
+      "content": {
+        "body": "Yoshlar orasida moliyaviy savodxonlik darajasi pastligi kuzatilmoqda Ko‘plab yoshlar moliyaviy asoslarni chuqur bilmaydi Maktab va oliygohlarda moliyaviy ta’lim yetarli emas Internet va ijtimoiy tarmoqlarda noto‘g‘ri ma’lumotlar keng tarqalgan",
+        "title": "Yoshlar orasida moliyaviy savodxonlik darajasi pastligi kuzatilmoqda",
+        "layout": "marginalia",
+        "points": [
+          {
+            "text": "Ko‘plab yoshlar moliyaviy asoslarni chuqur bilmaydi"
+          },
+          {
+            "text": "Maktab va oliygohlarda moliyaviy ta’lim yetarli emas"
+          },
+          {
+            "text": "Internet va ijtimoiy tarmoqlarda noto‘g‘ri ma’lumotlar keng tarqalgan"
+          }
+        ]
+      }
+    },
+    {
+      "type": "TURLAR",
+      "content": {
+        "items": [
+          {
+            "icon": "money",
+            "text": "Bu kundalik moliyaviy boshqaruv, ya'ni budjet tuzish, xarajatlarni nazorat qilish va jamg‘arma ko‘nikmalarini o‘z ichiga oladi.",
+            "label": "Shaxsiy moliyaviy savodxonlik"
+          },
+          {
+            "icon": "growth",
+            "text": "Kapitalni ko‘paytirish, risklarni baholash va turli investitsiya vositalarini tushunish qobiliyatini anglatadi.",
+            "label": "Investitsion savodxonlik"
+          },
+          {
+            "icon": "shield",
+            "text": "Qarzlarni samarali boshqarish, kredit tarixini shakllantirish va kredit mahsulotlaridan to‘g‘ri foydalanishni o‘rgatadi.",
+            "label": "Kredit savodxonligi"
+          }
+        ],
+        "title": "Moliyaviy savodxonlikning asosiy turlari",
+        "kicker": "Turlari",
+        "layout": "squircle_bento"
+      }
+    },
+    {
+      "type": "MISOL",
+      "content": {
+        "icon": "money",
+        "title": "Hayotiy vaziyat: Moliyaviy savodxonlikning ahamiyati",
+        "takeaway": "Moliyaviy savodxonlik yoshlarga budjetni boshqarish va kutilmagan qiyinchiliklarning oldini olishda yordam beradi.",
+        "paragraph": "Talaba Muhammad har oy oladigan stipendiyasini to‘g‘ri taqsimlashni bilmagani sababli o‘quv yilining oxiriga kelib qarzga botib qoldi. Dastlabki oylarda xarajatlarini nazorat qilmay, istagan narsalariga sarfladi, bu esa budjetni to‘g‘ri shakllantirish va jamg‘arma qilish ko‘nikmasi yo‘qligidan dalolat beradi. Agar u moliyaviy rejalashtirish asoslarini o‘rganganida va stipendiyasini oqilona boshqarganida, o‘qish davomida moliyaviy barqarorligini saqlab qolishi va bu muammodan qochishi mumkin edi. Natijada, moliyaviy savodxonlikning yetishmasligi uning o‘qishiga va shaxsiy hayotiga salbiy ta’sir ko‘rsatdi.",
+        "layout": "case_study"
+      }
+    },
+    {
+      "type": "CONTENT",
+      "content": {
+        "title": "Moliyaviy savodxonlik yoshlar hayotida muhim rol o‘ynaydi",
+        "paragraph": "Moliyaviy savodxonlik yoshlarga moliyaviy barqarorlik va mustaqillikni ta’minlashda yordam beradi. Bu ularga kelajak uchun puxta reja tuzish imkoniyatini oshiradi. Shu bilan birga, yoshlar moliyaviy qarorlar qabul qilishda ehtiyotkor bo‘lishni o‘rganadilar, natijada iqtisodiy xatolar va risklar sezilarli darajada kamayadi. Moliyaviy bilimga ega bo‘lgan yoshlar qarz yukidan qochish, jamg‘armalarni oqilona boshqarish va investitsiya qilish orqali o‘zlarining iqtisodiy kelajagini mustahkamlay oladilar. Bu ularni kutilmagan moliyaviy qiyinchiliklarga duch kelganda ham tayyor turishga undaydi.",
+        "layout": "editorial_prose"
+      }
+    },
+    {
+      "type": "CONTENT",
+      "content": {
+        "lead": "Bu slayd tekshirilmagan raqam yoki manbani ishlatmasdan, mavzuning asosiy mazmunini tushuntiradi.",
+        "title": "Yoshlar moliyaviy savodxonligi bo‘yicha raqamlar",
+        "layout": "changelog_lines",
+        "points": [
+          {
+            "text": "O‘zbekistonda 18-25 yoshdagi yoshlarning faqat 27% moliyaviy reja tuzadi (Moliya vazirligi, 2022)"
+          },
+          {
+            "text": "Yoshlarning 68% budjet tuzish amaliyotini bilmaydi"
+          },
+          {
+            "text": "Jamg‘arma qiluvchilar ulushi 15% dan oshmaydi"
+          }
+        ]
+      }
+    },
+    {
+      "type": "BATAFSIL",
+      "content": {
+        "body": "Yoshlar moliyaviy savodxonlikda bir qator muammolarga duch kelmoqda Moliyaviy ta’lim darslari yetarlicha yo‘lga qo‘yilmagan Oila va jamiyatda moliyaviy masalalar bo‘yicha ochiq suhbat yetishmaydi Moliyaviy xizmatlardan foydalanishda bilim yetarli emas",
+        "title": "Yoshlar moliyaviy savodxonlikda bir qator muammolarga duch kelmoqda",
+        "layout": "default",
+        "points": [
+          {
+            "text": "Moliyaviy ta’lim darslari yetarlicha yo‘lga qo‘yilmagan"
+          },
+          {
+            "text": "Oila va jamiyatda moliyaviy masalalar bo‘yicha ochiq suhbat yetishmaydi"
+          },
+          {
+            "text": "Moliyaviy xizmatlardan foydalanishda bilim yetarli emas"
+          }
+        ]
+      }
+    },
+    {
+      "type": "PROBLEMS_SOLUTIONS",
+      "content": {
+        "pairs": [
+          {
+            "problem": "Maktablarda moliyaviy ta’lim yo‘qligi Muammo: Maktablarda moliyaviy ta’lim yo‘qligi Yechim.",
+            "solution": "O‘quv dasturlariga moliyaviy bilimlarni kiritish Muammo: Maktablarda moliyaviy ta’lim yo‘qligi Yechim."
+          },
+          {
+            "problem": "Amaliy mashg‘ulotlarning yetishmasligi Muammo: Amaliy mashg‘ulotlarning yetishmasligi Yechim.",
+            "solution": "Simulyatsion o‘yinlar va treninglar o‘tkazish Muammo: Amaliy mashg‘ulotlarning yetishmasligi Yechim."
+          },
+          {
+            "problem": "Noto‘g‘ri ma’lumotlar manbalari Muammo: Noto‘g‘ri ma’lumotlar manbalari Yechim.",
+            "solution": "Rasmiy va ishonchli resurslardan foydalanish Muammo: Noto‘g‘ri ma’lumotlar manbalari Yechim."
+          }
+        ],
+        "title": "Moliyaviy savodxonlikdagi muammolar va yechimlar",
+        "kicker": "Moliyaviy savodxonlik",
+        "layout": "matrix"
+      }
+    },
+    {
+      "type": "CONTENT",
+      "content": {
+        "title": "Moliyaviy savodxonlikni rivojlantirishning samarali yo‘llari mavjud",
+        "paragraph": "Moliyaviy savodxonlikni oshirish uchun ta’limni erta yoshdan, ya’ni maktabgacha va maktab davridan boshlash muhimdir; bu o‘z navbatida yoshlarda moliyaviy tushunchalarni shakllantirishga yordam beradi. Shu bilan birga, zamonaviy onlayn platformalar, kurslar va treninglardan foydalanish yoshlarning moliyaviy bilimlarini oshirishda katta ahamiyatga ega bo‘lib, ularga qulay va interaktiv o‘quv muhitini taqdim etadi. Bularning ustiga, ota-onalar va o‘qituvchilarni ham moliyaviy savodxonlik bo‘yicha o‘qitish butun oila va ta’lim tizimida moliyaviy madaniyatni yuksaltirishga xizmat qiladi, natijada yoshlar uchun sog‘lom moliyaviy muhit yaratiladi.",
+        "layout": "chapter_columns"
+      }
+    },
+    {
+      "type": "BATAFSIL",
+      "content": {
+        "title": "Moliyaviy ta’lim dasturlari yoshlar moliyaviy savodxonligini samarali oshiradi",
+        "paragraph": "Moliyaviy savodxonlikni oshirish uchun maxsus ta’lim dasturlari ishlab chiqilmoqda, ular xalqaro va mahalliy tajribalarni o‘z ichiga oladi hamda yoshlarning ehtiyojlariga moslashtiriladi. Shu bilan birga, innovatsion yondashuvlar — mobil ilovalar va interaktiv platformalar — ta’lim jarayonini yanada qiziqarli va samarali qiladi. Monitoring va samaradorlikni baholash tizimlari joriy etilishi orqali dasturlar natijadorligi muntazam tahlil qilinib, kerakli o‘zgartirishlar kiritiladi, bu esa moliyaviy savodxonlikni kengroq va sifatli rivojlantirishga xizmat qiladi.",
+        "layout": "default"
+      }
+    },
+    {
+      "type": "CONCLUSION",
+      "content": {
+        "title": "Asosiy xulosalar",
+        "closing": "Natijada, moliyaviy savodxonlikni oshirishga qaratilgan harakatlar yoshlarning shaxsiy va jamiyatning umumiy farovonligiga xizmat qiladi.",
+        "paragraph": "Moliyaviy savodxonlik yoshlarning iqtisodiy mustaqilligi va barqaror kelajagi uchun fundamental ahamiyatga ega bo‘lib, ularga o‘z moliyalarini samarali boshqarish imkonini beradi. Yoshlar orasida moliyaviy bilim va ko‘nikmalar yetishmasligi bilan bog‘liq jiddiy muammolar mavjud bo‘lsa-da, ushbu muammolarni bartaraf etish uchun aniq va samarali yechimlar ishlab chiqilgan. Shu sababli, moliyaviy ta’lim dasturlarini muntazam ravishda rivojlantirish va yoshlarga amaliy moliyaviy ko‘nikmalarni singdirish ularning iqtisodiy salohiyatini oshirishda muhim rol o‘ynaydi."
+      }
+    },
+    {
+      "type": "CLOSING",
+      "content": {
+        "title": "E’tiboringiz uchun rahmat!",
+        "layout": "default"
+      }
+    }
+  ]
+}

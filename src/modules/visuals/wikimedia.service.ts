@@ -206,41 +206,11 @@ export class WikimediaService {
 
   async enrichSlides(
     slides: VisualSlideInput[],
-    topic: string,
-    language: string,
+    _topic: string,
+    _language: string,
   ): Promise<VisualSlideInput[]> {
-    const desired = imageCountForSlideCount(slides.length);
-    if (!desired) return slides;
-
-    const enriched = slides.map((slide) => ({ ...slide, content: { ...slide.content } }));
-    const used = new Set<number>();
-    const usedUrls = new Set<string>();
-
-    for (let slot = 0; slot < desired; slot += 1) {
-      const ranked = rankVisualCandidates(enriched, slot, desired, used);
-      let attached = false;
-      for (const slide of ranked) {
-        const queries = topicVisualQueries(topic, slot);
-        for (const query of queries) {
-          const visual = await this.search(query, language, topic, usedUrls);
-          if (!visual) continue;
-          slide.content.visual = visual;
-          used.add(slide.position);
-          usedUrls.add(visual.url);
-          attached = true;
-          this.logger.log(
-            `Wikimedia visual attached: slide=${slide.position} type=${slide.layout} query="${query}"`,
-          );
-          break;
-        }
-        if (attached) break;
-      }
-      if (!attached) {
-        this.logger.warn(`Wikimedia visual slot ${slot + 1}/${desired} had no suitable result`);
-      }
-    }
-
-    return enriched;
+    this.logger.log('Visual enrichment disabled.');
+    return slides;
   }
 
   async search(

@@ -13,7 +13,6 @@ import {
   ProblemsSolutionsData, ConclusionData, ReferencesData, ClosingData,
 } from '../templates/layouts';
 import { safe, frame } from './components';
-import { renderWikimediaVisual } from '../templates/wikimedia-visual';
 
 export const BLOCK_LABELS: Record<string, string> = {
   AGENDA: 'REJA',
@@ -101,7 +100,7 @@ export function renderTitle(d: TitleData & { pageNo?: string | number }): string
 // 02 AGENDA
 // ============================================================
 export function renderAgenda(d: AgendaData & { pageNo?: string | number }): string {
-  const items = d.items.slice(0, 6);
+  const items = d.items;
   const compact = items.length > 4;
   const body = `
     <h2 class="pa-title-main">${safe(d.title)}</h2>
@@ -123,11 +122,14 @@ export function renderRelevance(d: RelevanceData & { pageNo?: string | number })
   if (d.paragraph !== undefined) {
     const body = `
       <h2 class="pa-title-main">${safe(d.title)}</h2>
-      <div class="pa-prose-block">${safe(d.paragraph)}</div>
+      <div class="pa-relevance-essay">
+        <div class="pa-relevance-axis"><span>01</span><strong>NEGA MUHIM?</strong></div>
+        <div class="pa-relevance-copy">${safe(d.paragraph)}</div>
+      </div>
       ${d.source ? `<div class="pa-source pa-source--relevance">${safe(d.source)}</div>` : ''}`;
     return frame(body, { kicker: d.kicker ?? 'Dolzarblik', pageNo: d.pageNo, footerRight: BLOCK_LABELS.RELEVANCE });
   }
-  const points = (d.points ?? []).slice(0, 3);
+  const points = d.points ?? [];
   const body = `
     <h2 class="pa-title-main">${safe(d.title)}</h2>
     ${d.lead ? `<p class="pa-subtitle" style="margin-top:14px">${safe(d.lead)}</p>` : ''}
@@ -159,7 +161,7 @@ export function renderAimTasks(d: AimTasksData & { pageNo?: string | number }): 
   // shrink to fit so real content doesn't get clipped by the card's fixed
   // height (the slide itself stays a fixed, print-safe size — see tokens.ts).
   const aimFs = fitSize(aimText, [[15, 32], [30, 26], [50, 22], [999, 19]]);
-  const tasks = d.tasks.slice(0, 5);
+  const tasks = d.tasks;
   const body = `
     <h2 class="pa-title-main">${safe(d.title)}</h2>
     <div class="pa-aim-layout">
@@ -208,10 +210,20 @@ export function renderObjectSubject(d: ObjectSubjectData & { pageNo?: string | n
 // ============================================================
 export function renderDefinition(d: DefinitionData & { pageNo?: string | number }): string {
   const termFs = heroSize(d.term, 56, 46, 38);
-  const aspects = (d.aspects ?? []).slice(0, 3);
+  const aspects = d.aspects ?? [];
+  if (d.layout === 'nafis_lexicon' && d.paragraph !== undefined) {
+    const body = `
+      <div class="pa-lexicon-stage">
+        <div class="pa-lexicon-index">TUSHUNCHA / 01</div>
+        <div class="pa-lexicon-term" style="font-size:${termFs}px">${safe(d.term)}</div>
+        <div class="pa-lexicon-rule"></div>
+        <p class="pa-lexicon-copy">${safe(d.paragraph)}</p>
+      </div>`;
+    return frame(body, { kicker: d.kicker ?? "Ta'rif", pageNo: d.pageNo, footerRight: BLOCK_LABELS.DEFINITION, className: 'pa-definition-lexicon' });
+  }
   const body = `
     <h2 class="pa-title-main">${safe(d.kicker ?? 'Taʼrif')}</h2>
-    <div class="pa-definition-layout">
+    <div class="pa-definition-layout${d.layout === 'nafis_concept_plate' ? ' pa-definition-layout--plate' : ''}">
       <div class="pa-term-card">
         <div>
           <div class="pa-label" style="color:rgba(255,255,255,.82)">Termin</div>
@@ -233,46 +245,46 @@ export function renderDefinition(d: DefinitionData & { pageNo?: string | number 
 // 08 CONTENT
 // ============================================================
 export function renderContent(d: ContentData & { pageNo?: string | number }): string {
-  if (d.visual) {
-    const points = (d.points ?? []).slice(0, 4);
-    const titleFs = heroSize(d.title, 50, 43, 37);
-    const paragraphText = d.paragraph ?? '';
-    const paragraphFs = fitSize(paragraphText, [[38, 22], [62, 20], [86, 18], [999, 16]]);
-    const copy = d.paragraph !== undefined
-      ? `<div class="pa-prose-block pa-prose-block--visual" style="font-size:${paragraphFs}px">${safe(d.paragraph)}</div>`
-      : `<div class="pa-visual-points">${points.map((point, index) => `
-          <div class="pa-card flat pa-visual-point">
-            <div class="pa-label">${String(index + 1).padStart(2, '0')}</div>
-            ${point.heading ? `<h3>${safe(point.heading)}</h3>` : ''}<p class="pa-small">${safe(point.text)}</p>
-          </div>`).join('')}</div>`;
-    const body = `<h2 class="pa-title-main" style="font-size:${titleFs}px">${safe(d.title)}</h2>
-      <div class="pa-media-layout"><div class="pa-media-copy">${copy}${d.lead ? `<p class="pa-content-lead">${safe(d.lead)}</p>` : ''}</div>${renderWikimediaVisual(d.visual, 'pa-wm-visual')}</div>`;
-    return frame(body, { kicker: d.kicker ?? 'Mazmun', pageNo: d.pageNo, footerRight: BLOCK_LABELS.CONTENT, className: 'pa-has-visual' });
-  }
   if (d.paragraph !== undefined) {
+    const marginVariant = d.layout === 'nafis_margin_note';
     const body = `
       <h2 class="pa-title-main">${safe(d.title)}</h2>
-      <div class="pa-prose-block">${safe(d.paragraph)}</div>`;
-    return frame(body, { kicker: d.kicker ?? 'Mazmun', pageNo: d.pageNo, footerRight: BLOCK_LABELS.CONTENT });
+      ${marginVariant ? `
+        <div class="pa-margin-essay">
+          <aside><span>ASOSIY MATN</span><strong>${safe(d.kicker ?? 'Tahlil')}</strong></aside>
+          <div class="pa-margin-copy">${safe(d.paragraph)}</div>
+        </div>` : `
+        <div class="pa-editorial-article">
+          <div class="pa-article-folio">MAZMUN / ${safe(d.pageNo ?? '01')}</div>
+          <div class="pa-article-copy">${safe(d.paragraph)}</div>
+        </div>`}`;
+    return frame(body, {
+      kicker: d.kicker ?? 'Mazmun',
+      pageNo: d.pageNo,
+      footerRight: BLOCK_LABELS.CONTENT,
+      className: marginVariant ? 'pa-content-margin' : 'pa-content-columns',
+    });
   }
   // No more silently dropping `text` when `heading` is absent (previously: a
   // 40-char slice of `text` stood in as a fake heading and the rest of
   // `text` was never shown at all).
-  const points = d.points.slice(0, 4);
+  const points = d.points;
   const titleFs = heroSize(d.title, 50, 43, 37);
   const pointWords = points.reduce((sum, p) => sum + `${p.heading ?? ''} ${p.text}`.trim().split(/\s+/).filter(Boolean).length, 0);
-  const pointFs = pointWords <= 34 ? 17 : pointWords <= 46 ? 16 : 15;
+  const pointFs = pointWords <= 34 ? 19 : pointWords <= 46 ? 18 : 17;
   const headingFs = points.length >= 4 ? 22 : 24;
   const body = `
     <h2 class="pa-title-main" style="font-size:${titleFs}px">${safe(d.title)}</h2>
     <div class="pa-evidence-layout pa-evidence-layout--${points.length}${d.lead ? ' pa-evidence-layout--with-lead' : ''}">
-      <div class="pa-grid-2 pa-content-card-grid">
+      <div class="pa-content-ledger pa-content-ledger--${points.length}">
         ${points.map((p, i) => `
-          <div class="pa-card pa-content-card">
-            <div class="pa-label">${String(i + 1).padStart(2, '0')}</div>
-            ${p.heading ? `<h3 style="font-size:${headingFs}px">${safe(p.heading)}</h3>` : ''}
-            <p class="pa-small" style="font-size:${pointFs}px">${safe(p.text)}</p>
-          </div>
+          <article class="pa-content-entry">
+            <div class="pa-content-index">${String(i + 1).padStart(2, '0')}</div>
+            <div>
+              ${p.heading ? `<h3 style="font-size:${headingFs}px">${safe(p.heading)}</h3>` : ''}
+              <p style="font-size:${pointFs}px">${safe(p.text)}</p>
+            </div>
+          </article>
         `).join('')}
       </div>
       ${d.lead ? `<p class="pa-content-lead">${safe(d.lead)}</p>` : ''}
@@ -284,12 +296,12 @@ export function renderContent(d: ContentData & { pageNo?: string | number }): st
 // 09 BATAFSIL
 // ============================================================
 export function renderBatafsil(d: BatafsilData & { pageNo?: string | number }): string {
-  const points = (d.points ?? []).slice(0, 3);
+  const points = d.points ?? [];
   const mainText = d.paragraph ?? d.body;
   const titleFs = heroSize(d.title, 50, 43, 37);
   const bodyFs = fitSize(mainText, [[42, 21], [62, 19], [999, 17]]);
   const noteWords = points.reduce((sum, p) => sum + p.text.trim().split(/\s+/).filter(Boolean).length, 0);
-  const noteFs = noteWords <= 24 ? 18 : noteWords <= 34 ? 16.5 : 15;
+  const noteFs = noteWords <= 24 ? 19 : noteWords <= 34 ? 18 : 17;
   // `paragraph` prose mode routinely arrives without `points` (they're
   // independent optional fields) — without this, the 2-column grid kept a
   // fixed 300px side column for nothing, leaving the right half of the slide
@@ -303,7 +315,7 @@ export function renderBatafsil(d: BatafsilData & { pageNo?: string | number }): 
           ${points.map((p, i) => `<div class="pa-card flat pa-side-note"><div class="pa-label">Eslatma ${i + 1}</div><h3 style="font-size:${noteFs}px">${safe(p.text)}</h3></div>`).join('')}
         </div>` : ''}
     </div>`;
-  return frame(body, { kicker: d.kicker ?? 'Batafsil bayon', pageNo: d.pageNo, footerRight: BLOCK_LABELS.BATAFSIL, className: 'pa-batafsil-slide' });
+  return frame(body, { kicker: d.kicker ?? 'Batafsil bayon', pageNo: d.pageNo, footerRight: BLOCK_LABELS.BATAFSIL, className: 'pa-batafsil-slide pa-annotation-slide' });
 }
 
 // ============================================================
@@ -311,24 +323,9 @@ export function renderBatafsil(d: BatafsilData & { pageNo?: string | number }): 
 // ============================================================
 export function renderMisol(d: MisolData & { pageNo?: string | number }): string {
   const exampleText = d.paragraph ?? d.body;
-  const exampleFs = fitSize(exampleText, [[45, 22], [70, 20], [95, 18], [999, 16]]);
+  const exampleFs = fitSize(exampleText, [[45, 23], [70, 21], [95, 19], [999, 17]]);
   const takeawayFs = fitSize(d.takeaway ?? '', [[12, 28], [22, 24], [999, 20]]);
   const titleFs = heroSize(d.title, 50, 43, 37);
-  if (d.visual) {
-    const body = `<h2 class="pa-title-main" style="font-size:${titleFs}px">${safe(d.title)}</h2>
-      <div class="pa-case-note-layout">
-        <div class="pa-case-note">
-          <div class="pa-case-note__rail">CASE</div>
-          <div>
-            <div class="pa-label">Amaliy misol</div>
-            <p class="pa-text" style="font-size:${exampleFs}px">${safe(exampleText)}</p>
-            ${d.takeaway ? `<div class="pa-visual-takeaway">${safe(d.takeaway)}</div>` : ''}
-          </div>
-        </div>
-        ${renderWikimediaVisual(d.visual, 'pa-wm-visual')}
-      </div>`;
-    return frame(body, { kicker: d.kicker ?? 'Amaliy misol', pageNo: d.pageNo, footerRight: BLOCK_LABELS.MISOL, className: 'pa-has-visual' });
-  }
   const hasTakeaway = !!d.takeaway;
   const body = `
     <h2 class="pa-title-main" style="font-size:${titleFs}px">${safe(d.title)}</h2>
@@ -353,7 +350,7 @@ export function renderMisol(d: MisolData & { pageNo?: string | number }): string
 // 11 TURLAR
 // ============================================================
 export function renderTurlar(d: TurlarData & { pageNo?: string | number }): string {
-  const items = d.items.slice(0, 4);
+  const items = d.items;
   const body = `
     <h2 class="pa-title-main">${safe(d.title)}</h2>
     <div class="pa-turlar-grid ${gridClass(items.length)}">
@@ -371,17 +368,22 @@ export function renderTurlar(d: TurlarData & { pageNo?: string | number }): stri
 // 12 COMPARISON
 // ============================================================
 export function renderComparison(d: ComparisonData & { pageNo?: string | number }): string {
+  const maxItems = Math.max(d.left.items.length, d.right.items.length);
+  const compact = maxItems >= 4 || Boolean(d.subtitle);
+  const titleFs = fitSize(d.title, [[8, 44], [13, 38], [999, 33]]);
+  const subtitleFs = fitSize(d.subtitle ?? '', [[14, 20], [999, 18]]);
+  const itemFs = compact ? 17 : 19;
   const col = (side: ComparisonData['left']) => `
     <div class="pa-compare-col">
       <div class="pa-compare-head"><div class="pa-label">${safe(side.label)}</div>${side.title ? `<h3>${safe(side.title)}</h3>` : ''}</div>
       <div class="pa-compare-body">
-        ${side.items.slice(0, 5).map((it) => `<div class="pa-compare-row"><span class="pa-text">${safe(it)}</span></div>`).join('')}
+        ${side.items.map((it) => `<div class="pa-compare-row"><span class="pa-text" style="font-size:${itemFs}px">${safe(it)}</span></div>`).join('')}
       </div>
     </div>`;
   const body = `
-    <h2 class="pa-title-main">${safe(d.title)}</h2>
-    ${d.subtitle ? `<p class="pa-subtitle" style="margin-top:10px">${safe(d.subtitle)}</p>` : ''}
-    <div class="pa-comparison">${col(d.left)}${col(d.right)}</div>`;
+    <h2 class="pa-title-main" style="font-size:${titleFs}px">${safe(d.title)}</h2>
+    ${d.subtitle ? `<p class="pa-subtitle" style="margin-top:8px;font-size:${subtitleFs}px">${safe(d.subtitle)}</p>` : ''}
+    <div class="pa-comparison${compact ? ' pa-comparison--compact' : ''}">${col(d.left)}${col(d.right)}</div>`;
   return frame(body, { kicker: d.kicker ?? 'Qiyosiy tahlil', pageNo: d.pageNo, footerRight: BLOCK_LABELS.COMPARISON });
 }
 
@@ -389,7 +391,7 @@ export function renderComparison(d: ComparisonData & { pageNo?: string | number 
 // 13 PROCESS
 // ============================================================
 export function renderProcess(d: ProcessData & { pageNo?: string | number }): string {
-  const steps = d.steps.slice(0, 5);
+  const steps = d.steps;
   const titleFs = heroSize(d.title, 50, 43, 37);
   const body = `
     <h2 class="pa-title-main" style="font-size:${titleFs}px">${safe(d.title)}</h2>
@@ -414,7 +416,7 @@ export function renderProcess(d: ProcessData & { pageNo?: string | number }): st
 // 14 TIMELINE
 // ============================================================
 export function renderTimeline(d: TimelineData & { pageNo?: string | number }): string {
-  const steps = d.steps.slice(0, 5);
+  const steps = d.steps;
   const body = `
     <h2 class="pa-title-main">${safe(d.title)}</h2>
     ${d.subtitle ? `<p class="pa-subtitle" style="margin-top:10px">${safe(d.subtitle)}</p>` : ''}
@@ -430,7 +432,7 @@ export function renderTimeline(d: TimelineData & { pageNo?: string | number }): 
 // 15 STATS
 // ============================================================
 export function renderStats(d: StatsData & { pageNo?: string | number }): string {
-  const stats = d.stats.slice(0, 4);
+  const stats = d.stats;
   const body = `
     <h2 class="pa-title-main">${safe(d.title)}</h2>
     ${d.subtitle ? `<p class="pa-subtitle" style="margin-top:10px">${safe(d.subtitle)}</p>` : ''}
@@ -454,9 +456,9 @@ export function renderStats(d: StatsData & { pageNo?: string | number }): string
 // 16 FINDING
 // ============================================================
 export function renderFinding(d: FindingData & { pageNo?: string | number }): string {
-  const points = (d.points ?? []).slice(0, 2);
-  const evidenceFs = fitSize(d.evidence, [[35, 21], [58, 19], [85, 17], [999, 15.5]]);
-  const interpretationFs = fitSize(d.interpretation ?? '', [[22, 20], [45, 18], [999, 16]]);
+  const points = d.points ?? [];
+  const evidenceFs = fitSize(d.evidence, [[35, 22], [58, 20], [85, 18], [999, 17]]);
+  const interpretationFs = fitSize(d.interpretation ?? '', [[22, 21], [45, 19], [999, 17]]);
   const titleFs = heroSize(d.title, 46, 40, 34);
   const body = `
     <h2 class="pa-title-main" style="font-size:${titleFs}px">${safe(d.title)}</h2>
@@ -479,7 +481,7 @@ export function renderFinding(d: FindingData & { pageNo?: string | number }): st
 // 17 PROBLEMS_SOLUTIONS
 // ============================================================
 export function renderProblemsSolutions(d: ProblemsSolutionsData & { pageNo?: string | number }): string {
-  const pairs = d.pairs.slice(0, 3);
+  const pairs = d.pairs;
   const titleFs = heroSize(d.title, 50, 43, 37);
   const body = `
     <h2 class="pa-title-main" style="font-size:${titleFs}px">${safe(d.title)}</h2>
@@ -510,11 +512,17 @@ export function renderConclusion(d: ConclusionData & { pageNo?: string | number 
   if (d.paragraph !== undefined) {
     const body = `
       <h2 class="pa-title-main">${safe(d.title)}</h2>
-      <div class="pa-prose-block">${safe(d.paragraph)}</div>
+      <div class="pa-conclusion-synthesis">
+        <div class="pa-synthesis-mark">∴</div>
+        <div>
+          <div class="pa-label">Yakuniy sintez</div>
+          <p>${safe(d.paragraph)}</p>
+        </div>
+      </div>
       ${d.closing ? `<div class="pa-closing-statement">${safe(d.closing)}</div>` : ''}`;
     return frame(body, { kicker: d.kicker ?? 'Xulosa', pageNo: d.pageNo, footerRight: BLOCK_LABELS.CONCLUSION });
   }
-  const points = d.points.slice(0, 4);
+  const points = d.points;
   const body = `
     <h2 class="pa-title-main">${safe(d.title)}</h2>
     <div>
@@ -614,22 +622,36 @@ export const SLIDES_CSS = `
   padding: 16px 0; border-bottom: 1px solid var(--rule);
 }
 .pa-agenda-num { font-family: var(--font-title); font-size: 30px; color: var(--blue); }
-.pa-agenda-item h3 { font-size: 21px; letter-spacing: -0.02em; }
+.pa-agenda-item h3 { font-size: 21px; letter-spacing: 0; }
 /* 5+ item outlines: denser rows so it's still readable. */
 .pa-agenda-list--compact { gap: 6px; margin-top: 16px; }
 .pa-agenda-list--compact .pa-agenda-item { padding: 8px 0; }
 .pa-agenda-list--compact .pa-agenda-num { font-size: 22px; }
-.pa-agenda-list--compact .pa-agenda-item h3 { font-size: 16px; }
+.pa-agenda-list--compact .pa-agenda-item h3 { font-size: 18px; }
 
 /* 04 RELEVANCE */
 .pa-relevance-stat { display: grid; grid-template-columns: 1fr auto; gap: 18px; align-items: end; padding-top: 18px; border-top: 1px solid var(--rule); margin-top: 18px; }
 .pa-source--relevance { margin-top: 12px; padding-left: 14px; border-left: 2px solid rgba(181,154,91,.48); }
+.pa-relevance-essay {
+  display:grid; grid-template-columns:190px minmax(0,1fr); gap:30px; margin-top:24px;
+  min-height:300px; border-top:1px solid var(--rule-strong); border-bottom:1px solid var(--rule-strong);
+}
+.pa-relevance-axis {
+  padding:28px 24px; border-right:1px solid var(--rule-strong); color:var(--blue);
+  display:flex; flex-direction:column; justify-content:space-between;
+}
+.pa-relevance-axis span { font-family:var(--font-title); font-size:52px; }
+.pa-relevance-axis strong { font-size:12px; letter-spacing:.12em; }
+.pa-relevance-copy {
+  align-self:center; padding:28px 34px 28px 0; color:var(--ink-soft);
+  font-family:var(--font-title); font-size:27px; line-height:1.45;
+}
 
 /* 05 AIM_TASKS */
 .pa-aim-layout { display: grid; grid-template-columns: 1.08fr .92fr; gap: var(--gap-lg); align-items: stretch; margin-top: 20px; }
 .pa-task-list { display: grid; gap: 12px; align-content: start; }
 .pa-task { display: grid; grid-template-columns: 34px 1fr; gap: 12px; align-items: start; padding: 14px; border: 1px solid var(--rule); border-radius: var(--radius-sm); background: rgba(255,255,255,.42); }
-.pa-task h3 { font-size: 16px; font-weight: 600; }
+.pa-task h3 { font-size: 17px; line-height: 1.24; font-weight: 600; }
 
 /* 06 OBJECT_SUBJECT */
 .pa-object-subject { display: grid; grid-template-columns: 1fr 1fr; border: 1px solid var(--rule-strong); border-radius: var(--radius-lg); overflow: hidden; margin-top: 20px; min-height: 320px; }
@@ -638,11 +660,20 @@ export const SLIDES_CSS = `
 .pa-panel h3 { font-size: 28px; font-family: var(--font-title); font-weight: 500; margin: 10px 0 14px; }
 
 /* 07 DEFINITION */
-.pa-definition-layout { display: grid; grid-template-columns: 380px 1fr; gap: 32px; align-items: stretch; margin-top: 20px; }
+.pa-definition-layout { display: grid; grid-template-columns: 380px 1fr; gap: 32px; align-items: stretch; margin-top: 12px; }
 .pa-term-card { background: var(--blue); color: #fff; border-radius: var(--radius-lg); padding: 30px; display: flex; flex-direction: column; justify-content: center; }
-.pa-term { font-family: var(--font-title); line-height: 1; letter-spacing: -0.03em; }
+.pa-term { font-family: var(--font-title); line-height: 1; letter-spacing: 0; }
 .pa-definition-copy { font-size: 24px; line-height: 1.4; color: var(--ink-soft); }
-.pa-aspect-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 22px; }
+.pa-aspect-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 16px; }
+.pa-definition-layout--plate .pa-term-card { border-radius:var(--radius-sm); border-bottom:7px solid var(--gold); }
+.pa-lexicon-stage {
+  height:100%; display:grid; grid-template-columns:300px 1px minmax(0,1fr);
+  grid-template-rows:auto 1fr; column-gap:34px; align-items:center;
+}
+.pa-lexicon-index { grid-column:1 / -1; align-self:start; color:var(--gold); font-size:12px; letter-spacing:.14em; font-weight:800; }
+.pa-lexicon-term { font-family:var(--font-title); color:var(--blue); line-height:1.03; overflow-wrap:anywhere; }
+.pa-lexicon-rule { width:1px; height:72%; background:var(--rule-strong); }
+.pa-lexicon-copy { color:var(--ink-soft); font-size:25px; line-height:1.5; }
 
 /* 08 CONTENT */
 .pa-evidence-layout { display: grid; gap: var(--gap-lg); margin-top: 20px; }
@@ -654,9 +685,25 @@ export const SLIDES_CSS = `
 .pa-content-card .pa-small { line-height: 1.34; }
 .pa-evidence-layout--4 .pa-content-card { min-height: 142px; padding: 16px 19px; }
 .pa-evidence-layout--4 .pa-content-card-grid { gap: 18px 20px; }
+.pa-content-ledger { display:grid; gap:18px 26px; }
+.pa-content-ledger--2,.pa-content-ledger--3 { grid-template-columns:repeat(var(--content-cols,2),minmax(0,1fr)); }
+.pa-content-ledger--2 { --content-cols:2; }
+.pa-content-ledger--3 { --content-cols:3; }
+.pa-content-ledger--4 { grid-template-columns:repeat(2,minmax(0,1fr)); }
+.pa-content-entry {
+  min-height:154px; display:grid; grid-template-columns:48px minmax(0,1fr); gap:14px;
+  padding:20px 2px; border-top:3px solid var(--blue);
+}
+.pa-content-entry:nth-child(even) { border-top-color:var(--gold); }
+.pa-content-ledger--2 .pa-content-entry { min-height:250px; padding-top:28px; align-items:center; }
+.pa-content-ledger--3 .pa-content-entry { min-height:230px; padding-top:26px; grid-template-columns:42px minmax(0,1fr); align-items:center; }
+.pa-content-ledger--3 .pa-content-index { font-size:31px; }
+.pa-content-index { color:var(--gold); font-family:var(--font-title); font-size:25px; line-height:1; }
+.pa-content-entry h3 { margin:0 0 9px; color:var(--ink); font-family:var(--font-title); font-weight:500; line-height:1.15; }
+.pa-content-entry p { margin:0; color:var(--muted); line-height:1.45; }
 .pa-content-lead {
   margin-top: 0; padding: 10px 14px; border-left: 3px solid var(--gold);
-  color: var(--ink-soft); font-size: 16px; line-height: 1.32;
+  color: var(--ink-soft); font-size: 18px; line-height: 1.34;
   background: rgba(255,255,255,.36); border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
 }
 .pa-media-layout { display:grid; grid-template-columns:minmax(0,1.02fr) minmax(390px,.98fr); gap:26px; align-items:stretch; margin-top:16px; }
@@ -668,6 +715,26 @@ export const SLIDES_CSS = `
 .pa-wm-visual { height:312px; align-self:center; }
 .pa-visual-takeaway { margin-top:18px; padding-top:14px; border-top:1px solid var(--rule); color:var(--blue); font-weight:600; }
 .pa-prose-block { font-size: 22px; line-height: 1.5; color: var(--ink-soft); background: rgba(255,255,255,.48); border: 1px solid var(--rule); border-radius: var(--radius-lg); padding: 30px; margin-top: 16px; max-width: 76ch; }
+.pa-editorial-article {
+  margin-top:22px; border-top:1px solid var(--rule-strong); padding-top:20px;
+  display:grid; grid-template-columns:130px minmax(0,1fr); gap:30px;
+}
+.pa-article-folio { color:var(--gold); font-size:12px; line-height:1.5; letter-spacing:.12em; font-weight:800; }
+.pa-article-copy {
+  color:var(--ink-soft); font-family:var(--font-title); font-size:23px; line-height:1.52;
+  column-count:2; column-gap:38px; column-rule:1px solid var(--rule);
+}
+.pa-margin-essay {
+  margin-top:22px; display:grid; grid-template-columns:220px minmax(0,1fr);
+  min-height:300px; border:1px solid var(--rule-strong); border-radius:var(--radius-md); overflow:hidden;
+}
+.pa-margin-essay aside {
+  padding:28px 24px; background:var(--blue); color:#fff;
+  display:flex; flex-direction:column; justify-content:space-between;
+}
+.pa-margin-essay aside span { font-size:11px; letter-spacing:.13em; font-weight:800; }
+.pa-margin-essay aside strong { font-family:var(--font-title); font-size:30px; font-weight:500; }
+.pa-margin-copy { padding:34px; align-self:center; color:var(--ink-soft); font-size:24px; line-height:1.52; }
 
 /* 09 BATAFSIL */
 .pa-deep-dive { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 26px; margin-top: 16px; }
@@ -714,20 +781,25 @@ export const SLIDES_CSS = `
    fit two rows within the fixed 720px canvas — verified against real,
    2-line-label content, not just short placeholder text. */
 .pa-turlar-grid.pa-grid-4 { grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(2, 1fr); gap: 16px; }
-.pa-turlar-grid.pa-grid-4 .pa-type-card { min-height: 0; padding: 17px 18px; gap: 8px; overflow: hidden; }
+.pa-turlar-grid.pa-grid-4 .pa-type-card { min-height: 0; padding: 15px 17px; gap: 7px; overflow: hidden; }
 .pa-turlar-grid.pa-grid-4 .pa-academic-icon { width: 34px; height: 34px; }
 .pa-turlar-grid.pa-grid-4 .pa-marker { width: 24px; height: 24px; font-size: 12px; }
 .pa-turlar-grid.pa-grid-4 .pa-type-card h3 { font-size: 19px; line-height: 1.16; margin-bottom: 3px; }
-.pa-turlar-grid.pa-grid-4 .pa-type-card p.pa-small { font-size: 15.8px; line-height: 1.33; }
+.pa-turlar-grid.pa-grid-4 .pa-type-card p.pa-small { font-size: 17px; line-height: 1.27; }
 
 /* 12 COMPARISON */
 .pa-comparison { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px; }
+.pa-comparison--compact { gap: 18px; margin-top: 14px; }
 .pa-compare-col { border: 1px solid var(--rule-strong); border-radius: var(--radius-lg); overflow: hidden; background: rgba(255,255,255,.38); }
 .pa-compare-head { padding: 20px 24px; border-bottom: 1px solid var(--rule-strong); background: rgba(255,255,255,.48); }
 .pa-compare-head h3 { font-size: 25px; margin-top: 4px; }
 .pa-compare-body { padding: 8px 24px 20px; }
 .pa-compare-row { padding: 12px 0; border-bottom: 1px solid var(--rule); }
 .pa-compare-row:last-child { border-bottom: 0; }
+.pa-comparison--compact .pa-compare-head { padding: 15px 20px 14px; }
+.pa-comparison--compact .pa-compare-head h3 { font-size: 22px; line-height: 1.14; }
+.pa-comparison--compact .pa-compare-body { padding: 5px 20px 14px; }
+.pa-comparison--compact .pa-compare-row { padding: 8px 0; }
 
 /* 13 PROCESS */
 .pa-process-chain { display: grid; gap: 0; align-items: stretch; margin-top: 16px; }
@@ -747,7 +819,7 @@ export const SLIDES_CSS = `
 }
 .pa-process-flow::before {
   content:""; position:absolute; inset:0; border-radius:var(--radius-lg);
-  background:linear-gradient(135deg, rgba(181,154,91,.08), transparent 42%);
+  background:rgba(181,154,91,.055);
   border:1px solid rgba(181,154,91,.14); pointer-events:none;
 }
 .pa-process-spine { display:none; }
@@ -777,9 +849,9 @@ export const SLIDES_CSS = `
 .pa-process-flow--3 .pa-process-paper h3 { font-size:22px; }
 .pa-process-flow--2 .pa-process-paper p,
 .pa-process-flow--3 .pa-process-paper p { font-size:17px; line-height:1.4; }
-.pa-process-flow--5 .pa-process-paper { min-height:86px; padding:12px 15px; }
-.pa-process-flow--5 .pa-process-paper h3 { font-size:16.5px; }
-.pa-process-flow--5 .pa-process-paper p { font-size:14.2px; line-height:1.24; }
+.pa-process-flow--5 .pa-process-paper { min-height:86px; padding:10px 14px; }
+.pa-process-flow--5 .pa-process-paper h3 { font-size:18px; line-height:1.12; }
+.pa-process-flow--5 .pa-process-paper p { font-size:16.5px; line-height:1.2; }
 
 /* 14 TIMELINE */
 .pa-timeline { position: relative; display: grid; gap: 18px; padding-top: 60px; margin-top: 8px; }
@@ -848,15 +920,21 @@ export const SLIDES_CSS = `
   margin-top: 22px; padding: 20px 24px; border: 1px solid rgba(181,154,91,.42); border-radius: var(--radius-md);
   background: rgba(232,221,192,.26); font-size: 20px; color: var(--ink-soft);
 }
+.pa-conclusion-synthesis {
+  margin-top:24px; min-height:270px; display:grid; grid-template-columns:120px minmax(0,1fr);
+  gap:28px; align-items:center; border-top:1px solid var(--rule-strong); border-bottom:1px solid var(--rule-strong);
+}
+.pa-synthesis-mark { font-family:var(--font-title); font-size:78px; color:var(--gold); text-align:center; }
+.pa-conclusion-synthesis p { margin-top:12px; color:var(--ink-soft); font-family:var(--font-title); font-size:27px; line-height:1.45; }
 
 /* 20 REFERENCES */
 .pa-ref-layout { display: grid; grid-template-columns: 210px 1fr; gap: 30px; margin-top: 20px; }
 .pa-ref-group { padding: 14px 0; border-bottom: 1px solid var(--rule); }
 .pa-ref-group h3 { color: var(--blue); font-size: 16px; margin-bottom: 8px; }
-.pa-ref-list { display: grid; gap: 9px; font-size: 15px; color: var(--ink-soft); line-height: 1.35; }
+.pa-ref-list { display: grid; gap: 8px; font-size: 16.5px; color: var(--ink-soft); line-height: 1.28; }
 
 /* 21 CLOSING — just the thank-you line, vertically centered. */
 .pa-final-layout { height: 100%; display: flex; flex-direction: column; justify-content: center; gap: 16px; }
-.pa-thanks { font-size: 72px; letter-spacing: -0.04em; line-height: 1; max-width: 850px; }
+.pa-thanks { font-size: 72px; letter-spacing: 0; line-height: 1; max-width: 850px; }
 
 `;

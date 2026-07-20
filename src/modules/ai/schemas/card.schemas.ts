@@ -1,19 +1,35 @@
 import { z } from 'zod';
 import { SlideType } from '../layout.catalog';
 import { ICON_NAMES } from '../../render/templates/icons';
+import { processBodyMax } from '../content-budgets';
 
-// Only KNOWN icon names reach the renderer (Fix 8): an unknown/hallucinated name
-// degrades to undefined (dot shown) instead of silently passing a broken value.
+// Only known icon names reach the renderer.
 const iconField = z
   .enum(ICON_NAMES as [string, ...string[]])
-  .optional()
-  .catch(undefined);
+  .optional();
+
+const DANGLING_ENDING_RE =
+  /\b(?:va|yoki|hamda|bilan|uchun|orqali|natijasida|sababli|bo‘yicha|bo'yicha|chunki|ammo|lekin|biroq|and|or|with|for|by|because|through)\s*[.!?]?$/iu;
+
+function completeSentence(max: number, min = 1) {
+  return z.string().min(min).max(max).superRefine((value, ctx) => {
+    const plain = value.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
+    if (/[.!?][)"'»]*$/u.test(plain) && !DANGLING_ENDING_RE.test(plain)) return;
+    ctx.addIssue({
+      code: z.ZodIssueCode.custom,
+      message: 'must be a complete sentence ending with punctuation, without a dangling conjunction',
+    });
+  });
+}
 
 // Shared content primitives (Fix 6): one DEFINITION, per-context caps (a full-width
 // bullet fits ~160 chars, a narrow side-column only ~85 — so caps stay parametric).
 const bullet = (max: number) => z.object({ text: z.string().min(1).max(max) });
+const sentenceBullet = (max: number) => z.object({ text: completeSentence(max) });
 const iconCard = (labelMax: number, textMax: number) =>
   z.object({ icon: iconField, label: z.string().min(1).max(labelMax), text: z.string().min(1).max(textMax) });
+const explanatoryIconCard = (labelMax: number, textMax: number) =>
+  z.object({ icon: iconField, label: z.string().min(1).max(labelMax), text: completeSentence(textMax) });
 
 // Structured numeric value (Fix 5): number core + unit + approx flag — split out so
 // the unit can be typeset small and the figure is validatable (was one opaque string).
@@ -26,7 +42,7 @@ const statShape = {
 // ACADEMIC schemas (Uzbek university students). Concept/explanation-driven —
 // NO forced numbers/metrics (those made the AI invent fake stats on qualitative
 // topics). Char caps are a fixed-canvas SAFETY CEILING, verified via worst-case
-// render; the per-card fallback catches any repair-loop failure.
+// render; invalid model output fails the generation job explicitly.
 
 // Academic title page (titul varaq) — 5 selectable layouts (title blueprint).
 // All formal OTM fields optional so older/partial data still renders; the
@@ -66,43 +82,43 @@ const agenda = z.object({
 const content = z.object({
   kicker: z.string().optional(),
   title: z.string().min(1).max(80),
-  lead: z.string().max(180).optional(),
+  lead: completeSentence(180).optional(),
   points: z.array(z.object({
     icon: iconField,
     heading: z.string().max(45).optional(),
-    text: z.string().min(1).max(160),
+    text: completeSentence(160),
   })).min(2).max(4),
 });
 
 const definition = z.object({
   kicker: z.string().optional(),
   term: z.string().min(1).max(60),
-  definition: z.string().min(1).max(240),
-  aspects: z.array(iconCard(40, 110)).max(3).default([]),
+  definition: completeSentence(240),
+  aspects: z.array(iconCard(40, 110)).max(3),
 });
 
 // Deep-dive on ONE sub-topic: a rich paragraph + key sub-points.
 const batafsil = z.object({
   kicker: z.string().optional(),
   title: z.string().min(1).max(80),
-  body: z.string().min(1).max(400),
-  points: z.array(bullet(85)).max(3).default([]),
+  body: completeSentence(400),
+  points: z.array(bullet(85)).max(3),
 });
 
 // A concrete illustrative example.
 const misol = z.object({
   kicker: z.string().optional(),
   title: z.string().min(1).max(80),
-  body: z.string().min(1).max(340),
+  body: completeSentence(340),
   icon: iconField,
-  takeaway: z.string().max(140).optional(),
+  takeaway: completeSentence(140).optional(),
 });
 
 // Classification — types/categories of the subject.
 const turlar = z.object({
   kicker: z.string().optional(),
   title: z.string().min(1).max(80),
-  items: z.array(iconCard(45, 130)).min(2).max(4),
+  items: z.array(explanatoryIconCard(45, 130)).min(2).max(4),
 });
 
 const sideCol = z.object({
@@ -126,9 +142,19 @@ const process = z.object({
   title: z.string().min(1).max(76),
   steps: z.array(z.object({
     title: z.string().min(1).max(38),
-    body: z.string().min(1).max(105),
+    body: completeSentence(150, 45),
   }).strict()).min(2).max(5),
-}).strict();
+}).strict().superRefine((data, ctx) => {
+  const maxChars = processBodyMax(data.steps.length);
+  data.steps.forEach((step, index) => {
+    if (step.body.length <= maxChars) return;
+    ctx.addIssue({
+      code: z.ZodIssueCode.custom,
+      path: ['steps', index, 'body'],
+      message: `body must contain at most ${maxChars} characters for a ${data.steps.length}-step process`,
+    });
+  });
+});
 
 // Chronology — dates + events, no metric/status (business framing).
 const timeline = z.object({
@@ -137,7 +163,7 @@ const timeline = z.object({
   steps: z.array(z.object({
     date: z.string().min(1).max(24),
     title: z.string().min(1).max(60),
-    body: z.string().min(1).max(100),
+    body: completeSentence(100),
   }).strict()).min(2).max(4),
 }).strict();
 
@@ -145,19 +171,40 @@ const timeline = z.object({
 const stats = z.object({
   kicker: z.string().optional(),
   title: z.string().min(1).max(68),
-  subtitle: z.string().max(105).optional(),
+  subtitle: z.string().min(35).max(105).optional(),
   stats: z
     .array(z.object({
       value: z.string().min(1).max(10),
       unit: z.string().max(14).optional(),
       approx: z.boolean().optional(),
-      label: z.string().min(1).max(28),
-      description: z.string().min(1).max(54),
+      label: z.string().min(4).max(28),
+      description: z.string().min(24).max(54),
     }))
-    .max(4), // no min: only REAL numbers; empty ⇒ slide dropped (accuracy over invention)
-  insight: z.string().max(82).optional(),
+    .max(4), // 0 is allowed for safety; non-empty output must contain a complete evidence set.
+  insight: z.string().min(35).max(82).optional(),
   source: z.string().max(55).optional(),
 }).superRefine((data, ctx) => {
+  if (data.stats.length > 0 && data.stats.length < 3) {
+    ctx.addIssue({
+      code: z.ZodIssueCode.custom,
+      path: ['stats'],
+      message: 'stats must contain 3-4 verified figures, or be empty when evidence is unavailable',
+    });
+  }
+  if (data.stats.length > 0 && !data.subtitle) {
+    ctx.addIssue({
+      code: z.ZodIssueCode.custom,
+      path: ['subtitle'],
+      message: 'subtitle is required when stats are present',
+    });
+  }
+  if (data.stats.length > 0 && !data.insight) {
+    ctx.addIssue({
+      code: z.ZodIssueCode.custom,
+      path: ['insight'],
+      message: 'insight is required when stats are present',
+    });
+  }
   if (data.stats.length > 0 && !data.source) {
     ctx.addIssue({
       code: z.ZodIssueCode.custom,
@@ -177,8 +224,8 @@ const sourceRef = z.object({
 const conclusion = z.object({
   kicker: z.string().optional(),
   title: z.string().min(1).max(80),
-  points: z.array(z.string().min(1).max(150)).min(2).max(4),
-  closing: z.string().max(160).optional(),
+  points: z.array(completeSentence(150)).min(2).max(4),
+  closing: completeSentence(160).optional(),
 });
 
 const references = z.object({
@@ -198,8 +245,8 @@ const closing = z.object({
 const relevance = z.object({
   kicker: z.string().optional(),
   title: z.string().min(1).max(80),
-  lead: z.string().max(180).optional(),
-  points: z.array(bullet(155)).min(2).max(3),
+  lead: completeSentence(180).optional(),
+  points: z.array(sentenceBullet(155)).min(2).max(3),
   stat: z.object({ ...statShape, label: z.string().min(1).max(56) }).optional(),
   source: z.string().max(70).optional(),
 }).superRefine((data, ctx) => {
@@ -210,14 +257,6 @@ const relevance = z.object({
       message: 'source is required when stat is present',
     });
   }
-});
-
-// "Maqsad va vazifalar": one aim + 3-5 tasks.
-const aimTasks = z.object({
-  kicker: z.string().optional(),
-  title: z.string().min(1).max(80),
-  aim: z.string().min(1).max(170),
-  tasks: z.array(z.string().min(1).max(100)).min(3).max(5),
 });
 
 const osCol = z.object({
@@ -239,10 +278,10 @@ const objectSubject = z.object({
 const finding = z.object({
   kicker: z.string().optional(),
   title: z.string().min(1).max(80), // the RESULT stated as an assertion (Fix 7: was `claim`)
-  evidence: z.string().min(1).max(380),
-  points: z.array(bullet(85)).max(2).default([]),
-  interpretation: z.string().max(220).optional(), // what the evidence MEANS — the analytical "so what"
-  limitation: z.string().max(160).optional(), // honest scope/method caveat — never invented, only stated if real
+  evidence: completeSentence(380),
+  points: z.array(bullet(85)).max(2),
+  interpretation: completeSentence(220).optional(), // what the evidence MEANS — the analytical "so what"
+  limitation: completeSentence(160).optional(), // honest scope/method caveat — never invented, only stated if real
   source: z.string().max(70).optional(),
 });
 
@@ -252,8 +291,8 @@ const problemsSolutions = z.object({
   title: z.string().min(1).max(80),
   subtitle: z.string().max(150).optional(),
   pairs: z.array(z.object({
-    problem: z.string().min(1).max(108),
-    solution: z.string().min(1).max(108),
+    problem: z.string().min(32).max(108),
+    solution: z.string().min(38).max(108),
   })).min(2).max(3),
 });
 
@@ -262,7 +301,7 @@ export const cardSchemaByType: Record<SlideType, z.ZodTypeAny> = {
   BATAFSIL: batafsil, MISOL: misol, TURLAR: turlar, COMPARISON: comparison,
   PROCESS: process, TIMELINE: timeline, STATS: stats, CONCLUSION: conclusion,
   REFERENCES: references, CLOSING: closing,
-  RELEVANCE: relevance, AIM_TASKS: aimTasks, OBJECT_SUBJECT: objectSubject,
+  RELEVANCE: relevance, OBJECT_SUBJECT: objectSubject,
   FINDING: finding, PROBLEMS_SOLUTIONS: problemsSolutions,
 };
 
@@ -280,7 +319,7 @@ export const cardSchemaByType: Record<SlideType, z.ZodTypeAny> = {
 // prose variant needs its own dedicated visual design first (deferred).
 // ============================================================
 
-const proseParagraph = z.string().min(280).max(650);
+const proseParagraph = completeSentence(650, 280);
 
 const relevanceProse = z.object({
   kicker: z.string().optional(),
@@ -318,21 +357,14 @@ const misolProse = z.object({
   title: z.string().min(1).max(80),
   paragraph: proseParagraph,
   icon: iconField,
-  takeaway: z.string().max(140).optional(),
+  takeaway: completeSentence(140).optional(),
 });
 
 const conclusionProse = z.object({
   kicker: z.string().optional(),
   title: z.string().min(1).max(80),
   paragraph: proseParagraph,
-  closing: z.string().max(160).optional(),
-});
-
-const aimTasksProse = z.object({
-  kicker: z.string().optional(),
-  title: z.string().min(1).max(80),
-  paragraph: proseParagraph, // fuller version of `aim`
-  tasks: z.array(z.string().min(1).max(100)).min(3).max(5), // list KEPT — sequence matters (hybrid type)
+  closing: completeSentence(160).optional(),
 });
 
 /** Slide types that have a prose alternative, mapped to their prose schema.
@@ -348,7 +380,6 @@ export const proseSchemaByType: Partial<Record<SlideType, z.ZodTypeAny>> = {
   BATAFSIL: batafsilProse,
   MISOL: misolProse,
   CONCLUSION: conclusionProse,
-  AIM_TASKS: aimTasksProse,
 };
 
 export type CardContent = Record<string, unknown>;

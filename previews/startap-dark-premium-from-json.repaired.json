@@ -1,0 +1,385 @@
+{
+  "id": "8456f3eb-0925-41fb-b8ee-b63dfb3aeb98",
+  "theme": "dark_premium",
+  "repair": {
+    "changed": true,
+    "passes": 3,
+    "warnings": [
+      "slide 1 TITLE: render-fit repair pass 1 (element-overflow)",
+      "slide 3 RELEVANCE: render-fit repair pass 1 (element-overflow)",
+      "slide 4 CONTENT: render-fit repair pass 1 (slide-overflow,element-overflow,element-out-of-bounds)",
+      "slide 5 TURLAR: render-fit repair pass 1 (element-overflow)",
+      "slide 6 CONTENT: render-fit repair pass 1 (element-overflow)",
+      "slide 7 CONTENT: render-fit repair pass 1 (element-overflow)",
+      "slide 8 BATAFSIL: render-fit repair pass 1 (element-overflow)",
+      "slide 9 CONTENT: render-fit repair pass 1 (element-overflow)",
+      "slide 10 CONTENT: render-fit repair pass 1 (element-overflow)",
+      "slide 11 STATS: render-fit repair pass 1 (element-overflow)",
+      "slide 12 COMPARISON: render-fit repair pass 1 (element-overflow)",
+      "slide 13 PROBLEMS_SOLUTIONS: render-fit repair pass 1 (element-overflow)",
+      "slide 14 CONCLUSION: render-fit repair pass 1 (element-overflow)",
+      "slide 15 CLOSING: render-fit repair pass 1 (element-overflow)",
+      "slide 1 TITLE: render-fit repair pass 2 (element-overflow)",
+      "slide 3 RELEVANCE: render-fit repair pass 2 (element-overflow)",
+      "slide 4 CONTENT: render-fit repair pass 2 (element-overflow)",
+      "slide 5 TURLAR: render-fit repair pass 2 (element-overflow)",
+      "slide 6 CONTENT: render-fit repair pass 2 (element-overflow)",
+      "slide 7 CONTENT: render-fit repair pass 2 (element-overflow)",
+      "slide 8 BATAFSIL: render-fit repair pass 2 (element-overflow)",
+      "slide 9 CONTENT: render-fit repair pass 2 (element-overflow)",
+      "slide 10 CONTENT: render-fit repair pass 2 (element-overflow)",
+      "slide 11 STATS: render-fit repair pass 2 (element-overflow)",
+      "slide 12 COMPARISON: render-fit repair pass 2 (element-overflow)",
+      "slide 13 PROBLEMS_SOLUTIONS: render-fit repair pass 2 (element-overflow)",
+      "slide 14 CONCLUSION: render-fit repair pass 2 (element-overflow)",
+      "slide 15 CLOSING: render-fit repair pass 2 (element-overflow)",
+      "slide 1 TITLE: render-fit repair pass 3 (element-overflow)",
+      "slide 3 RELEVANCE: render-fit repair pass 3 (element-overflow)",
+      "slide 4 CONTENT: render-fit repair pass 3 (element-overflow)",
+      "slide 5 TURLAR: render-fit repair pass 3 (element-overflow)",
+      "slide 6 CONTENT: render-fit repair pass 3 (element-overflow)",
+      "slide 7 CONTENT: render-fit repair pass 3 (element-overflow)",
+      "slide 8 BATAFSIL: render-fit repair pass 3 (element-overflow)",
+      "slide 9 CONTENT: render-fit repair pass 3 (element-overflow)",
+      "slide 10 CONTENT: render-fit repair pass 3 (element-overflow)",
+      "slide 11 STATS: render-fit repair pass 3 (element-overflow)",
+      "slide 12 COMPARISON: render-fit repair pass 3 (element-overflow)",
+      "slide 13 PROBLEMS_SOLUTIONS: render-fit repair pass 3 (element-overflow)",
+      "slide 14 CONCLUSION: render-fit repair pass 3 (element-overflow)",
+      "slide 15 CLOSING: render-fit repair pass 3 (element-overflow)",
+      "render-fit repair residual issues: slide 1=2, slide 3=2, slide 4=1, slide 5=2, slide 6=1, slide 7=1, slide 8=2, slide 9=1, slide 10=1, slide 11=5, slide 12=1, slide 13=2, slide 14=2, slide 15=1"
+    ]
+  },
+  "slides": [
+    {
+      "position": 1,
+      "type": "TITLE",
+      "content": {
+        "title": "O'zbekistonda startap ekotizimi: holati va istiqbollari",
+        "layout": "typographic_statement"
+      }
+    },
+    {
+      "position": 2,
+      "type": "AGENDA",
+      "content": {
+        "items": [
+          {
+            "text": "Startap ekotizimining ahamiyati va dolzarbligi"
+          },
+          {
+            "text": "Asosiy tushunchalar, turlari va shakllanish jarayonlari"
+          },
+          {
+            "text": "Ekotizim ishtirokchilari, ularning roli va hamkorligi"
+          },
+          {
+            "text": "Mavjud muammolar, tahlil va ularni hal etish yo'llari"
+          }
+        ],
+        "title": "Reja"
+      }
+    },
+    {
+      "position": 3,
+      "type": "RELEVANCE",
+      "content": {
+        "lead": "Startap ekotizimi O'zbekistonda zamonaviy iqtisodiyot uchun muhim.",
+        "title": "Startap ekotizimi O'zbekistonda.",
+        "kicker": "Dolzarblik",
+        "points": [
+          {
+            "text": "Innovatsion."
+          },
+          {
+            "text": "Yangi ish o'rinlari."
+          },
+          {
+            "text": "2023 yilda texnologik."
+          }
+        ],
+        "source": "2023 yilda texnologik startaplarga investitsiyalar 2 baravar oshdi",
+        "paragraph": "O'zbekistonda startap ekotizimining rivojlanishi mamlakat iqtisodiyotining innovatsion raqobatbardoshligini oshirishda markaziy o'rin tutadi."
+      }
+    },
+    {
+      "position": 4,
+      "type": "CONTENT",
+      "content": {
+        "lead": "Startap ekotizimi — yangi loyihalarni.",
+        "title": "Startap ekotizimi.",
+        "points": [
+          {
+            "text": "Startap ekotizimi."
+          },
+          {
+            "text": "Unda investorlar."
+          },
+          {
+            "text": "Innovatsion g'oyalarni."
+          },
+          {
+            "text": "Startap ekotizimi."
+          }
+        ]
+      }
+    },
+    {
+      "position": 5,
+      "type": "TURLAR",
+      "content": {
+        "items": [
+          {
+            "icon": "code",
+            "text": "Ushbu ekotizim asosan axborot texnologiyalari.",
+            "label": "Texnologik ekotizimlar"
+          },
+          {
+            "icon": "users",
+            "text": "Ijtimoiy muammolarni hal.",
+            "label": "Ijtimoiy startap."
+          },
+          {
+            "icon": "leaf",
+            "text": "Qishloq xo'jaligi sohasida.",
+            "label": "Agrostartap ekotizimlari"
+          }
+        ],
+        "title": "O'zbekistonda startap.",
+        "kicker": "Turlari"
+      }
+    },
+    {
+      "position": 6,
+      "type": "CONTENT",
+      "content": {
+        "lead": "1. G'oya va jamoa shakllanishi. 2.",
+        "title": "Startap ekotizimi.",
+        "layout": "default",
+        "points": [
+          {
+            "text": "1. G'oya va jamoa."
+          },
+          {
+            "text": "2. Inkubatsiya."
+          },
+          {
+            "text": "3. Investitsiya jalb qilish."
+          },
+          {
+            "text": "4. Kengayish va barqaror."
+          }
+        ],
+        "visual": {
+          "alt": "Geometric decoration for Startap ekotizimi shakllanishining bosqichlari",
+          "fit": "cover",
+          "url": "",
+          "query": "O'zbekistonda startap ekotizimi Startap ekotizimi shakllanishining bosqichlari slot-2",
+          "author": "Generated geometric layout",
+          "license": "decorative visual",
+          "provider": "Lumio Geometry"
+        }
+      }
+    },
+    {
+      "position": 7,
+      "type": "CONTENT",
+      "content": {
+        "lead": "Investorlar moliyaviy.",
+        "title": "Ekotizim ishtirokchilari o'zaro.",
+        "points": [
+          {
+            "text": "Investorlar moliyaviy."
+          },
+          {
+            "text": "Inkubator va akseleratorlar."
+          },
+          {
+            "text": "Davlat va xususiy sektor."
+          },
+          {
+            "text": "Ekotizim ishtirokchilari."
+          }
+        ]
+      }
+    },
+    {
+      "position": 8,
+      "type": "BATAFSIL",
+      "content": {
+        "body": "Investorlarning ekotizimdagi ahamiyati chuqur tahlil qilinadi Investorlar startaplarning.",
+        "title": "Investorlarning ekotizimdagi ahamiyati.",
+        "kicker": "Batafsil",
+        "points": [
+          {
+            "text": "Investorlar startaplarning."
+          },
+          {
+            "text": "Moliyaviy risklarni."
+          }
+        ],
+        "paragraph": "Investorlar startaplarning dastlabki bosqichlaridan boshlab moliyaviy resurslar taqdim etish."
+      }
+    },
+    {
+      "position": 9,
+      "type": "CONTENT",
+      "content": {
+        "lead": "Uzum Market 2021 yilda tez.",
+        "title": "Muvaffaqiyatli o'zbek.",
+        "points": [
+          {
+            "text": "Uzum Market 2021 yilda tez."
+          },
+          {
+            "text": "Bozorga kirishda inkubator."
+          },
+          {
+            "text": "Bugungi kunda minglab."
+          },
+          {
+            "text": "Muvaffaqiyatli o'zbek."
+          }
+        ]
+      }
+    },
+    {
+      "position": 10,
+      "type": "CONTENT",
+      "content": {
+        "lead": "Davlat va xususiy sektor hamkorligi ekotizimni kuchaytiradi.",
+        "title": "Davlat va xususiy sektor.",
+        "points": [
+          {
+            "text": "Davlat grantlar va soliq."
+          },
+          {
+            "text": "Xususiy sektor."
+          },
+          {
+            "text": "Hamkorlik."
+          },
+          {
+            "text": "Davlat va xususiy sektor."
+          }
+        ],
+        "visual": {
+          "alt": "Geometric decoration for Davlat va xususiy sektor hamkorligi ekotizimni kuchaytiradi",
+          "fit": "cover",
+          "url": "",
+          "query": "O'zbekistonda startap ekotizimi Davlat va xususiy sektor hamkorligi ekotizimni kuchaytiradi slot-1",
+          "author": "Generated geometric layout",
+          "license": "decorative visual",
+          "provider": "Lumio Geometry"
+        },
+        "paragraph": "O'zbekistonda startap ekotizimining rivojlanishida davlat sektori muhim rol o'ynaydi, chunki u grantlar."
+      }
+    },
+    {
+      "position": 11,
+      "type": "STATS",
+      "content": {
+        "stats": [
+          {
+            "unit": "dan ortiq",
+            "label": "yangi startaplar",
+            "value": "150",
+            "approx": true,
+            "description": "2022-yilda ro'yxatdan o'tgan (IT Park)"
+          },
+          {
+            "unit": "mln dollar",
+            "label": "investitsiyalar",
+            "value": "21",
+            "description": "startaplarga yo'naltirilgan"
+          },
+          {
+            "unit": "dan ortiq",
+            "label": "ishtirokchi loyihalar",
+            "value": "70",
+            "approx": true,
+            "description": "akseleratsiya dasturlarida qatnashgan"
+          }
+        ],
+        "title": "O'zbekistonda startaplar va investitsiyalar statistikasi",
+        "layout": "gradient_cards",
+        "source": "IT Park ma'lumotlari, 2022-yil",
+        "insight": "Ushbu raqamlar ekotizimning faollashib borayotganini ko'rsatadi.",
+        "subtitle": "Mamlakatda startap ekotizimining o'sish sur'atlarini ko'rsatuvchi muhim raqamlar."
+      }
+    },
+    {
+      "position": 12,
+      "type": "COMPARISON",
+      "content": {
+        "left": {
+          "items": [
+            "Davlat ko'magi.",
+            "Inkubatorlar.",
+            "Mahalliy bozorga.",
+            "IT Park kabi."
+          ],
+          "label": "O'zbekiston",
+          "title": "Rivojlanayotgan ekotizim"
+        },
+        "right": {
+          "items": [
+            "Xalqaro investorlar.",
+            "Astana Hub kabi yirik.",
+            "Venchur fondlar va xususiy.",
+            "Mintaqaviy miqyosdagi."
+          ],
+          "label": "Qozog'iston",
+          "title": "Faol investorlar bilan"
+        },
+        "title": "O'zbekistondagi va mintaqaviy.",
+        "kicker": "Mintaqaviy taqqoslash",
+        "subtitle": "Markaziy Osiyo mamlakatlari startap."
+      }
+    },
+    {
+      "position": 13,
+      "type": "PROBLEMS_SOLUTIONS",
+      "content": {
+        "pairs": [
+          {
+            "problem": "Tajriba va bilim.",
+            "solution": "Malaka oshirish dasturlarini."
+          },
+          {
+            "problem": "Moliyalashtirish.",
+            "solution": "Yangi investitsiya."
+          },
+          {
+            "problem": "Startaplar uchun huquqiy.",
+            "solution": "Qonunchilikni takomillashtirish."
+          }
+        ],
+        "title": "Ekotizimdagi asosiy muammolar."
+      }
+    },
+    {
+      "position": 14,
+      "type": "CONCLUSION",
+      "content": {
+        "title": "O'zbekistonda startap.",
+        "points": [
+          "Ekotizim innovatsion.",
+          "Davlat va xususiy hamkorlik.",
+          "Muammolar.",
+          "O'zbekistonda startap."
+        ],
+        "closing": "Ushbu rivojlanish O'zbekistonning.",
+        "paragraph": "O'zbekistonda startap ekotizimi innovatsion iqtisodiyotni shakllantirish uchun zarur bo'lib."
+      }
+    },
+    {
+      "position": 15,
+      "type": "CLOSING",
+      "content": {
+        "title": "E'tiboringiz uchun rahmat!",
+        "layout": "default"
+      }
+    }
+  ]
+}

@@ -5,6 +5,7 @@ import { BotState } from '../bot.constants';
 import { QUESTIONS, slideCountKeyboard, titulChoiceKeyboard } from '../keyboards';
 import { OutlineEditHandler } from './outline-edit.handler';
 import { TestSlideHandler } from './testslide.handler';
+import { FullTypesHandler } from './fulltypes.handler';
 
 @Injectable()
 export class MessageHandler {
@@ -12,6 +13,7 @@ export class MessageHandler {
     private readonly session: SessionService,
     private readonly outlineEdit: OutlineEditHandler,
     private readonly testSlide: TestSlideHandler,
+    private readonly fullTypes: FullTypesHandler,
   ) {}
 
   async handle(ctx: BotContext): Promise<void> {
@@ -65,6 +67,14 @@ export class MessageHandler {
       case BotState.TESTSLIDE_AWAITING_TYPE:
       case BotState.TESTSLIDE_AWAITING_THEME:
         await ctx.reply('Yuqoridagi tugmalardan birini tanlang \u{1F446}');
+        return;
+
+      case BotState.FULLTYPES_AWAITING_TOPIC:
+        await this.fullTypes.handleTopic(ctx, text);
+        return;
+
+      case BotState.FULLTYPES_AWAITING_THEME:
+        await ctx.reply('Yuqoridagi dizaynlardan birini tanlang \u{1F446}');
         return;
 
       case BotState.AWAITING_OUTLINE_CONFIRM:

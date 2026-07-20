@@ -5,7 +5,6 @@
 // so the AI data (card.prompt.ts) never needs to change.
 
 import { DeckSlide } from '../templates/deck';
-import { WIKIMEDIA_VISUAL_CSS } from '../templates/wikimedia-visual';
 import { getPremiumAcademicBaseCss } from './tokens';
 import {
   SLIDES_CSS,
@@ -15,7 +14,6 @@ import {
   renderFinding, renderProblemsSolutions, renderConclusion,
   renderReferences, renderClosing,
 } from './slides';
-import { safe } from './components';
 
 type Renderer = (d: any) => string;
 
@@ -41,34 +39,19 @@ const RENDERERS: Record<string, Renderer> = {
   CLOSING: renderClosing,
 };
 
-/** Minimal fallback — never breaks the deck on an unknown/malformed slide. */
-function renderFallback(d: any): string {
-  return `
-  <section class="pa-slide">
-    <div class="pa-inner">
-      <div></div>
-      <h1 class="pa-title-main">${safe(d.title ?? d.statement ?? '…')}</h1>
-      <div></div>
-    </div>
-  </section>`;
-}
-
 /** Build the full premium_academic deck HTML. */
 export function buildPremiumAcademicDeck(_themeId: string, slides: DeckSlide[]): string {
   const total = slides.length;
   const body = slides
     .map((s, i) => {
       const data = { ...((s.content ?? {}) as Record<string, unknown>), pageNo: String(i + 1).padStart(2, '0'), total };
-      const fn = RENDERERS[s.type] ?? renderFallback;
-      try {
-        return fn(data);
-      } catch {
-        return renderFallback(data);
-      }
+      const fn = RENDERERS[s.type];
+      if (!fn) throw new Error(`No premium academic renderer registered for slide type: ${s.type}`);
+      return fn(data);
     })
     .join('\n');
 
-  const css = `${getPremiumAcademicBaseCss()}\n${SLIDES_CSS}\n${WIKIMEDIA_VISUAL_CSS}`;
+  const css = `${getPremiumAcademicBaseCss()}\n${SLIDES_CSS}`;
   return `<!doctype html>
 <html lang="uz"><head><meta charset="utf-8"><style>${css}</style></head>
 <body><div class="pa-deck">${body}</div></body></html>`;

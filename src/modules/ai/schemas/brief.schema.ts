@@ -8,15 +8,14 @@ import { z } from 'zod';
 export const briefSchema = z.object({
   thesis: z.string().min(1),
   narrative: z.string().min(1),
-  keyFacts: z.array(z.string().min(1)).min(2).max(6).default([]),
+  keyFacts: z.array(z.string().min(1)).min(2).max(6),
   slideFocus: z
     .array(
       z.object({
         position: z.number().int().positive(),
         focus: z.string().min(1),
       }),
-    )
-    .default([]),
+    ),
 
   // ============================================================
   // V2 fields — additive, all optional. Existing consumers (card
@@ -50,7 +49,7 @@ export const briefSchema = z.object({
     .object({
       defaultContentMode: z.enum(['cards', 'prose']).optional(),
       themeId: z.string().optional(),
-      pptxMode: z.enum(['editable', 'hybrid', 'pixelPerfect']).optional(),
+      pptxMode: z.enum(['hybrid', 'pixelPerfect']).optional(),
     })
     .optional(),
 });

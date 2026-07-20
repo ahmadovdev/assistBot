@@ -7,9 +7,8 @@
 // (card.prompt.ts) does not need to change.
 
 import { DeckSlide } from '../templates/deck';
-import { WIKIMEDIA_VISUAL_CSS } from '../templates/wikimedia-visual';
 import { getAcademicBaseCss } from './tokens';
-import { COMPONENTS_CSS, frame, safe } from './components';
+import { COMPONENTS_CSS } from './components';
 import {
   SLIDES_CSS, BLOCK_LABELS, AcademicMeta,
   renderTitle, renderAgenda, renderContent, renderDefinition, renderConclusion,
@@ -45,21 +44,6 @@ const RENDERERS: Record<string, Renderer> = {
 
 /** Slides that carry no header/footer (edge-to-edge cover pages). */
 const COVER_TYPES = new Set(['TITLE', 'CLOSING']);
-
-/** Minimal fallback for unknown/unsupported slide types — never breaks the deck. */
-function renderFallback(d: any): string {
-  const inner = `
-    <div style="height:100%;display:flex;flex-direction:column;justify-content:center">
-      ${d.number ? `<span class="a-eyebrow a-eyebrow--accent">${safe(d.number)}</span>` : ''}
-      <h1 class="a-h1" style="font-size:var(--type-hero);margin-top:var(--space-3)">${safe(d.title ?? '…')}</h1>
-      ${d.subtitle ? `<p class="a-content__lead" style="margin-top:var(--space-4)">${safe(d.subtitle)}</p>` : ''}
-    </div>`;
-  return frame(inner, {
-    header: d.section ? { section: d.section, label: d.label, dots: d.dots } : undefined,
-    footer: d.pageNo != null ? { univ: d.univ, page: d.pageNo, total: d.pageTotal } : undefined,
-    className: 'is-section',
-  });
-}
 
 /** Abbreviates a university name to its initials, e.g.
  *  "Toshkent Davlat Yuridik Universiteti" -> "TDYU". */
@@ -107,16 +91,13 @@ export function buildAcademicDeck(_themeId: string, slides: DeckSlide[]): string
       }
 
       const data = { ...((s.content ?? {}) as Record<string, unknown>), ...meta };
-      const fn = RENDERERS[type] ?? renderFallback;
-      try {
-        return fn(data);
-      } catch {
-        return renderFallback(data);
-      }
+      const fn = RENDERERS[type];
+      if (!fn) throw new Error(`No academic renderer registered for slide type: ${type}`);
+      return fn(data);
     })
     .join('\n');
 
-  const css = `${getAcademicBaseCss()}\n${COMPONENTS_CSS}\n${SLIDES_CSS}\n${WIKIMEDIA_VISUAL_CSS}`;
+  const css = `${getAcademicBaseCss()}\n${COMPONENTS_CSS}\n${SLIDES_CSS}`;
   return `<!doctype html>
 <html lang="uz"><head><meta charset="utf-8"><style>${css}</style></head>
 <body><div class="a-deck">${body}</div></body></html>`;

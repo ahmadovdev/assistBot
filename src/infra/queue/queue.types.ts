@@ -16,6 +16,8 @@ export interface CardsJobData {
   /** Card-based points/bullets (default when absent) vs one flowing paragraph
    *  — see card.prompt.prose.ts. Only affects types with a prose variant. */
   contentMode?: 'cards' | 'prose';
+  /** Admin QA mode: preserve every forced slide type for visual review. */
+  fullTypesShowcase?: boolean;
 }
 
 export interface RenderJobData {

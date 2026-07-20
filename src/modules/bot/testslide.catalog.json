@@ -38,18 +38,6 @@
         }
       ]
     },
-    "AIM_TASKS": {
-      "kicker": "Tadqiqot yo‘nalishi",
-      "title": "Maqsad va vazifalar",
-      "aim": "Ishning maqsadi — fotosintez bosqichlari, mahsulotlari va ekologik rolini tizimli tushuntirish.",
-      "tasks": [
-        "Fotosintezning biologik mohiyatini yoritish",
-        "Yorug‘lik reaksiyalarini ketma-ket tahlil qilish",
-        "Kalvin siklining vazifasini izohlash",
-        "C3, C4 va CAM yo‘llarini qiyoslash",
-        "Jarayonning biosferadagi ahamiyatini umumlashtirish"
-      ]
-    },
     "OBJECT_SUBJECT": {
       "kicker": "Tadqiqot chegarasi",
       "title": "Tadqiqot obyekti va predmeti",

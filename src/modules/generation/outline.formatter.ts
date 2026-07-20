@@ -59,7 +59,7 @@ export function slideActionKeyboard(i: number, total: number): InlineKeyboard {
 const ADD_TYPES = [
   'CONTENT', 'AGENDA', 'DEFINITION', 'BATAFSIL', 'MISOL',
   'TURLAR', 'COMPARISON', 'PROCESS', 'TIMELINE', 'STATS',
-  'RELEVANCE', 'AIM_TASKS', 'OBJECT_SUBJECT', 'FINDING',
+  'RELEVANCE', 'OBJECT_SUBJECT', 'FINDING',
   'PROBLEMS_SOLUTIONS',
   'CONCLUSION', 'REFERENCES', 'CLOSING',
 ];

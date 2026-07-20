@@ -1,0 +1,473 @@
+{
+  "id": "variant-stress",
+  "theme": "dark_premium",
+  "fitReport": {
+    "status": "underfilled",
+    "slides": [
+      {
+        "slideId": "1",
+        "slideIndex": 1,
+        "slideType": "CONTENT",
+        "layoutVariant": "editorial_prose",
+        "status": "balanced",
+        "occupancy": 0.3525824652777778,
+        "slots": [
+          {
+            "slotId": "title",
+            "path": "title",
+            "role": "title",
+            "clientWidth": 1040,
+            "clientHeight": 102,
+            "scrollWidth": 1040,
+            "scrollHeight": 106,
+            "actualLines": 2,
+            "maxLines": 2,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 4,
+            "occupancy": 0.11482204861111112,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "paragraph",
+            "path": "paragraph",
+            "role": "body",
+            "clientWidth": 830,
+            "clientHeight": 264,
+            "scrollWidth": 830,
+            "scrollHeight": 264,
+            "actualLines": 8,
+            "maxLines": 10,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.23776041666666667,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          }
+        ],
+        "repairAttempts": []
+      },
+      {
+        "slideId": "2",
+        "slideIndex": 2,
+        "slideType": "CONTENT",
+        "layoutVariant": "chapter_columns",
+        "status": "balanced",
+        "occupancy": 0.20748294406467016,
+        "slots": [
+          {
+            "slotId": "title",
+            "path": "title",
+            "role": "title",
+            "clientWidth": 1040,
+            "clientHeight": 102,
+            "scrollWidth": 1040,
+            "scrollHeight": 106,
+            "actualLines": 2,
+            "maxLines": 2,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 4,
+            "occupancy": 0.11482204861111112,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "paragraph",
+            "path": "paragraph",
+            "role": "body",
+            "clientWidth": 434,
+            "clientHeight": 197,
+            "scrollWidth": 434,
+            "scrollHeight": 197,
+            "actualLines": 7,
+            "maxLines": 10,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.09266089545355903,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          }
+        ],
+        "repairAttempts": []
+      },
+      {
+        "slideId": "3",
+        "slideIndex": 3,
+        "slideType": "CONTENT",
+        "layoutVariant": "focus_statement",
+        "status": "balanced",
+        "occupancy": 0.23264654344982572,
+        "slots": [
+          {
+            "slotId": "title",
+            "path": "title",
+            "role": "title",
+            "clientWidth": 1040,
+            "clientHeight": 102,
+            "scrollWidth": 1040,
+            "scrollHeight": 106,
+            "actualLines": 2,
+            "maxLines": 2,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 4,
+            "occupancy": 0.11482204861111112,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "paragraph",
+            "path": "paragraph",
+            "role": "body",
+            "clientWidth": 667,
+            "clientHeight": 163,
+            "scrollWidth": 667,
+            "scrollHeight": 163,
+            "actualLines": 5,
+            "maxLines": 10,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.1178244948387146,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          }
+        ],
+        "repairAttempts": []
+      },
+      {
+        "slideId": "4",
+        "slideIndex": 4,
+        "slideType": "CONTENT",
+        "layoutVariant": "open_manifesto",
+        "status": "balanced",
+        "occupancy": 0.24598659939236112,
+        "slots": [
+          {
+            "slotId": "title",
+            "path": "title",
+            "role": "title",
+            "clientWidth": 1040,
+            "clientHeight": 102,
+            "scrollWidth": 1040,
+            "scrollHeight": 106,
+            "actualLines": 2,
+            "maxLines": 2,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 4,
+            "occupancy": 0.11482204861111112,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "paragraph",
+            "path": "paragraph",
+            "role": "body",
+            "clientWidth": 900,
+            "clientHeight": 134,
+            "scrollWidth": 900,
+            "scrollHeight": 134,
+            "actualLines": 4,
+            "maxLines": 10,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.13116455078125,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          }
+        ],
+        "repairAttempts": []
+      },
+      {
+        "slideId": "5",
+        "slideIndex": 5,
+        "slideType": "DEFINITION",
+        "layoutVariant": "term_axis",
+        "status": "balanced",
+        "occupancy": 0.1935482046339247,
+        "slots": [
+          {
+            "slotId": "term",
+            "path": "term",
+            "role": "title",
+            "clientWidth": 421,
+            "clientHeight": 71,
+            "scrollWidth": 421,
+            "scrollHeight": 74,
+            "actualLines": 2,
+            "maxLines": 2,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 3,
+            "occupancy": 0.032319719526502824,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "paragraph",
+            "path": "paragraph",
+            "role": "body",
+            "clientWidth": 462,
+            "clientHeight": 322,
+            "scrollWidth": 462,
+            "scrollHeight": 322,
+            "actualLines": 12,
+            "maxLines": 12,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.16122848510742188,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          }
+        ],
+        "repairAttempts": []
+      },
+      {
+        "slideId": "6",
+        "slideIndex": 6,
+        "slideType": "DEFINITION",
+        "layoutVariant": "lexicon_split",
+        "status": "underfilled",
+        "occupancy": 0.12140646139780681,
+        "slots": [
+          {
+            "slotId": "term",
+            "path": "term",
+            "role": "title",
+            "clientWidth": 442,
+            "clientHeight": 70,
+            "scrollWidth": 442,
+            "scrollHeight": 74,
+            "actualLines": 2,
+            "maxLines": 2,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 4,
+            "occupancy": 0.03359534740447998,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "paragraph",
+            "path": "paragraph",
+            "role": "body",
+            "clientWidth": 510,
+            "clientHeight": 159,
+            "scrollWidth": 510,
+            "scrollHeight": 159,
+            "actualLines": 6,
+            "maxLines": 12,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.08781111399332682,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          }
+        ],
+        "repairAttempts": []
+      },
+      {
+        "slideId": "7",
+        "slideIndex": 7,
+        "slideType": "DEFINITION",
+        "layoutVariant": "concept_frame",
+        "status": "underfilled",
+        "occupancy": 0.11976409912109375,
+        "slots": [
+          {
+            "slotId": "term",
+            "path": "term",
+            "role": "title",
+            "clientWidth": 882,
+            "clientHeight": 35,
+            "scrollWidth": 882,
+            "scrollHeight": 38,
+            "actualLines": 1,
+            "maxLines": 2,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 3,
+            "occupancy": 0.03318206787109375,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "paragraph",
+            "path": "paragraph",
+            "role": "body",
+            "clientWidth": 496,
+            "clientHeight": 161,
+            "scrollWidth": 496,
+            "scrollHeight": 161,
+            "actualLines": 6,
+            "maxLines": 12,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.08658203125,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          }
+        ],
+        "repairAttempts": []
+      },
+      {
+        "slideId": "8",
+        "slideIndex": 8,
+        "slideType": "DEFINITION",
+        "layoutVariant": "glass_hero",
+        "status": "balanced",
+        "occupancy": 0.3503732638888889,
+        "slots": [
+          {
+            "slotId": "term",
+            "path": "term",
+            "role": "title",
+            "clientWidth": 1054,
+            "clientHeight": 116,
+            "scrollWidth": 1054,
+            "scrollHeight": 124,
+            "actualLines": 2,
+            "maxLines": 2,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 8,
+            "occupancy": 0.13266493055555556,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "paragraph",
+            "path": "paragraph",
+            "role": "body",
+            "clientWidth": 760,
+            "clientHeight": 264,
+            "scrollWidth": 760,
+            "scrollHeight": 264,
+            "actualLines": 8,
+            "maxLines": 12,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.21770833333333334,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          }
+        ],
+        "repairAttempts": []
+      }
+    ],
+    "unresolved": [],
+    "attempts": []
+  },
+  "slides": [
+    {
+      "type": "CONTENT",
+      "content": {
+        "layout": "editorial_prose",
+        "title": "Moliyaviy bilim kundalik qarorlar sifatini va barqarorlikni oshiradi",
+        "paragraph": "Moliyaviy bilim yoshlarning oqilona qaror qabul qilishiga yordam beradi. Moliyaviy bilim yoshlarning oqilona qaror qabul qilishiga yordam beradi. Moliyaviy bilim yoshlarning oqilona qaror qabul qilishiga yordam beradi. Moliyaviy bilim yoshlarning oqilona qaror qabul qilishiga yordam beradi. Moliyaviy bilim yoshlarning oqilona qaror qabul qilishiga yordam beradi. Moliyaviy bilim yoshlarning oqilona qaror qabul qilishiga yordam beradi. Moliyaviy bilim yoshlarning oqilona qaror qabul qilishiga yordam beradi. Moliyaviy bilim yoshlarning oqilona qaror qabul qilishiga yordam beradi."
+      }
+    },
+    {
+      "type": "CONTENT",
+      "content": {
+        "layout": "chapter_columns",
+        "title": "Moliyaviy bilim kundalik qarorlar sifatini va barqarorlikni oshiradi",
+        "paragraph": "Moliyaviy bilim yoshlarning oqilona qaror qabul qilishiga yordam beradi. Moliyaviy bilim yoshlarning oqilona qaror qabul qilishiga yordam beradi. Moliyaviy bilim yoshlarning oqilona qaror qabul qilishiga yordam beradi. Moliyaviy bilim yoshlarning oqilona qaror qabul qilishiga yordam beradi. Moliyaviy bilim yoshlarning oqilona qaror qabul qilishiga yordam beradi. Moliyaviy bilim yoshlarning oqilona qaror qabul qilishiga yordam beradi. Moliyaviy bilim yoshlarning oqilona qaror qabul qilishiga yordam beradi. Moliyaviy bilim yoshlarning oqilona qaror qabul qilishiga yordam beradi."
+      }
+    },
+    {
+      "type": "CONTENT",
+      "content": {
+        "layout": "focus_statement",
+        "title": "Moliyaviy bilim kundalik qarorlar sifatini va barqarorlikni oshiradi",
+        "paragraph": "Moliyaviy bilim yoshlarning oqilona qaror qabul qilishiga yordam beradi. Moliyaviy bilim yoshlarning oqilona qaror qabul qilishiga yordam beradi. Moliyaviy bilim yoshlarning oqilona qaror qabul qilishiga yordam beradi. Moliyaviy bilim yoshlarning oqilona qaror qabul qilishiga yordam beradi. Moliyaviy bilim yoshlarning oqilona qaror qabul qilishiga yordam beradi. Moliyaviy bilim yoshlarning oqilona qaror qabul qilishiga yordam beradi. Moliyaviy bilim yoshlarning oqilona qaror qabul qilishiga yordam beradi. Moliyaviy bilim yoshlarning oqilona qaror qabul qilishiga yordam beradi."
+      }
+    },
+    {
+      "type": "CONTENT",
+      "content": {
+        "layout": "open_manifesto",
+        "title": "Moliyaviy bilim kundalik qarorlar sifatini va barqarorlikni oshiradi",
+        "paragraph": "Moliyaviy bilim yoshlarning oqilona qaror qabul qilishiga yordam beradi. Moliyaviy bilim yoshlarning oqilona qaror qabul qilishiga yordam beradi. Moliyaviy bilim yoshlarning oqilona qaror qabul qilishiga yordam beradi. Moliyaviy bilim yoshlarning oqilona qaror qabul qilishiga yordam beradi. Moliyaviy bilim yoshlarning oqilona qaror qabul qilishiga yordam beradi. Moliyaviy bilim yoshlarning oqilona qaror qabul qilishiga yordam beradi. Moliyaviy bilim yoshlarning oqilona qaror qabul qilishiga yordam beradi. Moliyaviy bilim yoshlarning oqilona qaror qabul qilishiga yordam beradi."
+      }
+    },
+    {
+      "type": "DEFINITION",
+      "content": {
+        "layout": "term_axis",
+        "term": "Moliyaviy savodxonlik va mas’uliyatli qaror",
+        "definition": "",
+        "paragraph": "Moliyaviy bilim yoshlarning oqilona qaror qabul qilishiga yordam beradi. Moliyaviy bilim yoshlarning oqilona qaror qabul qilishiga yordam beradi. Moliyaviy bilim yoshlarning oqilona qaror qabul qilishiga yordam beradi. Moliyaviy bilim yoshlarning oqilona qaror qabul qilishiga yordam beradi. Moliyaviy bilim yoshlarning oqilona qaror qabul qilishiga yordam beradi. Moliyaviy bilim yoshlarning oqilona qaror qabul qilishiga yordam beradi. Moliyaviy bilim yoshlarning oqilona qaror qabul qilishiga yordam beradi. Moliyaviy bilim yoshlarning oqilona qaror qabul qilishiga yordam beradi."
+      }
+    },
+    {
+      "type": "DEFINITION",
+      "content": {
+        "layout": "lexicon_split",
+        "term": "Moliyaviy savodxonlik va mas’uliyatli qaror",
+        "definition": "",
+        "paragraph": "Moliyaviy bilim yoshlarning oqilona qaror qabul qilishiga yordam beradi. Moliyaviy bilim yoshlarning oqilona qaror qabul qilishiga yordam beradi. Moliyaviy bilim yoshlarning oqilona qaror qabul qilishiga yordam beradi. Moliyaviy bilim yoshlarning oqilona qaror qabul qilishiga yordam beradi. Moliyaviy bilim yoshlarning oqilona qaror qabul qilishiga yordam beradi. Moliyaviy bilim yoshlarning oqilona qaror qabul qilishiga yordam beradi. Moliyaviy bilim yoshlarning oqilona qaror qabul qilishiga yordam beradi. Moliyaviy bilim yoshlarning oqilona qaror qabul qilishiga yordam beradi."
+      }
+    },
+    {
+      "type": "DEFINITION",
+      "content": {
+        "layout": "concept_frame",
+        "term": "Moliyaviy savodxonlik va mas’uliyatli qaror",
+        "definition": "",
+        "paragraph": "Moliyaviy bilim yoshlarning oqilona qaror qabul qilishiga yordam beradi. Moliyaviy bilim yoshlarning oqilona qaror qabul qilishiga yordam beradi. Moliyaviy bilim yoshlarning oqilona qaror qabul qilishiga yordam beradi. Moliyaviy bilim yoshlarning oqilona qaror qabul qilishiga yordam beradi. Moliyaviy bilim yoshlarning oqilona qaror qabul qilishiga yordam beradi. Moliyaviy bilim yoshlarning oqilona qaror qabul qilishiga yordam beradi. Moliyaviy bilim yoshlarning oqilona qaror qabul qilishiga yordam beradi. Moliyaviy bilim yoshlarning oqilona qaror qabul qilishiga yordam beradi."
+      }
+    },
+    {
+      "type": "DEFINITION",
+      "content": {
+        "layout": "glass_hero",
+        "term": "Moliyaviy savodxonlik va mas’uliyatli qaror",
+        "definition": "",
+        "paragraph": "Moliyaviy bilim yoshlarning oqilona qaror qabul qilishiga yordam beradi. Moliyaviy bilim yoshlarning oqilona qaror qabul qilishiga yordam beradi. Moliyaviy bilim yoshlarning oqilona qaror qabul qilishiga yordam beradi. Moliyaviy bilim yoshlarning oqilona qaror qabul qilishiga yordam beradi. Moliyaviy bilim yoshlarning oqilona qaror qabul qilishiga yordam beradi. Moliyaviy bilim yoshlarning oqilona qaror qabul qilishiga yordam beradi. Moliyaviy bilim yoshlarning oqilona qaror qabul qilishiga yordam beradi. Moliyaviy bilim yoshlarning oqilona qaror qabul qilishiga yordam beradi."
+      }
+    }
+  ]
+}

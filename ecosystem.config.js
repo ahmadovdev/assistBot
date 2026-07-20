@@ -20,7 +20,10 @@ module.exports = {
       cwd: __dirname,
       instances: 1,
       exec_mode: 'fork',
-      env: { NODE_ENV: 'production', APP_ROLE: 'bot' },
+      env: {
+        NODE_ENV: 'production',
+        APP_ROLE: 'bot',
+      },
       // Give in-flight update handling a moment to finish on restart.
       kill_timeout: 10000,
       max_memory_restart: '500M',
@@ -33,7 +36,10 @@ module.exports = {
       cwd: __dirname,
       instances: 1,
       exec_mode: 'fork',
-      env: { NODE_ENV: 'production', APP_ROLE: 'worker' },
+      env: {
+        NODE_ENV: 'production',
+        APP_ROLE: 'worker',
+      },
       // Long enough for an in-flight render job to finish before SIGKILL, so
       // graceful shutdown (enableShutdownHooks) can drain BullMQ workers and
       // jobs aren't orphaned mid-run.

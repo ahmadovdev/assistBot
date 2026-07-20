@@ -30,4 +30,6 @@ export interface WizardContext {
   // 'cards' (default, points/bullets) vs 'prose' (continuous paragraph, only
   // for the types that support it — see card.prompt.prose.ts).
   contentMode?: 'cards' | 'prose';
+  // /fulltypes admin showcase
+  fullTypesTopic?: string;
 }

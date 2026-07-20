@@ -16,7 +16,6 @@ import type {
   ObjectSubjectData, ClosingData,
 } from '../templates/layouts';
 import { icon } from '../templates/icons';
-import { renderWikimediaVisual } from '../templates/wikimedia-visual';
 import {
   frame, citationPill, placeholderChip, safe,
   HeaderData, FooterData,
@@ -128,22 +127,7 @@ export function renderTitle(d: TitleData & AcademicMeta): string {
 // CONTENT — assertion + bullet rows (spec Prompt 6)
 // ============================================================
 export function renderContent(d: ContentData & AcademicMeta): string {
-  if (d.visual) {
-    const points = (d.points ?? []).slice(0, 4);
-    const copy = d.paragraph !== undefined
-      ? `<p class="a-media__prose">${safe(d.paragraph)}</p>`
-      : `<ul class="a-media__points">${points.map((point) => `
-          <li><span>${icon(point.icon || 'check', 18)}</span><p>${point.heading ? `<strong>${safe(point.heading)}</strong> ` : ''}${safe(point.text)}</p></li>`).join('')}</ul>`;
-    const body = `<h1 class="a-h1">${safe(d.title)}</h1>
-      ${d.lead ? `<p class="a-content__lead">${safe(d.lead)}</p>` : ''}
-      <div class="a-media">${copy}${renderWikimediaVisual(d.visual, 'a-wm-visual')}</div>`;
-    return frame(body, {
-      header: headerFor(d, BLOCK_LABELS.CONTENT),
-      footer: footerFor(d),
-      className: 'is-content is-content-visual',
-    });
-  }
-  const points = (d.points ?? []).slice(0, 6);
+  const points = d.points ?? [];
   const bullets = points
     .map(
       (p) => `
@@ -179,7 +163,7 @@ export function renderContent(d: ContentData & AcademicMeta): string {
 // ============================================================
 export function renderDefinition(d: DefinitionData & AcademicMeta): string {
   const termPx = heroSize(d.term ?? '', 72, 56, 44);
-  const aspects = (d.aspects ?? []).slice(0, 3);
+  const aspects = d.aspects ?? [];
   const aspectRows = aspects
     .map(
       (a) => `
@@ -216,7 +200,7 @@ export function renderDefinition(d: DefinitionData & AcademicMeta): string {
 // CONCLUSION — centered summary + key-point cards (spec Prompt 19)
 // ============================================================
 export function renderConclusion(d: ConclusionData & AcademicMeta): string {
-  const points = (d.points ?? []).slice(0, 3);
+  const points = d.points ?? [];
   const cards = points
     .map(
       (p) => `
@@ -246,7 +230,7 @@ export function renderConclusion(d: ConclusionData & AcademicMeta): string {
 // AGENDA — numbered plan + progress rail (spec Prompt 2)
 // ============================================================
 export function renderAgenda(d: AgendaData & AcademicMeta): string {
-  const items = (d.items ?? []).slice(0, 8);
+  const items = d.items ?? [];
   const rows = items
     .map(
       (it, i) => `
@@ -281,7 +265,7 @@ export function renderAgenda(d: AgendaData & AcademicMeta): string {
 // RELEVANCE — lead statement + evidence cards (spec Prompt 3)
 // ============================================================
 export function renderRelevance(d: RelevanceData & AcademicMeta): string {
-  const points = (d.points ?? []).slice(0, 2);
+  const points = d.points ?? [];
   const statCard = d.stat
     ? `
       <div class="a-rel__card a-rel__card--stat">
@@ -318,7 +302,7 @@ export function renderRelevance(d: RelevanceData & AcademicMeta): string {
 // AIM_TASKS — aim block + 2x2 task grid (spec Prompt 4)
 // ============================================================
 export function renderAimTasks(d: AimTasksData & AcademicMeta): string {
-  const tasks = (d.tasks ?? []).slice(0, 4);
+  const tasks = d.tasks ?? [];
   // `paragraph` prose mode is a much longer statement (280-650 chars) than
   // the short `aim` this card was designed for at a fixed 24px — shrink to
   // fit so real content doesn't get clipped by the slide's fixed height.
@@ -357,7 +341,7 @@ export function renderAimTasks(d: AimTasksData & AcademicMeta): string {
 // STATS — 3 big-number cards (spec Prompt 15)
 // ============================================================
 export function renderStats(d: StatsData & AcademicMeta): string {
-  const stats = (d.stats ?? []).slice(0, 3);
+  const stats = d.stats ?? [];
   const cards = stats
     .map(
       (s) => `
@@ -397,7 +381,7 @@ function refType(t?: string): 'law' | 'book' | 'article' | 'web' {
 }
 
 export function renderReferences(d: ReferencesData & AcademicMeta): string {
-  const items = (d.items ?? []).slice(0, 8);
+  const items = d.items ?? [];
   const li = items
     .map(
       (it, i) => `
@@ -440,7 +424,7 @@ export function renderReferences(d: ReferencesData & AcademicMeta): string {
 // BATAFSIL — intro paragraph + 2x2 aspect cards (spec Prompt 8)
 // ============================================================
 export function renderBatafsil(d: BatafsilData & AcademicMeta): string {
-  const points = (d.points ?? []).slice(0, 4);
+  const points = d.points ?? [];
   const cards = points
     .map(
       (p, i) => `
@@ -468,17 +452,6 @@ export function renderBatafsil(d: BatafsilData & AcademicMeta): string {
 // MISOL — narrative (60%) + dark insight (40%) (spec Prompt 9)
 // ============================================================
 export function renderMisol(d: MisolData & AcademicMeta): string {
-  if (d.visual) {
-    const body = `<div class="a-misol a-misol--visual">
-      <div class="a-misol__left"><span class="a-eyebrow a-eyebrow--accent">Misol</span><h2 class="a-misol__heading">${safe(d.title)}</h2><p class="a-misol__body">${safe(d.paragraph ?? d.body)}</p>${d.takeaway ? `<p class="a-misol__takeaway-inline">${safe(d.takeaway)}</p>` : ''}</div>
-      ${renderWikimediaVisual(d.visual, 'a-wm-visual')}
-    </div>`;
-    return frame(body, {
-      header: headerFor(d, BLOCK_LABELS.MISOL),
-      footer: footerFor(d),
-      className: 'is-misol is-misol-visual',
-    });
-  }
   const body = `
     <div class="a-misol">
       <div class="a-misol__left">
@@ -509,7 +482,7 @@ export function renderMisol(d: MisolData & AcademicMeta): string {
 // TURLAR — classification cards with icons (spec Prompt 10)
 // ============================================================
 export function renderTurlar(d: TurlarData & AcademicMeta): string {
-  const items = (d.items ?? []).slice(0, 4);
+  const items = d.items ?? [];
   const cards = items
     .map(
       (it) => `
@@ -537,7 +510,7 @@ export function renderTurlar(d: TurlarData & AcademicMeta): string {
 // PROCESS — connected stage cards + progress bar (spec Prompt 12)
 // ============================================================
 export function renderProcess(d: ProcessData & AcademicMeta): string {
-  const steps = (d.steps ?? []).slice(0, 5);
+  const steps = d.steps ?? [];
   const cards = steps
     .map(
       (s, i) => `
@@ -599,7 +572,7 @@ export function renderComparison(d: ComparisonData & AcademicMeta): string {
 // TIMELINE — horizontal axis, alternating events (spec Prompt 14)
 // ============================================================
 export function renderTimeline(d: TimelineData & AcademicMeta): string {
-  const steps = (d.steps ?? []).slice(0, 4);
+  const steps = d.steps ?? [];
   const events = steps
     .map(
       (s, i) => `
@@ -633,7 +606,7 @@ export function renderTimeline(d: TimelineData & AcademicMeta): string {
 // FINDING — big-number result rows (spec Prompt 16)
 // ============================================================
 export function renderFinding(d: FindingData & AcademicMeta): string {
-  const pts = (d.points ?? []).slice(0, 3);
+  const pts = d.points ?? [];
   const rows = pts.length ? pts : d.evidence ? [{ text: d.evidence }] : [];
   const intro =
     pts.length && d.evidence ? d.evidence : 'Ish davomida quyidagi asosiy natijalar aniqlandi:';
@@ -666,7 +639,7 @@ export function renderFinding(d: FindingData & AcademicMeta): string {
 // PROBLEMS_SOLUTIONS — colour-coded pairs (spec Prompt 17)
 // ============================================================
 export function renderProblemsSolutions(d: ProblemsSolutionsData & AcademicMeta): string {
-  const pairs = (d.pairs ?? []).slice(0, 3);
+  const pairs = d.pairs ?? [];
   const rows = pairs
     .map(
       (p) => `

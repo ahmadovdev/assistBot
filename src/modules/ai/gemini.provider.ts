@@ -21,6 +21,7 @@ interface GeminiResponse {
 @Injectable()
 export class GeminiProvider implements LlmProvider {
   private readonly base = 'https://generativelanguage.googleapis.com/v1beta/models';
+  private readonly defaultTimeoutMs = 45_000;
 
   constructor(private readonly config: ConfigService) {}
 
@@ -51,7 +52,9 @@ export class GeminiProvider implements LlmProvider {
       headers: { 'x-goog-api-key': apiKey, 'Content-Type': 'application/json' },
       body: JSON.stringify(body),
       // Hard cap so a stalled connection can't hang the worker forever.
-      signal: AbortSignal.timeout(120_000),
+      signal: AbortSignal.timeout(
+        this.config.get<number>('app.ai.requestTimeoutMs') ?? this.defaultTimeoutMs,
+      ),
     });
 
     if (!res.ok) {

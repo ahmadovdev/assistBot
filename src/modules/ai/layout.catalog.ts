@@ -4,8 +4,10 @@ export const SLIDE_TYPES = [
   'TITLE', 'AGENDA', 'CONTENT', 'DEFINITION', 'BATAFSIL',
   'MISOL', 'TURLAR', 'COMPARISON', 'PROCESS', 'TIMELINE',
   'STATS', 'CONCLUSION', 'REFERENCES', 'CLOSING',
-  // Kurs ishi / BMI argumentative backbone (blueprint §2–§3, §6.2).
-  'RELEVANCE', 'AIM_TASKS', 'OBJECT_SUBJECT', 'FINDING',
+  // Presentation-focused academic backbone. "Maqsad va vazifalar" is
+  // intentionally excluded: it reads like kurs ishi/referat paperwork, not a
+  // concise presentation slide.
+  'RELEVANCE', 'OBJECT_SUBJECT', 'FINDING',
   'PROBLEMS_SOLUTIONS',
 ] as const;
 
@@ -16,7 +18,7 @@ export const SLIDE_EMOJI: Record<string, string> = {
   DEFINITION: '\u{1F4D6}', BATAFSIL: '\u{1F50D}', MISOL: '\u{1F4CC}', TURLAR: '\u{1F5C2}\uFE0F',
   COMPARISON: '\u2696\uFE0F', PROCESS: '\u{1F504}', TIMELINE: '\u{1F4C5}',
   STATS: '\u{1F4CA}', CONCLUSION: '\u{1F3AF}', REFERENCES: '\u{1F4DA}', CLOSING: '\u{1F64F}',
-  RELEVANCE: '\u{1F525}', AIM_TASKS: '\u{1F9ED}', OBJECT_SUBJECT: '\u{1F52C}',
+  RELEVANCE: '\u{1F525}', OBJECT_SUBJECT: '\u{1F52C}',
   FINDING: '\u{1F4A1}', PROBLEMS_SOLUTIONS: '\u{1F9E9}',
 };
 
@@ -37,7 +39,6 @@ export const SLIDE_GUIDE: Record<SlideType, string> = {
   REFERENCES: 'The "Foydalanilgan adabiyotlar": a list of 3-8 real sources (books/articles/sites).',
   CLOSING: 'A minimal thank-you slide with only the localized equivalent of "E\'tiboringiz uchun rahmat!" (always LAST).',
   RELEVANCE: 'The "Dolzarblik": why the topic matters NOW — a framing statement plus 2-3 concrete supporting points (add ONE figure only if genuinely real). Best early, after KIRISH.',
-  AIM_TASKS: 'The "Maqsad va vazifalar": ONE clear aim/goal plus 3-5 concrete tasks to achieve it. A standard early slide in kurs ishi / BMI taqdimoti.',
   OBJECT_SUBJECT: 'The "Ob\'ekt va predmet": the research OBJECT (what/who is studied) vs the PREDMET (which aspect of it is examined). Only for research-type topics.',
   FINDING: 'A single research RESULT stated as a claim-headline, with the evidence explained and a few supporting sub-points. Use in the results part of a kurs ishi / BMI.',
   PROBLEMS_SOLUTIONS: 'The "Muammolar va yechimlar": 2-3 matched pairs, each a concrete problem beside its proposed solution.',
@@ -45,10 +46,10 @@ export const SLIDE_GUIDE: Record<SlideType, string> = {
 
 /** Per-language writing guidance, injected into OUTPUT_LANGUAGE in the outline + card prompts. */
 export const LANGUAGE_GUIDE: Record<string, string> = {
-  uz: "Uzbek (o'zbek tili). Write in the Latin alphabet ONLY \u2014 never mix in Cyrillic. Use correct case and possessive suffixes with proper vowel harmony (e.g. \"kompaniyaning\", \"bozorda\", \"mijozlarga\"), natural word order (Subject + Object + Verb), and standard literary Uzbek. Do NOT produce literal word-for-word translations from Russian or English \u2014 rephrase naturally as a native speaker would.",
-  ru: 'Russian (\u0440\u0443\u0441\u0441\u043a\u0438\u0439 \u044f\u0437\u044b\u043a). Use natural, grammatically correct Russian with correct case endings and agreement.',
+  uz: "Uzbek (o'zbek tili). Write in the Latin alphabet ONLY — never mix in Cyrillic. Use correct case and possessive suffixes with proper vowel harmony (e.g. \"kompaniyaning\", \"bozorda\", \"mijozlarga\"), natural word order (Subject + Object + Verb), and standard literary Uzbek. Do NOT produce literal word-for-word translations from Russian or English — rephrase naturally as a native speaker would.",
+  ru: 'Russian (русский язык). Use natural, grammatically correct Russian with correct case endings and agreement.',
   en: 'English.',
-  kaa: "Karakalpak (Qaraqalpaq tili). Write in the Latin alphabet ONLY \u2014 never mix in Cyrillic. Karakalpak is a DISTINCT Kipchak-Nogai language, NOT an Uzbek dialect \u2014 never substitute Uzbek grammar, vocabulary or suffixes, even though the two languages share the same country and script. Use the Karakalpak-specific Latin letters correctly where the word calls for them (\u01f4/\u01f5, \u00d3/\u00f3, \u0143/\u0144, \u00da/\u00fa), correct case/possessive suffixes with proper vowel harmony, and natural Karakalpak word order (Subject + Object + Verb). Do NOT produce literal word-for-word translations from Uzbek, Russian or English \u2014 rephrase naturally as a native Karakalpak speaker would.",
+  kaa: "Karakalpak (Qaraqalpaq tili). Write in the Latin alphabet ONLY — never mix in Cyrillic. Karakalpak is a DISTINCT Kipchak-Nogai language, NOT an Uzbek dialect — never substitute Uzbek grammar, vocabulary or suffixes, even though the two languages share the same country and script. Use the Karakalpak-specific Latin letters correctly where the word calls for them (Ǵ/ǵ, Ó/ó, Ń/ń, Ú/ú), correct case/possessive suffixes with proper vowel harmony, and natural Karakalpak word order (Subject + Object + Verb). Do NOT produce literal word-for-word translations from Uzbek, Russian or English — rephrase naturally as a native Karakalpak speaker would.",
 };
 
 export function languageGuide(code: string): string {

@@ -1,0 +1,352 @@
+{
+  "id": "8456f3eb-0925-41fb-b8ee-b63dfb3aeb98",
+  "theme": "dark_premium",
+  "repair": {
+    "changed": false,
+    "passes": 0,
+    "warnings": [
+      "render-fit repair skipped"
+    ]
+  },
+  "slides": [
+    {
+      "position": 1,
+      "type": "TITLE",
+      "content": {
+        "title": "O'zbekistonda startap ekotizimi: holati va istiqbollari",
+        "layout": "typographic_statement"
+      }
+    },
+    {
+      "position": 2,
+      "type": "AGENDA",
+      "content": {
+        "items": [
+          {
+            "text": "Startap ekotizimining ahamiyati va dolzarbligi"
+          },
+          {
+            "text": "Asosiy tushunchalar, turlari va shakllanish jarayonlari"
+          },
+          {
+            "text": "Ekotizim ishtirokchilari, ularning roli va hamkorligi"
+          },
+          {
+            "text": "Mavjud muammolar, tahlil va ularni hal etish yo'llari"
+          }
+        ],
+        "title": "Reja"
+      }
+    },
+    {
+      "position": 3,
+      "type": "RELEVANCE",
+      "content": {
+        "lead": "Startap ekotizimi O'zbekistonda zamonaviy iqtisodiyot uchun muhim Innovatsion raqobatbardoshlikni oshiradi Yangi ish o'rinlari va texnologiyalar yaratiladi 2023 yilda texnologik",
+        "title": "Startap ekotizimi O'zbekistonda zamonaviy iqtisodiyot uchun muhim",
+        "kicker": "Dolzarblik",
+        "points": [
+          {
+            "text": "Innovatsion raqobatbardoshlikni oshiradi"
+          },
+          {
+            "text": "Yangi ish o'rinlari va texnologiyalar yaratiladi"
+          },
+          {
+            "text": "2023 yilda texnologik startaplarga investitsiyalar 2 baravar oshdi"
+          }
+        ],
+        "source": "2023 yilda texnologik startaplarga investitsiyalar 2 baravar oshdi",
+        "paragraph": "O'zbekistonda startap ekotizimining rivojlanishi mamlakat iqtisodiyotining innovatsion raqobatbardoshligini oshirishda markaziy o'rin tutadi, chunki u yangi g'oyalarni tezkorlik bilan bozorda joriy etishga yordam beradi. Bu o'z navbatida, yuqori qo'shimcha qiymatga ega bo'lgan yangi ish o'rinlari yaratilishiga va zamonaviy texnologiyalarning jadal rivojlanishiga olib keladi. Natijada, ushbu ekotizim mamlakatning global iqtisodiy makonda o'z o'rnini mustahkamlashida muhim rol o'ynaydi va iqtisodiy o'sishni rag'batlantiradi."
+      }
+    },
+    {
+      "position": 4,
+      "type": "CONTENT",
+      "content": {
+        "lead": "Startap ekotizimi — yangi loyihalarni rivojlantirishga yordam beruvchi muhit. Unda investorlar, inkubatorlar, davlat va xususiy sektor ishtirok etadi. Innovatsion g'oyalarni bozord",
+        "title": "Startap ekotizimi — zamonaviy biznes muhitining asosiy elementi",
+        "layout": "changelog_lines",
+        "points": [
+          {
+            "text": "Startap ekotizimi — yangi loyihalarni rivojlantirishga yordam beruvchi muhit"
+          },
+          {
+            "text": "Unda investorlar, inkubatorlar, davlat va xususiy sektor ishtirok etadi"
+          },
+          {
+            "text": "Innovatsion g'oyalarni bozorda joriy qilishga xizmat qiladi"
+          },
+          {
+            "text": "Startap ekotizimi — zamonaviy biznes muhitining asosiy elementi"
+          }
+        ]
+      }
+    },
+    {
+      "position": 5,
+      "type": "TURLAR",
+      "content": {
+        "items": [
+          {
+            "icon": "code",
+            "text": "Ushbu ekotizim asosan axborot texnologiyalari (AT) va dasturiy ta'minot sohasidagi innovatsion loyihalarni qo'llab-quvvatlaydi.",
+            "label": "Texnologik ekotizimlar"
+          },
+          {
+            "icon": "users",
+            "text": "Ijtimoiy muammolarni hal qilishga qaratilgan, masalan, ta'lim, sog'liqni saqlash yoki atrof-muhitni muhofaza qilish.",
+            "label": "Ijtimoiy startap ekotizimlari"
+          },
+          {
+            "icon": "leaf",
+            "text": "Qishloq xo'jaligi sohasida innovatsion yechimlar va texnologiyalarni joriy etishga, hosildorlikni oshirishga yo'naltirilgan.",
+            "label": "Agrostartap ekotizimlari"
+          }
+        ],
+        "title": "O'zbekistonda startap ekotizimining asosiy turlari",
+        "kicker": "Turlari",
+        "layout": "squircle_bento"
+      }
+    },
+    {
+      "position": 6,
+      "type": "CONTENT",
+      "content": {
+        "lead": "1. G'oya va jamoa shakllanishi. 2. Inkubatsiya va akseleratsiya jarayonlari. 3. Investitsiya jalb qilish va bozorga chiqish. 4. Kengayish va barqaror rivojlanish",
+        "title": "Startap ekotizimi shakllanishining bosqichlari",
+        "layout": "default",
+        "points": [
+          {
+            "text": "1. G'oya va jamoa shakllanishi"
+          },
+          {
+            "text": "2. Inkubatsiya va akseleratsiya jarayonlari"
+          },
+          {
+            "text": "3. Investitsiya jalb qilish va bozorga chiqish"
+          },
+          {
+            "text": "4. Kengayish va barqaror rivojlanish"
+          }
+        ],
+        "visual": {
+          "alt": "Geometric decoration for Startap ekotizimi shakllanishining bosqichlari",
+          "fit": "cover",
+          "url": "",
+          "query": "O'zbekistonda startap ekotizimi Startap ekotizimi shakllanishining bosqichlari slot-2",
+          "author": "Generated geometric layout",
+          "license": "decorative visual",
+          "provider": "Lumio Geometry"
+        }
+      }
+    },
+    {
+      "position": 7,
+      "type": "CONTENT",
+      "content": {
+        "lead": "Investorlar moliyaviy resurslarni ta'minlaydi. Inkubator va akseleratorlar startaplarni rivojlantiradi. Davlat va xususiy sektor infratuzilmani yaratadi",
+        "title": "Ekotizim ishtirokchilari o'zaro hamkorlikda muhim rol o'ynaydi",
+        "layout": "changelog_lines",
+        "points": [
+          {
+            "text": "Investorlar moliyaviy resurslarni ta'minlaydi"
+          },
+          {
+            "text": "Inkubator va akseleratorlar startaplarni rivojlantiradi"
+          },
+          {
+            "text": "Davlat va xususiy sektor infratuzilmani yaratadi"
+          },
+          {
+            "text": "Ekotizim ishtirokchilari o'zaro hamkorlikda muhim rol o'ynaydi"
+          }
+        ]
+      }
+    },
+    {
+      "position": 8,
+      "type": "BATAFSIL",
+      "content": {
+        "body": "Investorlarning ekotizimdagi ahamiyati chuqur tahlil qilinadi Investorlar startaplarning o'sishiga asosiy turtki beradi Moliyaviy risklarni kamaytirishda yordam beradi Xalqaro investorlar tajriba va tarmoqlarni olib kiradi",
+        "title": "Investorlarning ekotizimdagi ahamiyati chuqur tahlil qilinadi",
+        "kicker": "Batafsil",
+        "points": [
+          {
+            "text": "Investorlar startaplarning o'sishiga asosiy turtki beradi"
+          },
+          {
+            "text": "Moliyaviy risklarni kamaytirishda yordam beradi"
+          },
+          {
+            "text": "Xalqaro investorlar tajriba va tarmoqlarni olib kiradi"
+          }
+        ],
+        "paragraph": "Investorlar startaplarning dastlabki bosqichlaridan boshlab moliyaviy resurslar taqdim etish orqali ularning o'sishiga asosiy turtki beradi. Shu bilan birga, ular moliyaviy risklarni kamaytirishda muhim rol o'ynab, startaplarga faoliyatini rivojlantirish uchun barqaror zamin yaratadi. Bunga qo'shimcha ravishda, xalqaro investorlar nafaqat sarmoya, balki qimmatli tajriba, global bozorlarga kirish imkoniyatlari va keng tarmoqlarni ham olib kiradi, bu esa mahalliy startap ekotizimini yanada boyitadi va uning xalqaro miqyosda raqobatbardoshligini oshiradi."
+      }
+    },
+    {
+      "position": 9,
+      "type": "CONTENT",
+      "content": {
+        "lead": "Uzum Market 2021 yilda tez rivojlandi. Bozorga kirishda inkubator va investorlar yordam berdi. Bugungi kunda minglab foydalanuvchiga xizmat ko'rsatadi",
+        "title": "Muvaffaqiyatli o'zbek startapi: Uzum Market misolida",
+        "layout": "changelog_lines",
+        "points": [
+          {
+            "text": "Uzum Market 2021 yilda tez rivojlandi"
+          },
+          {
+            "text": "Bozorga kirishda inkubator va investorlar yordam berdi"
+          },
+          {
+            "text": "Bugungi kunda minglab foydalanuvchiga xizmat ko'rsatadi"
+          },
+          {
+            "text": "Muvaffaqiyatli o'zbek startapi: Uzum Market misolida"
+          }
+        ]
+      }
+    },
+    {
+      "position": 10,
+      "type": "CONTENT",
+      "content": {
+        "lead": "Davlat va xususiy sektor hamkorligi ekotizimni kuchaytiradi Davlat grantlar va soliq imtiyozlari ajratadi Xususiy sektor texnologiyalar va menejment olib kiradi Hamkorlik",
+        "title": "Davlat va xususiy sektor hamkorligi ekotizimni kuchaytiradi",
+        "points": [
+          {
+            "text": "Davlat grantlar va soliq imtiyozlari ajratadi"
+          },
+          {
+            "text": "Xususiy sektor texnologiyalar va menejment olib kiradi"
+          },
+          {
+            "text": "Hamkorlik natijasida innovatsion muhit rivojlanmoqda"
+          },
+          {
+            "text": "Davlat va xususiy sektor hamkorligi ekotizimni kuchaytiradi"
+          }
+        ],
+        "visual": {
+          "alt": "Geometric decoration for Davlat va xususiy sektor hamkorligi ekotizimni kuchaytiradi",
+          "fit": "cover",
+          "url": "",
+          "query": "O'zbekistonda startap ekotizimi Davlat va xususiy sektor hamkorligi ekotizimni kuchaytiradi slot-1",
+          "author": "Generated geometric layout",
+          "license": "decorative visual",
+          "provider": "Lumio Geometry"
+        },
+        "paragraph": "O'zbekistonda startap ekotizimining rivojlanishida davlat sektori muhim rol o'ynaydi, chunki u grantlar, soliq imtiyozlari va qonunchilik bazasini yaratish orqali startaplarga dastlabki turtki beradi. Shu bilan birga, xususiy sektor o'zining innovatsion texnologiyalari, boshqaruv tajribasi va investitsiya resurslari bilan ekotizimga yangi imkoniyatlar olib kiradi. Ushbu ikki sektorning o'zaro hamkorligi natijasida, startaplar uchun yanada qulay va rag'batlantiruvchi muhit shakllanadi, bu esa o'z navbatida, mamlakat iqtisodiyotida <strong>innovatsion rivojlanishni</strong> tezlashtiradi va yangi ish o'rinlari yaratilishiga xizmat qiladi."
+      }
+    },
+    {
+      "position": 11,
+      "type": "STATS",
+      "content": {
+        "stats": [
+          {
+            "unit": "dan ortiq",
+            "label": "yangi startaplar",
+            "value": "150",
+            "approx": true,
+            "description": "2022-yilda ro'yxatdan o'tgan (IT Park)"
+          },
+          {
+            "unit": "mln dollar",
+            "label": "investitsiyalar",
+            "value": "21",
+            "description": "startaplarga yo'naltirilgan"
+          },
+          {
+            "unit": "dan ortiq",
+            "label": "ishtirokchi loyihalar",
+            "value": "70",
+            "approx": true,
+            "description": "akseleratsiya dasturlarida qatnashgan"
+          }
+        ],
+        "title": "O'zbekistonda startaplar va investitsiyalar statistikasi",
+        "layout": "gradient_cards",
+        "source": "IT Park ma'lumotlari, 2022-yil",
+        "insight": "Ushbu raqamlar ekotizimning faollashib borayotganini ko'rsatadi.",
+        "subtitle": "Mamlakatda startap ekotizimining o'sish sur'atlarini ko'rsatuvchi muhim raqamlar."
+      }
+    },
+    {
+      "position": 12,
+      "type": "COMPARISON",
+      "content": {
+        "left": {
+          "items": [
+            "Davlat ko'magi va imtiyozlar kuchli.",
+            "Inkubatorlar va akseleratorlar soni ortib bormoqda.",
+            "Mahalliy bozorga yo'naltirilgan startaplar ustun.",
+            "IT Park kabi infratuzilmalar rivojlanmoqda."
+          ],
+          "label": "O'zbekiston",
+          "title": "Rivojlanayotgan ekotizim"
+        },
+        "right": {
+          "items": [
+            "Xalqaro investorlar va hamkorlik rivojlangan.",
+            "Astana Hub kabi yirik texnoparklar mavjud.",
+            "Venchur fondlar va xususiy investitsiyalar ko'p.",
+            "Mintaqaviy miqyosdagi startaplar ko'proq."
+          ],
+          "label": "Qozog'iston",
+          "title": "Faol investorlar bilan"
+        },
+        "title": "O'zbekistondagi va mintaqaviy startap ekotizimlari solishtiriladi",
+        "kicker": "Mintaqaviy taqqoslash",
+        "layout": "toggle_spectrum",
+        "subtitle": "Markaziy Osiyo mamlakatlari startap ekotizimlarining asosiy xususiyatlari va farqlari, ularning rivojlanish darajasi va istiqbollari tahlil qilinadi."
+      }
+    },
+    {
+      "position": 13,
+      "type": "PROBLEMS_SOLUTIONS",
+      "content": {
+        "pairs": [
+          {
+            "problem": "Tajriba va bilim yetishmasligi mavjud bo'lib, bu startaplarning rivojlanishiga to'sqinlik qiladi.",
+            "solution": "Malaka oshirish dasturlarini kengaytirish va mentorlik tizimini faollashtirish zarur."
+          },
+          {
+            "problem": "Moliyalashtirish imkoniyatlari cheklanganligi o'sish potentsialini kamaytiradi.",
+            "solution": "Yangi investitsiya mexanizmlarini, jumladan venchur fondlarni joriy qilish."
+          },
+          {
+            "problem": "Startaplar uchun huquqiy baza to'liq emasligi noaniqliklarni yuzaga keltiradi.",
+            "solution": "Qonunchilikni takomillashtirish va startaplar uchun maxsus me'yoriy hujjatlarni qabul qilish."
+          }
+        ],
+        "title": "Ekotizimdagi asosiy muammolar va ularni hal etish yo'llari",
+        "layout": "diff_view"
+      }
+    },
+    {
+      "position": 14,
+      "type": "CONCLUSION",
+      "content": {
+        "title": "O'zbekistonda startap ekotizimi rivojlanmoqda",
+        "points": [
+          "Ekotizim innovatsion iqtisodiyot uchun zarur",
+          "Davlat va xususiy hamkorlik natijasida yangi imkoniyatlar yaratilmoqda",
+          "Muammolar bosqichma-bosqich hal qilinmoqda",
+          "O'zbekistonda startap ekotizimi rivojlanmoqda"
+        ],
+        "closing": "Ushbu rivojlanish O'zbekistonning kelajakdagi iqtisodiy o'sishi va raqobatbardoshligini ta'minlashda muhim ahamiyat kasb etadi.",
+        "paragraph": "O'zbekistonda startap ekotizimi innovatsion iqtisodiyotni shakllantirish uchun zarur bo'lib, so'nggi yillarda sezilarli o'sishni ko'rsatmoqda. Davlatning qo'llab-quvvatlashi va xususiy sektorning faolligi natijasida yangi imkoniyatlar yaratilmoqda, bu esa startaplarning soni va sifati oshishiga olib kelmoqda. Shu bilan birga, mavjud muammolar, xususan, investorlar bilan aloqa va tajribali kadrlarning yetishmasligi kabi masalalar bosqichma-bosqich hal qilinib, ekotizimning barqaror rivojlanishi ta'minlanmoqda."
+      }
+    },
+    {
+      "position": 15,
+      "type": "CLOSING",
+      "content": {
+        "title": "E'tiboringiz uchun rahmat!",
+        "layout": "default"
+      }
+    }
+  ]
+}

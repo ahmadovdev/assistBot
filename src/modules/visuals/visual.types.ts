@@ -1,5 +1,5 @@
 export interface SlideVisual {
-  provider: 'Wikimedia Commons' | 'Lumio Visual' | 'Lumio Geometry';
+  provider: 'Wikimedia Commons' | 'Lumio Visual';
   query: string;
   url: string;
   sourceUrl?: string;

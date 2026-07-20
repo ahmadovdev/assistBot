@@ -43,10 +43,10 @@ ${FONT_IMPORT}
   --success: #244f44;
   --problem: #6a2d2a;
 
-  --radius-xs: 6px;
-  --radius-sm: 10px;
-  --radius-md: 16px;
-  --radius-lg: 24px;
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
 
   --shadow-soft: 0 18px 45px rgba(24, 28, 34, 0.08);
   --shadow-card: 0 8px 24px rgba(24, 28, 34, 0.055);
@@ -74,9 +74,7 @@ ${FONT_IMPORT}
   height: ${PREMIUM_ACADEMIC_CANVAS.h}px;
   position: relative;
   overflow: hidden;
-  background:
-    linear-gradient(180deg, rgba(255,255,255,0.72), rgba(255,255,255,0.38)),
-    var(--paper);
+  background: var(--paper);
   color: var(--ink);
   font-family: var(--font-body);
   isolation: isolate;
@@ -85,13 +83,13 @@ ${FONT_IMPORT}
 .pa-slide::before {
   content: "";
   position: absolute;
-  inset: 0;
+  left: 58px;
+  top: 0;
+  width: 160px;
+  height: 100%;
   pointer-events: none;
-  background-image:
-    linear-gradient(to right, rgba(23,59,103,0.045) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(23,59,103,0.035) 1px, transparent 1px);
-  background-size: 80px 80px;
-  mask-image: linear-gradient(115deg, rgba(0,0,0,0.38), transparent 52%);
+  border-left: 1px solid rgba(23,59,103,0.035);
+  border-right: 1px solid rgba(23,59,103,0.025);
   z-index: -2;
 }
 
@@ -144,7 +142,7 @@ ${FONT_IMPORT}
 .pa-title-serif {
   font-family: var(--font-title);
   font-weight: 500;
-  letter-spacing: -0.035em;
+  letter-spacing: 0;
   line-height: 0.98;
 }
 
@@ -152,7 +150,7 @@ ${FONT_IMPORT}
   font-family: var(--font-title);
   font-weight: 500;
   font-size: var(--title);
-  letter-spacing: -0.035em;
+  letter-spacing: 0;
   line-height: 1.04;
   max-width: 970px;
 }
@@ -180,14 +178,14 @@ ${FONT_IMPORT}
 }
 .pa-card.flat { box-shadow: none; background: rgba(255,255,255,0.38); }
 .pa-card.emphasis {
-  background: linear-gradient(135deg, rgba(23,59,103,0.95), rgba(53,67,111,0.93));
+  background: var(--blue);
   color: #fff;
   border-color: rgba(255,255,255,0.16);
   overflow: hidden; /* safety net if a font-fit calc still undershoots */
 }
 .pa-card.emphasis .pa-small,
 .pa-card.emphasis .pa-micro { color: rgba(255,255,255,0.73); }
-.pa-card h3 { font-size: 24px; line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 10px; }
+.pa-card h3 { font-size: 24px; line-height: 1.15; letter-spacing: 0; margin-bottom: 10px; }
 .pa-card .pa-label {
   font-size: 12px; color: var(--blue); text-transform: uppercase;
   letter-spacing: 0.12em; font-weight: 700; margin-bottom: 12px;
@@ -218,10 +216,7 @@ ${FONT_IMPORT}
   width: 42px; height: 42px;
   border: 1px solid rgba(23,59,103,0.22); border-radius: 12px;
   position: relative;
-  background:
-    linear-gradient(to right, rgba(23,59,103,0.12) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(23,59,103,0.12) 1px, transparent 1px);
-  background-size: 10px 10px;
+  background: rgba(23,59,103,0.055);
 }
 .pa-academic-icon::after {
   content: "";
@@ -242,12 +237,12 @@ ${FONT_IMPORT}
 
 .pa-value {
   font-family: var(--font-title); font-size: 62px; line-height: 0.92;
-  letter-spacing: -0.04em; color: var(--blue);
+  letter-spacing: 0; color: var(--blue);
 }
 .pa-unit { font-size: 18px; color: var(--muted); margin-left: 4px; }
 
 .pa-callout {
-  border-left: 4px solid var(--blue); padding: 16px 18px;
+  border-left: 4px solid var(--blue); padding: 16px 18px; font-size: 18px; line-height: 1.32;
   background: rgba(23,59,103,0.055); border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
 }
 .pa-source { font-size: 11px; color: var(--muted-2); }

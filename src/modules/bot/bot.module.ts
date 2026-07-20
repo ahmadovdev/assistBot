@@ -16,6 +16,7 @@ import { HelpHandler } from './handlers/help.handler';
 import { HistoryHandler } from './handlers/history.handler';
 import { OutlineEditHandler } from './handlers/outline-edit.handler';
 import { TestSlideHandler } from './handlers/testslide.handler';
+import { FullTypesHandler } from './handlers/fulltypes.handler';
 import { BrowserService } from '../render/browser.service';
 import { RenderService } from '../render/render.service';
 
@@ -44,6 +45,7 @@ import { RenderService } from '../render/render.service';
     // importing them back here would create a circular module graph. The
     // extra idle Puppeteer instance is an acceptable cost for a debug tool.
     TestSlideHandler,
+    FullTypesHandler,
     BrowserService,
     RenderService,
   ],

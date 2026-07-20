@@ -1,0 +1,343 @@
+{
+  "id": "4921a3cb-ac1a-4f0c-9ff2-c7809a5d9e1e",
+  "theme": "dark_premium",
+  "language": "uz",
+  "title": null,
+  "slides": [
+    {
+      "position": 1,
+      "type": "TITLE",
+      "layout": "TITLE",
+      "content": {
+        "title": "O‘zbekiston Respublikasi shartnoma huquqining asosiy tamoyillari",
+        "layout": "typographic_statement"
+      }
+    },
+    {
+      "position": 2,
+      "type": "AGENDA",
+      "layout": "AGENDA",
+      "content": {
+        "items": [
+          {
+            "text": "Shartnoma huquqi tamoyillarining dolzarbligi"
+          },
+          {
+            "text": "Asosiy tushunchalar va umumiy tavsif"
+          },
+          {
+            "text": "Tamoyillar turlari va chuqur tahlil"
+          },
+          {
+            "text": "Xulosalar va amaliy muammolar yechimi"
+          }
+        ],
+        "title": "Taqdimot rejası"
+      }
+    },
+    {
+      "position": 3,
+      "type": "RELEVANCE",
+      "layout": "RELEVANCE",
+      "content": {
+        "lead": "Shartnoma huquqi tamoyillari bugungi kun uchun dolzarb Bozor iqtisodiyotida erkin shartnoma munosabatlari muhim Huquqiy barqarorlik va ishonchni mustahkamlashda tamoyillar zarur.",
+        "title": "Shartnoma huquqi tamoyillari bugungi kun uchun dolzarb",
+        "kicker": "Dolzarblik",
+        "points": [
+          {
+            "text": "Bozor iqtisodiyotida erkin shartnoma munosabatlari muhim"
+          },
+          {
+            "text": "Huquqiy barqarorlik va ishonchni mustahkamlashda tamoyillar zarur"
+          },
+          {
+            "text": "Xalqaro bitimlar amaliyotida tamoyillar dolzarbligi oshmoqda"
+          }
+        ],
+        "paragraph": "Bozor iqtisodiyotida bitimlar soni va murakkabligi ortgan sari tomonlarning erkin tanlovi bilan birga huquqiy mezonlarga ham ehtiyoj kuchayadi. Shartnoma huquqi tamoyillari aynan shu ehtiyojni qondirib, kelishuv tuzish, uni bajarish va zarur hollarda bekor qilishda oldindan anglanadigan tartibni shakllantiradi. <strong>Erkinlik, tenglik, yaxshi niyat va majburiyatlarga sodiqlik</strong> munosabatlarga ishonch beradi, nizolarni kamaytiradi va fuqarolik aylanmasining barqarorligini ta’minlaydi. Xalqaro bitimlar ko‘paygan sharoitda esa bu tamoyillar turli huquqiy muhitlar o‘rtasida umumiy tushuncha yaratib, savdo va hamkorlikni yanada ishonchli,"
+      }
+    },
+    {
+      "position": 4,
+      "type": "DEFINITION",
+      "layout": "DEFINITION",
+      "content": {
+        "term": "Shartnoma huquqi",
+        "kicker": "book",
+        "aspects": [
+          {
+            "text": "Shartnoma huquqi — fuqarolik huquqining sohasi",
+            "label": "Shartnoma huquqi"
+          },
+          {
+            "text": "Tomonlar o‘rtasidagi huquqiy munosabatlarni belgilaydi",
+            "label": "Tomonlar o‘rtasidagi huquqiy"
+          },
+          {
+            "text": "Shartnomalar tuzish, bajarish va bekor qilish tartibi asoslanadi",
+            "label": "Shartnomalar tuzish"
+          }
+        ],
+        "paragraph": "Shartnoma huquqi — fuqarolik huquqining shartnomaviy munosabatlarni tartibga soluvchi sohasi bo‘lib, u tomonlar o‘rtasida huquq va majburiyatlarning kelishuv asosida vujudga kelishini belgilaydi. <strong>Uningshodiy mazmuni</strong> shartnoma tuzish erkinligi, taraflarning tengligi va kelishilgan shartlarga rioya qilish zaruratida namoyon bo‘ladi. Shu sababli bu soha shartnomalarning qanday tuzilishi, bajarilishi va zarurat tug‘ilganda bekor qilinishiga oid umumiy tartibni aniqlaydi hamda munosabatlarda huquqiy aniqlikni ta’minlaydi.",
+        "definition": "Shartnoma huquqi: asosiy tushuncha Shartnoma huquqi — fuqarolik huquqining sohasi Tomonlar o‘rtasidagi huquqiy munosabatlarni belgilaydi Shartnomalar tuzish, bajarish va bekor qilish tartibi asoslanadi"
+      }
+    },
+    {
+      "position": 5,
+      "type": "BATAFSIL",
+      "layout": "BATAFSIL",
+      "content": {
+        "body": "Shartnoma huquqining asosiy tamoyillari huquqiy asos yaratadi Har bir shartnoma tamoyillarga asoslanadi Tamoyillar qonun ustuvorligini ta’minlaydi Tomonlar o‘rtasida ishonchni mustahkamlaydi",
+        "title": "Shartnoma tamoyillari huquqiy asos va ishonchni yaratadi",
+        "kicker": "Batafsil",
+        "points": [
+          {
+            "text": "Har bir shartnoma tamoyillarga asoslanadi"
+          },
+          {
+            "text": "Tamoyillar qonun ustuvorligini ta’minlaydi"
+          },
+          {
+            "text": "Tomonlar o‘rtasida ishonchni mustahkamlaydi"
+          }
+        ],
+        "paragraph": "Shartnoma tuzish, bajarish va bekor qilish jarayoni alohida kelishuvlardan iborat bo‘lsa-da, ularning barchasi umumiy tamoyillarga tayanadi. Bu tamoyillar taraflarning xulqini huquqiy mezonga solib, ixtiyoriylik bilan majburiy tartib o‘rtasida muvozanat yaratadi. <strong>Qonun ustuvorligi</strong> aynan shu yerda namoyon bo‘ladi, chunki shartnomaviy munosabatlarda qarorlar shaxsiy istak bilan emas, huquqiy qoidalar bilan belgilangan chegarada amalga oshadi. Natijada tomonlar bir-birining huquq va manfaatlari himoyalanganiga ishonadi, bu esa nizolarni kamaytirib, munosabatlarning barqarorligini mustahkamlaydi."
+      }
+    },
+    {
+      "position": 6,
+      "type": "TURLAR",
+      "layout": "TURLAR",
+      "content": {
+        "items": [
+          {
+            "icon": "compass",
+            "text": "Bu tur shartnoma tuzishda tomonning o‘z irodasiga tayanishini bildiradi, shuning uchun u tashqi majburlashdan farqlanadi.",
+            "label": "Erkinlik tamoyili"
+          },
+          {
+            "icon": "scale",
+            "text": "Bu turda ishtirokchilar bir-biriga bo‘ysunmaydi, balki huquq va majburiyatlarda teng mavqega ega bo‘ladi.",
+            "label": "Tenglik tamoyili"
+          },
+          {
+            "icon": "shield",
+            "text": "Bu kategoriya vijdonlilik va halollikni talab qiladi, shu bilan u faqat formal kelishuvdan mazmunan ajraladi.",
+            "label": "Yaxshi niyat va adolat"
+          },
+          {
+            "icon": "check",
+            "text": "Bu tur shartga sodiqlikni ifodalaydi, ya’ni kelishilgan vazifani bajarish keyingi munosabatlarning asosiga aylanadi.",
+            "label": "Majburiyatlarni bajarish"
+          }
+        ],
+        "title": "Shartnoma huquqi tamoyillarining turlari",
+        "layout": "squircle_bento"
+      }
+    },
+    {
+      "position": 7,
+      "type": "BATAFSIL",
+      "layout": "BATAFSIL",
+      "content": {
+        "body": "Erkinlik tamoyilining mazmuni va ahamiyati Erkinlik tamoyili tomonlarga shartnoma tuzishda mustaqillik beradi. Tomonlar o‘z ixtiyori bilan majburiyatlarni belgilash huquqiga ega bo‘ladi. Istalgan shartlarni erkin kelishib olish Qonun bilan cheklovlar faqat zarur hollarda Bozor munosabatlarining rivojlanishiga xizmat qiladi",
+        "title": "Erkinlik tamoyilining mazmuni va ahamiyati",
+        "kicker": "Erkinlik tamoyili",
+        "points": [
+          {
+            "text": "Erkinlik tamoyili tomonlarga shartnoma tuzishda mustaqillik beradi."
+          },
+          {
+            "text": "Istalgan shartlarni erkin kelishib olish"
+          },
+          {
+            "text": "Qonun bilan cheklovlar faqat zarur hollarda"
+          }
+        ],
+        "paragraph": "Erkinlik tamoyili shartnoma tuzishda tomonlarga o‘z manfaatini mustaqil belgilash, kontragentni tanlash va majburiyat mazmunini kelishish imkonini beradi. Shu sababli shartnoma majburlash vositasi emas, balki iroda uyg‘unlashuvi natijasi sifatida namoyon bo‘ladi. Tomonlar qonunga zid bo‘lmagan shartlarni o‘z ehtiyojiga mos ravishda belgilaganda, munosabatlarning moslashuvchanligi oshadi va iqtisodiy aylanish tezlashadi. Biroq bu erkinlik mutlaq emas, chunki u qonun, axloq va boshqalarning huquqlarini buzmasligi kerak. Ana shu muvozanat bozor munosabatlarida tashabbusni rag‘batlantirib, huquqiy tartib va ishonchni saqlaydi."
+      }
+    },
+    {
+      "position": 8,
+      "type": "CONTENT",
+      "layout": "CONTENT",
+      "content": {
+        "lead": "Tenglik tamoyilining mohiyati va amaliy ifodasi Tenglik tamoyili tomonlarning huquq va majburiyatlari tengligini anglatadi.",
+        "title": "Tenglik tamoyilining mohiyati va amaliy ifodasi",
+        "kicker": "Tenglik va adolat",
+        "points": [
+          {
+            "text": "Tenglik tamoyili tomonlarning huquq va majburiyatlari tengligini anglatadi. Bu tamoyil diskriminatsiyani oldini oladi va adolatli bitimlarni ta’minlaydi."
+          },
+          {
+            "text": "Hamma tomonlar uchun bir xil shartlar"
+          },
+          {
+            "text": "Sud muhokamalarida teng huquqli himoya"
+          },
+          {
+            "text": "Shartnoma shartlarini bosim ostida tuzmaslik"
+          }
+        ],
+        "visual": {
+          "alt": "Geometric decoration for Tenglik tamoyilining mohiyati va amaliy ifodasi",
+          "fit": "cover",
+          "url": "",
+          "query": "O‘zbekiston Respublikasida shartnoma huquqining asosiy tamoyillari Tenglik tamoyilining mohiyati va amaliy ifodasi slot-2",
+          "author": "Generated geometric layout",
+          "license": "decorative visual",
+          "provider": "Lumio Geometry"
+        },
+        "paragraph": "Tenglik tamoyili shartnoma munosabatlarida taraflarning bir-biridan ustun qo‘yilmasligini, huquq va majburiyatlarning muvozanatda bo‘lishini ta’minlaydi. Shu sababli shartlar barcha ishtirokchilar uchun bir xil mezonlarda belgilanadi, bu esa yashirin kamsitish va asossiz afzalliklarni kamaytiradi. Amaliyotda bu tamoyil sud muhokamalarida har ikki tomonga teng huquqli himoya berishda, shartnoma loyihasini erkin ko‘rib chiqishda va bosim ostida majburiy kelishuvlarni cheklashda namoyon bo‘ladi. Natijada bitimning adolatliligi kuchayib, tomonlar o‘rtasidagi ishonch mustahkamlanadi."
+      }
+    },
+    {
+      "position": 9,
+      "type": "BATAFSIL",
+      "layout": "BATAFSIL",
+      "content": {
+        "body": "Yaxshi niyat va adolat tamoyilining sharhi Tomonlar shartnoma tuzishda halol va vijdonli bo‘lishi lozim. Adolat tamoyili esa har ikki tomon manfaatlarini inobatga oladi. Halollik va ochiqlik Vijdonlilik me’yorlariga rioya qilish Adolatli natijaga intilish",
+        "title": "Yaxshi niyat va adolat tamoyilining sharhi",
+        "points": [
+          {
+            "text": "Tomonlar shartnoma tuzishda halol va vijdonli bo‘lishi lozim."
+          },
+          {
+            "text": "Halollik va ochiqlik"
+          },
+          {
+            "text": "Vijdonlilik me’yorlariga rioya qilish"
+          }
+        ],
+        "paragraph": "Yaxshi niyat tamoyili shartnoma munosabatlarida tomonlardan faqat o‘z manfaatini emas, balki qarshi tomonning qonuniy kutishlarini ham inobatga olishni talab qiladi. Bu tamoyil halollik, ochiqlik va vijdonlilik orqali namoyon bo‘lib, muzokara, tuzish va ijro jarayonida yashirin zarar yetkazish yoki maqsadni ataylab buzishni cheklaydi. Adolat tamoyili esa manfaatlar muvozanatini saqlashga xizmat qilib, shartnoma shartlari bir tomon uchun haddan tashqari og‘ir yoki ikkinchi tomon uchun asossiz yengil bo‘lib qolmasligini nazarda tutadi. Shuning uchun <strong>yaxshi niyat va adolat birgalikda shartnoma munosabatlarini ishonchli va muvozanatli huq"
+      }
+    },
+    {
+      "position": 10,
+      "type": "CONTENT",
+      "layout": "CONTENT",
+      "content": {
+        "lead": "Majburiyatlarni bajarish tamoyili ishonch asosini yaratadi Tomonlar o‘z majburiyatlarini lozim darajada bajarishi shart Majburiyatlarni buzish huquqiy javobgarlikka olib keladi.",
+        "title": "Majburiyatlarni bajarish tamoyili ishonch asosini yaratadi",
+        "kicker": "check",
+        "points": [
+          {
+            "text": "Tomonlar o‘z majburiyatlarini lozim darajada bajarishi shart"
+          },
+          {
+            "text": "Majburiyatlarni buzish huquqiy javobgarlikka olib keladi"
+          },
+          {
+            "text": "Ishonchli huquqiy muhitni shakllantiradi"
+          }
+        ],
+        "visual": {
+          "alt": "Geometric decoration for Majburiyatlarni bajarish tamoyili ishonch asosini yaratadi",
+          "fit": "cover",
+          "url": "",
+          "query": "O‘zbekiston Respublikasida shartnoma huquqining asosiy tamoyillari Majburiyatlarni bajarish tamoyili ishonch asosini yaratadi slot-1",
+          "author": "Generated geometric layout",
+          "license": "decorative visual",
+          "provider": "Lumio Geometry"
+        },
+        "paragraph": "Shartnomaviy munosabatlarda majburiyatlarni lozim darajada bajarish tomonlar kutgan natijaning amalga oshishini ta’minlaydi va shu orqali ishonchni mustahkamlaydi. Agar taraflardan biri shartga rioya qilmasa, huquqiy javobgarlik yuzaga keladi va bu kelishuvning barqarorligini zaiflashtiradi. Shu sababli bajarish tamoyili faqat intizomiy talab emas, balki shartnoma ijrosini oldindan aytish mumkin bo‘lgan huquqiy muhitga aylantiradigan <strong>ishonch mexanizmi</strong>dir."
+      }
+    },
+    {
+      "position": 11,
+      "type": "COMPARISON",
+      "layout": "COMPARISON",
+      "content": {
+        "left": {
+          "items": [
+            "Tamoyillar aniqroq belgilangan va izchil qo‘llanadi",
+            "Milliy ijtimoiy qadriyatlar bilan uyg‘unlashtiriladi",
+            "Amaliyotda barqarorlik va huquqiy aniqlik kuchli"
+          ],
+          "label": "O‘zbekiston"
+        },
+        "right": {
+          "items": [
+            "Ko‘proq moslashuvchan talqin ustun bo‘lishi mumkin",
+            "Xalqaro standartlar va umumiy tamoyillarga tayanadi",
+            "Qo‘llash usuli huquqiy an’anaga qarab o‘zgaradi"
+          ],
+          "label": "Xorij davlatlari"
+        },
+        "title": "O‘zbekiston va xorijda shartnoma tamoyillarining talqin va qo‘llanishdagi farql",
+        "kicker": "Taqqosiy tahlil",
+        "layout": "toggle_spectrum",
+        "subtitle": "Ikki yondashuv bir xil asosiy g‘oyalarni tan olsa-da, ularni shakllantirish va amaliy qo‘llash usullari turlicha ko‘rinadi."
+      }
+    },
+    {
+      "position": 12,
+      "type": "CONTENT",
+      "layout": "CONTENT",
+      "content": {
+        "lead": "Shartnoma tamoyillari huquqiy muhofazada muhim rol o‘ynaydi Tamoyillar nizolarni hal qilishda asosiy mezon Sud amaliyotida muhim dalil sifatida qo‘llaniladi Huquqiy barqarorlik.",
+        "title": "Shartnoma tamoyillari huquqiy muhofazada muhim rol o‘ynaydi",
+        "kicker": "shield",
+        "points": [
+          {
+            "text": "Tamoyillar nizolarni hal qilishda asosiy mezon"
+          },
+          {
+            "text": "Sud amaliyotida muhim dalil sifatida qo‘llaniladi"
+          },
+          {
+            "text": "Huquqiy barqarorlik va adolatga erishish kafolati"
+          }
+        ],
+        "paragraph": "Shartnoma tamoyillari nizolar paytida huquqiy bahoni yo‘naltiruvchi mezon bo‘lib xizmat qiladi, chunki ular tomonlarning xulqini shartnoma mazmuni bilan birga adolat va vijdonlilik nuqtai nazaridan ham tekshirishga imkon beradi. Sud va boshqa huquqni qo‘llovchi organlar aynan shu tamoyillar yordamida majburiyat qaysi tarafdan buzilganini, qaysi talqin huquqiy muvozanatni saqlashini aniqlaydi. Natijada tamoyillar nafaqat kelishmovchilikni hal etadi, balki qarorlarning izchil bo‘lishini ta’minlab, huquqiy barqarorlik va adolatga erishish uchun kafolat yaratadi."
+      }
+    },
+    {
+      "position": 13,
+      "type": "PROBLEMS_SOLUTIONS",
+      "layout": "PROBLEMS_SOLUTIONS",
+      "content": {
+        "pairs": [
+          {
+            "problem": "Shartnoma erkinligi ba’zan ortiqcha cheklovlar bilan torayib, tomonlarning kelishuv imkonini kamaytiradi.",
+            "solution": "Qonunchilikni aniqlashtirish va asossiz cheklovlarni qisqartirish orqali erkinlik bilan jamoat manfaatlari o"
+          },
+          {
+            "problem": "Tenglik tamoyili ayrim holatlarda amalda buzilib, kuchliroq tomon ustun mavqega ega bo‘lib qoladi.",
+            "solution": "Sud nazoratini kuchaytirish va zaif tomon huquqlarini samarali himoya qilish tenglikni amaliy mazmunga ayl{"
+          },
+          {
+            "problem": "Tamoyillar ko‘pincha turlicha talqin qilinib, bir xil huquqiy vaziyatda turli qarorlar yuzaga keladi.",
+            "solution": "Aniq me’yoriy hujjatlar ishlab chiqish va izohlarni bir xillashtirish sud hamda amaliyot uchun barqaror yo"
+          }
+        ],
+        "title": "Tamoyillarni qo‘llashdagi muammolar va yechimlar",
+        "layout": "diff_view",
+        "subtitle": "Amaliyotda erkinlik, tenglik va talqin bir xilligi bo‘yicha uchraydigan asosiy muammolar hamda ularni bartaraf etish yo‘llari"
+      }
+    },
+    {
+      "position": 14,
+      "type": "CONCLUSION",
+      "layout": "CONCLUSION",
+      "content": {
+        "title": "Asosiy xulosalar",
+        "points": [
+          "Shartnoma huquqi tamoyillari — huquqiy munosabatlarning poydevori",
+          "Erkinlik, tenglik, adolat va sodiqlik tamoyillari muhim ahamiyatga ega",
+          "Tamoyillarni to‘g‘ri qo‘llash adolatli huquqiy muhit yaratadi"
+        ],
+        "paragraph": "Xulosa qilib aytganda, shartnoma huquqi tamoyillari huquqiy munosabatlarning poydevorini tashkil etadi, chunki ular shartnoma tuzish, bajarish va bekor qilish jarayoniga umumiy mezon beradi. Erkinlik, tenglik, adolat va sodiqlik tamoyillari taraflar manfaatlarini muvozanatlashtirib, ularning o‘zaro ishonchini mustahkamlaydi. Shu bois tamoyillarni to‘g‘ri qo‘llash huquqiy barqarorlikni kuchaytiradi va adolatli muhitning shakllanishiga xizmat qiladi."
+      }
+    },
+    {
+      "position": 15,
+      "type": "CLOSING",
+      "layout": "CLOSING",
+      "content": {
+        "title": "E’tiboringiz uchun rahmat!",
+        "layout": "default"
+      }
+    }
+  ]
+}

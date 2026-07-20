@@ -4,7 +4,6 @@ import { LlmService } from '../ai/llm.service';
 import { LlmResult } from '../ai/llm.types';
 import { buildBriefSchema, DeckBrief } from '../ai/schemas/brief.schema';
 import { BRIEF_SYSTEM, buildBriefUser, BriefParams } from '../ai/prompts/brief.prompt';
-import { sanitizeUzbekScript } from '../ai/uzbek-script.sanitizer';
 import { resolveModel } from '../ai/layout.catalog';
 
 @Injectable()
@@ -22,7 +21,6 @@ export class BriefService {
       user: buildBriefUser(input),
       schema: buildBriefSchema(input.outline.slides.map((slide) => slide.position)),
       model,
-      postprocess: input.language === 'uz' ? sanitizeUzbekScript : undefined,
     });
   }
 }

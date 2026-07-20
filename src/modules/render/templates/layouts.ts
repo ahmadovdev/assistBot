@@ -5,8 +5,6 @@
 
 import { Theme } from './theme';
 import { icon } from './icons';
-import { SlideVisual } from '../../visuals/visual.types';
-import { renderWikimediaVisual } from './wikimedia-visual';
 
 // ============================================================
 // DATA INTERFACES
@@ -14,7 +12,6 @@ import { renderWikimediaVisual } from './wikimedia-visual';
 
 export interface SlideMeta {
   pageNo?: string | number;
-  visual?: SlideVisual;
 }
 
 export type TitleLayout =
@@ -46,16 +43,9 @@ export interface StatsData extends SlideMeta {
   stats: { value: string; unit?: string; approx?: boolean; label: string; description?: string }[];
   insight?: string;
   source?: string;
-  /** dark_premium-only visual concept (2026 research). Selection logic (when
-   *  the AI/pipeline should set this) is a later phase — see layouts.ts docs. */
-  layout?: 'gradient_cards';
-}
-
-/** Kept only as the internal fallback renderer (not a selectable type). */
-export interface InsightData extends SlideMeta {
-  kicker?: string;
-  statement: string;
-  body?: string;
+  /** Dark premium variants. gradient_cards remains for previously saved
+   *  decks; new decks use evidence_dashboard. */
+  layout?: 'evidence_dashboard' | 'gradient_cards';
 }
 
 export interface ComparisonData extends SlideMeta {
@@ -93,7 +83,7 @@ export interface BatafsilData extends SlideMeta {
   body: string;
   points?: { text: string }[];
   /** dark_premium-only visual concept. Selection logic lives in layout-registry.ts. */
-  layout?: 'marginalia';
+  layout?: 'marginalia' | 'nafis_annotation' | 'curve_margin';
   /** Prose content mode — a fuller paragraph replacing `body`+`points`.
    *  See card.prompt.prose.ts. Takes priority over `layout` when present. */
   paragraph?: string;
@@ -106,7 +96,7 @@ export interface MisolData extends SlideMeta {
   icon?: string;
   takeaway?: string;
   /** dark_premium-only visual concept. Selection logic lives in layout-registry.ts. */
-  layout?: 'signal_ping';
+  layout?: 'case_study' | 'signal_ping' | 'nafis_case_note' | 'curve_case';
   /** Prose content mode — a fuller paragraph replacing `body` (icon/takeaway
    *  unchanged). See card.prompt.prose.ts. Takes priority over `layout`. */
   paragraph?: string;
@@ -133,7 +123,9 @@ export interface ContentData extends SlideMeta {
   lead?: string;
   points: { icon?: string; heading?: string; text: string }[];
   /** dark_premium-only visual concept. Selection logic lives in layout-registry.ts. */
-  layout?: 'changelog_lines';
+  layout?: 'changelog_lines' | 'editorial_prose' | 'chapter_columns' | 'focus_statement' | 'open_manifesto'
+    | 'nafis_columns' | 'nafis_margin_note' | 'nafis_evidence_lines'
+    | 'curve_editorial' | 'curve_statement' | 'curve_lanes';
   /** Prose content mode — a single paragraph replacing `lead`+`points`.
    *  See card.prompt.prose.ts. Takes priority over `layout` when present. */
   paragraph?: string;
@@ -146,7 +138,8 @@ export interface DefinitionData extends SlideMeta {
   aspects?: { icon?: string; label: string; text: string }[];
   /** dark_premium-only visual concept (2026 research). Selection logic (when
    *  the AI/pipeline should set this) is a later phase — see layouts.ts docs. */
-  layout?: 'glass_hero';
+  layout?: 'glass_hero' | 'term_axis' | 'lexicon_split' | 'concept_frame'
+    | 'nafis_lexicon' | 'nafis_concept_plate' | 'curve_lexicon' | 'curve_concept';
   /** Prose content mode — a fuller paragraph replacing `definition`+`aspects`
    *  (`term` stays, still the dominant visual element). See
    *  card.prompt.prose.ts. Takes priority over `layout` when present. */
@@ -219,7 +212,7 @@ export interface FindingData extends SlideMeta {
   source?: string;
   /** dark_premium-only visual concept (2026 research). Selection logic (when
    *  the AI/pipeline should set this) is a later phase — see layouts.ts docs. */
-  layout?: 'z_stack';
+  layout?: 'research_brief' | 'z_stack';
 }
 
 export interface ProblemsSolutionsData extends SlideMeta {
@@ -228,7 +221,7 @@ export interface ProblemsSolutionsData extends SlideMeta {
   subtitle?: string;
   pairs: { problem: string; solution: string }[];
   /** dark_premium-only visual concept. Selection logic lives in layout-registry.ts. */
-  layout?: 'diff_view';
+  layout?: 'matrix' | 'diff_view';
 }
 
 // ============================================================
@@ -262,12 +255,57 @@ function proseBody(text: string): string {
   return `<p class="prose-body${lengthClass}">${safe(text)}</p>`;
 }
 
+/** Split prose into two complete, balanced passages without cutting a word.
+ *  Sentence boundaries win; whitespace nearest the midpoint is the fallback. */
+function splitProse(text: string): [string, string] {
+  const clean = text.replace(/\s+/g, ' ').trim();
+  if (!clean) return ['', ''];
+
+  const sentences = clean.match(/[^.!?]+(?:[.!?]+|$)/g)?.map((part) => part.trim()).filter(Boolean) ?? [];
+  if (sentences.length >= 2) {
+    const target = clean.length / 2;
+    let bestIndex = 1;
+    let bestDistance = Number.POSITIVE_INFINITY;
+    let accumulated = 0;
+    for (let index = 0; index < sentences.length - 1; index += 1) {
+      accumulated += sentences[index].length + 1;
+      const distance = Math.abs(accumulated - target);
+      if (distance < bestDistance) {
+        bestDistance = distance;
+        bestIndex = index + 1;
+      }
+    }
+    return [
+      sentences.slice(0, bestIndex).join(' '),
+      sentences.slice(bestIndex).join(' '),
+    ];
+  }
+
+  const midpoint = Math.floor(clean.length / 2);
+  const before = clean.lastIndexOf(' ', midpoint);
+  const after = clean.indexOf(' ', midpoint);
+  const boundary = before > clean.length * 0.32
+    ? before
+    : after > 0
+      ? after
+      : clean.length;
+  return [clean.slice(0, boundary).trim(), clean.slice(boundary).trim()];
+}
+
+function definitionTermFont(term: string): number {
+  const length = term.replace(/\s+/g, ' ').trim().length;
+  if (length > 52) return 30;
+  if (length > 38) return 34;
+  if (length > 28) return 40;
+  return 48;
+}
+
 function isDarkPremium(theme: Theme): boolean {
   return theme.id === 'dark_premium';
 }
 
-function dossierRail(items: string[], label = 'Kalit nuqtalar', maxItems = 3): string {
-  const cleaned = items.filter(Boolean).slice(0, maxItems);
+function dossierRail(items: string[], label = 'Kalit nuqtalar'): string {
+  const cleaned = items.filter(Boolean);
   if (!cleaned.length) return '';
   return `
     <aside class="ds-rail ${cleaned.length > 3 ? 'ds-rail--dense' : ''}">
@@ -357,11 +395,17 @@ const slide = (
 // RENDER FUNCTIONS
 // ============================================================
 
-/** Auto font-size for the MAVZU by word count (keeps it the largest element
- * while never overflowing the fixed canvas). */
-function topicFont(text: string, big: number, mid: number, small: number): number {
-  const w = text.trim().split(/\s+/).filter(Boolean).length;
-  return w <= 8 ? big : w <= 14 ? mid : small;
+/** Auto font-size for the MAVZU by word and character count. Uzbek legal and
+ * academic topics often have few words but long compounds, so word count alone
+ * is not enough to protect the fixed slide canvas. */
+function topicFont(text: string, big: number, mid: number, small: number, tiny = small): number {
+  const clean = text.replace(/\s+/g, ' ').trim();
+  const words = clean.split(/\s+/).filter(Boolean).length;
+  const chars = clean.length;
+  if (chars > 86 || words > 14) return tiny;
+  if (chars > 62 || words > 8) return small;
+  if (chars > 40 || words > 5) return mid;
+  return big;
 }
 
 /** A stacked label/value meta block (light-panel variant). */
@@ -460,13 +504,13 @@ function titleBentoAcademic(d: TitleData, theme: Theme): string {
 }
 
 function titleTypographicStatement(d: TitleData, theme: Theme): string {
-  const fs = topicFont(d.title, 74, 56, 42);
+  const fs = topicFont(d.title, 74, 54, 40, 34);
   return slide(theme, d.pageNo, `
     <div class="titul-typo">
       <div class="titul-typo__top">${safe(d.university ?? '')}</div>
       <div class="titul-typo__center">
         <div class="titul-typo__bar"></div>
-        <h1 class="titul-topic" style="font-size:${fs}px;line-height:1.02;max-width:1080px">${safe(d.title)}</h1>
+        <h1 class="titul-topic" style="font-size:${fs}px;line-height:1;max-width:1140px">${safe(d.title)}</h1>
       </div>
       <div class="titul-typo__foot">
         <div>
@@ -569,8 +613,61 @@ function statsGradientCards(d: StatsData, theme: Theme): string {
             </div>
           `).join('')}
         </div>
-        ${d.insight ? `<p class="lead" style="margin-top:24px;max-width:980px">${safe(d.insight)}</p>` : ''}
-        ${d.source ? `<p class="source-note" style="margin-top:8px">${safe(d.source)}</p>` : ''}
+        ${d.insight ? `<p class="lead" style="margin-top:16px;max-width:980px">${safe(d.insight)}</p>` : ''}
+        ${d.source ? `<p class="source-note" style="margin-top:4px">${safe(d.source)}</p>` : ''}
+      </div>
+    </div>
+  `);
+}
+
+function statsEvidenceDashboard(d: StatsData, theme: Theme): string {
+  const [hero, ...supporting] = d.stats;
+  if (!hero) return statsDefault(d, theme);
+
+  return slide(theme, d.pageNo, `
+    <div class="content-block content-block--stats-evidence">
+      <header class="content-block__head">
+        ${d.kicker ? `<div class="kicker" style="margin-bottom:14px">${safe(d.kicker)}</div>` : ''}
+        <h2 class="h2">${safe(d.title)}</h2>
+        ${d.subtitle ? `<p class="lead stats-evidence__subtitle">${safe(d.subtitle)}</p>` : ''}
+      </header>
+      <div class="content-block__body stats-evidence">
+        <div class="stats-evidence__main ${supporting.length ? '' : 'stats-evidence__main--solo'}">
+          <section class="stats-evidence__hero">
+            <div class="stats-evidence__eyebrow">Asosiy ko‘rsatkich</div>
+            <div class="stats-evidence__hero-value">${statNum(hero)}</div>
+            <div class="stats-evidence__hero-label">${safe(hero.label)}</div>
+            ${hero.description ? `<p class="stats-evidence__hero-description">${safe(hero.description)}</p>` : ''}
+            <div class="stats-evidence__scale" aria-hidden="true">
+              <span></span><span></span><span></span><span></span><span></span>
+            </div>
+          </section>
+          ${supporting.length ? `
+            <div class="stats-evidence__support stats-evidence__support--${supporting.length}">
+              ${supporting.map((stat, index) => `
+                <article class="stats-evidence__item">
+                  <div class="stats-evidence__item-index">${String(index + 2).padStart(2, '0')}</div>
+                  <div class="stats-evidence__item-copy">
+                    <div class="stats-evidence__item-value">${statNum(stat)}</div>
+                    <div class="stats-evidence__item-label">${safe(stat.label)}</div>
+                    ${stat.description ? `<p>${safe(stat.description)}</p>` : ''}
+                  </div>
+                </article>
+              `).join('')}
+            </div>
+          ` : ''}
+        </div>
+        ${(d.insight || d.source) ? `
+          <footer class="stats-evidence__footer">
+            ${d.insight ? `
+              <div class="stats-evidence__insight">
+                <span>Xulosa</span>
+                <p>${safe(d.insight)}</p>
+              </div>
+            ` : '<div></div>'}
+            ${d.source ? `<div class="stats-evidence__source"><span>Manba</span><p class="stats-evidence__source-text">${safe(d.source)}</p></div>` : ''}
+          </footer>
+        ` : ''}
       </div>
     </div>
   `);
@@ -578,24 +675,10 @@ function statsGradientCards(d: StatsData, theme: Theme): string {
 
 export function renderStats(d: StatsData, theme: Theme): string {
   switch (d.layout) {
+    case 'evidence_dashboard': return statsEvidenceDashboard(d, theme);
     case 'gradient_cards': return statsGradientCards(d, theme);
     default: return statsDefault(d, theme);
   }
-}
-
-/** Internal FALLBACK renderer (not a selectable type). Shows a centered
- * statement + optional body — used for unknown types and error recovery. */
-export function renderInsight(d: InsightData, theme: Theme): string {
-  return slide(theme, d.pageNo, `
-    <div style="display:grid;grid-template-rows:auto 1fr;height:100%;
-                padding:var(--pad-y) var(--pad-x);gap:32px">
-      <div>${d.kicker ? `<div class="kicker">${safe(d.kicker)}</div>` : ''}</div>
-      <div style="align-self:center;max-width:1020px;display:flex;flex-direction:column;gap:26px">
-        <h2 class="h1" style="font-size:40px;line-height:1.12">${safe(d.statement)}</h2>
-        ${d.body ? `<p class="lead" style="max-width:840px">${safe(d.body)}</p>` : ''}
-      </div>
-    </div>
-  `);
 }
 
 function comparisonDefault(d: ComparisonData, theme: Theme): string {
@@ -715,7 +798,7 @@ function processKbdChain(d: ProcessData, theme: Theme): string {
 }
 
 function processSwitchbackPath(d: ProcessData, theme: Theme): string {
-  const steps = d.steps.slice(0, 5);
+  const steps = d.steps;
   return slide(theme, d.pageNo, `
     <div class="content-block content-block--process-path">
       <header class="content-block__head">
@@ -743,10 +826,13 @@ function processSwitchbackPath(d: ProcessData, theme: Theme): string {
 }
 
 export function renderProcess(d: ProcessData, theme: Theme): string {
-  if (isDarkPremium(theme)) return processSwitchbackPath(d, theme);
   switch (d.layout) {
     case 'switchback_path': return processSwitchbackPath(d, theme);
     case 'kbd_chain': return processKbdChain(d, theme);
+    // Backward compatibility for dark decks saved before layout variants
+    // were persisted. An explicit "default" still renders the default.
+    case undefined:
+      return isDarkPremium(theme) ? processSwitchbackPath(d, theme) : processDefault(d, theme);
     default: return processDefault(d, theme);
   }
 }
@@ -884,13 +970,23 @@ function batafsilMarginalia(d: BatafsilData, theme: Theme): string {
 function batafsilProseFlow(d: BatafsilData, theme: Theme): string {
   if (isDarkPremium(theme)) {
     return slide(theme, d.pageNo, `
-      <div class="content-block content-block--dossier">
+      <div class="content-block content-block--analysis-prose">
         <header class="content-block__head">
           ${d.kicker ? `<div class="kicker" style="margin-bottom:14px">${safe(d.kicker)}</div>` : ''}
           <h2 class="h2">${safe(d.title)}</h2>
         </header>
         <div class="content-block__body">
-          ${dossierFrame('Tahliliy matn', `<p class="ds-prose ds-prose--wide">${safe(d.paragraph!)}</p>`)}
+          <div class="analysis-prose">
+            <aside class="analysis-prose__rail" aria-hidden="true">
+              <span>TAHLIL</span>
+              <i></i><i></i><i></i><i></i>
+              <strong>${safe(String(d.pageNo ?? ''))}</strong>
+            </aside>
+            <div class="analysis-prose__copy">
+              <div class="analysis-prose__label">Batafsil sharh</div>
+              <p>${safe(d.paragraph!)}</p>
+            </div>
+          </div>
         </div>
       </div>
     `);
@@ -934,29 +1030,9 @@ function misolDefault(d: MisolData, theme: Theme): string {
   `);
 }
 
-function misolWithVisual(d: MisolData, theme: Theme): string {
-  return slide(theme, d.pageNo, `
-    <div class="content-block content-block--visual">
-      <header class="content-block__head">
-        ${d.kicker ? `<div class="kicker" style="margin-bottom:14px">${safe(d.kicker)}</div>` : ''}
-        <h2 class="h2">${safe(d.title)}</h2>
-      </header>
-      <div class="content-block__body wm-split">
-        <div class="wm-copy">
-          ${d.paragraph !== undefined ? proseBody(d.paragraph) : `<p class="lead">${safe(d.body)}</p>`}
-          ${d.takeaway ? `<div class="misol__takeaway"><span>★</span><span>${safe(d.takeaway)}</span></div>` : ''}
-        </div>
-        ${renderWikimediaVisual(d.visual, 'wm-visual-example')}
-      </div>
-    </div>
-  `);
-}
-
 function misolCaseStudy(d: MisolData, theme: Theme): string {
   const body = d.paragraph ?? d.body;
-  const media = d.visual
-    ? renderWikimediaVisual(d.visual, 'case-study__visual')
-    : `<div class="case-study__glyph">${d.icon ? icon(d.icon, 82) : '01'}</div>`;
+  const media = `<div class="case-study__glyph">${d.icon ? icon(d.icon, 82) : '01'}</div>`;
   return slide(theme, d.pageNo, `
     <div class="content-block content-block--case-study">
       <header class="content-block__head">
@@ -1035,17 +1111,21 @@ function misolProseFlow(d: MisolData, theme: Theme): string {
 }
 
 export function renderMisol(d: MisolData, theme: Theme): string {
-  if (isDarkPremium(theme)) return misolCaseStudy(d, theme);
-  if (d.visual) return misolWithVisual(d, theme);
-  if (d.paragraph !== undefined) return misolProseFlow(d, theme);
   switch (d.layout) {
+    case 'case_study': return misolCaseStudy(d, theme);
     case 'signal_ping': return misolSignalPing(d, theme);
-    default: return misolDefault(d, theme);
+    case undefined:
+      if (isDarkPremium(theme)) return misolCaseStudy(d, theme);
+      if (d.paragraph !== undefined) return misolProseFlow(d, theme);
+      return misolDefault(d, theme);
+    default:
+      if (d.paragraph !== undefined) return misolProseFlow(d, theme);
+      return misolDefault(d, theme);
   }
 }
 
 function turlarDefault(d: TurlarData, theme: Theme): string {
-  const items = d.items.slice(0, 4);
+  const items = d.items;
   return slide(theme, d.pageNo, `
     <div class="content-block">
       <header class="content-block__head">
@@ -1068,7 +1148,7 @@ function turlarDefault(d: TurlarData, theme: Theme): string {
 /** dark_premium 2026 concept: organic squircle cards (32px radius) with a
  *  gradient icon chip and a soft top-edge highlight line. */
 function turlarSquircleBento(d: TurlarData, theme: Theme): string {
-  const items = d.items.slice(0, 4);
+  const items = d.items;
   const countClass = `sq-count-${items.length}`;
   return slide(theme, d.pageNo, `
     <div class="content-block">
@@ -1151,57 +1231,32 @@ function contentDefault(d: ContentData, theme: Theme): string {
   `);
 }
 
-function contentWithVisual(d: ContentData, theme: Theme): string {
-  const copy = d.paragraph !== undefined
-    ? proseBody(d.paragraph)
-    : `<ul class="points wm-points">${d.points.map((point) => `
-        <li class="points__item">
-          ${point.icon ? `<span class="points__icon">${icon(point.icon, 22)}</span>` : '<span class="points__dot"></span>'}
-          <span class="points__body">${point.heading ? `<span class="points__heading">${safe(point.heading)}</span> ` : ''}<span>${safe(point.text)}</span></span>
-        </li>`).join('')}</ul>`;
-  return slide(theme, d.pageNo, `
-    <div class="content-block content-block--visual">
-      <header class="content-block__head">
-        ${d.kicker ? `<div class="kicker" style="margin-bottom:14px">${safe(d.kicker)}</div>` : ''}
-        <h2 class="h2">${safe(d.title)}</h2>
-        ${d.lead ? `<p class="lead" style="margin-top:12px;max-width:760px">${safe(d.lead)}</p>` : ''}
-      </header>
-      <div class="content-block__body wm-split">
-        <div class="wm-copy">${copy}</div>
-        ${renderWikimediaVisual(d.visual, 'wm-visual-content')}
-      </div>
-    </div>
-  `);
-}
-
 /** dark_premium 2026 concept: Linear-changelog-style monospace line numbers +
  *  accent dot per entry (developer-tool chrome aesthetic). */
 function contentChangelogLines(d: ContentData, theme: Theme): string {
   if (isDarkPremium(theme)) {
-    const rail = dossierRail(
-      d.points.map((p) => p.heading || p.text),
-      'Asosiy dalillar',
-    );
     return slide(theme, d.pageNo, `
-      <div class="content-block content-block--dossier">
+      <div class="content-block content-block--content-ledger">
         <header class="content-block__head">
           ${d.kicker ? `<div class="kicker" style="margin-bottom:14px">${safe(d.kicker)}</div>` : ''}
           <h2 class="h2">${safe(d.title)}</h2>
           ${d.lead ? `<p class="lead" style="margin-top:14px;max-width:900px">${safe(d.lead)}</p>` : ''}
         </header>
         <div class="content-block__body">
-          ${dossierFrame(
-            'Mazmun bayoni',
-            `<div class="ds-lines">
-              ${d.points.map((p, i) => `
-                <div class="ds-line">
-                  <span class="ds-line__num">${String(i + 1).padStart(2, '0')}</span>
-                  <span class="ds-line__body">${p.heading ? `<b>${safe(p.heading)}</b> ` : ''}${safe(p.text)}</span>
+          <div class="content-ledger content-ledger--${d.points.length}">
+            <div class="content-ledger__axis" aria-hidden="true">
+              <span>MAZMUN</span><i></i>
+            </div>
+            ${d.points.map((p, i) => `
+              <div class="content-ledger__item">
+                <span class="content-ledger__num">${String(i + 1).padStart(2, '0')}</span>
+                <div class="content-ledger__copy">
+                  ${p.heading ? `<strong>${safe(p.heading)}</strong>` : ''}
+                  <p>${safe(p.text)}</p>
                 </div>
-              `).join('')}
-            </div>`,
-            rail,
-          )}
+              </div>
+            `).join('')}
+          </div>
         </div>
       </div>
     `);
@@ -1233,13 +1288,26 @@ function contentChangelogLines(d: ContentData, theme: Theme): string {
 function contentProseFlow(d: ContentData, theme: Theme): string {
   if (isDarkPremium(theme)) {
     return slide(theme, d.pageNo, `
-      <div class="content-block content-block--dossier">
+      <div class="content-block content-block--editorial-prose">
         <header class="content-block__head">
           ${d.kicker ? `<div class="kicker" style="margin-bottom:14px">${safe(d.kicker)}</div>` : ''}
           <h2 class="h2">${safe(d.title)}</h2>
         </header>
         <div class="content-block__body">
-          ${dossierFrame('Akademik bayon', `<p class="ds-prose ds-prose--wide">${safe(d.paragraph!)}</p>`)}
+          <div class="editorial-prose">
+            <aside class="editorial-prose__index" aria-hidden="true">
+              <span>MAZMUN</span>
+              <strong>${safe(String(d.pageNo ?? ''))}</strong>
+              <div class="editorial-prose__ticks"><i></i><i></i><i></i><i></i><i></i></div>
+            </aside>
+            <div class="editorial-prose__copy">
+              <div class="editorial-prose__label">Asosiy bayon</div>
+              <p>${safe(d.paragraph!)}</p>
+            </div>
+            <div class="editorial-prose__geometry" aria-hidden="true">
+              <i></i><i></i><i></i>
+            </div>
+          </div>
         </div>
       </div>
     `);
@@ -1257,15 +1325,100 @@ function contentProseFlow(d: ContentData, theme: Theme): string {
   `);
 }
 
+function contentChapterColumns(d: ContentData, theme: Theme): string {
+  if (!isDarkPremium(theme)) return contentProseFlow(d, theme);
+  const [first, second] = splitProse(d.paragraph!);
+  return slide(theme, d.pageNo, `
+    <div class="content-block content-block--chapter-columns">
+      <header class="content-block__head">
+        ${d.kicker ? `<div class="kicker" style="margin-bottom:14px">${safe(d.kicker)}</div>` : ''}
+        <h2 class="h2">${safe(d.title)}</h2>
+      </header>
+      <div class="content-block__body">
+        <div class="chapter-columns">
+          <aside class="chapter-columns__folio" aria-hidden="true">
+            <span>BOB</span>
+            <i></i>
+            <strong>${safe(String(d.pageNo ?? ''))}</strong>
+          </aside>
+          <section class="chapter-columns__column">
+            <div class="chapter-columns__label">01 / Asos</div>
+            <p>${safe(first)}</p>
+          </section>
+          <section class="chapter-columns__column chapter-columns__column--second">
+            <div class="chapter-columns__label">02 / Davom</div>
+            <p>${safe(second)}</p>
+          </section>
+        </div>
+      </div>
+    </div>
+  `);
+}
+
+function contentFocusStatement(d: ContentData, theme: Theme): string {
+  if (!isDarkPremium(theme)) return contentProseFlow(d, theme);
+  const [first, second] = splitProse(d.paragraph!);
+  return slide(theme, d.pageNo, `
+    <div class="content-block content-block--focus-statement">
+      <header class="content-block__head">
+        ${d.kicker ? `<div class="kicker" style="margin-bottom:14px">${safe(d.kicker)}</div>` : ''}
+        <h2 class="h2">${safe(d.title)}</h2>
+      </header>
+      <div class="content-block__body">
+        <div class="focus-statement">
+          <section class="focus-statement__primary">
+            <div class="focus-statement__label"><i></i><span>Tayanch fikr</span></div>
+            <p>${safe(first)}</p>
+          </section>
+          <aside class="focus-statement__secondary">
+            <div class="focus-statement__code" aria-hidden="true">${safe(String(d.pageNo ?? ''))}</div>
+            <p>${safe(second)}</p>
+            <div class="focus-statement__scale" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+          </aside>
+        </div>
+      </div>
+    </div>
+  `);
+}
+
+function contentOpenManifesto(d: ContentData, theme: Theme): string {
+  if (!isDarkPremium(theme)) return contentProseFlow(d, theme);
+  const [first, second] = splitProse(d.paragraph!);
+  return slide(theme, d.pageNo, `
+    <div class="content-block content-block--open-manifesto">
+      <header class="content-block__head">
+        ${d.kicker ? `<div class="kicker" style="margin-bottom:14px">${safe(d.kicker)}</div>` : ''}
+        <h2 class="h2">${safe(d.title)}</h2>
+      </header>
+      <div class="content-block__body">
+        <div class="open-manifesto">
+          <div class="open-manifesto__number" aria-hidden="true">${safe(String(d.pageNo ?? ''))}</div>
+          <div class="open-manifesto__label">Mazmun bayoni</div>
+          <p class="open-manifesto__lead">${safe(first)}</p>
+          <div class="open-manifesto__continuation">
+            <i aria-hidden="true"></i>
+            <p>${safe(second)}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  `);
+}
+
 export function renderContent(d: ContentData, theme: Theme): string {
-  if (d.visual) return contentWithVisual(d, theme);
-  // Prose content mode takes priority over any decorative `layout` concept —
-  // it's a deck-wide data-shape choice (see card.prompt.prose.ts), not a
-  // per-slide variety pick, so it bypasses the layout-registry entirely.
-  if (d.paragraph !== undefined) return contentProseFlow(d, theme);
+  if (d.paragraph !== undefined) {
+    switch (d.layout) {
+      case 'chapter_columns': return contentChapterColumns(d, theme);
+      case 'focus_statement': return contentFocusStatement(d, theme);
+      case 'open_manifesto': return contentOpenManifesto(d, theme);
+      case 'editorial_prose':
+      default: return contentProseFlow(d, theme);
+    }
+  }
   switch (d.layout) {
     case 'changelog_lines': return contentChangelogLines(d, theme);
-    default: return contentDefault(d, theme);
+    default:
+      return contentDefault(d, theme);
   }
 }
 
@@ -1313,7 +1466,7 @@ function definitionGlassHero(d: DefinitionData, theme: Theme): string {
         <div class="content-block__body">
           ${dossierFrame(
             'Termin dosyesi',
-            `<div class="ds-term">${safe(d.term)}</div><p class="ds-prose">${safe(d.definition)}</p>`,
+            `<div class="ds-term">${safe(d.term)}</div><p class="ds-prose">${safe(d.paragraph ?? d.definition)}</p>`,
             dossierRail((d.aspects ?? []).map((a) => `${a.label}: ${a.text}`), 'Belgilar'),
           )}
         </div>
@@ -1329,7 +1482,95 @@ function definitionGlassHero(d: DefinitionData, theme: Theme): string {
       <div class="content-block__body">
         <div class="gh-panel">
           <div class="gh-term">${safe(d.term)}</div>
-          <p class="gh-def">${safe(d.definition)}</p>
+          <p class="gh-def">${safe(d.paragraph ?? d.definition)}</p>
+        </div>
+      </div>
+    </div>
+  `);
+}
+
+function definitionTermAxis(d: DefinitionData, theme: Theme): string {
+  if (!isDarkPremium(theme)) return definitionProseFlow(d, theme);
+  const explanation = d.paragraph ?? d.definition;
+  const termSize = definitionTermFont(d.term);
+  return slide(theme, d.pageNo, `
+    <div class="content-block content-block--term-axis">
+      <header class="content-block__head">
+        ${d.kicker ? `<div class="kicker">${safe(d.kicker)}</div>` : ''}
+      </header>
+      <div class="content-block__body">
+        <div class="term-axis">
+          <aside class="term-axis__marker" aria-hidden="true">
+            <span>TERM</span><i></i><strong>${safe(String(d.pageNo ?? ''))}</strong>
+          </aside>
+          <div class="term-axis__concept">
+            <div class="term-axis__label">Asosiy tushuncha</div>
+            <h2 style="font-size:${termSize}px">${safe(d.term)}</h2>
+          </div>
+          <div class="term-axis__definition">
+            <div class="term-axis__symbol" aria-hidden="true">D</div>
+            <p>${safe(explanation)}</p>
+            ${d.aspects?.length ? `
+              <div class="term-axis__aspects">
+                ${d.aspects.map((aspect, index) => `
+                  <span><b>${String(index + 1).padStart(2, '0')}</b>${safe(aspect.label)}</span>
+                `).join('')}
+              </div>
+            ` : ''}
+          </div>
+        </div>
+      </div>
+    </div>
+  `);
+}
+
+function definitionLexiconSplit(d: DefinitionData, theme: Theme): string {
+  if (!isDarkPremium(theme)) return definitionProseFlow(d, theme);
+  const [first, second] = splitProse(d.paragraph ?? d.definition);
+  const termSize = definitionTermFont(d.term);
+  return slide(theme, d.pageNo, `
+    <div class="content-block content-block--lexicon-split">
+      <header class="content-block__head">
+        ${d.kicker ? `<div class="kicker">${safe(d.kicker)}</div>` : ''}
+      </header>
+      <div class="content-block__body">
+        <div class="lexicon-split">
+          <section class="lexicon-split__term">
+            <div class="lexicon-split__code">LUG‘AT / ${safe(String(d.pageNo ?? ''))}</div>
+            <h2 style="font-size:${termSize}px">${safe(d.term)}</h2>
+            <div class="lexicon-split__rule" aria-hidden="true"><i></i><i></i><i></i></div>
+          </section>
+          <section class="lexicon-split__copy">
+            <div class="lexicon-split__label">Ta’rif</div>
+            <p>${safe(first)}</p>
+            ${second ? `<p class="lexicon-split__continuation">${safe(second)}</p>` : ''}
+          </section>
+        </div>
+      </div>
+    </div>
+  `);
+}
+
+function definitionConceptFrame(d: DefinitionData, theme: Theme): string {
+  if (!isDarkPremium(theme)) return definitionProseFlow(d, theme);
+  const [first, second] = splitProse(d.paragraph ?? d.definition);
+  const termSize = definitionTermFont(d.term);
+  return slide(theme, d.pageNo, `
+    <div class="content-block content-block--concept-frame">
+      <header class="content-block__head">
+        ${d.kicker ? `<div class="kicker">${safe(d.kicker)}</div>` : ''}
+      </header>
+      <div class="content-block__body">
+        <div class="concept-frame">
+          <div class="concept-frame__corners" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+          <div class="concept-frame__heading">
+            <span>TUSHUNCHA</span>
+            <h2 style="font-size:${termSize}px">${safe(d.term)}</h2>
+          </div>
+          <div class="concept-frame__copy">
+            <p>${safe(first)}</p>
+            ${second ? `<p>${safe(second)}</p>` : ''}
+          </div>
         </div>
       </div>
     </div>
@@ -1368,8 +1609,19 @@ function definitionProseFlow(d: DefinitionData, theme: Theme): string {
 }
 
 export function renderDefinition(d: DefinitionData, theme: Theme): string {
-  if (d.paragraph !== undefined) return definitionProseFlow(d, theme);
+  if (d.paragraph !== undefined) {
+    switch (d.layout) {
+      case 'term_axis': return definitionTermAxis(d, theme);
+      case 'lexicon_split': return definitionLexiconSplit(d, theme);
+      case 'concept_frame': return definitionConceptFrame(d, theme);
+      case 'glass_hero': return definitionGlassHero(d, theme);
+      default: return definitionProseFlow(d, theme);
+    }
+  }
   switch (d.layout) {
+    case 'term_axis': return definitionTermAxis(d, theme);
+    case 'lexicon_split': return definitionLexiconSplit(d, theme);
+    case 'concept_frame': return definitionConceptFrame(d, theme);
     case 'glass_hero': return definitionGlassHero(d, theme);
     default: return definitionDefault(d, theme);
   }
@@ -1378,26 +1630,34 @@ export function renderDefinition(d: DefinitionData, theme: Theme): string {
 export function renderConclusion(d: ConclusionData, theme: Theme): string {
   if (isDarkPremium(theme)) {
     const main = d.paragraph !== undefined
-      ? `<p class="ds-prose ds-prose--wide">${safe(d.paragraph)}</p>`
-      : `<div class="ds-lines ds-lines--verdict">
+      ? `<p class="conclusion-synthesis__paragraph">${safe(d.paragraph)}</p>`
+      : `<div class="conclusion-synthesis__points">
           ${d.points.map((p, i) => `
-            <div class="ds-line">
-              <span class="ds-line__num">${String(i + 1).padStart(2, '0')}</span>
-              <span class="ds-line__body">${safe(p)}</span>
+            <div class="conclusion-synthesis__point">
+              <span>${String(i + 1).padStart(2, '0')}</span>
+              <p>${safe(p)}</p>
             </div>
           `).join('')}
         </div>`;
     return slide(theme, d.pageNo, `
-      <div class="content-block content-block--dossier">
+      <div class="content-block content-block--conclusion-synthesis">
         <header class="content-block__head">
           ${d.kicker ? `<div class="kicker" style="margin-bottom:14px">${safe(d.kicker)}</div>` : ''}
           <h2 class="h2">${safe(d.title)}</h2>
         </header>
         <div class="content-block__body">
-          ${dossierFrame(
-            'Yakuniy xulosa',
-            `${main}${d.closing ? `<p class="ds-closing">${safe(d.closing)}</p>` : ''}`,
-          )}
+          <div class="conclusion-synthesis">
+            <aside class="conclusion-synthesis__mark" aria-hidden="true">
+              <span>YAKUN</span>
+              <i></i>
+              <strong>${safe(String(d.pageNo ?? ''))}</strong>
+            </aside>
+            <div class="conclusion-synthesis__main">
+              <div class="conclusion-synthesis__label">Yakuniy sintez</div>
+              ${main}
+              ${d.closing ? `<p class="conclusion-synthesis__closing">${safe(d.closing)}</p>` : ''}
+            </div>
+          </div>
         </div>
       </div>
     `);
@@ -1479,16 +1739,27 @@ export function renderClosing(d: ClosingData, theme: Theme): string {
 function relevanceProseFlow(d: RelevanceData, theme: Theme): string {
   if (isDarkPremium(theme)) {
     return slide(theme, d.pageNo, `
-      <div class="content-block content-block--dossier">
+      <div class="content-block content-block--relevance-signal">
         <header class="content-block__head">
           ${d.kicker ? `<div class="kicker" style="margin-bottom:14px">${safe(d.kicker)}</div>` : ''}
           <h2 class="h2">${safe(d.title)}</h2>
         </header>
         <div class="content-block__body">
-          ${dossierFrame(
-            'Dolzarblik briefi',
-            `<p class="ds-prose ds-prose--wide">${safe(d.paragraph!)}</p>${d.source ? `<p class="source-note ds-source">${safe(d.source)}</p>` : ''}`,
-          )}
+          <div class="relevance-signal">
+            <aside class="relevance-signal__meter" aria-hidden="true">
+              <span>HOZIR</span>
+              <div><i></i><i></i><i></i><i></i><i></i><i></i></div>
+              <strong>!</strong>
+            </aside>
+            <div class="relevance-signal__copy">
+              <div class="relevance-signal__status">
+                <i></i>
+                <span>Dolzarblik signali</span>
+              </div>
+              <p>${safe(d.paragraph!)}</p>
+              ${d.source ? `<div class="relevance-signal__source">${safe(d.source)}</div>` : ''}
+            </div>
+          </div>
         </div>
       </div>
     `);
@@ -1574,6 +1845,7 @@ export function renderRelevance(d: RelevanceData, theme: Theme): string {
 export function renderAimTasks(d: AimTasksData, theme: Theme): string {
   if (isDarkPremium(theme)) {
     const aim = d.paragraph !== undefined ? d.paragraph : d.aim;
+    const tasks = d.tasks.filter(Boolean);
     return slide(theme, d.pageNo, `
       <div class="content-block content-block--dossier">
         <header class="content-block__head">
@@ -1583,8 +1855,15 @@ export function renderAimTasks(d: AimTasksData, theme: Theme): string {
         <div class="content-block__body">
           ${dossierFrame(
             'Maqsad briefi',
-            `<p class="ds-prose">${safe(aim)}</p>`,
-            dossierRail(d.tasks, 'Vazifalar', 5),
+            `<p class="ds-prose ds-prose--wide">${safe(aim)}</p>
+             <div class="ds-task-grid">
+               ${tasks.map((task, index) => `
+                 <div class="ds-task">
+                   <span>${String(index + 1).padStart(2, '0')}</span>
+                   <p>${safe(task)}</p>
+                 </div>
+               `).join('')}
+             </div>`,
           )}
         </div>
       </div>
@@ -1712,7 +1991,7 @@ function findingResearchBrief(d: FindingData, theme: Theme): string {
               <div class="finding-brief__panel">
                 <div class="finding-brief__label">Dalil tayanchlari</div>
                 <ol class="finding-brief__points">
-                  ${points.slice(0, 4).map((p, i) => `
+                  ${points.map((p, i) => `
                     <li><span>${String(i + 1).padStart(2, '0')}</span><p>${safe(p.text)}</p></li>
                   `).join('')}
                 </ol>
@@ -1756,9 +2035,11 @@ function findingZStack(d: FindingData, theme: Theme): string {
 }
 
 export function renderFinding(d: FindingData, theme: Theme): string {
-  if (isDarkPremium(theme)) return findingResearchBrief(d, theme);
   switch (d.layout) {
+    case 'research_brief': return findingResearchBrief(d, theme);
     case 'z_stack': return findingZStack(d, theme);
+    case undefined:
+      return isDarkPremium(theme) ? findingResearchBrief(d, theme) : findingDefault(d, theme);
     default: return findingDefault(d, theme);
   }
 }
@@ -1812,6 +2093,12 @@ function problemsSolutionsDiffView(d: ProblemsSolutionsData, theme: Theme): stri
 }
 
 function problemsSolutionsMatrix(d: ProblemsSolutionsData, theme: Theme): string {
+  const copyLength = d.pairs.reduce(
+    (sum, pair) => sum + pair.problem.length + pair.solution.length,
+    0,
+  );
+  const averageCopyLength = copyLength / Math.max(1, d.pairs.length * 2);
+  const densityClass = averageCopyLength < 54 ? 'ps-matrix--short-copy' : '';
   return slide(theme, d.pageNo, `
     <div class="content-block content-block--ps-matrix">
       <header class="content-block__head">
@@ -1819,10 +2106,10 @@ function problemsSolutionsMatrix(d: ProblemsSolutionsData, theme: Theme): string
         <h2 class="h2">${safe(d.title)}</h2>
       </header>
       <div class="content-block__body">
-        <section class="ps-matrix">
+        <section class="ps-matrix ps-matrix--${d.pairs.length} ${densityClass}">
           ${d.subtitle ? `<p class="ps-matrix__context">${safe(d.subtitle)}</p>` : ''}
           <div class="ps-matrix__rows">
-            ${d.pairs.slice(0, 3).map((p, i) => `
+            ${d.pairs.map((p, i) => `
               <article class="ps-matrix__row">
                 <div class="ps-matrix__num">${String(i + 1).padStart(2, '0')}</div>
                 <div class="ps-matrix__cell ps-matrix__cell--problem">
@@ -1844,9 +2131,11 @@ function problemsSolutionsMatrix(d: ProblemsSolutionsData, theme: Theme): string
 }
 
 export function renderProblemsSolutions(d: ProblemsSolutionsData, theme: Theme): string {
-  if (isDarkPremium(theme)) return problemsSolutionsMatrix(d, theme);
   switch (d.layout) {
+    case 'matrix': return problemsSolutionsMatrix(d, theme);
     case 'diff_view': return problemsSolutionsDiffView(d, theme);
+    case undefined:
+      return isDarkPremium(theme) ? problemsSolutionsMatrix(d, theme) : problemsSolutionsDefault(d, theme);
     default: return problemsSolutionsDefault(d, theme);
   }
 }

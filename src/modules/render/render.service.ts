@@ -5,14 +5,11 @@ import { buildDeck, DeckSlide } from './templates/deck';
 import { buildAcademicDeck } from './academic/deck';
 import { buildPremiumAcademicDeck } from './premium_academic/deck';
 import { buildSoftCurvesDeck } from './soft_curves/deck';
-import { buildPptx } from './pptx/pptx.builder';
-import { buildEditablePptx } from './pptx/pptx.editable';
 import { buildPixelPerfectPptx } from './pptx/pptx.pixel-perfect';
 import { buildHybridPptx } from './pptx/pptx.hybrid';
 import { PPTX_SCREENSHOT } from './pptx/pptx.constants';
-import { checkRenderContract, formatRenderContractIssues } from './render-contract';
 
-export type PptxRenderMode = 'pixelPerfect' | 'editable' | 'hybrid';
+export type PptxRenderMode = 'pixelPerfect' | 'hybrid';
 
 export interface RenderPptxOptions {
   mode?: PptxRenderMode;
@@ -21,7 +18,6 @@ export interface RenderPptxOptions {
     height?: number;
     deviceScaleFactor?: number;
   };
-  editableText?: boolean;
   debug?: boolean;
 }
 
@@ -29,8 +25,6 @@ export interface RenderPptxResult {
   buffer: Buffer;
   mode: PptxRenderMode;
   warnings: string[];
-  /** Set when hybrid silently fell back to pixelPerfect. */
-  fallbackReason?: string;
 }
 
 @Injectable()
@@ -63,21 +57,17 @@ export class RenderService {
     // theme uses the existing (classic) renderer, unchanged.
     if (this.useAcademic(themeId)) {
       const html = buildAcademicDeck(themeId, slides);
-      this.warnRenderContract(themeId, slides, html);
       return this.browser.htmlToPdf(html, { width: 1920, height: 1080 });
     }
     if (this.usePremiumAcademic(themeId)) {
       const html = buildPremiumAcademicDeck(themeId, slides);
-      this.warnRenderContract(themeId, slides, html);
       return this.browser.htmlToPdf(html);
     }
     if (this.useSoftCurves(themeId)) {
       const html = buildSoftCurvesDeck(themeId, slides);
-      this.warnRenderContract(themeId, slides, html);
       return this.browser.htmlToPdf(html);
     }
     const html = buildDeck(themeId, slides);
-    this.warnRenderContract(themeId, slides, html);
     return this.browser.htmlToPdf(html);
   }
 
@@ -97,15 +87,6 @@ export class RenderService {
     return { html: buildDeck(themeId, slides), selector: '.slide', canvas: { width: 1280, height: 720 } };
   }
 
-  private warnRenderContract(themeId: string, slides: DeckSlide[], html: string): void {
-    const issues = checkRenderContract(slides, html);
-    if (!issues.length) return;
-    const sample = formatRenderContractIssues(issues).slice(0, 12).join('; ');
-    this.logger.warn(
-      `Render contract warnings for theme=${themeId}: ${issues.length} generated text fields not found in HTML. ${sample}`,
-    );
-  }
-
   /** Screenshots every slide once, at the requested (or default) resolution.
    *  `deviceScaleFactor` is derived from the requested screenshot width vs
    *  the HTML canvas's native px width, so callers can just say "I want
@@ -116,7 +97,6 @@ export class RenderService {
     screenshotOpts?: RenderPptxOptions['screenshot'],
   ): Promise<Buffer[]> {
     const { html, selector, canvas } = this.buildDeckHtml(themeId, slides);
-    this.warnRenderContract(themeId, slides, html);
     const targetWidth = screenshotOpts?.width ?? PPTX_SCREENSHOT.width;
     const deviceScaleFactor =
       screenshotOpts?.deviceScaleFactor ?? Math.max(1, Math.round(targetWidth / canvas.width));
@@ -146,41 +126,14 @@ export class RenderService {
     }
 
     if (mode === 'hybrid') {
-      try {
-        const images = await this.screenshotDeck(themeId, slides, options.screenshot);
-        const result = await buildHybridPptx(images, slides, themeId);
-        if (options.debug) {
-          this.logger.log(`PPTX debug: mode=hybrid slides=${images.length} warnings=${JSON.stringify(result.warnings)}`);
-        }
-        return { buffer: result.buffer, mode: 'hybrid', warnings: result.warnings };
-      } catch (e) {
-        // Hybrid is explicitly allowed to fall back to pixelPerfect — visual
-        // quality must never be worse than pixelPerfect just because the
-        // (newer, less-tested) hybrid path hit a snag.
-        const reason = String(e);
-        this.logger.warn(`Hybrid PPTX failed, falling back to pixelPerfect: ${reason}`);
-        const images = await this.screenshotDeck(themeId, slides, options.screenshot);
-        const result = await buildPixelPerfectPptx(images);
-        return { buffer: result.buffer, mode: 'pixelPerfect', warnings: result.warnings, fallbackReason: reason };
+      const images = await this.screenshotDeck(themeId, slides, options.screenshot);
+      const result = await buildHybridPptx(images, slides, themeId);
+      if (options.debug) {
+        this.logger.log(`PPTX debug: mode=hybrid slides=${images.length} warnings=${JSON.stringify(result.warnings)}`);
       }
+      return { buffer: result.buffer, mode: 'hybrid', warnings: result.warnings };
     }
 
-    // mode === 'editable': layout-plan + text-fit pipeline for the 8
-    // highest-overflow-risk types, original hand-tuned renderer for the
-    // rest (see pptx.editable.ts's MIGRATED_TYPES). Falls back to the
-    // original buildPptx() wholesale if the new pipeline throws — the old
-    // path stays available exactly as the acceptance criteria require.
-    try {
-      const result = await buildEditablePptx(themeId, slides);
-      if (options.debug) {
-        this.logger.log(`PPTX debug: mode=editable slides=${slides.length} warnings=${JSON.stringify(result.warnings)}`);
-      }
-      return { buffer: result.buffer, mode: 'editable', warnings: result.warnings };
-    } catch (e) {
-      const reason = String(e);
-      this.logger.warn(`Editable (layout-plan) PPTX failed, falling back to legacy buildPptx: ${reason}`);
-      const buffer = await buildPptx(themeId, slides);
-      return { buffer, mode: 'editable', warnings, fallbackReason: reason };
-    }
+    throw new Error(`Unsupported PPTX mode: ${String(mode)}`);
   }
 }

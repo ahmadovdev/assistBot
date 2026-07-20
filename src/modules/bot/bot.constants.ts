@@ -25,4 +25,8 @@ export enum BotState {
   // /testslide — admin-only, token-free renderer for the saved 21-type catalog.
   TESTSLIDE_AWAITING_TYPE = 'testslide_awaiting_type',
   TESTSLIDE_AWAITING_THEME = 'testslide_awaiting_theme',
+  // /fulltypes — admin-only AI showcase: fixed outline with every active type,
+  // then normal AI card generation + render.
+  FULLTYPES_AWAITING_TOPIC = 'fulltypes_awaiting_topic',
+  FULLTYPES_AWAITING_THEME = 'fulltypes_awaiting_theme',
 }

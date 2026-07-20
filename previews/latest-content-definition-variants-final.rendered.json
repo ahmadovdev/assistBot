@@ -1,0 +1,1341 @@
+{
+  "id": "f9ba7682-fa5e-464e-bfaa-d1f937e9acf4",
+  "theme": "dark_premium",
+  "fitReport": {
+    "status": "underfilled",
+    "slides": [
+      {
+        "slideId": "1",
+        "slideIndex": 1,
+        "slideType": "TITLE",
+        "layoutVariant": "editorial_split",
+        "status": "underfilled",
+        "occupancy": 0.071072998046875,
+        "slots": [
+          {
+            "slotId": "title",
+            "path": "title",
+            "role": "title",
+            "clientWidth": 632,
+            "clientHeight": 104,
+            "scrollWidth": 632,
+            "scrollHeight": 106,
+            "actualLines": 3,
+            "maxLines": 3,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 2,
+            "occupancy": 0.071072998046875,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          }
+        ],
+        "repairAttempts": []
+      },
+      {
+        "slideId": "2",
+        "slideIndex": 2,
+        "slideType": "AGENDA",
+        "layoutVariant": "default",
+        "status": "balanced",
+        "occupancy": 0.12258867687649197,
+        "slots": [
+          {
+            "slotId": "title",
+            "path": "title",
+            "role": "title",
+            "clientWidth": 1040,
+            "clientHeight": 51,
+            "scrollWidth": 1040,
+            "scrollHeight": 55,
+            "actualLines": 1,
+            "maxLines": 1,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 4,
+            "occupancy": 0.05741102430555556,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "items",
+            "path": "items.0.text",
+            "role": "list",
+            "clientWidth": 558,
+            "clientHeight": 27,
+            "scrollWidth": 558,
+            "scrollHeight": 27,
+            "actualLines": 1,
+            "maxLines": 2,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.01625830332438151,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "items",
+            "path": "items.1.text",
+            "role": "list",
+            "clientWidth": 568,
+            "clientHeight": 27,
+            "scrollWidth": 568,
+            "scrollHeight": 27,
+            "actualLines": 1,
+            "maxLines": 2,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.0165594842698839,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "items",
+            "path": "items.2.text",
+            "role": "list",
+            "clientWidth": 577,
+            "clientHeight": 27,
+            "scrollWidth": 577,
+            "scrollHeight": 27,
+            "actualLines": 1,
+            "maxLines": 2,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.016827403174506293,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "items",
+            "path": "items.3.text",
+            "role": "list",
+            "clientWidth": 533,
+            "clientHeight": 27,
+            "scrollWidth": 533,
+            "scrollHeight": 27,
+            "actualLines": 1,
+            "maxLines": 2,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.015532461802164714,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          }
+        ],
+        "repairAttempts": []
+      },
+      {
+        "slideId": "3",
+        "slideIndex": 3,
+        "slideType": "RELEVANCE",
+        "layoutVariant": "default",
+        "status": "balanced",
+        "occupancy": 0.3857557169596354,
+        "slots": [
+          {
+            "slotId": "title",
+            "path": "title",
+            "role": "title",
+            "clientWidth": 1040,
+            "clientHeight": 102,
+            "scrollWidth": 1040,
+            "scrollHeight": 106,
+            "actualLines": 2,
+            "maxLines": 2,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 4,
+            "occupancy": 0.11482204861111112,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "source",
+            "path": "source",
+            "role": "meta",
+            "clientWidth": 842,
+            "clientHeight": 32,
+            "scrollWidth": 842,
+            "scrollHeight": 32,
+            "actualLines": 1,
+            "maxLines": 1,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.029735751681857638,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "paragraph",
+            "path": "paragraph",
+            "role": "body",
+            "clientWidth": 842,
+            "clientHeight": 264,
+            "scrollWidth": 842,
+            "scrollHeight": 264,
+            "actualLines": 8,
+            "maxLines": 10,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.24119791666666668,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          }
+        ],
+        "repairAttempts": []
+      },
+      {
+        "slideId": "4",
+        "slideIndex": 4,
+        "slideType": "DEFINITION",
+        "layoutVariant": "term_axis",
+        "status": "balanced",
+        "occupancy": 0.17997314876980253,
+        "slots": [
+          {
+            "slotId": "term",
+            "path": "term",
+            "role": "title",
+            "clientWidth": 421,
+            "clientHeight": 100,
+            "scrollWidth": 421,
+            "scrollHeight": 105,
+            "actualLines": 2,
+            "maxLines": 2,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 5,
+            "occupancy": 0.04561607784695095,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "paragraph",
+            "path": "paragraph",
+            "role": "body",
+            "clientWidth": 462,
+            "clientHeight": 268,
+            "scrollWidth": 462,
+            "scrollHeight": 268,
+            "actualLines": 10,
+            "maxLines": 12,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.13435707092285157,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          }
+        ],
+        "repairAttempts": []
+      },
+      {
+        "slideId": "5",
+        "slideIndex": 5,
+        "slideType": "BATAFSIL",
+        "layoutVariant": "marginalia",
+        "status": "balanced",
+        "occupancy": 0.22809244791666666,
+        "slots": [
+          {
+            "slotId": "title",
+            "path": "title",
+            "role": "title",
+            "clientWidth": 1080,
+            "clientHeight": 102,
+            "scrollWidth": 1080,
+            "scrollHeight": 106,
+            "actualLines": 2,
+            "maxLines": 2,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 4,
+            "occupancy": 0.11923828125,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "body",
+            "path": "body",
+            "role": "body",
+            "clientWidth": 760,
+            "clientHeight": 132,
+            "scrollWidth": 760,
+            "scrollHeight": 132,
+            "actualLines": 4,
+            "maxLines": 7,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.10885416666666667,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          }
+        ],
+        "repairAttempts": []
+      },
+      {
+        "slideId": "6",
+        "slideIndex": 6,
+        "slideType": "TURLAR",
+        "layoutVariant": "squircle_bento",
+        "status": "balanced",
+        "occupancy": 0.16089257134331594,
+        "slots": [
+          {
+            "slotId": "title",
+            "path": "title",
+            "role": "title",
+            "clientWidth": 1040,
+            "clientHeight": 51,
+            "scrollWidth": 1040,
+            "scrollHeight": 55,
+            "actualLines": 1,
+            "maxLines": 2,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 4,
+            "occupancy": 0.05741102430555556,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "items",
+            "path": "items.0.text",
+            "role": "list",
+            "clientWidth": 310,
+            "clientHeight": 88,
+            "scrollWidth": 310,
+            "scrollHeight": 88,
+            "actualLines": 4,
+            "maxLines": 4,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.029705810546875,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "items",
+            "path": "items.1.text",
+            "role": "list",
+            "clientWidth": 310,
+            "clientHeight": 66,
+            "scrollWidth": 310,
+            "scrollHeight": 66,
+            "actualLines": 3,
+            "maxLines": 4,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.02227935791015625,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "items",
+            "path": "items.2.text",
+            "role": "list",
+            "clientWidth": 310,
+            "clientHeight": 88,
+            "scrollWidth": 310,
+            "scrollHeight": 88,
+            "actualLines": 4,
+            "maxLines": 4,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.029705810546875,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "itemLabels",
+            "path": "items.0.label",
+            "role": "label",
+            "clientWidth": 310,
+            "clientHeight": 22,
+            "scrollWidth": 310,
+            "scrollHeight": 22,
+            "actualLines": 1,
+            "maxLines": 1,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.007263522677951389,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "itemLabels",
+            "path": "items.1.label",
+            "role": "label",
+            "clientWidth": 310,
+            "clientHeight": 22,
+            "scrollWidth": 310,
+            "scrollHeight": 22,
+            "actualLines": 1,
+            "maxLines": 1,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.007263522677951389,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "itemLabels",
+            "path": "items.2.label",
+            "role": "label",
+            "clientWidth": 310,
+            "clientHeight": 22,
+            "scrollWidth": 310,
+            "scrollHeight": 22,
+            "actualLines": 1,
+            "maxLines": 1,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.007263522677951389,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          }
+        ],
+        "repairAttempts": []
+      },
+      {
+        "slideId": "7",
+        "slideIndex": 7,
+        "slideType": "MISOL",
+        "layoutVariant": "case_study",
+        "status": "balanced",
+        "occupancy": 0.29714219835069444,
+        "slots": [
+          {
+            "slotId": "title",
+            "path": "title",
+            "role": "title",
+            "clientWidth": 1040,
+            "clientHeight": 102,
+            "scrollWidth": 1040,
+            "scrollHeight": 106,
+            "actualLines": 2,
+            "maxLines": 2,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 4,
+            "occupancy": 0.11482204861111112,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "takeaway",
+            "path": "takeaway",
+            "role": "body",
+            "clientWidth": 692,
+            "clientHeight": 42,
+            "scrollWidth": 692,
+            "scrollHeight": 42,
+            "actualLines": 2,
+            "maxLines": 3,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.03120795355902778,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "paragraph",
+            "path": "paragraph",
+            "role": "body",
+            "clientWidth": 692,
+            "clientHeight": 201,
+            "scrollWidth": 692,
+            "scrollHeight": 201,
+            "actualLines": 8,
+            "maxLines": 10,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.15111219618055555,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          }
+        ],
+        "repairAttempts": []
+      },
+      {
+        "slideId": "8",
+        "slideIndex": 8,
+        "slideType": "CONTENT",
+        "layoutVariant": "editorial_prose",
+        "status": "balanced",
+        "occupancy": 0.3525824652777778,
+        "slots": [
+          {
+            "slotId": "title",
+            "path": "title",
+            "role": "title",
+            "clientWidth": 1040,
+            "clientHeight": 102,
+            "scrollWidth": 1040,
+            "scrollHeight": 106,
+            "actualLines": 2,
+            "maxLines": 2,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 4,
+            "occupancy": 0.11482204861111112,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "paragraph",
+            "path": "paragraph",
+            "role": "body",
+            "clientWidth": 830,
+            "clientHeight": 264,
+            "scrollWidth": 830,
+            "scrollHeight": 264,
+            "actualLines": 8,
+            "maxLines": 10,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.23776041666666667,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          }
+        ],
+        "repairAttempts": []
+      },
+      {
+        "slideId": "9",
+        "slideIndex": 9,
+        "slideType": "CONTENT",
+        "layoutVariant": "changelog_lines",
+        "status": "balanced",
+        "occupancy": 0.23420571221245662,
+        "slots": [
+          {
+            "slotId": "title",
+            "path": "title",
+            "role": "title",
+            "clientWidth": 1040,
+            "clientHeight": 102,
+            "scrollWidth": 1040,
+            "scrollHeight": 106,
+            "actualLines": 2,
+            "maxLines": 2,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 4,
+            "occupancy": 0.11482204861111112,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "lead",
+            "path": "lead",
+            "role": "body",
+            "clientWidth": 900,
+            "clientHeight": 71,
+            "scrollWidth": 900,
+            "scrollHeight": 71,
+            "actualLines": 2,
+            "maxLines": 3,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.0693359375,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "points",
+            "path": "points.0.text",
+            "role": "list",
+            "clientWidth": 420,
+            "clientHeight": 42,
+            "scrollWidth": 420,
+            "scrollHeight": 42,
+            "actualLines": 2,
+            "maxLines": 4,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.019240315755208334,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "points",
+            "path": "points.1.text",
+            "role": "list",
+            "clientWidth": 421,
+            "clientHeight": 21,
+            "scrollWidth": 421,
+            "scrollHeight": 21,
+            "actualLines": 1,
+            "maxLines": 4,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.009643063015407986,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "points",
+            "path": "points.2.text",
+            "role": "list",
+            "clientWidth": 924,
+            "clientHeight": 21,
+            "scrollWidth": 924,
+            "scrollHeight": 21,
+            "actualLines": 1,
+            "maxLines": 4,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.021164347330729166,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          }
+        ],
+        "repairAttempts": []
+      },
+      {
+        "slideId": "10",
+        "slideIndex": 10,
+        "slideType": "BATAFSIL",
+        "layoutVariant": "default",
+        "status": "balanced",
+        "occupancy": 0.2894643825954861,
+        "slots": [
+          {
+            "slotId": "title",
+            "path": "title",
+            "role": "title",
+            "clientWidth": 1040,
+            "clientHeight": 102,
+            "scrollWidth": 1040,
+            "scrollHeight": 106,
+            "actualLines": 2,
+            "maxLines": 2,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 4,
+            "occupancy": 0.11482204861111112,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "body",
+            "path": "body",
+            "role": "body",
+            "clientWidth": 647,
+            "clientHeight": 166,
+            "scrollWidth": 647,
+            "scrollHeight": 166,
+            "actualLines": 6,
+            "maxLines": 7,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.11673201084136962,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "points",
+            "path": "points.0.text",
+            "role": "list",
+            "clientWidth": 397,
+            "clientHeight": 45,
+            "scrollWidth": 397,
+            "scrollHeight": 45,
+            "actualLines": 2,
+            "maxLines": 2,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.019303441047668457,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "points",
+            "path": "points.1.text",
+            "role": "list",
+            "clientWidth": 397,
+            "clientHeight": 45,
+            "scrollWidth": 397,
+            "scrollHeight": 45,
+            "actualLines": 2,
+            "maxLines": 2,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.019303441047668457,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "points",
+            "path": "points.2.text",
+            "role": "list",
+            "clientWidth": 397,
+            "clientHeight": 45,
+            "scrollWidth": 397,
+            "scrollHeight": 45,
+            "actualLines": 2,
+            "maxLines": 2,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.019303441047668457,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          }
+        ],
+        "repairAttempts": []
+      },
+      {
+        "slideId": "11",
+        "slideIndex": 11,
+        "slideType": "PROBLEMS_SOLUTIONS",
+        "layoutVariant": "matrix",
+        "status": "balanced",
+        "occupancy": 0.2626034206814236,
+        "slots": [
+          {
+            "slotId": "title",
+            "path": "title",
+            "role": "title",
+            "clientWidth": 1040,
+            "clientHeight": 102,
+            "scrollWidth": 1040,
+            "scrollHeight": 106,
+            "actualLines": 2,
+            "maxLines": 2,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 4,
+            "occupancy": 0.11482204861111112,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "problems",
+            "path": "pairs.0.problem",
+            "role": "list",
+            "clientWidth": 447,
+            "clientHeight": 47,
+            "scrollWidth": 447,
+            "scrollHeight": 47,
+            "actualLines": 2,
+            "maxLines": 3,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.022735595703125,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "problems",
+            "path": "pairs.1.problem",
+            "role": "list",
+            "clientWidth": 447,
+            "clientHeight": 47,
+            "scrollWidth": 447,
+            "scrollHeight": 47,
+            "actualLines": 2,
+            "maxLines": 3,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.022735595703125,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "problems",
+            "path": "pairs.2.problem",
+            "role": "list",
+            "clientWidth": 447,
+            "clientHeight": 47,
+            "scrollWidth": 447,
+            "scrollHeight": 47,
+            "actualLines": 2,
+            "maxLines": 3,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.022735595703125,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "solutions",
+            "path": "pairs.0.solution",
+            "role": "list",
+            "clientWidth": 447,
+            "clientHeight": 70,
+            "scrollWidth": 447,
+            "scrollHeight": 70,
+            "actualLines": 3,
+            "maxLines": 3,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.0341033935546875,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "solutions",
+            "path": "pairs.1.solution",
+            "role": "list",
+            "clientWidth": 447,
+            "clientHeight": 47,
+            "scrollWidth": 447,
+            "scrollHeight": 47,
+            "actualLines": 2,
+            "maxLines": 3,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.022735595703125,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "solutions",
+            "path": "pairs.2.solution",
+            "role": "list",
+            "clientWidth": 447,
+            "clientHeight": 47,
+            "scrollWidth": 447,
+            "scrollHeight": 47,
+            "actualLines": 2,
+            "maxLines": 3,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.022735595703125,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          }
+        ],
+        "repairAttempts": []
+      },
+      {
+        "slideId": "12",
+        "slideIndex": 12,
+        "slideType": "CONTENT",
+        "layoutVariant": "chapter_columns",
+        "status": "balanced",
+        "occupancy": 0.24719475640190972,
+        "slots": [
+          {
+            "slotId": "title",
+            "path": "title",
+            "role": "title",
+            "clientWidth": 1040,
+            "clientHeight": 102,
+            "scrollWidth": 1040,
+            "scrollHeight": 106,
+            "actualLines": 2,
+            "maxLines": 2,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 4,
+            "occupancy": 0.11482204861111112,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "paragraph",
+            "path": "paragraph",
+            "role": "body",
+            "clientWidth": 434,
+            "clientHeight": 281,
+            "scrollWidth": 434,
+            "scrollHeight": 281,
+            "actualLines": 10,
+            "maxLines": 10,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.1323727077907986,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          }
+        ],
+        "repairAttempts": []
+      },
+      {
+        "slideId": "13",
+        "slideIndex": 13,
+        "slideType": "BATAFSIL",
+        "layoutVariant": "default",
+        "status": "balanced",
+        "occupancy": 0.3341417100694445,
+        "slots": [
+          {
+            "slotId": "title",
+            "path": "title",
+            "role": "title",
+            "clientWidth": 1040,
+            "clientHeight": 102,
+            "scrollWidth": 1040,
+            "scrollHeight": 106,
+            "actualLines": 2,
+            "maxLines": 2,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 4,
+            "occupancy": 0.11482204861111112,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "paragraph",
+            "path": "paragraph",
+            "role": "body",
+            "clientWidth": 875,
+            "clientHeight": 231,
+            "scrollWidth": 875,
+            "scrollHeight": 231,
+            "actualLines": 7,
+            "maxLines": 10,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.21931966145833334,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          }
+        ],
+        "repairAttempts": []
+      },
+      {
+        "slideId": "14",
+        "slideIndex": 14,
+        "slideType": "CONCLUSION",
+        "layoutVariant": "default",
+        "status": "balanced",
+        "occupancy": 0.35672837999131946,
+        "slots": [
+          {
+            "slotId": "title",
+            "path": "title",
+            "role": "title",
+            "clientWidth": 1040,
+            "clientHeight": 51,
+            "scrollWidth": 1040,
+            "scrollHeight": 55,
+            "actualLines": 1,
+            "maxLines": 2,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 4,
+            "occupancy": 0.05741102430555556,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "closing",
+            "path": "closing",
+            "role": "body",
+            "clientWidth": 919,
+            "clientHeight": 68,
+            "scrollWidth": 919,
+            "scrollHeight": 68,
+            "actualLines": 2,
+            "maxLines": 2,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.06821709526909722,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "paragraph",
+            "path": "paragraph",
+            "role": "body",
+            "clientWidth": 922,
+            "clientHeight": 231,
+            "scrollWidth": 922,
+            "scrollHeight": 231,
+            "actualLines": 7,
+            "maxLines": 10,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.23110026041666668,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          }
+        ],
+        "repairAttempts": []
+      },
+      {
+        "slideId": "15",
+        "slideIndex": 15,
+        "slideType": "CLOSING",
+        "layoutVariant": "default",
+        "status": "balanced",
+        "occupancy": 0.05241013685862223,
+        "slots": [
+          {
+            "slotId": "title",
+            "path": "title",
+            "role": "title",
+            "clientWidth": 764,
+            "clientHeight": 63,
+            "scrollWidth": 764,
+            "scrollHeight": 71,
+            "actualLines": 1,
+            "maxLines": 2,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 8,
+            "occupancy": 0.05241013685862223,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          }
+        ],
+        "repairAttempts": []
+      }
+    ],
+    "unresolved": [],
+    "attempts": [
+      {
+        "attempt": 1,
+        "action": "drop_optional_item",
+        "slideIndex": 5,
+        "slideType": "BATAFSIL",
+        "slotId": "points",
+        "detail": "removed one low-priority optional array item"
+      },
+      {
+        "attempt": 2,
+        "action": "drop_optional_item",
+        "slideIndex": 5,
+        "slideType": "BATAFSIL",
+        "slotId": "points",
+        "detail": "removed one low-priority optional array item"
+      },
+      {
+        "attempt": 3,
+        "action": "drop_optional_item",
+        "slideIndex": 5,
+        "slideType": "BATAFSIL",
+        "slotId": "points",
+        "detail": "removed one low-priority optional array item"
+      }
+    ]
+  },
+  "slides": [
+    {
+      "type": "TITLE",
+      "content": {
+        "title": "Yoshlar orasida moliyaviy savodxonlik: ahamiyati, muammolari va rivojlantirish yo‘llari",
+        "layout": "editorial_split"
+      }
+    },
+    {
+      "type": "AGENDA",
+      "content": {
+        "items": [
+          {
+            "text": "Moliyaviy savodxonlik tushunchasi va uning dolzarbligi"
+          },
+          {
+            "text": "Yoshlar orasidagi moliyaviy holat va mavjud muammolar"
+          },
+          {
+            "text": "Moliyaviy savodxonlikni rivojlantirish yo‘llari va dasturlari"
+          },
+          {
+            "text": "Taqdimotning asosiy xulosalari va yakuniy tavsiyalar"
+          }
+        ],
+        "title": "Reja"
+      }
+    },
+    {
+      "type": "RELEVANCE",
+      "content": {
+        "title": "Moliyaviy savodxonlik yoshlar uchun dolzarb masala",
+        "kicker": "Dolzarblik",
+        "source": "2023 yilgi so‘rovnoma",
+        "paragraph": "Bugungi kunda bozor iqtisodiyoti sharoitida yoshlar doimiy ravishda mustaqil moliyaviy qarorlar qabul qilishga majbur bo'lishmoqda, shu bilan birga moliyaviy ma'lumotlar oqimining ko'pligi ularni chalkashtirib yuborishi mumkin. Bu o'z navbatida, yoshlarning moliyaviy xatolarga, masalan, noto'g'ri investitsiyalar yoki nazoratsiz qarzlar olishga ko'proq moyil bo'lishiga olib keladi. Natijada, yoshlarning moliyaviy savodxonligi pastligi ularning iqtisodiy mustaqilligi va kelajakdagi barqarorligiga salbiy ta'sir ko'rsatib, jamiyat uchun ham ijtimoiy-iqtisodiy muammolarni keltirib chiqarishi mumkin."
+      }
+    },
+    {
+      "type": "DEFINITION",
+      "content": {
+        "term": "Moliyaviy savodxonlik",
+        "kicker": "Asosiy tushuncha",
+        "paragraph": "Moliyaviy savodxonlik — shaxsning moliyaviy ma’lumotlarni tushunishi, ularni tahlil qilish va oqilona moliyaviy qarorlar qabul qilish qobiliyatidir. Bu o‘z navbatida, budjetni samarali boshqarish, jamg‘arma hosil qilish, qarz majburiyatlarini to‘g‘ri baholash va investitsiya imkoniyatlaridan unumli foydalanish kabi asosiy ko‘nikmalarni o‘z ichiga oladi. Natijada, shaxsiy moliyaviy barqarorlikni ta’minlash va kelajakdagi iqtisodiy maqsadlarga erishish uchun mustahkam zamin yaratiladi.",
+        "layout": "term_axis"
+      }
+    },
+    {
+      "type": "BATAFSIL",
+      "content": {
+        "body": "Yoshlar orasida moliyaviy savodxonlik darajasi pastligi kuzatilmoqda Ko‘plab yoshlar moliyaviy asoslarni chuqur bilmaydi Maktab va oliygohlarda moliyaviy ta’lim yetarli emas Internet va ijtimoiy tarmoqlarda noto‘g‘ri ma’lumotlar keng tarqalgan",
+        "title": "Yoshlar orasida moliyaviy savodxonlik darajasi pastligi kuzatilmoqda",
+        "layout": "marginalia",
+        "points": []
+      }
+    },
+    {
+      "type": "TURLAR",
+      "content": {
+        "items": [
+          {
+            "icon": "money",
+            "text": "Bu kundalik moliyaviy boshqaruv, ya'ni budjet tuzish, xarajatlarni nazorat qilish va jamg‘arma ko‘nikmalarini o‘z ichiga oladi.",
+            "label": "Shaxsiy moliyaviy savodxonlik"
+          },
+          {
+            "icon": "growth",
+            "text": "Kapitalni ko‘paytirish, risklarni baholash va turli investitsiya vositalarini tushunish qobiliyatini anglatadi.",
+            "label": "Investitsion savodxonlik"
+          },
+          {
+            "icon": "shield",
+            "text": "Qarzlarni samarali boshqarish, kredit tarixini shakllantirish va kredit mahsulotlaridan to‘g‘ri foydalanishni o‘rgatadi.",
+            "label": "Kredit savodxonligi"
+          }
+        ],
+        "title": "Moliyaviy savodxonlikning asosiy turlari",
+        "kicker": "Turlari",
+        "layout": "squircle_bento"
+      }
+    },
+    {
+      "type": "MISOL",
+      "content": {
+        "icon": "money",
+        "title": "Hayotiy vaziyat: Moliyaviy savodxonlikning ahamiyati",
+        "takeaway": "Moliyaviy savodxonlik yoshlarga budjetni boshqarish va kutilmagan qiyinchiliklarning oldini olishda yordam beradi.",
+        "paragraph": "Talaba Muhammad har oy oladigan stipendiyasini to‘g‘ri taqsimlashni bilmagani sababli o‘quv yilining oxiriga kelib qarzga botib qoldi. Dastlabki oylarda xarajatlarini nazorat qilmay, istagan narsalariga sarfladi, bu esa budjetni to‘g‘ri shakllantirish va jamg‘arma qilish ko‘nikmasi yo‘qligidan dalolat beradi. Agar u moliyaviy rejalashtirish asoslarini o‘rganganida va stipendiyasini oqilona boshqarganida, o‘qish davomida moliyaviy barqarorligini saqlab qolishi va bu muammodan qochishi mumkin edi. Natijada, moliyaviy savodxonlikning yetishmasligi uning o‘qishiga va shaxsiy hayotiga salbiy ta’sir ko‘rsatdi.",
+        "layout": "case_study"
+      }
+    },
+    {
+      "type": "CONTENT",
+      "content": {
+        "title": "Moliyaviy savodxonlik yoshlar hayotida muhim rol o‘ynaydi",
+        "paragraph": "Moliyaviy savodxonlik yoshlarga moliyaviy barqarorlik va mustaqillikni ta’minlashda yordam beradi. Bu ularga kelajak uchun puxta reja tuzish imkoniyatini oshiradi. Shu bilan birga, yoshlar moliyaviy qarorlar qabul qilishda ehtiyotkor bo‘lishni o‘rganadilar, natijada iqtisodiy xatolar va risklar sezilarli darajada kamayadi. Moliyaviy bilimga ega bo‘lgan yoshlar qarz yukidan qochish, jamg‘armalarni oqilona boshqarish va investitsiya qilish orqali o‘zlarining iqtisodiy kelajagini mustahkamlay oladilar. Bu ularni kutilmagan moliyaviy qiyinchiliklarga duch kelganda ham tayyor turishga undaydi.",
+        "layout": "editorial_prose"
+      }
+    },
+    {
+      "type": "CONTENT",
+      "content": {
+        "lead": "Bu slayd tekshirilmagan raqam yoki manbani ishlatmasdan, mavzuning asosiy mazmunini tushuntiradi.",
+        "title": "Yoshlar moliyaviy savodxonligi bo‘yicha raqamlar",
+        "layout": "changelog_lines",
+        "points": [
+          {
+            "text": "O‘zbekistonda 18-25 yoshdagi yoshlarning faqat 27% moliyaviy reja tuzadi (Moliya vazirligi, 2022)"
+          },
+          {
+            "text": "Yoshlarning 68% budjet tuzish amaliyotini bilmaydi"
+          },
+          {
+            "text": "Jamg‘arma qiluvchilar ulushi 15% dan oshmaydi"
+          }
+        ]
+      }
+    },
+    {
+      "type": "BATAFSIL",
+      "content": {
+        "body": "Yoshlar moliyaviy savodxonlikda bir qator muammolarga duch kelmoqda Moliyaviy ta’lim darslari yetarlicha yo‘lga qo‘yilmagan Oila va jamiyatda moliyaviy masalalar bo‘yicha ochiq suhbat yetishmaydi Moliyaviy xizmatlardan foydalanishda bilim yetarli emas",
+        "title": "Yoshlar moliyaviy savodxonlikda bir qator muammolarga duch kelmoqda",
+        "layout": "default",
+        "points": [
+          {
+            "text": "Moliyaviy ta’lim darslari yetarlicha yo‘lga qo‘yilmagan"
+          },
+          {
+            "text": "Oila va jamiyatda moliyaviy masalalar bo‘yicha ochiq suhbat yetishmaydi"
+          },
+          {
+            "text": "Moliyaviy xizmatlardan foydalanishda bilim yetarli emas"
+          }
+        ]
+      }
+    },
+    {
+      "type": "PROBLEMS_SOLUTIONS",
+      "content": {
+        "pairs": [
+          {
+            "problem": "Maktablarda moliyaviy ta’lim yo‘qligi Muammo: Maktablarda moliyaviy ta’lim yo‘qligi Yechim.",
+            "solution": "O‘quv dasturlariga moliyaviy bilimlarni kiritish Muammo: Maktablarda moliyaviy ta’lim yo‘qligi Yechim."
+          },
+          {
+            "problem": "Amaliy mashg‘ulotlarning yetishmasligi Muammo: Amaliy mashg‘ulotlarning yetishmasligi Yechim.",
+            "solution": "Simulyatsion o‘yinlar va treninglar o‘tkazish Muammo: Amaliy mashg‘ulotlarning yetishmasligi Yechim."
+          },
+          {
+            "problem": "Noto‘g‘ri ma’lumotlar manbalari Muammo: Noto‘g‘ri ma’lumotlar manbalari Yechim.",
+            "solution": "Rasmiy va ishonchli resurslardan foydalanish Muammo: Noto‘g‘ri ma’lumotlar manbalari Yechim."
+          }
+        ],
+        "title": "Moliyaviy savodxonlikdagi muammolar va yechimlar",
+        "kicker": "Moliyaviy savodxonlik",
+        "layout": "matrix"
+      }
+    },
+    {
+      "type": "CONTENT",
+      "content": {
+        "title": "Moliyaviy savodxonlikni rivojlantirishning samarali yo‘llari mavjud",
+        "paragraph": "Moliyaviy savodxonlikni oshirish uchun ta’limni erta yoshdan, ya’ni maktabgacha va maktab davridan boshlash muhimdir; bu o‘z navbatida yoshlarda moliyaviy tushunchalarni shakllantirishga yordam beradi. Shu bilan birga, zamonaviy onlayn platformalar, kurslar va treninglardan foydalanish yoshlarning moliyaviy bilimlarini oshirishda katta ahamiyatga ega bo‘lib, ularga qulay va interaktiv o‘quv muhitini taqdim etadi. Bularning ustiga, ota-onalar va o‘qituvchilarni ham moliyaviy savodxonlik bo‘yicha o‘qitish butun oila va ta’lim tizimida moliyaviy madaniyatni yuksaltirishga xizmat qiladi, natijada yoshlar uchun sog‘lom moliyaviy muhit yaratiladi.",
+        "layout": "chapter_columns"
+      }
+    },
+    {
+      "type": "BATAFSIL",
+      "content": {
+        "title": "Moliyaviy ta’lim dasturlari yoshlar moliyaviy savodxonligini samarali oshiradi",
+        "paragraph": "Moliyaviy savodxonlikni oshirish uchun maxsus ta’lim dasturlari ishlab chiqilmoqda, ular xalqaro va mahalliy tajribalarni o‘z ichiga oladi hamda yoshlarning ehtiyojlariga moslashtiriladi. Shu bilan birga, innovatsion yondashuvlar — mobil ilovalar va interaktiv platformalar — ta’lim jarayonini yanada qiziqarli va samarali qiladi. Monitoring va samaradorlikni baholash tizimlari joriy etilishi orqali dasturlar natijadorligi muntazam tahlil qilinib, kerakli o‘zgartirishlar kiritiladi, bu esa moliyaviy savodxonlikni kengroq va sifatli rivojlantirishga xizmat qiladi.",
+        "layout": "default"
+      }
+    },
+    {
+      "type": "CONCLUSION",
+      "content": {
+        "title": "Asosiy xulosalar",
+        "closing": "Natijada, moliyaviy savodxonlikni oshirishga qaratilgan harakatlar yoshlarning shaxsiy va jamiyatning umumiy farovonligiga xizmat qiladi.",
+        "paragraph": "Moliyaviy savodxonlik yoshlarning iqtisodiy mustaqilligi va barqaror kelajagi uchun fundamental ahamiyatga ega bo‘lib, ularga o‘z moliyalarini samarali boshqarish imkonini beradi. Yoshlar orasida moliyaviy bilim va ko‘nikmalar yetishmasligi bilan bog‘liq jiddiy muammolar mavjud bo‘lsa-da, ushbu muammolarni bartaraf etish uchun aniq va samarali yechimlar ishlab chiqilgan. Shu sababli, moliyaviy ta’lim dasturlarini muntazam ravishda rivojlantirish va yoshlarga amaliy moliyaviy ko‘nikmalarni singdirish ularning iqtisodiy salohiyatini oshirishda muhim rol o‘ynaydi."
+      }
+    },
+    {
+      "type": "CLOSING",
+      "content": {
+        "title": "E’tiboringiz uchun rahmat!",
+        "layout": "default"
+      }
+    }
+  ]
+}

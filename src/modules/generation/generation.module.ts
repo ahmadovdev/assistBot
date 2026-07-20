@@ -10,10 +10,6 @@ import { OutlineProcessor } from './outline.processor';
 import { CardService } from './card.service';
 import { CardsProcessor } from './cards.processor';
 import { BriefService } from './brief.service';
-import { WikimediaService } from '../visuals/wikimedia.service';
-import { VisualValidatorService } from '../visuals/visual-validator.service';
-import { ImageScriptGuardService } from '../visuals/image-script-guard.service';
-import { TopicVisualService } from '../visuals/topic-visual.service';
 import { runsWorkers } from '../../common/config/role';
 
 // BullMQ processors attach workers that consume jobs — only register them in
@@ -36,10 +32,6 @@ const processors = runsWorkers() ? [OutlineProcessor, CardsProcessor] : [];
     OutlineService,
     CardService,
     BriefService,
-    TopicVisualService,
-    WikimediaService,
-    VisualValidatorService,
-    ImageScriptGuardService,
     ...processors,
   ],
 })
