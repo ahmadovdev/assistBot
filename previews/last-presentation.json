@@ -1,0 +1,410 @@
+{
+  "presentationId": "b290f068-d4db-445e-9cee-040557a2d602",
+  "createdAt": "2026-07-10T17:12:29.810Z",
+  "topic": "Claude AI haqida batafsil",
+  "language": "uz",
+  "tone": "professional",
+  "status": "done",
+  "theme": "dark_premium",
+  "outline": {
+    "slides": [
+      {
+        "type": "TITLE",
+        "title": "Claude AI haqida batafsil",
+        "position": 1,
+        "key_points": [
+          "Oliy ta'lim muassasasi, fakultet nomi",
+          "Mavzu: Claude AI — zamonaviy sun'iy intellekt tizimi",
+          "Bajaruvchi, ilmiy rahbar, yil"
+        ]
+      },
+      {
+        "type": "AGENDA",
+        "title": "Reja",
+        "position": 2,
+        "key_points": [
+          "Claude AI tushunchasi va yaratilish tarixi",
+          "Ishlash tamoyillari va model turlari",
+          "Amaliy qo'llanilishi va boshqa tizimlar bilan qiyosi",
+          "Muammolar, yechimlar va xulosalar"
+        ]
+      },
+      {
+        "type": "CONTENT",
+        "title": "Sun'iy intellekt yordamchilari kundalik hayotga chuqur kirib bormoqda",
+        "position": 3,
+        "key_points": [
+          "Matn yaratish, tahlil qilish va dasturlashda AI vositalar keng qo'llanilmoqda",
+          "Claude AI ana shunday yordamchilardan biri sifatida ajralib turadi",
+          "Uning ishlash tamoyillarini bilish foydalanuvchilar uchun muhim"
+        ]
+      },
+      {
+        "type": "RELEVANCE",
+        "title": "Claude AI mavzusining dolzarbligi",
+        "position": 4,
+        "key_points": [
+          "Ta'lim, biznes va IT sohalarida AI yordamchilardan foydalanish tez sur'atlarda o'smoqda",
+          "Claude xavfsiz va ishonchli AI yaratishga qaratilgan yondashuvi bilan alohida e'tiborga loyiq",
+          "Xalqaro kompaniyalar Claude'ni ish jarayonlariga faol joriy etmoqda"
+        ]
+      },
+      {
+        "type": "AIM_TASKS",
+        "title": "Maqsad va vazifalar",
+        "position": 5,
+        "key_points": [
+          "Maqsad: Claude AI tizimining mohiyati va imkoniyatlarini o'rganish",
+          "Vazifa: uning yaratilish tarixi va texnologik asoslarini tahlil qilish",
+          "Vazifa: model turlari va ishlash prinsiplarini yoritish",
+          "Vazifa: boshqa AI tizimlari bilan solishtirib, afzallik va kamchiliklarini aniqlash"
+        ]
+      },
+      {
+        "type": "DEFINITION",
+        "title": "Claude AI nima?",
+        "position": 6,
+        "key_points": [
+          "Claude — Anthropic kompaniyasi tomonidan ishlab chiqilgan katta til modeli (LLM)",
+          "Matnni tushunish, yaratish va murakkab so'rovlarga javob berish qobiliyatiga ega",
+          "\"Constitutional AI\" deb ataluvchi xavfsizlik yondashuvi asosida ishlab chiqilgan",
+          "Nomi ingliz olimi Klod Shennon sharafiga qo'yilgan"
+        ]
+      },
+      {
+        "type": "CONTENT",
+        "title": "Anthropic kompaniyasi Claude'ni xavfsiz AI yaratish maqsadida ishlab chiqdi",
+        "position": 7,
+        "key_points": [
+          "Anthropic 2021-yilda sobiq OpenAI xodimlari tomonidan tashkil etilgan",
+          "Kompaniyaning asosiy tamoyili — foydali, halol va zararsiz AI yaratish",
+          "Claude birinchi marta 2023-yilda jamoatchilikka taqdim etilgan"
+        ]
+      },
+      {
+        "type": "TIMELINE",
+        "title": "Claude modellarining rivojlanish bosqichlari",
+        "position": 8,
+        "key_points": [
+          "2023-yil: Claude 1 va Claude 2 versiyalari chiqarildi",
+          "2024-yil boshi: Claude 3 oilasi (Haiku, Sonnet, Opus) taqdim etildi",
+          "2024-yil o'rtasi: Claude 3.5 Sonnet — yuqori tezlik va aniqlik bilan",
+          "2025-yil: Claude 4 seriyasi murakkab fikrlash qobiliyatlari bilan chiqdi"
+        ]
+      },
+      {
+        "type": "TURLAR",
+        "title": "Claude modellarining asosiy turlari",
+        "position": 9,
+        "key_points": [
+          "Haiku — tezkor va engil vazifalar uchun mo'ljallangan model",
+          "Sonnet — tezlik va chuqur tahlil o'rtasida muvozanat saqlaydigan model",
+          "Opus — eng murakkab masalalar va chuqur fikrlashni talab qiluvchi vazifalar uchun"
+        ]
+      },
+      {
+        "type": "PROCESS",
+        "title": "Claude qanday ishlaydi",
+        "position": 10,
+        "key_points": [
+          "Foydalanuvchi matnli so'rov (prompt) kiritadi",
+          "Model katta hajmdagi ma'lumotlar asosida o'qitilgan neyron tarmoq orqali tahlil qiladi",
+          "\"Constitutional AI\" tamoyillari asosida javob xavfsizligi tekshiriladi",
+          "Tizim mantiqiy va kontekstga mos javob generatsiya qiladi"
+        ]
+      },
+      {
+        "type": "MISOL",
+        "title": "Claude'dan foydalanishga misol",
+        "position": 11,
+        "key_points": [
+          "Talaba kurs ishi uchun mavzuni tushuntirishni so'raydi",
+          "Claude mavzuni bosqichma-bosqich, tushunarli tilda izohlab beradi",
+          "Shuningdek, dasturlash kodini tahlil qilish yoki xatolarni topishda ham yordam beradi"
+        ]
+      },
+      {
+        "type": "COMPARISON",
+        "title": "Claude AI va ChatGPT taqqoslash",
+        "position": 12,
+        "key_points": [
+          "Claude: xavfsizlik va uzun matnlarni tahlil qilishga urg'u beradi",
+          "ChatGPT: keng qamrovli plagin va integratsiya imkoniyatlariga ega",
+          "Claude uzunroq kontekst oynasi bilan ishlay oladi",
+          "Ikkalasi ham matn, kod va tahliliy vazifalarni bajaradi"
+        ]
+      },
+      {
+        "type": "PROBLEMS_SOLUTIONS",
+        "title": "Muammolar va yechimlar",
+        "position": 13,
+        "key_points": [
+          "Muammo: AI javoblarida noto'g'ri ma'lumot (gallyutsinatsiya) uchrashi mumkin — Yechim: manbalarni qo'shimcha tekshirish tavsiya etiladi",
+          "Muammo: real vaqtdagi ma'lumotlarga cheklangan kirish — Yechim: tashqi tizimlar bilan integratsiya qilish",
+          "Muammo: foydalanuvchi ma'lumotlarining maxfiyligi — Yechim: Anthropic'ning qattiq maxfiylik siyosati"
+        ]
+      },
+      {
+        "type": "CONCLUSION",
+        "title": "Xulosa",
+        "position": 14,
+        "key_points": [
+          "Claude AI xavfsiz va foydali sun'iy intellekt yaratishga qaratilgan zamonaviy tizim",
+          "Uning turli model versiyalari turli vazifalar uchun moslashtirilgan",
+          "Ta'lim va biznesda samarali qo'llanilishi uning ahamiyatini oshirmoqda"
+        ]
+      },
+      {
+        "type": "CLOSING",
+        "title": "Rahmat",
+        "position": 15,
+        "key_points": [
+          "E'tiboringiz uchun rahmat!"
+        ]
+      }
+    ],
+    "deck_title": "Claude AI: sun'iy intellekt yordamchisi haqida batafsil"
+  },
+  "slides": [
+    {
+      "position": 1,
+      "layout": "TITLE",
+      "content": {
+        "title": "Claude AI haqida batafsil",
+        "layout": "typographic_statement"
+      }
+    },
+    {
+      "position": 2,
+      "layout": "AGENDA",
+      "content": {
+        "items": [
+          {
+            "text": "Claude AI tushunchasi va yaratilish tarixi"
+          },
+          {
+            "text": "Ishlash tamoyillari va model turlari"
+          },
+          {
+            "text": "Amaliy qo'llanilishi va boshqa tizimlar bilan qiyosi"
+          },
+          {
+            "text": "Muammolar, yechimlar va xulosalar"
+          }
+        ],
+        "title": "Reja"
+      }
+    },
+    {
+      "position": 3,
+      "layout": "CONTENT",
+      "content": {
+        "title": "Sun'iy intellekt yordamchilari kundalik hayotga chuqur kirib bormoqda",
+        "kicker": "AI transformatsiyasi",
+        "paragraph": "Zamonaviy sun'iy intellekt vositalari matn yaratish, tahlil qilish va dasturlashda keng qo'llanilayotgan bo'lib, inson faoliyatining ko'plab sohalariga kirib bormoqda. Claude AI ana shunday yordamchilardan biri sifatida <strong>xavfsizlik va ishonchlilikka</strong> alohida e'tibor berib ishlab chiqilgan. Uning ishlash tamoyillarini va Constitutional AI tamoyiliga asoslangan arxitekturasini tushunish foydalanuvchilarga bu vositalardan samarali foydalanish imkonini beradi."
+      }
+    },
+    {
+      "position": 4,
+      "layout": "RELEVANCE",
+      "content": {
+        "title": "Claude AI ta'lim, biznes va IT'da o'sib borayotgan ehtiyojga javob beradi",
+        "kicker": "Dolzarblik",
+        "paragraph": "Sun'iy intellekt yordamchilaridan foydalanish ta'lim, biznes va axborot texnologiyalari sohasida tez o'sib borayotgan trend bo'lib, har bir tashkilotning raqobatchiligining kalit omili bo'lmoqda. Claude'ning xavfsiz va ishonchli AI yaratishga qaratilgan Constitutional AI yondashuvi, bu texnologiyalarga bo'lgan ehtiyoj bilan bir qatorda, foydalanuvchilarning ma'lumotlari va etik talablarining muhofazasiga oid muammolarni hal qilmoqda. Natijada xalqaro kompaniyalar Claude'ni o'z ish jarayonlariga faol joriy etmoqda, bu esa modelning amaliy qiymati va ishonchliligini isbotlaydi."
+      }
+    },
+    {
+      "position": 5,
+      "layout": "AIM_TASKS",
+      "content": {
+        "tasks": [
+          "Constitutional AI tamoyiliga asoslanib Claude'ni xavfsiz yaratish mexanizmini o'rganish",
+          "Claude modellarining rivojlanish tarixi, turları va texnik xususiyatlarini tahlil qilish",
+          "Claude AI-ning ishlash prinsiplarini va qo'llanilish imkoniyatlarini yoritish",
+          "Claude AI va ChatGPT o'rtasidagi xavfsizlik va funksionallikdagi farqlarni aniqlash",
+          "Ta'lim va biznesda Claude AI tatbiqining afzallik va cheklovlarini tasdiqlash"
+        ],
+        "title": "Maqsad va vazifalar",
+        "paragraph": "Ushbu tadqiqotning asosiy maqsadi Claude AI tizimining mohiyati, yaratilish tarixi va texnologik asoslarini chuqur o'rganish, shu bilan birga uning boshqa sun'iy intellekt tizimlari, xususan ChatGPT bilan taqqoslab, afzallik va kamchiliklarini aniqlashdan iborat. Claude AI xavfsizlikka yo'naltirilgan yondashuvi va Constitutional AI tamoyili bilan maskul bo'lgan holda, amaliy qo'llanilishining imkoniyatlari va cheklovlarini tushunutch juda muhim, chunki bu AI vositalarining ta'lim va biznes sohasidagi muvaffaqiyatli tatbiqi uchun zarurdir."
+      }
+    },
+    {
+      "position": 6,
+      "layout": "DEFINITION",
+      "content": {
+        "term": "Claude AI",
+        "paragraph": "Claude AI — Anthropic kompaniyasi tomonidan ishlab chiqilgan katta til modeli (LLM) bo'lib, matnni tushunish, yaratish va murakkab so'rovlarga javob berish qobiliyatiga ega. Uning asosiy xususiyati <strong>Constitutional AI</strong> yondashuvida yotadi — model oldindan belgilangan xavfsizlik tamoyillari asosida javoblarini nazorat qiladi. Bu Claude'ni xavfli axborot chiqarish ehtimolini sezilarli darajada kamaytiradi. Nom ingliz olimi Klod Shennon sharafiga qo'yilgan."
+      }
+    },
+    {
+      "position": 7,
+      "layout": "CONTENT",
+      "content": {
+        "title": "Anthropic xavfsiz AI yaratish maqsadida Claude'ni ishlab chiqdi",
+        "paragraph": "Anthropic kompaniyasi 2021-yilda sobiq OpenAI xodimlari tomonidan tashkil etilgan bo'lib, uning asosiy maqsadi foydali, halol va zararsiz sun'iy intellekt yaratishdir. Kompaniya xavfsizlikni texnologiyaning markaziy qismiga joylashtirib, Claude modelini bu tamoyillarni qondiradigan yondashuv bilan ishlab chiqdi. Natijada Claude birinchi marta 2023-yilda jamoatchilikka taqdim etilgan va o'z-o'zidan boshlab Anthropic'ning xavfsizlikka yo'naltirgan falsafasi uni bozordagi boshqa yordamchilardan tubdan farqlab qo'ydi."
+      }
+    },
+    {
+      "position": 8,
+      "layout": "TIMELINE",
+      "content": {
+        "steps": [
+          {
+            "body": "Birinchi ikkita versiya jamoatchilikka taqdim etildi va asosiy qobiliyatlari namoyish qilindi.",
+            "date": "2023",
+            "title": "Claude 1 va Claude 2 chiqarildi"
+          },
+          {
+            "body": "Uch xil model chiqarildi: tezkor, muvozanatli va chuqur tahlilga layoqatli versiyalar.",
+            "date": "2024 (boshi)",
+            "title": "Claude 3 oilasi (Haiku, Sonnet, Opus)"
+          },
+          {
+            "body": "Yuqori tezlik va aniqlik bilan ishlaydigan versiya bozorga chiqqan, muvozanat yaxshilandi.",
+            "date": "2024 (o'rtasi)",
+            "title": "Claude 3.5 Sonnet — yangi standart"
+          },
+          {
+            "body": "Yangi seriya murakkab fikrlash va chuqur analiz qobiliyatlari bilan taqdim etildi.",
+            "date": "2025",
+            "title": "Claude 4 — murakkab fikrlash"
+          }
+        ],
+        "title": "Claude modellarining rivojlanish bosqichlari",
+        "layout": "rim_light"
+      }
+    },
+    {
+      "position": 9,
+      "layout": "TURLAR",
+      "content": {
+        "items": [
+          {
+            "icon": "rocket",
+            "text": "Tezkor va engil vazifalar uchun mo'ljallangan; tez javob beradi, kichik hujjumlarni qayta ishlashda samarali.",
+            "label": "Haiku"
+          },
+          {
+            "icon": "scale",
+            "text": "Tezlik va chuqur tahlil o'rtasida muvozanat saqlaydigan model; aksariyat uchun universal va moslashuvchan.",
+            "label": "Sonnet"
+          },
+          {
+            "icon": "brain",
+            "text": "Eng murakkab masalalar va chuqur fikrlashni talab qiluvchi vazifalar uchun; eng quvvatli lekin sekinroq.",
+            "label": "Opus"
+          }
+        ],
+        "title": "Claude modellarining asosiy turlari vazifaviy ixtisoslashuviga asosan farqlanadi",
+        "kicker": "Turlari",
+        "layout": "squircle_bento"
+      }
+    },
+    {
+      "position": 10,
+      "layout": "PROCESS",
+      "content": {
+        "steps": [
+          {
+            "body": "Foydalanuvchi matnli so'rovni (prompt) kiritadi va model uni analitik qilishga tayyorlanadi.",
+            "title": "So'rov qabul qilish"
+          },
+          {
+            "body": "Katta hajmdagi ma'lumotlar asosida o'qitilgan neyron tarmoq so'rovning ma'nosi va kontekstini tahlil qiladi.",
+            "title": "Neyron tarmoq tahlili"
+          },
+          {
+            "body": "<strong>Constitutional AI</strong> tamoyillari asosida javobning xavfsizligi va etikasi tekshiriladi.",
+            "title": "Xavfsizlik tekshiruvi"
+          },
+          {
+            "body": "Tizim mantiqiy, kontekstga mos va xavfsiz javobni qadamma-qadam belgilar orqali yaratib beradi.",
+            "title": "Javob generatsiya"
+          }
+        ],
+        "title": "Claude so'rovni qabul qilib xavfsizlik tekshiruvidan o'tib javob beradi",
+        "layout": "kbd_chain"
+      }
+    },
+    {
+      "position": 11,
+      "layout": "MISOL",
+      "content": {
+        "icon": "education",
+        "title": "Claude talabaning kurs ishida mavzuni tushuntirish bo'yicha yordam beradi",
+        "kicker": "Ta'lim va dasturlash",
+        "takeaway": "Claude ta'limda mavzuni tushuntirish va kodlash muammolarida real vaqtda yordam beradi.",
+        "paragraph": "Talaba o'z kurs ishi uchun qiyin mavzuni tushuntirish so'rashini Claude'ga yuboradi. Claude esa mavzuni bosqichma-bosqich, sodda tilda izohlab beradi — murakkab tushunchalarni misollar bilan boglab javob qaytaradi. Bu o'z navbatida talabaga materialni o'zlashtirish imkonini bermaydi, balki o'zining tanqidiy fikrlashini rivojlantirishiga yordam beradi. Shuningdek, dasturlash oqish vaqtida talaba yozgan kodning xatolarini tapdirishni, dastur mantiqini tahlil qilishni yoki muammoni hal qilishning variantlarini Claude'dan so'rashi mumkin."
+      }
+    },
+    {
+      "position": 12,
+      "layout": "COMPARISON",
+      "content": {
+        "left": {
+          "items": [
+            "Constitutional AI bilan axloqiy nazorat o'rnatilgan",
+            "200k tokengacha uzun matnlarni qayta ishlaydi",
+            "Kod yozish va tahliliy ishlar uchun chuqur",
+            "Xavfsiz javob berishni ustunchasi"
+          ],
+          "label": "Claude AI",
+          "title": "Xavfsizlik va chuqurlik"
+        },
+        "right": {
+          "items": [
+            "3000+ plagin va veb-amallar bilan ulanadi",
+            "Mobil ilovalar va browser kengaymalari rivojlangan",
+            "Koʻplab treyd-servis loyihalarida ishlaydi",
+            "Bozordagi eng keng tarqalgan AI yordamchisi"
+          ],
+          "label": "ChatGPT",
+          "title": "Integratsiya va kengligi"
+        },
+        "title": "Claude va ChatGPT asosiy farqlari xavfsizlik va integratsiyada",
+        "layout": "toggle_spectrum",
+        "subtitle": "Ikkalasi ham quvvatli, lekin turli kuchlarni ta'kidlaydi"
+      }
+    },
+    {
+      "position": 13,
+      "layout": "PROBLEMS_SOLUTIONS",
+      "content": {
+        "pairs": [
+          {
+            "problem": "AI javoblarida noto'g'ri yoki ixtiro qilingan ma'lumot (gallyutsinatsiya) uchrashi",
+            "solution": "Muhim savollar uchun foydalanuvchiga manbalarni mustaqil tekshirishni tavsiya etish"
+          },
+          {
+            "problem": "Real vaqtdagi ma'lumotlarga cheklangan kirish va joriy voqealarni bilmaydi",
+            "solution": "Web-qidiruv yoki API orqali tashqi tizimlarga ulanish imkoniyatini taklif etish"
+          },
+          {
+            "problem": "Foydalanuvchi ma'lumotlarining xavfsizligi va maxfiylik risklari",
+            "solution": "Anthropic'ning qattiq maxfiylik siyosati va ma'lumotlarni noaniq qilish mexanizmlarini qo'llash"
+          }
+        ],
+        "title": "Muammolar va yechimlar",
+        "layout": "diff_view",
+        "subtitle": "Claude'ning asosiy cheklovlari va ularni bartaraf etishning amaliy yo'llari"
+      }
+    },
+    {
+      "position": 14,
+      "layout": "CONCLUSION",
+      "content": {
+        "title": "Xulosa",
+        "closing": "Claude AI xavfsiz va foydali AI yordamchisining yangi avlodi.",
+        "paragraph": "Claude AI xavfsizlik tamoyillarini modelning ichki arxitekturasiga singdirib, zamonaviy sun'iy intellekt yordamchilarida yangi standart o'rnatdi. Uning Haiku, Sonnet va Opus versiyalari turli ehtiyojlarga moslashtirilgan, bu ta'lim va biznesda keng qo'llashga imkon beradi. Constitutional AI yondashuvining kuchli jihati ishonchlilikni oshirsa-da, bu ayni paytda integratsion imkoniyatlarda raqobatchilardan orqada qoldiradi."
+      }
+    },
+    {
+      "position": 15,
+      "layout": "CLOSING",
+      "content": {
+        "title": "E'tiboringiz uchun rahmat!",
+        "layout": "default"
+      }
+    }
+  ]
+}

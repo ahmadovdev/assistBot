@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lumio — classic_uz</title>
+
+<!-- Akademik serif (sarlavha/matn) + Inter (manba/caption kontrasti uchun) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --primary: #0B2545;      /* chuqur ko'k — sarlavhalar, header */
+  --primary-soft: #13355f;  /* nozik variatsiya */
+  --text: #1A1F2B;         /* asosiy matn */
+  --bg: #FFFFFF;           /* oq fon */
+  --accent: #8A6D2B;       /* to'q oltinrang aksent (akademik muhr hissi) */
+  --muted: #6B7280;        /* manbalar, caption, footer */
+  --line: #DCE0E6;         /* nozik chiziqlar */
+  --panel: #F6F7F9;        /* yengil blok foni */
+}
+
+*{ margin:0; padding:0; box-sizing:border-box; }
+
+html,body{
+  background:#3a3f46;       /* preview foni — slaydlarni ajratish uchun */
+  color:var(--text);
+  font-family:"Source Serif 4", "PT Serif", Georgia, "Times New Roman", serif;
+  -webkit-font-smoothing:antialiased;
+}
+
+.slide{
+  position:relative;
+  width:1920px;
+  height:1080px;
+  background:var(--bg);
+  overflow:hidden;
+  margin:32px auto;          /* preview oraliq — print'da page-break ajratadi */
+  page-break-after:always;
+  break-after:page;
+}
+
+/* ---------- Umumiy: HEADER / FOOTER strip ---------- */
+.h-strip{
+  position:absolute; top:0; left:0; right:0;
+  height:72px;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:0 100px;
+  border-bottom:2px solid var(--primary);
+  font-family:"Inter", sans-serif;
+  font-size:15px; letter-spacing:.04em; text-transform:uppercase;
+  color:var(--primary);
+}
+.h-strip .h-left{ font-weight:600; }
+.h-strip .h-mid{ color:var(--muted); font-weight:500; letter-spacing:.02em; text-transform:none; font-size:15px; }
+.h-strip .h-num{
+  font-weight:600; color:var(--primary);
+  display:flex; align-items:center; gap:8px;
+}
+.h-strip .h-num .dot{ width:6px; height:6px; background:var(--accent); border-radius:50%; }
+
+.f-strip{
+  position:absolute; bottom:0; left:0; right:0;
+  height:56px;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:0 100px;
+  border-top:1px solid var(--line);
+  font-family:"Inter", sans-serif;
+  font-size:14px; color:var(--muted);
+}
+.f-strip .f-mark{ color:var(--accent); font-weight:600; letter-spacing:.06em; }
+
+/* Asosiy kontent maydoni (strip'lar orasida) */
+.body{
+  position:absolute;
+  top:72px; bottom:56px; left:0; right:0;
+  padding:80px 100px;
+}
+
+/* Slide sarlavhasi (umumiy) */
+.title{
+  font-size:46px; font-weight:700; color:var(--primary);
+  line-height:1.1; letter-spacing:-.01em;
+}
+.title-rule{
+  width:88px; height:4px; background:var(--accent);
+  margin-top:22px;
+}
+
+/* ============================================================
+   1) COVER — TITUL BETI
+   ============================================================ */
+.cover .body{ padding:0; }
+.cover-inner{
+  position:absolute; inset:72px 0 56px 0;
+  display:flex; flex-direction:column; align-items:center;
+  padding:64px 140px 48px;
+  text-align:center;
+}
+.cover-top{ width:100%; }
+.cover-logo{
+  width:96px; height:96px; margin:0 auto 22px;
+  border:2px solid var(--primary);
+  border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  color:var(--primary); font-weight:700; font-size:30px;
+  font-family:"Source Serif 4", serif;
+}
+.cover-univ{
+  font-size:24px; font-weight:600; color:var(--primary);
+  letter-spacing:.01em;
+}
+.cover-fac{
+  font-size:19px; color:var(--text); margin-top:8px;
+}
+.cover-dep{
+  font-size:18px; color:var(--muted); margin-top:4px;
+  font-style:italic;
+}
+.cover-mid{
+  flex:1; display:flex; flex-direction:column; justify-content:center;
+  width:100%;
+}
+.cover-kicker{
+  font-family:"Inter", sans-serif;
+  font-size:15px; letter-spacing:.22em; text-transform:uppercase;
+  color:var(--accent); font-weight:600; margin-bottom:26px;
+}
+.cover-theme{
+  font-size:58px; font-weight:700; color:var(--primary);
+  line-height:1.12; max-width:1200px; margin:0 auto;
+  letter-spacing:-.015em;
+}
+.cover-sub{
+  font-size:21px; color:var(--muted); margin-top:24px; font-style:italic;
+}
+.cover-rule{
+  width:120px; height:3px; background:var(--accent);
+  margin:34px auto 0;
+}
+.cover-bottom{
+  width:100%;
+  display:grid; grid-template-columns:1fr 1fr;
+  gap:60px; max-width:1000px; margin:0 auto;
+  text-align:left;
+  padding-top:40px;
+  border-top:1px solid var(--line);
+}
+.cover-bottom .col .lbl{
+  font-family:"Inter", sans-serif;
+  font-size:13px; letter-spacing:.12em; text-transform:uppercase;
+  color:var(--muted); margin-bottom:8px;
+}
+.cover-bottom .col .nm{ font-size:22px; font-weight:600; color:var(--text); }
+.cover-bottom .col .meta{ font-size:16px; color:var(--muted); margin-top:4px; }
+.cover-bottom .col.right{ text-align:right; }
+.cover-year{
+  font-family:"Inter", sans-serif;
+  font-size:17px; color:var(--primary); font-weight:600;
+  letter-spacing:.1em; margin-top:34px;
+}
+
+/* ============================================================
+   2) PLAN — REJA
+   ============================================================ */
+.plan-list{
+  margin-top:54px;
+  display:flex; flex-direction:column; gap:0;
+}
+.plan-item{
+  display:flex; align-items:center; gap:32px;
+  padding:22px 0;
+  border-bottom:1px solid var(--line);
+}
+.plan-item:first-child{ border-top:1px solid var(--line); }
+.plan-num{
+  flex:0 0 64px;
+  font-size:34px; font-weight:700; color:var(--accent);
+  font-feature-settings:"lnum";
+  text-align:center;
+}
+.plan-text{
+  flex:1; font-size:26px; color:var(--text); font-weight:400;
+}
+.plan-slide{
+  font-family:"Inter", sans-serif;
+  font-size:14px; color:var(--muted); letter-spacing:.04em;
+  flex:0 0 auto;
+}
+.plan-slide b{ color:var(--primary); font-weight:600; }
+
+/* ============================================================
+   3) DEFINITION — ATAMA TA'RIFI
+   ============================================================ */
+.def-term{
+  font-size:52px; font-weight:700; color:var(--primary);
+  letter-spacing:-.01em;
+}
+.def-term .pos{
+  font-family:"Inter", sans-serif;
+  font-size:18px; font-weight:500; font-style:normal;
+  color:var(--muted); margin-left:16px; letter-spacing:.02em;
+}
+.def-rule{ width:88px; height:4px; background:var(--accent); margin:22px 0 40px; }
+.def-block{
+  background:var(--panel);
+  border-left:5px solid var(--primary);
+  padding:42px 48px;
+  max-width:1380px;
+}
+.def-block p{
+  font-size:27px; line-height:1.6; color:var(--text);
+}
+.def-block .quote-mark{
+  font-size:26px; color:var(--accent); font-weight:700;
+}
+.def-note{
+  margin-top:34px; font-size:20px; color:var(--muted);
+  line-height:1.55; max-width:1300px;
+}
+.def-note .label{
+  font-family:"Inter", sans-serif; font-size:14px; font-weight:600;
+  text-transform:uppercase; letter-spacing:.1em; color:var(--accent);
+  margin-right:10px;
+}
+.def-source{
+  position:absolute; left:100px; bottom:90px;
+  font-family:"Inter", sans-serif; font-size:16px; color:var(--muted);
+  border-top:1px solid var(--line); padding-top:14px;
+  max-width:1380px;
+}
+.def-source .ref{ color:var(--primary); font-weight:600; }
+
+/* ============================================================
+   4) CLASSIFICATION — KLASSIFIKATSIYA
+   ============================================================ */
+.cls-wrap{
+  margin-top:48px;
+  display:flex; align-items:center; gap:56px;
+  height:calc(100% - 110px);
+}
+.cls-root{
+  flex:0 0 360px;
+  background:var(--primary);
+  color:#fff;
+  border-radius:8px;
+  padding:42px 36px;
+  text-align:center;
+  align-self:center;
+}
+.cls-root .r-lbl{
+  font-family:"Inter", sans-serif; font-size:14px; letter-spacing:.14em;
+  text-transform:uppercase; color:#9DB4D6; margin-bottom:14px;
+}
+.cls-root .r-name{ font-size:32px; font-weight:700; line-height:1.18; }
+.cls-root .r-desc{ font-size:17px; color:#C9D4E5; margin-top:16px; line-height:1.5; }
+.cls-branches{
+  flex:1;
+  display:grid; grid-template-columns:1fr 1fr; gap:26px;
+}
+.cls-card{
+  background:var(--bg);
+  border:1px solid var(--line);
+  border-top:4px solid var(--accent);
+  border-radius:6px;
+  padding:30px 32px;
+}
+.cls-card .c-head{
+  display:flex; align-items:baseline; gap:14px; margin-bottom:12px;
+}
+.cls-card .c-idx{
+  font-size:22px; font-weight:700; color:var(--accent);
+}
+.cls-card .c-name{ font-size:24px; font-weight:600; color:var(--primary); }
+.cls-card .c-desc{ font-size:18px; line-height:1.5; color:var(--text); }
+
+/* ============================================================
+   5) REFERENCES — FOYDALANILGAN ADABIYOTLAR
+   ============================================================ */
+.ref-list{
+  margin-top:48px;
+  column-count:2; column-gap:80px;
+  counter-reset:ref;
+}
+.ref-item{
+  break-inside:avoid;
+  display:flex; gap:18px;
+  padding:14px 0;
+  border-bottom:1px solid var(--line);
+  font-size:19px; line-height:1.45; color:var(--text);
+}
+.ref-item .r-no{
+  flex:0 0 36px;
+  font-family:"Inter", sans-serif; font-weight:600;
+  color:var(--accent); font-size:18px;
+}
+.ref-item i{ color:var(--primary); font-style:italic; }
+.ref-gost{
+  position:absolute; right:100px; top:80px;
+  font-family:"Inter", sans-serif; font-size:13px;
+  letter-spacing:.08em; text-transform:uppercase; color:var(--muted);
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     SLAYD 1 — COVER (TITUL BETI)
+     ============================================================ -->
+<section class="slide cover">
+  <div class="h-strip">
+    <span class="h-left">O'zbekiston Respublikasi · Oliy ta'lim</span>
+    <span class="h-mid">Titul beti</span>
+    <span class="h-num"><span class="dot"></span> 01</span>
+  </div>
+
+  <div class="cover-inner">
+    <div class="cover-top">
+      <div class="cover-logo">UU</div>
+      <div class="cover-univ">Toshkent davlat yuridik universiteti</div>
+      <div class="cover-fac">Davlat-huquqiy fanlar fakulteti</div>
+      <div class="cover-dep">«Konstitutsiyaviy huquq» kafedrasi</div>
+    </div>
+
+    <div class="cover-mid">
+      <div class="cover-kicker">Kurs ishi · Seminar dokladi</div>
+      <h1 class="cover-theme">Konstitutsiyaviy huquq asoslari</h1>
+      <div class="cover-sub">Tushunchasi, predmeti va huquq tizimidagi o'rni</div>
+      <div class="cover-rule"></div>
+    </div>
+
+    <div class="cover-bottom">
+      <div class="col left">
+        <div class="lbl">Bajardi</div>
+        <div class="nm">Karimova Dilnoza Anvarovna</div>
+        <div class="meta">2-kurs talabasi · 201-guruh</div>
+      </div>
+      <div class="col right">
+        <div class="lbl">Ilmiy rahbar</div>
+        <div class="nm">y.f.n., dots. Rahimov B. T.</div>
+        <div class="meta">«Konstitutsiyaviy huquq» kafedrasi</div>
+      </div>
+    </div>
+    <div class="cover-year">TOSHKENT — 2026</div>
+  </div>
+
+  <div class="f-strip">
+    <span class="f-mark">LUMIO</span>
+    <span>Toshkent davlat yuridik universiteti</span>
+    <span>2025–2026 o'quv yili</span>
+  </div>
+</section>
+
+<!-- ============================================================
+     SLAYD 2 — PLAN (REJA)
+     ============================================================ -->
+<section class="slide plan">
+  <div class="h-strip">
+    <span class="h-left">Konstitutsiyaviy huquq · Reja</span>
+    <span class="h-mid">Davlat-huquqiy fanlar fakulteti</span>
+    <span class="h-num"><span class="dot"></span> 02</span>
+  </div>
+
+  <div class="body">
+    <h2 class="title">Reja</h2>
+    <div class="title-rule"></div>
+
+    <div class="plan-list">
+      <div class="plan-item">
+        <div class="plan-num">1</div>
+        <div class="plan-text">Konstitutsiyaviy huquq tushunchasi va uning predmeti</div>
+        <div class="plan-slide">slayd <b>3</b></div>
+      </div>
+      <div class="plan-item">
+        <div class="plan-num">2</div>
+        <div class="plan-text">Konstitutsiyaviy huquqning manbalari tizimi</div>
+        <div class="plan-slide">slayd <b>4</b></div>
+      </div>
+      <div class="plan-item">
+        <div class="plan-num">3</div>
+        <div class="plan-text">Konstitutsiyaviy-huquqiy normalarning turlari</div>
+        <div class="plan-slide">slayd <b>5</b></div>
+      </div>
+      <div class="plan-item">
+        <div class="plan-num">4</div>
+        <div class="plan-text">Konstitutsiyaviy huquqning huquq tizimidagi o'rni</div>
+        <div class="plan-slide">slayd <b>6</b></div>
+      </div>
+      <div class="plan-item">
+        <div class="plan-num">5</div>
+        <div class="plan-text">Inson huquq va erkinliklarining konstitutsiyaviy kafolatlari</div>
+        <div class="plan-slide">slayd <b>7</b></div>
+      </div>
+      <div class="plan-item">
+        <div class="plan-num">6</div>
+        <div class="plan-text">Xulosa va foydalanilgan adabiyotlar</div>
+        <div class="plan-slide">slayd <b>8</b></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="f-strip">
+    <span class="f-mark">LUMIO</span>
+    <span>Konstitutsiyaviy huquq asoslari</span>
+    <span>2026</span>
+  </div>
+</section>
+
+<!-- ============================================================
+     SLAYD 3 — DEFINITION (ATAMA TA'RIFI)
+     ============================================================ -->
+<section class="slide def">
+  <div class="h-strip">
+    <span class="h-left">Konstitutsiyaviy huquq · Atama</span>
+    <span class="h-mid">1-bo'lim · Asosiy tushunchalar</span>
+    <span class="h-num"><span class="dot"></span> 03</span>
+  </div>
+
+  <div class="body">
+    <h2 class="def-term">Konstitutsiyaviy huquq<span class="pos">— huquq sohasi</span></h2>
+    <div class="def-rule"></div>
+
+    <div class="def-block">
+      <p><span class="quote-mark">«</span>Konstitutsiyaviy huquq — davlat hokimiyatini tashkil etish asoslarini, inson va fuqaroning huquqiy maqomini, shuningdek davlat tuzilishi shakllarini tartibga soluvchi konstitutsiyaviy-huquqiy normalar majmuidan iborat yetakchi huquq sohasidir.<span class="quote-mark">»</span></p>
+    </div>
+
+    <div class="def-note">
+      <span class="label">Izoh</span>
+      Sohaning predmetini jamiyat va davlat hayotining eng muhim — siyosiy, ijtimoiy va iqtisodiy asoslarini belgilovchi munosabatlar tashkil etadi.
+    </div>
+  </div>
+
+  <div class="def-source">
+    <span class="ref">[1]</span> &nbsp;Saidov A. X., Tojixonov U. Davlat va huquq nazariyasi. — Toshkent: Adolat, 2021. — B. 142.
+  </div>
+
+  <div class="f-strip">
+    <span class="f-mark">LUMIO</span>
+    <span>Konstitutsiyaviy huquq asoslari</span>
+    <span>2026</span>
+  </div>
+</section>
+
+<!-- ============================================================
+     SLAYD 4 — CLASSIFICATION (KLASSIFIKATSIYA)
+     ============================================================ -->
+<section class="slide cls">
+  <div class="h-strip">
+    <span class="h-left">Konstitutsiyaviy huquq · Klassifikatsiya</span>
+    <span class="h-mid">3-bo'lim · Normalarning turlari</span>
+    <span class="h-num"><span class="dot"></span> 04</span>
+  </div>
+
+  <div class="body">
+    <h2 class="title">Konstitutsiyaviy-huquqiy normalarning turlari</h2>
+    <div class="title-rule"></div>
+
+    <div class="cls-wrap">
+      <div class="cls-root">
+        <div class="r-lbl">Asosiy tushuncha</div>
+        <div class="r-name">Konstitutsiyaviy-huquqiy normalar</div>
+        <div class="r-desc">Tartibga solish xususiyatiga ko'ra to'rt guruhga ajratiladi</div>
+      </div>
+
+      <div class="cls-branches">
+        <div class="cls-card">
+          <div class="c-head"><span class="c-idx">01</span><span class="c-name">Vakil qiluvchi</span></div>
+          <div class="c-desc">Subyektlarga ma'lum huquqlarni beruvchi normalar (masalan, saylash huquqi).</div>
+        </div>
+        <div class="cls-card">
+          <div class="c-head"><span class="c-idx">02</span><span class="c-name">Majburlovchi</span></div>
+          <div class="c-desc">Muayyan xatti-harakatni bajarishni talab qiluvchi normalar.</div>
+        </div>
+        <div class="cls-card">
+          <div class="c-head"><span class="c-idx">03</span><span class="c-name">Taqiqlovchi</span></div>
+          <div class="c-desc">Ayrim harakatlardan tiyilishni belgilovchi normalar.</div>
+        </div>
+        <div class="cls-card">
+          <div class="c-head"><span class="c-idx">04</span><span class="c-name">Deklarativ</span></div>
+          <div class="c-desc">Asosiy tamoyil va maqsadlarni e'lon qiluvchi normalar.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="f-strip">
+    <span class="f-mark">LUMIO</span>
+    <span>Konstitutsiyaviy huquq asoslari</span>
+    <span>2026</span>
+  </div>
+</section>
+
+<!-- ============================================================
+     SLAYD 5 — REFERENCES (FOYDALANILGAN ADABIYOTLAR)
+     ============================================================ -->
+<section class="slide ref">
+  <div class="h-strip">
+    <span class="h-left">Konstitutsiyaviy huquq · Adabiyotlar</span>
+    <span class="h-mid">Bibliografik ro'yxat</span>
+    <span class="h-num"><span class="dot"></span> 05</span>
+  </div>
+
+  <div class="body">
+    <h2 class="title">Foydalanilgan adabiyotlar</h2>
+    <div class="title-rule"></div>
+    <div class="ref-gost">GOST 7.1-2003</div>
+
+    <div class="ref-list">
+      <div class="ref-item"><span class="r-no">1.</span><span>O'zbekiston Respublikasining Konstitutsiyasi. — Toshkent: <i>O'zbekiston</i>, 2023. — 64 b.</span></div>
+      <div class="ref-item"><span class="r-no">2.</span><span>Saidov A. X., Tojixonov U. <i>Davlat va huquq nazariyasi</i>. — Toshkent: Adolat, 2021. — 412 b.</span></div>
+      <div class="ref-item"><span class="r-no">3.</span><span>Karimov A. A. <i>Konstitutsiyaviy huquq</i>. — Toshkent: Adolat, 2022. — 245 b.</span></div>
+      <div class="ref-item"><span class="r-no">4.</span><span>Xolmo'minov J. T. <i>O'zbekiston konstitutsiyaviy huquqi</i>. — Toshkent: TDYU, 2020. — 318 b.</span></div>
+      <div class="ref-item"><span class="r-no">5.</span><span>Odilqoriev X. T. <i>Konstitutsiyaviy huquq asoslari</i>. — Toshkent: Yangi asr avlodi, 2019. — 276 b.</span></div>
+      <div class="ref-item"><span class="r-no">6.</span><span>Boboyev X. <i>Inson huquqlari nazariyasi</i>. — Toshkent: Sharq, 2018. — 204 b.</span></div>
+      <div class="ref-item"><span class="r-no">7.</span><span>Tultemirov B. M. <i>Davlat huquqiy fanlar</i> // Yuridik fanlar axborotnomasi. — 2023. — № 2. — B. 33–41.</span></div>
+      <div class="ref-item"><span class="r-no">8.</span><span>Rahimov B. T. <i>Konstitutsiyaviy nazorat instituti</i>. — Toshkent: TDYU, 2021. — 168 b.</span></div>
+      <div class="ref-item"><span class="r-no">9.</span><span>Mirzayev S. <i>Qiyosiy konstitutsiyaviy huquq</i>. — Toshkent: Baktria press, 2022. — 290 b.</span></div>
+      <div class="ref-item"><span class="r-no">10.</span><span>Lex.uz — O'zbekiston Respublikasi qonun hujjatlari ma'lumotlar bazasi [Elektron resurs]. — URL: https://lex.uz (murojaat: 12.05.2026).</span></div>
+    </div>
+  </div>
+
+  <div class="f-strip">
+    <span class="f-mark">LUMIO</span>
+    <span>Konstitutsiyaviy huquq asoslari</span>
+    <span>2026</span>
+  </div>
+</section>
+
+</body>
+</html>

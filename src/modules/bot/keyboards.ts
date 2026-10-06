@@ -3,22 +3,25 @@ import { Theme } from '@prisma/client';
 
 export const QUESTIONS = {
   topic: '\u{1F4DD} Taqdimot mavzusini yozing yoki tayyor namunadan tanlang:',
+  titulChoice:
+    "\u{1F3EB} Taqdimotning 1-betiga universitet nomi, fakultet va ismingizni qo‘shaymizmi?",
+  titulUniversity: '\u{1F3DB}️ Universitet nomini yozing:',
+  titulFaculty: '\u{1F4DA} Fakultet nomini yozing:',
+  titulStudent: '\u{1F464} Ism va familiyangizni yozing:',
   slideCount: '\u{1F4CA} Nechta slayd kerak?',
   language: '\u{1F310} Qaysi tilda?',
-  tone: '\u{1F3A8} Qaysi uslubda?',
   theme: '\u{1F5BC} Dizayn temasini tanlang:',
+  contentMode:
+    "\u{1F4DD} Kontent uslubini tanlang:\n\n" +
+    "⚠️ Eslatma: statistika, tasnif, taqqoslash va vaqt jadvali kabi " +
+    "raqam/ro'yxat asosidagi slaydlar tanlovdan qat'i nazar o'z ko'rinishida qoladi.",
 } as const;
 
 export const LANG_LABELS: Record<string, string> = {
   uz: "O'zbek",
   ru: '\u0420\u0443\u0441\u0441\u043A\u0438\u0439',
   en: 'English',
-};
-
-export const TONE_LABELS: Record<string, string> = {
-  professional: 'Professional',
-  casual: 'Erkin',
-  academic: 'Akademik',
+  kaa: "Qoraqalpoqcha",
 };
 
 const BACK = '\u2B05\uFE0F Orqaga';
@@ -39,6 +42,13 @@ export function examplesKeyboard(): InlineKeyboard {
   return kb;
 }
 
+export function titulChoiceKeyboard(): InlineKeyboard {
+  return new InlineKeyboard()
+    .text("✅ Ha, qo‘shaman", 'titul:yes')
+    .row()
+    .text("❌ Yo‘q, faqat mavzu", 'titul:no');
+}
+
 export function slideCountKeyboard(): InlineKeyboard {
   return new InlineKeyboard()
     .text('5', 'slides:5')
@@ -57,18 +67,9 @@ export function languageKeyboard(): InlineKeyboard {
     .row()
     .text(LANG_LABELS.en, 'lang:en')
     .row()
+    .text(LANG_LABELS.kaa, 'lang:kaa')
+    .row()
     .text(BACK, 'back:slides');
-}
-
-export function toneKeyboard(): InlineKeyboard {
-  return new InlineKeyboard()
-    .text(TONE_LABELS.professional, 'tone:professional')
-    .row()
-    .text(TONE_LABELS.casual, 'tone:casual')
-    .row()
-    .text(TONE_LABELS.academic, 'tone:academic')
-    .row()
-    .text(BACK, 'back:lang');
 }
 
 export function themeKeyboard(themes: Theme[]): InlineKeyboard {
@@ -76,7 +77,30 @@ export function themeKeyboard(themes: Theme[]): InlineKeyboard {
   themes.forEach((t) => {
     kb.text(t.name, `theme:${t.key}`).row();
   });
-  kb.text(BACK, 'back:tone');
+  kb.text(BACK, 'back:lang');
+  return kb;
+}
+
+/**
+ * Carousel controls for browsing theme previews one at a time.
+ * The preview photo above these buttons is swapped in place as the user
+ * taps prev/next (wrapping around), so selection is coupled to what's shown.
+ * `index` is the position of the currently displayed theme within `themes`.
+ */
+export function themeCarouselKeyboard(themes: Theme[], index: number): InlineKeyboard {
+  const total = themes.length;
+  const current = themes[index];
+  const prev = (index - 1 + total) % total;
+  const next = (index + 1) % total;
+
+  const kb = new InlineKeyboard();
+  if (total > 1) {
+    kb.text('◀️ Oldingi', `tnav:${prev}`)
+      .text('Keyingi ▶️', `tnav:${next}`)
+      .row();
+  }
+  kb.text('✅ Shu dizaynni tanlash', `theme:${current.key}`).row();
+  kb.text('⬅️ Tilni oʻzgartirish', 'theme_back');
   return kb;
 }
 
@@ -84,4 +108,11 @@ export function outlineKeyboard(): InlineKeyboard {
   return new InlineKeyboard()
     .text('\u2705 Tasdiqlash', 'outline:confirm')
     .text('\u{1F504} Boshqacha reja', 'outline:regenerate');
+}
+
+export function contentModeKeyboard(): InlineKeyboard {
+  return new InlineKeyboard()
+    .text('\u{1F4CB} Qisqa kartalar (standart)', 'contentMode:cards')
+    .row()
+    .text('\u{1F4DD} Uzluksiz matn (yangi)', 'contentMode:prose');
 }

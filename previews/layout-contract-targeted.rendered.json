@@ -1,0 +1,120 @@
+{
+  "id": "layout-contract-targeted",
+  "theme": "dark_premium",
+  "slides": [
+    {
+      "type": "CONTENT",
+      "content": {
+        "layout": "changelog_lines",
+        "title": "Biriktirilgan mazmun varianti",
+        "lead": "Bu slayd changelog_lines kompozitsiyasini tekshiradi.",
+        "points": [
+          {
+            "text": "Birinchi fikr mustaqil va to‘liq bayon qilinadi."
+          },
+          {
+            "text": "Ikkinchi fikr birinchi fikrni mazmunan davom ettiradi."
+          },
+          {
+            "text": "Uchinchi fikr mavzuning amaliy natijasini ko‘rsatadi."
+          }
+        ]
+      }
+    },
+    {
+      "type": "CONTENT",
+      "content": {
+        "layout": "visual_split",
+        "title": "Geometrik dekorli mazmun",
+        "lead": "Visual boshqa designni yashirincha bosmaydi.",
+        "points": [
+          {
+            "text": "Matn va dekor aniq ikki qismli tuzilmada joylashadi."
+          },
+          {
+            "text": "Saqlangan variant real render branchiga teng bo‘ladi."
+          }
+        ],
+        "visual": {
+          "provider": "Lumio Geometry",
+          "query": "layout contract geometric visual",
+          "url": "",
+          "alt": "Geometrik dekor",
+          "author": "Lumio",
+          "license": "decorative visual",
+          "fit": "cover"
+        }
+      }
+    },
+    {
+      "type": "MISOL",
+      "content": {
+        "layout": "case_study",
+        "title": "Amaliy misol uchun case study",
+        "body": "Talaba mavzudagi asosiy tamoyilni real vaziyatga qo‘llaydi, qaror sabablarini tushuntiradi va kuzatilgan natijani umumlashtiradi.",
+        "takeaway": "Misol nazariy fikrning amalda qanday ishlashini ochib beradi."
+      }
+    },
+    {
+      "type": "PROCESS",
+      "content": {
+        "layout": "switchback_path",
+        "title": "Jarayonning ketma-ket bosqichlari",
+        "steps": [
+          {
+            "title": "Tayyorlash",
+            "body": "Maqsad va boshlang‘ich shartlar aniqlanadi."
+          },
+          {
+            "title": "Bajarish",
+            "body": "Asosiy amallar izchil tartibda bajariladi."
+          },
+          {
+            "title": "Tekshirish",
+            "body": "Natija mezonlar asosida baholanadi."
+          },
+          {
+            "title": "Yakunlash",
+            "body": "Xulosa chiqarilib, keyingi qadam belgilanadi."
+          }
+        ]
+      }
+    },
+    {
+      "type": "FINDING",
+      "content": {
+        "layout": "research_brief",
+        "title": "Tahlilning asosiy natijasi",
+        "evidence": "Tizimli yondashuv alohida omillarni emas, ular o‘rtasidagi sabab va natija bog‘lanishini birgalikda tushuntirishga yordam beradi.",
+        "points": [
+          {
+            "text": "Omillar bir-biriga ta’sir qiladi."
+          },
+          {
+            "text": "Natija umumiy tizim xususiyatiga bog‘liq."
+          }
+        ],
+        "interpretation": "Natijani baholashda jarayonning barcha muhim qismlari hisobga olinishi kerak.",
+        "limitation": "Xulosa berilgan mavzu va kontekst doirasida talqin qilinadi."
+      }
+    },
+    {
+      "type": "PROBLEMS_SOLUTIONS",
+      "content": {
+        "layout": "matrix",
+        "title": "Muammolar va ularga mos yechimlar",
+        "subtitle": "Har bir muammo aynan unga javob beradigan amaliy chora bilan bog‘langan.",
+        "pairs": [
+          {
+            "problem": "Asosiy talablar foydalanuvchiga yetarlicha aniq tushuntirilmaydi.",
+            "solution": "Talablarni sodda bosqichlar va tushunarli mezonlar bilan bayon qilish."
+          },
+          {
+            "problem": "Jarayon natijasini baholash uchun yagona tartib mavjud emas.",
+            "solution": "Natijani o‘lchaydigan mezonlar va tekshiruv ketma-ketligini belgilash."
+          }
+        ]
+      }
+    }
+  ]
+}

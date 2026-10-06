@@ -1,0 +1,1415 @@
+<!doctype html>
+<html lang="uz"><head><meta charset="utf-8"><style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
+
+/* ============================================================
+   RESET + PRINT COLOR PRESERVATION
+   ============================================================ */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html, body {
+  background: #555;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: geometricPrecision;
+  print-color-adjust: exact;
+  -webkit-print-color-adjust: exact;
+}
+img, svg { display: block; max-width: 100%; }
+
+/* ============================================================
+   THEME TOKENS
+   ============================================================ */
+:root {
+  --bg: #15181F;
+  --surface: rgba(255,255,255,0.05);
+  --text: #ECE7DC;
+  --text-muted: #9AA0AC;
+  --accent: #C9A24B;
+  --accent-soft: #86A5C4;
+  --border: rgba(255,255,255,0.10);
+
+  --font-display: 'Lora', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+
+  --pad-x: 96px;
+  --pad-y: 72px;
+}
+
+body { font-family: var(--font-body); color: var(--text); }
+
+/* ============================================================
+   DECK STAGE + PRINT (1 slide per PDF page)
+   ============================================================ */
+.deck {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  padding: 40px 0;
+}
+@page { size: 1280px 720px; margin: 0; }
+@media print {
+  body { background: #fff; padding: 0; }
+  .deck { gap: 0; padding: 0; }
+  .slide {
+    box-shadow: none;
+    break-after: page;
+    page-break-after: always;
+  }
+  .slide:last-child { break-after: auto; page-break-after: auto; }
+}
+
+/* ============================================================
+   SLIDE CONTAINER  (1280 x 720, overflow hidden)
+   ============================================================ */
+.slide {
+  width: 1280px;
+  height: 720px;
+  overflow: hidden;
+  position: relative;
+  display: block;
+  background: var(--bg);
+  color: var(--text);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+}
+.slide__visual {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+.slide > *:not(.slide__visual):not(.page-no):not(.theme-tag):not(.seal-watermark) {
+  position: relative;
+  z-index: 1;
+}
+
+/* ============================================================
+   CORNER LABELS  (page number + theme tag)
+   ============================================================ */
+.page-no, .theme-tag {
+  position: absolute;
+  bottom: 28px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  z-index: 50;
+}
+.page-no  { left: 36px; }
+.theme-tag {
+  right: 36px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+}
+.theme-tag__dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+/* ============================================================
+   TYPOGRAPHY SCALE
+   ============================================================ */
+.h1 {
+  font-family: var(--font-display);
+  font-size: 76px; font-weight: 700;
+  line-height: 1.02; letter-spacing: -0.02em;
+  color: var(--text);
+}
+.h2 {
+  font-family: var(--font-display);
+  font-size: 44px; font-weight: 700;
+  line-height: 1.08; letter-spacing: -0.02em;
+  color: var(--text);
+}
+.h3 {
+  font-family: var(--font-display);
+  font-size: 24px; font-weight: 700;
+  line-height: 1.2;  letter-spacing: -0.01em;
+  color: var(--text);
+}
+.lead { font-size: 21px; line-height: 1.5; font-weight: 400; color: var(--text-muted); text-align: justify; text-justify: inter-word; }
+.text { font-size: 16px; line-height: 1.55; color: var(--text); text-align: justify; text-justify: inter-word; }
+.text--sm { font-size: 14px; line-height: 1.5; }
+.muted  { color: var(--text-muted); }
+.accent { color: var(--accent); }
+.kicker {
+  font-size: 13px; font-weight: 700;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--accent);
+}
+
+/* ============================================================
+   PRIMITIVES
+   ============================================================ */
+.tag {
+  display: inline-block;
+  font-size: 12px; font-weight: 600;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  padding: 7px 14px;
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  color: var(--accent);
+  border: 1px solid var(--border);
+}
+.divider { height: 1px; background: var(--border); width: 100%; }
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+}
+/* Scoped bump (not the global .text--sm) — TURLAR/DEFINITION card bodies
+   read too small at the base 14px on a 1280x720 canvas viewed at a
+   distance; other .text--sm usages outside cards are unaffected. */
+.card .text--sm { font-size: 16px; line-height: 1.5; }
+.btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 16px 28px;
+  border-radius: var(--radius-md);
+  font-size: 15px; font-weight: 600;
+  font-family: var(--font-body);
+}
+.btn--primary   { background: var(--accent); color: var(--bg); }
+.btn--secondary { background: transparent; color: var(--text); border: 1px solid var(--border); }
+
+/* ============================================================
+   GRID HELPERS
+   ============================================================ */
+.row { display: flex; gap: 24px; align-items: flex-start; }
+.col { display: flex; flex-direction: column; gap: 16px; }
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr;             gap: 24px; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr);     gap: 24px; }
+.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr);     gap: 24px; }
+.grid-5 { display: grid; grid-template-columns: repeat(5, 1fr);     gap: 20px; }
+
+/* ============================================================
+   METRICS
+   ============================================================ */
+.metric { display: flex; flex-direction: column; gap: 14px; }
+.metric__num {
+  font-family: var(--font-display);
+  font-size: 64px; font-weight: 700;
+  letter-spacing: -0.03em; line-height: 1;
+  color: var(--text);
+}
+.metric__lbl { font-size: 15px; color: var(--text-muted); line-height: 1.5; }
+/* Small unit beside the big figure (Fix 5): structured value = number + unit. */
+.metric__unit { font-size: 0.4em; font-weight: 600; color: var(--text-muted); margin-left: 5px; letter-spacing: 0; }
+/* Count-aware shrink: 4-5 metrics in a row must use less vertical space. */
+.grid-4 .metric__num, .grid-5 .metric__num { font-size: 48px; }
+.grid-4 .metric, .grid-5 .metric { gap: 8px; }
+.grid-4 .metric__lbl, .grid-5 .metric__lbl { font-size: 14px; }
+
+/* ============================================================
+   PROBLEM
+   ============================================================ */
+.problem-stat {
+  display: flex; flex-direction: column; gap: 10px;
+  padding: 28px 32px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  min-width: 220px;
+}
+.problem-stat__num {
+  font-family: var(--font-display);
+  font-size: 56px; font-weight: 700;
+  letter-spacing: -0.03em; line-height: 1;
+  color: var(--accent);
+}
+.problem-stat__lbl { font-size: 14px; color: var(--text-muted); line-height: 1.4; }
+.problem-stat__src { font-size: 11px; color: var(--text-muted); letter-spacing: 0.04em; opacity: 0.75; }
+.problem-impact {
+  font-size: 17px; color: var(--text); line-height: 1.5;
+  max-width: 640px;
+  text-align: justify; text-justify: inter-word;
+}
+
+/* Small citation line shown under data slides (STATS / OPPORTUNITY / CASE_STUDY) */
+.source-note {
+  font-size: 12px; color: var(--text-muted);
+  letter-spacing: 0.04em; opacity: 0.75;
+}
+
+/* ============================================================
+   INSIGHT
+   ============================================================ */
+.insight-implications {
+  list-style: none; display: flex; flex-direction: column; gap: 12px;
+}
+.insight-implications li {
+  display: flex; gap: 12px;
+  font-size: 15px; line-height: 1.5;
+  color: var(--text-muted);
+}
+.insight-implications li span:first-child {
+  color: var(--accent); font-weight: 600; flex-shrink: 0;
+}
+
+/* ============================================================
+   STEPS  (used by process + timeline)
+   ============================================================ */
+.step {
+  display: flex; flex-direction: column; gap: 12px;
+  padding: 22px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+}
+.step__node {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  display: grid; place-items: center;
+  background: var(--accent); color: var(--bg);
+  font-family: var(--font-display);
+  font-weight: 700; font-size: 18px;
+}
+.step__date {
+  font-size: 12px; font-weight: 700;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--text-muted);
+}
+.step__title { font-size: 19px; font-weight: 700; letter-spacing: -0.01em; color: var(--text); line-height: 1.25; }
+.step__body  { font-size: 15.5px; color: var(--text-muted); line-height: 1.5; }
+.step__outcome { font-size: 13px; font-weight: 600; color: var(--accent); line-height: 1.4; }
+.step__tools { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; }
+.step__tool {
+  font-size: 11px; font-weight: 600;
+  padding: 4px 10px; border-radius: 999px;
+  background: var(--bg); border: 1px solid var(--border);
+  color: var(--text-muted);
+}
+/* Count-aware shrink: with 4-5 narrow columns the cards must use less space.
+   Padding trimmed slightly further (16px->14px) to claw back width for the
+   larger text sizes below. */
+.grid-4 .step, .grid-5 .step { padding: 14px; gap: 9px; }
+.grid-4 .step__node, .grid-5 .step__node { width: 34px; height: 34px; font-size: 15px; }
+.grid-4 .step__title, .grid-5 .step__title { font-size: 17px; line-height: 1.22; }
+.grid-4 .step__body, .grid-5 .step__body { font-size: 14.5px; line-height: 1.42; }
+.grid-4 .step__outcome, .grid-5 .step__outcome { font-size: 12.5px; line-height: 1.35; }
+.grid-5 .step__date, .grid-4 .step__date { font-size: 12px; }
+/* Timeline milestone number + status node states */
+.step__metric { font-family: var(--font-display); font-size: 20px; font-weight: 700; color: var(--accent); line-height: 1.1; }
+.step__node--done    { background: var(--accent); color: var(--bg); }
+.step__node--current { background: var(--accent); color: var(--bg); box-shadow: 0 0 0 5px var(--accent-soft); }
+.step__node--planned { background: transparent; color: var(--text-muted); border: 2px solid var(--border); }
+
+/* SOLUTION — per-feature proof number + whole-solution proof line */
+.feature-metric { font-family: var(--font-display); font-size: 22px; font-weight: 700; color: var(--accent); line-height: 1; margin-bottom: 8px; }
+.solution-proof {
+  display: flex; align-items: center; gap: 12px;
+  padding-top: 20px; border-top: 1px solid var(--border);
+  font-size: 15px; color: var(--text);
+}
+.solution-proof span:first-child { color: var(--accent); font-size: 16px; }
+
+/* Count-aware shrink for 4-column card grids */
+.grid-4 .card { padding: 20px; }
+.grid-4 .card .h3 { font-size: 20px; }
+
+/* ============================================================
+   ACADEMIC: AGENDA (Reja)
+   ============================================================ */
+.agenda { list-style: none; display: flex; flex-direction: column; gap: 18px; width: 100%; }
+.agenda--two { display: grid; grid-template-columns: 1fr 1fr; gap: 18px 56px; }
+.agenda__item { display: flex; align-items: flex-start; gap: 20px; }
+.agenda__num {
+  font-family: var(--font-display); font-size: 22px; font-weight: 700;
+  color: var(--accent); line-height: 1.2; flex-shrink: 0; min-width: 38px;
+}
+.agenda__text { display: flex; flex-direction: column; gap: 3px; padding-top: 1px; }
+.agenda__label { font-size: 19px; font-weight: 600; color: var(--text); line-height: 1.3; }
+
+/* ACADEMIC: CONTENT (heading + bullet points) — the workhorse */
+.points { list-style: none; display: flex; flex-direction: column; gap: 14px; width: 100%; }
+.points__item { display: flex; align-items: flex-start; gap: 16px; }
+.points__dot {
+  width: 10px; height: 10px; border-radius: 50%; background: var(--accent);
+  flex-shrink: 0; margin-top: 9px;
+}
+.points__body { font-size: 18px; line-height: 1.5; color: var(--text-muted); }
+.points__heading { font-weight: 700; color: var(--text); }
+
+/* ICONS (visual layer) */
+.ico { display: block; }
+.points__icon {
+  width: 38px; height: 38px; border-radius: 10px; flex-shrink: 0;
+  display: grid; place-items: center;
+  background: var(--surface); border: 1px solid var(--border);
+  color: var(--accent);
+}
+.card__icon {
+  width: 42px; height: 42px; border-radius: 11px; flex-shrink: 0;
+  display: grid; place-items: center; margin-bottom: 14px;
+  background: var(--accent); color: var(--bg);
+}
+.card__top { display: flex; align-items: center; gap: 14px; margin-bottom: 14px; }
+
+/* ACADEMIC: DEFINITION aspect cards */
+.def-aspect__label {
+  font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--accent);
+}
+
+/* ACADEMIC: CONCLUSION (Xulosa) */
+.conclusion { list-style: none; display: flex; flex-direction: column; gap: 14px; width: 100%; }
+.conclusion__item { display: flex; align-items: flex-start; gap: 18px; }
+.conclusion__num {
+  width: 34px; height: 34px; border-radius: 50%; flex-shrink: 0;
+  display: grid; place-items: center;
+  background: var(--accent); color: var(--bg);
+  font-family: var(--font-display); font-weight: 700; font-size: 15px;
+}
+.conclusion__text { font-size: 19px; line-height: 1.45; color: var(--text); padding-top: 3px; }
+.conclusion__closing {
+  font-size: 16px; color: var(--text-muted); font-style: italic;
+  padding-top: 18px; border-top: 1px solid var(--border); text-align: justify;
+}
+
+/* ACADEMIC: REFERENCES (Adabiyotlar) */
+.refs { padding-left: 22px; }
+.refs__item {
+  font-size: 14px; line-height: 1.5; color: var(--text-muted);
+  margin-bottom: 12px; break-inside: avoid; padding-left: 6px;
+}
+
+/* ACADEMIC: AIM_TASKS (Maqsad va vazifalar) — aim highlight */
+.aim-statement {
+  font-size: 20px; line-height: 1.45; color: var(--text); font-weight: 600;
+  padding: 15px 24px; border-left: 4px solid var(--accent);
+  background: var(--surface); border-radius: var(--radius-md);
+  text-align: justify; text-justify: inter-word;
+}
+
+/* ACADEMIC: OBJECT_SUBJECT (Ob'ekt va predmet) — paragraph inside compare cols */
+.osubj__text { font-size: 17px; line-height: 1.5; color: inherit; margin-top: 4px; }
+
+/* ACADEMIC: RECOMMENDATIONS (Takliflar) — addressee label */
+.rec__to {
+  display: block; font-size: 12px; font-weight: 700;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 4px;
+}
+.conclusion__text .rec__to + span { display: block; }
+
+/* ACADEMIC: PROBLEMS_SOLUTIONS (Muammolar va yechimlar) — matched pairs */
+.psol {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 14px 20px; width: 100%; align-items: stretch;
+}
+.psol__head {
+  font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+  padding-bottom: 6px;
+}
+.psol__head--problem  { color: var(--text-muted); }
+.psol__head--solution { color: var(--accent); }
+.psol__cell {
+  font-size: 15.5px; line-height: 1.4;
+  padding: 18px 20px; border-radius: var(--radius-lg);
+}
+.psol__cell--problem  { background: var(--surface); border: 1px solid var(--border); color: var(--text-muted); }
+.psol__cell--solution { background: var(--accent); color: var(--bg); }
+
+/* ACADEMIC: TITUL (title page) — legacy single layout */
+.titul__univ { font-size: 15px; font-weight: 700; letter-spacing: 0.05em; color: var(--text); text-transform: uppercase; line-height: 1.3; }
+.titul__faculty { font-size: 14px; color: var(--text-muted); margin-top: 5px; }
+
+/* ============================================================
+   TITLE SLIDE — 5 layouts (title blueprint)
+   ============================================================ */
+/* Shared */
+.titul-topic {
+  font-family: var(--font-display); font-weight: 700;
+  line-height: 1.08; letter-spacing: -0.02em; color: var(--text);
+}
+.titul-badge {
+  display: inline-block; font-size: 12.5px; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--bg); background: var(--accent);
+  padding: 9px 18px; border-radius: var(--radius-md);
+}
+.titul-worklabel {
+  font-size: 15px; font-weight: 700; letter-spacing: 0.22em;
+  text-transform: uppercase; color: var(--accent);
+}
+.titul-min { font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.62; line-height: 1.4; }
+.titul-foot { font-size: 14px; color: var(--text-muted); letter-spacing: 0.03em; }
+
+/* 1 — editorial_split (40/60, dark meta panel) */
+.titul-split { display: grid; grid-template-columns: 2fr 3fr; height: 100%; }
+.titul-panel {
+  background: var(--text); color: var(--bg);
+  padding: 54px 42px; display: flex; flex-direction: column; justify-content: space-between;
+}
+.titul-univ2 { font-size: 17px; font-weight: 800; letter-spacing: 0.02em; text-transform: uppercase; margin-top: 14px; line-height: 1.25; }
+.titul-sub2 { font-size: 13px; opacity: 0.8; margin-top: 6px; line-height: 1.35; }
+.titul-panel__meta { display: flex; flex-direction: column; gap: 15px; }
+.titul-meta { display: flex; flex-direction: column; gap: 2px; }
+.titul-meta__lbl { font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; opacity: 0.6; }
+.titul-meta__val { font-size: 13.5px; font-weight: 600; line-height: 1.3; }
+.titul-main {
+  padding: 62px 68px; display: grid; grid-template-rows: auto 1fr auto; gap: 18px;
+}
+
+/* 2 — classical_centered */
+.titul-classic {
+  height: 100%; padding: 54px 90px;
+  display: flex; flex-direction: column; align-items: center; text-align: center;
+}
+.titul-classic__head { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.titul-classic__univ { font-size: 19px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.03em; color: var(--text); margin-top: 8px; }
+.titul-classic__center { flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 24px; }
+.titul-classic__meta { display: flex; justify-content: center; gap: 90px; text-align: left; }
+.titul-cmeta__lbl { font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-muted); margin-bottom: 4px; }
+.titul-cmeta__val { font-size: 14px; font-weight: 600; color: var(--text); line-height: 1.35; }
+
+/* 3 — bento_academic */
+.titul-bento-wrap { height: 100%; padding: 56px 64px; display: grid; grid-template-rows: 1fr auto; gap: 34px; }
+.titul-bento-head { display: flex; flex-direction: column; justify-content: center; gap: 20px; }
+.titul-bento { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.titul-bento__cell {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); padding: 18px 22px;
+  display: flex; flex-direction: column; gap: 6px;
+}
+.titul-bento__cell--accent { background: var(--accent); border-color: var(--accent); }
+.titul-bento__cell--accent .titul-bento__lbl,
+.titul-bento__cell--accent .titul-bento__val { color: var(--bg); opacity: 1; }
+.titul-bento__lbl { font-size: 10px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--text-muted); }
+.titul-bento__val { font-size: 15px; font-weight: 600; color: var(--text); line-height: 1.3; }
+
+/* 4 — typographic_statement */
+.titul-typo { height: 100%; padding: 52px 64px; display: grid; grid-template-rows: auto 1fr auto; }
+.titul-typo__top { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); }
+.titul-typo__center { align-self: center; display: flex; gap: 28px; align-items: center; }
+.titul-typo__bar { width: 6px; align-self: stretch; background: var(--accent); border-radius: 3px; }
+.titul-typo__foot { display: flex; justify-content: space-between; align-items: flex-end; }
+.titul-typo__student { color: var(--text); font-weight: 600; font-size: 14px; }
+
+/* 5 — vertical_ribbon */
+.titul-ribbon-wrap { display: grid; grid-template-columns: 78px 1fr; height: 100%; }
+.titul-ribbon { background: var(--text); color: var(--bg); display: flex; align-items: center; justify-content: center; }
+.titul-ribbon__txt {
+  writing-mode: vertical-rl; transform: rotate(180deg);
+  font-size: 13px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; opacity: 0.88;
+  max-height: 88%; overflow: hidden;
+}
+.titul-ribbon-main { padding: 58px 68px; display: grid; grid-template-rows: auto 1fr auto; gap: 18px; }
+.titul-ribbon__meta { display: flex; gap: 64px; }
+
+/* PROSE CONTENT MODE — shared across 8 types (CONTENT, DEFINITION, BATAFSIL,
+   MISOL, RELEVANCE, OBJECT_SUBJECT, CONCLUSION, AIM_TASKS), see layouts.ts
+   proseBody() helper. Values verified against the real 1280x720 canvas at the
+   schema's 650-char ceiling — comfortable margin, no overflow. */
+.prose-body { font-size: 19px; line-height: 1.65; color: var(--text); max-width: 76ch; text-align: justify; text-justify: inter-word; }
+.prose-body strong { color: var(--accent); font-weight: 600; }
+/* Length-aware size modifiers (additive — base .prose-body above is
+   untouched, these only override when applied). A short paragraph reads
+   thin at 19px; letting it run larger makes the slide feel intentional
+   rather than empty. Long paragraphs already verified to fit at 19px, so
+   --compact merely trims a touch of margin rather than fixing overflow. */
+.prose-body--roomy   { font-size: 23px; line-height: 1.6; }
+.prose-body--compact { font-size: 17px; line-height: 1.6; }
+
+/* ACADEMIC: BATAFSIL (deep-dive) */
+.batafsil__body { font-size: 18px; line-height: 1.6; color: var(--text); text-align: justify; text-justify: inter-word; }
+.batafsil__points { list-style: none; display: flex; flex-direction: column; gap: 14px; align-self: start; padding-top: 4px; }
+.batafsil__points li { display: flex; gap: 12px; font-size: 16px; line-height: 1.4; color: var(--text-muted); }
+.batafsil__dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); flex-shrink: 0; margin-top: 7px; }
+
+/* ACADEMIC: FINDING V2 (interpretation + limitation, additive) */
+.finding__interpretation { font-size: 16px; line-height: 1.55; color: var(--text-muted); margin-top: 16px; }
+.finding__interpretation strong { color: var(--accent); font-weight: 600; }
+.finding__limitation { font-size: 13px; line-height: 1.45; color: var(--text-muted); opacity: 0.75; font-style: italic; margin-top: 10px; }
+
+/* ACADEMIC: MISOL (example) */
+.misol__takeaway { display: flex; gap: 12px; font-size: 16px; color: var(--text); padding-top: 18px; border-top: 1px solid var(--border); }
+.misol__takeaway span:first-child { color: var(--accent); flex-shrink: 0; }
+.misol__icon {
+  width: 190px; height: 190px; border-radius: var(--radius-lg); flex-shrink: 0;
+  display: grid; place-items: center;
+  background: var(--surface); border: 1px solid var(--border); color: var(--accent);
+}
+
+/* ACADEMIC: IQTIBOS (quotation) */
+.iqtibos__mark { font-family: var(--font-display); font-size: 120px; line-height: 0.35; color: var(--accent); }
+.iqtibos__quote { font-family: var(--font-display); font-size: 40px; font-weight: 500; line-height: 1.25; letter-spacing: -0.01em; color: var(--text); }
+.iqtibos__attr { padding-top: 20px; border-top: 1px solid var(--border); font-size: 17px; }
+.iqtibos__author { font-weight: 700; color: var(--text); }
+.iqtibos__source { color: var(--text-muted); }
+
+/* ============================================================
+   COMPARISON
+   ============================================================ */
+.compare { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.compare__col {
+  padding: 22px 24px;
+  border-radius: var(--radius-lg);
+  display: flex; flex-direction: column; gap: 12px;
+}
+.compare__col--now  { background: var(--surface); border: 1px solid var(--border); color: var(--text-muted); }
+.compare__col--next { background: var(--accent);  color: var(--bg); }
+.compare__list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.compare__list li { display: flex; gap: 10px; font-size: 17px; line-height: 1.42; }
+.compare__winner { color: inherit; margin-left: 8px; font-size: 17px; }
+
+/* Head-to-head metrics — compact HORIZONTAL strip (bounded height
+   regardless of count, so it never pushes the columns past 720px). */
+.compare-metrics {
+  display: grid; gap: 20px;
+  border-top: 1px solid var(--border); padding-top: 16px;
+}
+.compare-metrics__cell { display: flex; flex-direction: column; gap: 5px; min-width: 0; }
+.compare-metrics__label { font-size: 14px; line-height: 1.3; color: var(--text-muted); }
+.compare-metrics__nums {
+  display: flex; align-items: baseline; gap: 8px;
+  font-family: var(--font-display);
+}
+.compare-metrics__before { font-size: 16px; color: var(--text-muted); text-decoration: line-through; opacity: 0.65; }
+.compare-metrics__arrow  { font-size: 14px; color: var(--text-muted); }
+.compare-metrics__after  { font-size: 24px; font-weight: 700; color: var(--accent); }
+
+/* ============================================================
+   COMMON LAYOUT BLOCKS
+   ============================================================ */
+.title-block {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  height: 100%;
+  padding: var(--pad-y) var(--pad-x);
+}
+.title-block__center { align-self: center; max-width: 920px; display: flex; flex-direction: column; gap: 24px; }
+.title-block__meta {
+  display: flex; gap: 48px;
+  padding-top: 26px; border-top: 1px solid var(--border);
+  font-size: 14px; color: var(--text-muted);
+}
+.title-block__meta b { color: var(--text); font-weight: 600; display: block; margin-bottom: 4px; }
+
+.content-block {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  height: 100%;
+  gap: 40px;
+  padding: var(--pad-y) var(--pad-x);
+}
+.content-block__head { max-width: 920px; }
+.content-block__body { align-self: start; }
+/* Prose mode (single flowing paragraph, no bullets/cards to fill the row):
+   top-anchoring leaves a large dead zone below short-but-valid paragraphs
+   (even nearly-max-length ones only run a handful of lines). Centering the
+   body within the leftover 1fr space reads as intentional instead of sparse.
+   Additive modifier — does not touch the default (list/card) behavior above. */
+.content-block--prose .content-block__body { align-self: center; }
+
+/* ============================================================
+   STYLE OVERRIDES - applied via .style-{name} on the slide
+   ============================================================ */
+
+/* MINIMAL --------------------------------------------------- */
+.style-minimal .kicker { display: flex; align-items: center; gap: 16px; }
+.style-minimal .kicker::after { content: ""; flex: 1; height: 1px; background: var(--border); }
+.style-minimal .card { box-shadow: none; }
+.style-minimal .step {
+  background: transparent;
+  border: none;
+  border-top: 2px solid var(--accent);
+  border-radius: 0;
+  padding: 26px 0 0 0;
+}
+.style-minimal .step__node { display: none; }
+.style-minimal .compare__col--next { background: transparent; color: var(--text); border-top: 2px solid var(--accent); border-radius: 0; padding: 28px 0 0 0; }
+.style-minimal .compare__col--now  { background: transparent; border: none; border-top: 1px solid var(--border); border-radius: 0; padding: 28px 0 0 0; }
+
+/* DARK ----------------------------------------------------- */
+.style-dark.slide,
+.style-dark .slide {
+  background:
+    radial-gradient(900px 600px at 78% -10%, rgba(201,162,75,0.10), transparent 60%),
+    radial-gradient(700px 500px at 8% 110%,  rgba(134,165,196,0.08), transparent 55%),
+    var(--bg);
+}
+.style-dark .h1 { font-size: 74px; font-weight: 700; letter-spacing: -0.02em; }
+.style-dark .h2 { font-weight: 700; letter-spacing: -0.015em; }
+.style-dark .grad,
+.style-dark .h1 .grad,
+.style-dark .h2 .grad {
+  background: linear-gradient(92deg, var(--accent), var(--accent-soft));
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.style-dark .card {
+  backdrop-filter: blur(6px);
+  position: relative; overflow: hidden;
+}
+.style-dark .card::before {
+  content: ""; position: absolute; inset: 0;
+  border-radius: inherit; pointer-events: none;
+  background: linear-gradient(135deg, rgba(201,162,75,0.08), transparent 45%);
+}
+.style-dark .step {
+  background: var(--surface);
+  position: relative; overflow: hidden;
+}
+.style-dark .step__node {
+  background: var(--bg);
+  border: 2px solid var(--accent);
+  color: var(--text);
+  box-shadow: 0 0 16px rgba(201,162,75,0.35);
+}
+.style-dark .btn--primary {
+  background: linear-gradient(135deg, var(--accent), var(--accent-soft));
+  color: #fff;
+}
+.style-dark .tag {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--accent-soft);
+}
+
+/* EDITORIAL ------------------------------------------------ */
+.style-editorial .h1 { font-size: 96px; line-height: 0.92; letter-spacing: -0.025em; }
+.style-editorial .h1 .hl,
+.style-editorial .h2 .hl {
+  background: var(--accent);
+  padding: 0 10px;
+  color: var(--text);
+}
+.style-editorial .tag {
+  background: transparent;
+  border: 2px solid var(--text);
+  color: var(--text);
+  font-family: var(--font-display);
+  border-radius: 0;
+}
+.style-editorial .card { border: 3px solid var(--text); border-radius: 0; }
+.style-editorial .step { border: 3px solid var(--text); border-radius: 0; }
+.style-editorial .step__node {
+  background: var(--accent); color: var(--text);
+  border: 3px solid var(--text);
+}
+.style-editorial .btn--primary {
+  background: var(--text); color: var(--accent);
+  border-radius: 0;
+  font-family: var(--font-display);
+  text-transform: uppercase; letter-spacing: 0.08em;
+}
+.style-editorial .divider { background: var(--text); height: 3px; }
+.style-editorial .compare__col--next { background: var(--accent); color: var(--text); border: 3px solid var(--text); border-radius: 0; }
+.style-editorial .compare__col--now  { background: var(--bg); border: 3px solid var(--text); border-radius: 0; color: var(--text); }
+
+/* PASTEL --------------------------------------------------- */
+.style-pastel .h1 { font-size: 86px; font-weight: 400; }
+.style-pastel .h2 { font-weight: 400; }
+.style-pastel .h1 em,
+.style-pastel .h2 em {
+  font-style: italic;
+  color: var(--accent);
+}
+.style-pastel .kicker {
+  display: inline-block;
+  background: var(--surface);
+  border-radius: 999px;
+  padding: 10px 20px;
+  font-size: 13px; letter-spacing: 0.1em;
+  color: var(--text-muted);
+  box-shadow: 0 8px 22px rgba(0,0,0,0.06);
+}
+/* The pill styling above assumes a standalone kicker sitting on the slide's
+   own background. Inside a COMPARISON column it inherits that column's own
+   color (compare__col--next is white-on-accent) — the white pill would then
+   show white-on-white text. Strip the pill there so it reads as a plain
+   inherited-color label, matching every other theme's compare__col kicker. */
+.style-pastel .compare__col .kicker {
+  background: transparent;
+  box-shadow: none;
+  padding: 0;
+  color: inherit;
+}
+.style-pastel .card,
+.style-pastel .step {
+  background: var(--surface);
+  border: none;
+  box-shadow: 0 14px 34px rgba(0,0,0,0.06);
+}
+.style-pastel .step__node {
+  background: var(--accent);
+  font-family: var(--font-display);
+  font-weight: 400;
+  color: #fff;
+}
+.style-pastel .btn--primary {
+  background: var(--text); color: var(--bg);
+  border-radius: 999px;
+}
+.style-pastel .compare__col--next { background: var(--accent-soft); color: #fff; border-radius: var(--radius-lg); }
+.style-pastel .compare__col--now  { background: var(--surface); border: none; box-shadow: 0 14px 34px rgba(0,0,0,0.06); color: var(--text-muted); }
+
+/* BENTO ---------------------------------------------------- */
+.style-bento .h1 { font-size: 64px; font-weight: 700; letter-spacing: -0.035em; }
+.style-bento .h2 { font-weight: 700; letter-spacing: -0.025em; }
+.style-bento .metric__num { font-weight: 800; }
+.style-bento .card { border: 1px solid var(--border); }
+.style-bento .step { border: 1px solid var(--border); border-radius: var(--radius-lg); }
+.style-bento .btn--primary {
+  background: var(--text); color: var(--bg);
+  border-radius: 999px;
+}
+.style-bento .compare__col--now  { background: var(--surface); border: 1px solid var(--border); color: var(--text-muted); }
+.style-bento .compare__col--next { background: var(--text); color: #fff; border: none; }
+
+/* ACADEMIC (Rasmiy) ------------------------------------------
+   Official university/thesis-defense aesthetic: blueprint navy bg,
+   sealing-wax accent, low-radius formal geometry, faint document grid
+   + inner frame + a corner seal watermark (only on TITLE/CLOSING —
+   see sealWatermark() in layouts.ts, not injected on every slide). No
+   blur/backdrop-filter is used here, so no print fallback is needed. */
+.style-academic .slide {
+  background:
+    radial-gradient(ellipse 900px 600px at 12% -10%, rgba(92,122,153,0.16), transparent 60%),
+    radial-gradient(ellipse 700px 500px at 105% 110%, rgba(176,57,46,0.10), transparent 55%),
+    var(--bg);
+}
+.style-academic .slide::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    repeating-linear-gradient(0deg, rgba(237,234,226,0.035) 0px, rgba(237,234,226,0.035) 1px, transparent 1px, transparent 96px),
+    repeating-linear-gradient(90deg, rgba(237,234,226,0.035) 0px, rgba(237,234,226,0.035) 1px, transparent 1px, transparent 96px);
+  pointer-events: none;
+}
+.style-academic .slide::after {
+  content: '';
+  position: absolute; inset: 24px;
+  border: 1px solid rgba(237,234,226,0.16);
+  pointer-events: none;
+}
+.style-academic .h1, .style-academic .h2 { font-weight: 700; letter-spacing: -0.01em; }
+.style-academic .kicker { display: inline-flex; align-items: center; gap: 10px; color: var(--accent-soft); }
+.style-academic .kicker::before { content: ''; width: 22px; height: 1px; background: var(--accent); }
+.style-academic .card,
+.style-academic .step {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+}
+.style-academic .step__node { background: var(--accent); color: var(--text); border-radius: var(--radius-sm); }
+.style-academic .btn--primary { background: var(--accent); color: var(--text); border-radius: var(--radius-sm); }
+.style-academic .tag { border-radius: var(--radius-sm); border-color: var(--border); }
+.style-academic .compare__col--next { background: var(--accent); color: var(--text); border-radius: var(--radius-md); }
+.style-academic .compare__col--now  { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-md); color: var(--text-muted); }
+.style-academic .prose-body strong { color: var(--accent-soft); }
+.seal-watermark {
+  position: absolute; right: 40px; bottom: 30px;
+  width: 220px; height: 220px;
+  color: var(--text);
+  opacity: 0.07;
+  pointer-events: none;
+}
+
+/* ============================================================
+   DARK_PREMIUM — 5 YANGI KONSEPSIYA (2026 research)
+   Semantik token ishlatgani uchun texnik jihatdan boshqa temalarda
+   ham ishlaydi, lekin vizual niyat faqat dark_premium uchun —
+   d.layout orqali tanlab chaqiriladi (bot/AI hozircha buni
+   tanlamaydi, faqat qo'lda o'rnatilganda ishlaydi).
+   ============================================================ */
+
+/* ---------- 1) DEFINITION glass_hero ---------- */
+.gh-orb1 { position:absolute; top:-15%; left:10%; width:34%; aspect-ratio:1; border-radius:50%;
+  background: radial-gradient(circle, rgba(201,162,75,0.5), transparent 70%); filter: blur(40px); z-index:0; }
+.gh-orb2 { position:absolute; bottom:-20%; right:8%; width:30%; aspect-ratio:1; border-radius:50%;
+  background: radial-gradient(circle, rgba(134,165,196,0.4), transparent 70%); filter: blur(40px); z-index:0; }
+.gh-panel {
+  position: relative; z-index: 1; backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+  background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.14);
+  border-radius: 28px; padding: 44px 48px; max-width: 780px;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.15), 0 20px 60px rgba(0,0,0,0.35);
+}
+.gh-term { font-family: var(--font-display); font-size: 46px; font-weight: 700; color: var(--text); }
+.gh-def { font-size: 18px; line-height: 1.55; color: var(--text-muted); margin-top: 16px; }
+
+@media print {
+  .gh-panel { backdrop-filter: none; -webkit-backdrop-filter: none; background: rgba(255,255,255,0.09); }
+}
+
+/* ---------- 2) FINDING z_stack ---------- */
+.zs-wrap { position: relative; height: 100%; display: flex; align-items: center; }
+.zs-card { position: absolute; width: 380px; padding: 30px 32px; border-radius: 22px;
+  background: rgba(255,255,255,0.045); border: 1px solid rgba(255,255,255,0.10);
+  backdrop-filter: blur(10px); }
+.zs-card--back1 { left: 40px; top: 50%; transform: translateY(-50%) rotate(-6deg) scale(0.92); opacity: 0.55; z-index: 1; }
+.zs-card--back2 { left: 90px; top: 50%; transform: translateY(-50%) rotate(-2deg) scale(0.96); opacity: 0.78; z-index: 2; }
+.zs-card--front { left: 150px; top: 50%; transform: translateY(-50%); z-index: 3;
+  box-shadow: 0 24px 60px -10px rgba(0,0,0,0.5), 0 0 0 1px rgba(201,162,75,0.25);
+  border-color: rgba(201,162,75,0.3); }
+.zs-num { font-family: var(--font-display); font-weight: 700; font-size: 15px; color: var(--accent); margin-bottom: 10px; }
+.zs-title { font-size: 18px; font-weight: 700; color: var(--text); margin-bottom: 8px; }
+.zs-text { font-size: 13.5px; color: var(--text-muted); line-height: 1.5; }
+
+@media print {
+  .zs-card { backdrop-filter: none; -webkit-backdrop-filter: none; }
+}
+
+/* ---------- 3) STATS gradient_cards ---------- */
+.gm-row { gap: 22px; }
+.gm-card { border-radius: 24px; padding: 36px 30px; position: relative; overflow: hidden; }
+.gm-card--a { background: linear-gradient(160deg, rgba(201,162,75,0.22), rgba(201,162,75,0.03)); border: 1px solid rgba(201,162,75,0.25); }
+.gm-card--b { background: linear-gradient(160deg, rgba(134,165,196,0.20), rgba(134,165,196,0.03)); border: 1px solid rgba(134,165,196,0.22); }
+.gm-card--c { background: rgba(255,255,255,0.045); border: 1px solid rgba(255,255,255,0.10); }
+.gm-num { font-family: var(--font-display); font-weight: 700; font-size: 56px; line-height: 1; color: var(--text); }
+.gm-lbl { font-size: 13px; color: var(--text-muted); margin-top: 10px; }
+.gm-orb { position: absolute; bottom: -30%; right: -20%; width: 70%; aspect-ratio: 1; border-radius: 50%;
+  background: radial-gradient(circle, rgba(201,162,75,0.25), transparent 70%); filter: blur(20px); }
+
+/* ---------- 4) TURLAR squircle_bento ---------- */
+.sq-grid { gap: 18px; }
+.sq-card {
+  border-radius: 32px; padding: 26px 22px; background: rgba(255,255,255,0.045);
+  border: 1px solid rgba(255,255,255,0.10); position: relative; overflow: hidden;
+}
+.sq-card::before { content: ""; position: absolute; top: 0; left: 15%; right: 15%; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent); }
+.sq-icon { width: 40px; height: 40px; border-radius: 14px; display: grid; place-items: center;
+  background: linear-gradient(135deg, var(--accent), rgba(201,162,75,0.5)); color: var(--bg);
+  font-weight: 700; font-size: 15px; margin-bottom: 14px; }
+.sq-title { font-size: 15.5px; font-weight: 700; color: var(--text); }
+.sq-text { font-size: 12px; color: var(--text-muted); line-height: 1.4; margin-top: 6px; }
+
+/* ---------- 5) TIMELINE rim_light ---------- */
+.rl-track { position: relative; padding-top: 8px; }
+.rl-axis { position: absolute; top: 40px; left: 20px; right: 20px; height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent) 20%, var(--accent) 80%, transparent); }
+.rl-step { width: 22%; display: flex; flex-direction: column; align-items: center; gap: 14px; text-align: center; }
+.rl-node { width: 40px; height: 40px; border-radius: 50%; background: rgba(201,162,75,0.15);
+  border: 1.5px solid var(--accent); box-shadow: 0 0 0 1px rgba(201,162,75,0.15), 0 0 20px -2px var(--accent);
+  display: grid; place-items: center; font-family: var(--font-display); font-weight: 700; font-size: 14px; color: var(--accent); }
+.rl-card { background: rgba(255,255,255,0.045); border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 16px; padding: 16px 14px; backdrop-filter: blur(8px); }
+
+@media print {
+  .rl-card { backdrop-filter: none; -webkit-backdrop-filter: none; }
+}
+
+/* ============================================================
+   DARK_PREMIUM — 6 YANGI LAYOUT (developer-tool chrome estetikasi)
+   Barcha monospace elementlar tizim shriftlaridan foydalanadi — yangi
+   Google Fonts import shart emas.
+   ============================================================ */
+
+/* ---------- 1) CONTENT changelog_lines ---------- */
+.cl-list { display: flex; flex-direction: column; }
+.cl-row { display: flex; align-items: baseline; gap: 18px; padding: 14px 0; border-bottom: 1px solid var(--border); }
+.cl-row:last-child { border-bottom: none; }
+.cl-linenum {
+  font-family: ui-monospace, 'SF Mono', Consolas, monospace;
+  font-size: 12px; color: var(--text-muted); opacity: 0.55; width: 24px; flex-shrink: 0;
+}
+.cl-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+.cl-text { font-size: 16px; color: var(--text); line-height: 1.5; }
+.cl-text b { color: var(--accent); font-weight: 600; }
+
+/* ---------- 2) BATAFSIL marginalia ---------- */
+.mg-body { font-size: 18px; line-height: 1.75; color: var(--text); }
+.mg-margin { display: flex; flex-direction: column; gap: 20px; padding-top: 6px; border-left: 1px solid var(--border); padding-left: 22px; }
+.mg-note { position: relative; padding-left: 16px; }
+.mg-note__tick { position: absolute; left: 0; top: 7px; width: 8px; height: 2px; background: var(--accent); }
+.mg-note__text { font-size: 14px; color: var(--accent-soft); line-height: 1.4; font-style: italic; }
+
+/* ---------- 3) MISOL signal_ping ---------- */
+.sp-radar { position: relative; width: 200px; height: 200px; flex-shrink: 0; }
+.sp-ring { position: absolute; border-radius: 50%; border: 1px solid var(--accent); }
+.sp-ring--1 { inset: 60px; opacity: 0.55; }
+.sp-ring--2 { inset: 30px; opacity: 0.3; }
+.sp-ring--3 { inset: 0; opacity: 0.14; }
+.sp-crosshair { position: absolute; background: var(--border); }
+.sp-crosshair--v { left: 50%; top: -6px; bottom: -6px; width: 1px; transform: translateX(-50%); }
+.sp-crosshair--h { top: 50%; left: -6px; right: -6px; height: 1px; transform: translateY(-50%); }
+.sp-core {
+  position: absolute; inset: 92px; border-radius: 50%; background: var(--accent);
+  box-shadow: 0 0 0 6px rgba(201,162,75,0.15), 0 0 24px 2px rgba(201,162,75,0.5);
+}
+.sp-data { flex: 1; display: flex; flex-direction: column; gap: 16px; }
+.sp-label {
+  font-size: 12px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--accent); font-family: ui-monospace, 'SF Mono', Consolas, monospace;
+}
+.sp-body { font-size: 19px; line-height: 1.55; color: var(--text); max-width: 640px; }
+.sp-readout {
+  display: inline-block; font-family: ui-monospace, 'SF Mono', Consolas, monospace;
+  font-size: 14px; color: var(--accent-soft); border: 1px solid var(--border);
+  border-radius: 8px; padding: 10px 16px; background: rgba(255,255,255,0.03); align-self: flex-start;
+}
+
+/* ---------- 4) COMPARISON toggle_spectrum ---------- */
+.ts-track { display: flex; align-items: center; gap: 20px; }
+.ts-track__lbl { font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); flex-shrink: 0; }
+.ts-track__lbl--r { color: var(--accent); }
+.ts-track__bar { flex: 1; height: 6px; border-radius: 999px; background: var(--border); position: relative; }
+.ts-track__knob {
+  position: absolute; right: 6px; top: 50%; transform: translateY(-50%);
+  width: 22px; height: 22px; border-radius: 50%; background: var(--accent);
+  box-shadow: 0 0 0 4px rgba(201,162,75,0.18);
+}
+
+/* ---------- 5) PROCESS kbd_chain ---------- */
+.kc-chain { display: flex; align-items: stretch; gap: 12px; }
+.kc-key {
+  flex: 1; border-radius: 10px; padding: 20px 16px; text-align: center;
+  background: linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.03));
+  border: 1px solid var(--border); border-top-color: rgba(255,255,255,0.18);
+  box-shadow: 0 2px 0 rgba(0,0,0,0.3);
+}
+.kc-key__n { font-family: var(--font-display); font-weight: 700; font-size: 20px; color: var(--accent); }
+.kc-key__title { font-size: 14px; font-weight: 700; color: var(--text); margin-top: 8px; }
+.kc-key__body { font-size: 13.5px; color: var(--text-muted); margin-top: 6px; line-height: 1.42; }
+.kc-plus { display: flex; align-items: center; font-size: 20px; color: var(--text-muted); opacity: 0.5; }
+
+/* ---------- 6) PROBLEMS_SOLUTIONS diff_view ----------
+   #E56259/#61C454 are INTENTIONALLY raw hex (git-diff red/green convention),
+   not semantic tokens — see comment in layouts.ts problemsSolutionsDiffView. */
+.df-block { border-radius: 12px; overflow: hidden; border: 1px solid var(--border); font-family: ui-monospace, 'SF Mono', Consolas, monospace; }
+.df-line { display: flex; align-items: flex-start; gap: 14px; padding: 14px 20px; font-size: 14.5px; line-height: 1.5; }
+.df-line--rm { background: rgba(229,98,89,0.08); color: var(--text-muted); text-decoration: line-through; text-decoration-color: rgba(229,98,89,0.4); }
+.df-line--add { background: rgba(97,196,84,0.08); color: var(--text); border-bottom: 1px solid var(--border); }
+.df-marker { font-weight: 700; width: 16px; flex-shrink: 0; }
+.df-line--rm .df-marker { color: #E56259; }
+.df-line--add .df-marker { color: #61C454; }
+</style></head>
+<body><div class="deck">
+  <section class="slide style-dark">
+    
+    
+    <div class="titul-typo">
+      <div class="titul-typo__top"></div>
+      <div class="titul-typo__center">
+        <div class="titul-typo__bar"></div>
+        <h1 class="titul-topic" style="font-size:74px;line-height:1.02;max-width:1080px">O'zbekistonda startap ekotizimi</h1>
+      </div>
+      <div class="titul-typo__foot">
+        <div>
+          
+          
+        </div>
+        <div></div>
+      </div>
+    </div>
+  
+    
+  <span class="page-no">01</span>
+  <span class="theme-tag"><span class="theme-tag__dot"></span>Tungi</span>
+
+  </section>
+
+
+  <section class="slide style-dark">
+    
+    
+    <div class="content-block">
+      <header class="content-block__head">
+        
+        <h2 class="h2">Reja</h2>
+      </header>
+      <div class="content-block__body">
+        <ol class="agenda agenda--two">
+          
+            <li class="agenda__item">
+              <span class="agenda__num">01</span>
+              <span class="agenda__text">
+                <span class="agenda__label">Startap tushunchasi va uning mohiyati</span>
+              </span>
+            </li>
+          
+            <li class="agenda__item">
+              <span class="agenda__num">02</span>
+              <span class="agenda__text">
+                <span class="agenda__label">O'zbekistonda ekotizimning shakllanish bosqichlari</span>
+              </span>
+            </li>
+          
+            <li class="agenda__item">
+              <span class="agenda__num">03</span>
+              <span class="agenda__text">
+                <span class="agenda__label">Asosiy yo'nalishlar va ishtirokchilar</span>
+              </span>
+            </li>
+          
+            <li class="agenda__item">
+              <span class="agenda__num">04</span>
+              <span class="agenda__text">
+                <span class="agenda__label">Davlat va xususiy sektorning roli</span>
+              </span>
+            </li>
+          
+            <li class="agenda__item">
+              <span class="agenda__num">05</span>
+              <span class="agenda__text">
+                <span class="agenda__label">Tizimli muammolar va mumkin bo'lgan yechimlar</span>
+              </span>
+            </li>
+          
+            <li class="agenda__item">
+              <span class="agenda__num">06</span>
+              <span class="agenda__text">
+                <span class="agenda__label">Tavsiyalar va xulosa</span>
+              </span>
+            </li>
+          
+        </ol>
+      </div>
+    </div>
+  
+    
+  <span class="page-no">02</span>
+  <span class="theme-tag"><span class="theme-tag__dot"></span>Tungi</span>
+
+  </section>
+
+
+  <section class="slide style-dark">
+    
+    
+    <div class="content-block">
+      <header class="content-block__head" style="max-width:1000px">
+        <div class="kicker" style="margin-bottom:14px">Asosiy tushuncha</div>
+        <h2 class="h1" style="font-size:54px">Startap</h2>
+        <p class="lead" style="margin-top:18px">Startap — <strong>bozordagi muammoni innovatsion yechim orqali hal etishga</strong> mo'ljallangan, tez o'sish potentsialiga ega yangi biznes tashkiloti; kichik jamoa, cheklangan resurs va yuqori noaniqlik sharoitida faoliyat yuritadi.</p>
+      </header>
+      <div class="content-block__body grid-3">
+            
+              <div class="card">
+                <span class="card__icon"><svg class="ico" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13c-1.5.7-3 3-3 6 3 0 5.3-1.5 6-3M9 14l-3-3a14 14 0 0 1 9-8c2 0 4 .5 4 .5s.5 2 .5 4a14 14 0 0 1-8 9l-3-3Z"/><circle cx="14.5" cy="9.5" r="1.5"/></svg></span>
+                <div class="def-aspect__label">Tez o'sish maqsadi</div>
+                <p class="text--sm muted" style="margin-top:10px">Oddiy biznesdan farqli, startap nishonlangan bozorni tezda kengaytirishga qaratilgan bo'ladi.</p>
+              </div>
+            
+              <div class="card">
+                <span class="card__icon"><svg class="ico" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.1V17h6v-.2c0-.8.4-1.6 1-2.1A7 7 0 0 0 12 2Z"/></svg></span>
+                <div class="def-aspect__label">Innovatsion g'oya</div>
+                <p class="text--sm muted" style="margin-top:10px">Yangi texnologiya yoki raqamli mahsulot orqali mavjud muammoga yangicha yechim taklif etiladi.</p>
+              </div>
+            
+              <div class="card">
+                <span class="card__icon"><svg class="ico" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.9"/><path d="M16 3.1a4 4 0 0 1 0 7.8"/></svg></span>
+                <div class="def-aspect__label">Kichik, epchil jamoa</div>
+                <p class="text--sm muted" style="margin-top:10px">Cheklangan resurs sharoitida ham jamoaning moslashuvchanligi asosiy ustunlik bo'lib xizmat qiladi.</p>
+              </div>
+            
+          </div>
+    </div>
+  
+    
+  <span class="page-no">03</span>
+  <span class="theme-tag"><span class="theme-tag__dot"></span>Tungi</span>
+
+  </section>
+
+
+  <section class="slide style-dark">
+    
+    
+    <div class="content-block">
+      <header class="content-block__head">
+        
+        <h2 class="h2">O'zbekiston startap ekotizimi bosqichma-bosqich shakllandi</h2>
+      </header>
+      <div class="content-block__body">
+        <div class="rl-track">
+          <div class="rl-axis"></div>
+          <div class="rl-row" style="display:flex;justify-content:space-between">
+            
+              <div class="rl-step">
+                <div class="rl-node">1</div>
+                <div class="rl-card">
+                  <div style="font-size:12px;font-weight:700;color:var(--accent)">2017</div>
+                  <div style="font-size:13px;font-weight:600;margin-top:4px">IT-Park tashkil etildi</div>
+                </div>
+              </div>
+            
+              <div class="rl-step">
+                <div class="rl-node">2</div>
+                <div class="rl-card">
+                  <div style="font-size:12px;font-weight:700;color:var(--accent)">2019</div>
+                  <div style="font-size:13px;font-weight:600;margin-top:4px">«Raqamli O'zbekiston» dasturi</div>
+                </div>
+              </div>
+            
+              <div class="rl-step">
+                <div class="rl-node">3</div>
+                <div class="rl-card">
+                  <div style="font-size:12px;font-weight:700;color:var(--accent)">2021</div>
+                  <div style="font-size:13px;font-weight:600;margin-top:4px">Startup Uzbekistan ishga tushdi</div>
+                </div>
+              </div>
+            
+              <div class="rl-step">
+                <div class="rl-node">4</div>
+                <div class="rl-card">
+                  <div style="font-size:12px;font-weight:700;color:var(--accent)">2023</div>
+                  <div style="font-size:13px;font-weight:600;margin-top:4px">Xalqaro hamkorlik kengaydi</div>
+                </div>
+              </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    
+  <span class="page-no">04</span>
+  <span class="theme-tag"><span class="theme-tag__dot"></span>Tungi</span>
+
+  </section>
+
+
+  <section class="slide style-dark">
+    
+    
+    <div class="content-block">
+      <header class="content-block__head">
+        <div class="kicker" style="margin-bottom:14px">Asosiy yo'nalishlar</div>
+        <h2 class="h2">To'rtta soha O'zbekiston startap ekotizimini boshqarmoqda</h2>
+      </header>
+      <div class="content-block__body">
+        <div class="sq-grid grid-4" style="display:grid">
+          
+            <div class="sq-card">
+              <div class="sq-icon"><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M14.5 9a2.5 2.5 0 0 0-2.5-1.5c-1.4 0-2.5.9-2.5 2s1.1 1.8 2.5 2 2.5.9 2.5 2-1.1 2-2.5 2A2.5 2.5 0 0 1 9.5 15M12 6v1.5M12 16.5V18"/></svg></div>
+              <div class="sq-title">Fintech</div>
+              <div class="sq-text"><strong>Payme va Uzum Bank</strong> onlayn to'lov, raqamli kredit va moliyaviy xizmatlarni keng ommalashtirib yubordi.</div>
+            </div>
+          
+            <div class="sq-card">
+              <div class="sq-icon"><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 9 12 4 2 9l10 5 10-5Z"/><path d="M6 11v5c0 1 2.7 3 6 3s6-2 6-3v-5"/></svg></div>
+              <div class="sq-title">Edtech</div>
+              <div class="sq-text">Ustoz.uz va Mohirdev kabi platformalar <strong>masofaviy ta'lim</strong> hamda kasbiy malaka oshirishni yetkazib beradi.</div>
+            </div>
+          
+            <div class="sq-card">
+              <div class="sq-icon"><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 20A7 7 0 0 1 4 13c0-5 4-9 16-9 0 12-4 16-9 16Z"/><path d="M11 20c0-5 2.5-9 6-11"/></svg></div>
+              <div class="sq-title">Agrotech</div>
+              <div class="sq-text">IoT qurilmalari va raqamli tahlil orqali <strong>qishloq xo'jaligi</strong> samaradorligini oshirishga yo'naltirilgan yechimlar.</div>
+            </div>
+          
+            <div class="sq-card">
+              <div class="sq-icon"><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18 14 14 0 0 1 0-18Z"/></svg></div>
+              <div class="sq-title">E-commerce va logistika</div>
+              <div class="sq-text">Onlayn savdo platformalari va <strong>yetkazib berish xizmatlari</strong> ichki bozorda tobora kuchayib bormoqda.</div>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  
+    
+  <span class="page-no">05</span>
+  <span class="theme-tag"><span class="theme-tag__dot"></span>Tungi</span>
+
+  </section>
+
+
+  <section class="slide style-dark">
+    
+    
+    <div class="content-block">
+      <header class="content-block__head">
+        
+        <h2 class="h2">Davlat va xususiy sektor startaplarni birgalikda qo'llab-quvvatlaydi</h2>
+        <p class="lead" style="margin-top:14px;max-width:900px">Qo'llab-quvvatlash tizimi ikki ustunda qurilgan: davlat imtiyozlari infratuzilma yaratadi, xususiy kapital esa o'sishni moliyalashtiradi.</p>
+      </header>
+      <div class="content-block__body">
+        <div class="cl-list">
+          
+            <div class="cl-row">
+              <span class="cl-linenum">01</span>
+              <span class="cl-dot"></span>
+              <span class="cl-text"><b>Soliq va bojxona imtiyozlari</b> <strong>IT-Park rezidentlari</strong> 7 yil davomida soliq va bojxona to'lovlaridan ozod etiladi — bu xarajatlarni sezilarli kamaytiradi.</span>
+            </div>
+          
+            <div class="cl-row">
+              <span class="cl-linenum">02</span>
+              <span class="cl-dot"></span>
+              <span class="cl-text"><b>Texnopark va inkubatorlar</b> Texnoparklar startaplarga ishchi joy, server infratuzilmasi va tajribali mentorlar bilan ishlash imkonini beradi.</span>
+            </div>
+          
+            <div class="cl-row">
+              <span class="cl-linenum">03</span>
+              <span class="cl-dot"></span>
+              <span class="cl-text"><b>Venture fondlar investitsiyasi</b> UZVC va Sturgeon Capital kabi fondlar <strong>dastlabki bosqich</strong> startaplarga urug' kapital kiritib, o'sishini tezlashtiradi.</span>
+            </div>
+          
+            <div class="cl-row">
+              <span class="cl-linenum">04</span>
+              <span class="cl-dot"></span>
+              <span class="cl-text"><b>Davlat xaridlari imkoniyati</b> Davlat xaridlari tizimiga kiritilgan o'zgarishlar startap mahsulotlarining davlat bozoriga chiqishini osonlashtiradi.</span>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  
+    
+  <span class="page-no">06</span>
+  <span class="theme-tag"><span class="theme-tag__dot"></span>Tungi</span>
+
+  </section>
+
+
+  <section class="slide style-dark">
+    
+    
+    <div class="content-block">
+      <header class="content-block__head">
+        
+        <h2 class="h2">Raqamlar ekotizimning jadal o'sishini tasdiqlaydi</h2>
+        <p class="lead" style="margin-top:14px">2017-yildan buyon o'lchov ko'rsatkichlari sezilarli darajada yaxshilandi.</p>
+      </header>
+      <div class="content-block__body">
+        <div class="gm-row grid-4" style="display:grid">
+          
+            <div class="gm-card gm-card--a">
+              <div class="gm-orb"></div>
+              <div class="gm-num">~1000</div>
+              <div class="gm-lbl">IT-Park rezidenti</div>
+            </div>
+          
+            <div class="gm-card gm-card--b">
+              
+              <div class="gm-num">~50<span class="metric__unit">mln $</span></div>
+              <div class="gm-lbl">xorijiy investitsiya</div>
+            </div>
+          
+            <div class="gm-card gm-card--c">
+              
+              <div class="gm-num">2<span class="metric__unit">barobar</span></div>
+              <div class="gm-lbl">IT ulushi o'sishi</div>
+            </div>
+          
+            <div class="gm-card gm-card--a">
+              
+              <div class="gm-num">12</div>
+              <div class="gm-lbl">akselerator</div>
+            </div>
+          
+        </div>
+        <p class="lead" style="margin-top:24px;max-width:980px">Har bir ko'rsatkich startap muhitining kengayib, mustahkamlanib borayotganini ko'rsatadi.</p>
+        <p class="source-note" style="margin-top:8px">IT-Park rasmiy ma'lumotlari; ommaviy tahlil hisobotlari</p>
+      </div>
+    </div>
+  
+    
+  <span class="page-no">07</span>
+  <span class="theme-tag"><span class="theme-tag__dot"></span>Tungi</span>
+
+  </section>
+
+
+  <section class="slide style-dark">
+    
+    
+    <div class="content-block">
+      <header class="content-block__head">
+        <div class="kicker" style="margin-bottom:14px">Tizimli muammolar</div>
+        <h2 class="h2">Ekotizimning uchta asosiy muammosi — va ularga yechim</h2>
+        <p class="lead" style="margin-top:12px">Venture moliyalash, kadrlar va huquqiy bo'shliqlar ekotizim o'sishini cheklaydi — har biriga aniq yondashuv zarur.</p>
+      </header>
+      <div class="content-block__body">
+        <div class="df-block">
+          
+            <div class="df-line df-line--rm"><span class="df-marker">−</span><span class="df-text">Venture kapital tanqisligi: mahalliy investorlar startaplarga kamdan-kam mablag' ajratadi.</span></div>
+            <div class="df-line df-line--add"><span class="df-marker">+</span><span class="df-text">Davlat-xususiy sheriklikda ko'p bosqichli investitsiya fondlarini tashkil etish.</span></div>
+          
+            <div class="df-line df-line--rm"><span class="df-marker">−</span><span class="df-text">Malakali texnik kadrlar yetishmasligi universitetlar va bozor talabi orasidagi tafovutdan kelib chiqadi.</span></div>
+            <div class="df-line df-line--add"><span class="df-marker">+</span><span class="df-text">IT-Park va universitetlar o'rtasida amaliyotga yo'naltirilgan qo'shma o'quv dasturlarini joriy etish.</span></div>
+          
+            <div class="df-line df-line--rm"><span class="df-marker">−</span><span class="df-text">IP huquqi va crowdfunding sohasidagi huquqiy bo'shliqlar startaplar faoliyatini qiyinlashtiradi.</span></div>
+            <div class="df-line df-line--add"><span class="df-marker">+</span><span class="df-text">Xalqaro tajribaga asoslangan innovatsion qonunchilik islohotlarini tezlashtirish.</span></div>
+          
+        </div>
+      </div>
+    </div>
+  
+    
+  <span class="page-no">08</span>
+  <span class="theme-tag"><span class="theme-tag__dot"></span>Tungi</span>
+
+  </section>
+
+
+  <section class="slide style-dark">
+    
+    
+    <div class="content-block">
+      <header class="content-block__head">
+        <div class="kicker" style="margin-bottom:14px">Har bir manfaatdor tomonga aniq vazifa</div>
+        <h2 class="h2">Ekotizimni rivojlantirish bo'yicha tavsiyalar</h2>
+      </header>
+      <div class="content-block__body" style="display:flex;flex-direction:column;gap:14px">
+        <ul class="conclusion">
+          
+            <li class="conclusion__item">
+              <span class="conclusion__num">1</span>
+              <span class="conclusion__text">
+                <span class="rec__to">Qonunchilik organlari uchun</span>
+                <span>Startaplarga <strong>alohida huquqiy maqom</strong> beruvchi va ro'yxatdan o'tishni soddalashtiruvchi normalarni qonunchilikka kiritish.</span>
+              </span>
+            </li>
+          
+            <li class="conclusion__item">
+              <span class="conclusion__num">2</span>
+              <span class="conclusion__text">
+                <span class="rec__to">Universitetlar uchun</span>
+                <span>Talabalar startaplari uchun <strong>ichki inkubatorlar</strong> va «sandbox» muhitini tashkil etib, nazariyani amaliyot bilan bog'lash.</span>
+              </span>
+            </li>
+          
+            <li class="conclusion__item">
+              <span class="conclusion__num">3</span>
+              <span class="conclusion__text">
+                <span class="rec__to">Xususiy investorlar uchun</span>
+                <span>Dastlabki bosqich startaplarni moliyalash uchun <strong>biznes-angel tarmoqlarini</strong> kengaytirish va ularga rasmiy tus berish.</span>
+              </span>
+            </li>
+          
+            <li class="conclusion__item">
+              <span class="conclusion__num">4</span>
+              <span class="conclusion__text">
+                <span class="rec__to">IT-Park uchun</span>
+                <span>Texnopark tarmog'ini <strong>viloyatlarga kengaytirish</strong> orqali ekotizimning geografik qamrovini oshirish.</span>
+              </span>
+            </li>
+          
+        </ul>
+        <p class="conclusion__closing">Bu to'rtta yo'nalish birgalikda amalga oshirilsagina, O'zbekiston startap ekotizimi o'z to'liq salohiyatini ro'yobga chiqara oladi.</p>
+      </div>
+    </div>
+  
+    
+  <span class="page-no">09</span>
+  <span class="theme-tag"><span class="theme-tag__dot"></span>Tungi</span>
+
+  </section>
+
+
+  <section class="slide style-dark">
+    
+    
+    <div style="padding:var(--pad-y) var(--pad-x);height:100%;display:flex;
+                flex-direction:column;justify-content:center;align-items:center;
+                text-align:center;gap:22px">
+      <h1 class="h1" style="font-size:62px;max-width:1060px">E'tiboringiz uchun rahmat!</h1>
+    </div>
+  
+    
+  <span class="page-no">10</span>
+  <span class="theme-tag"><span class="theme-tag__dot"></span>Tungi</span>
+
+  </section>
+</div></body></html>

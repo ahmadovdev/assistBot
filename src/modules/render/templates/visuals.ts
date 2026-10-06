@@ -25,6 +25,11 @@ export function getThemeVisual(
     case 'editorial': return editorialVisual(variant, t.colors, instanceId);
     case 'pastel':    return pastelVisual(variant, t.colors, instanceId);
     case 'bento':     return bentoVisual(variant, t.colors, instanceId);
+    // academic_formal has its own CSS-driven background (grid lines + seal
+    // watermark, see document.ts .style-academic) — reuse the dark visual
+    // set here since both are dark-bg themes and this function is otherwise
+    // unused (no call sites currently reference getThemeVisual()).
+    case 'academic':  return darkVisual(variant, t.colors, instanceId);
   }
 }
 

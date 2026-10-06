@@ -1,0 +1,428 @@
+{
+  "id": "57c20b07-f1d7-4170-b378-9a8203ff99a7",
+  "topic": "O'zbekistonda startap ekotizimi",
+  "language": "uz",
+  "slideCount": 10,
+  "status": "done",
+  "createdAt": "2026-07-10T09:50:58.690Z",
+  "updatedAt": "2026-07-10T09:53:16.028Z",
+  "user": {
+    "username": "shahzod_ahmadov",
+    "firstName": "Shahzod",
+    "languageCode": "uz"
+  },
+  "theme": {
+    "key": "dark_premium",
+    "name": "🌑 Dark Premium"
+  },
+  "outline": {
+    "slides": [
+      {
+        "type": "TITLE",
+        "title": "O'zbekistonda startap ekotizimi",
+        "position": 1,
+        "key_points": [
+          "Toshkent davlat iqtisodiyot universiteti",
+          "Iqtisodiyot va innovatsiya fakulteti",
+          "Tayyorladi: [Talaba ismi] | Ilmiy rahbar: [F.I.Sh.] | 2025"
+        ]
+      },
+      {
+        "type": "AGENDA",
+        "title": "Reja",
+        "position": 2,
+        "key_points": [
+          "1. Startap tushunchasi va uning mohiyati",
+          "2. O'zbekistonda startap ekotizimining shakllanishi",
+          "3. Asosiy ishtirokchilar va qo'llab-quvvatlash mexanizmlari",
+          "4. Muammolar va yechimlar",
+          "5. Tavsiyalar va xulosa"
+        ]
+      },
+      {
+        "type": "DEFINITION",
+        "title": "Startap nima? Asosiy tushuncha",
+        "position": 3,
+        "key_points": [
+          "Startap — tez o'sishga mo'ljallangan, innovatsion g'oyaga asoslangan yangi biznes tashkiloti",
+          "Kichik jamoa, cheklangan resurslar, yuqori noaniqlik sharoitida faoliyat yuritadi",
+          "Texnologiya va raqamli mahsulotlar asosiy yo'nalish bo'lib hisoblanadi",
+          "Faoliyat maqsadi: bozordagi mavjud muammoni yangicha usul bilan hal etish"
+        ]
+      },
+      {
+        "type": "TIMELINE",
+        "title": "O'zbekiston startap ekotizimining shakllanish bosqichlari",
+        "position": 4,
+        "key_points": [
+          "2017 — IT-Park tashkil etildi; raqamli iqtisodiyotga o'tish siyosati e'lon qilindi",
+          "2019 — «Raqamli O'zbekiston» dasturi qabul qilindi; startaplarga soliq imtiyozlari joriy etildi",
+          "2021 — Startup Uzbekistan platformasi ishga tushdi; davlat ventura jamg'armasi tuzildi",
+          "2023 — Xalqaro akseleratorlar bilan hamkorlik kengaydi; ayrim startaplar global bozorlarga chiqdi"
+        ]
+      },
+      {
+        "type": "TURLAR",
+        "title": "O'zbekiston startaplarining asosiy yo'nalishlari",
+        "position": 5,
+        "key_points": [
+          "Fintech: onlayn to'lov, kredit va moliyaviy xizmatlar (Payme, Uzum Bank)",
+          "Edtech: masofaviy ta'lim va malaka oshirish platformalari (Ustoz.uz, Mohirdev)",
+          "Agrotech: qishloq xo'jaligida raqamli texnologiyalar va IoT yechimlari",
+          "E-commerce va logistika: onlayn savdo va yetkazib berish xizmatlari"
+        ]
+      },
+      {
+        "type": "CONTENT",
+        "title": "Davlat va xususiy sektor startaplarni qo'llab-quvvatlaydi",
+        "position": 6,
+        "key_points": [
+          "IT-Park rezidentlari uchun 7 yillik soliq va bojxona imtiyozlari belgilangan",
+          "Texnopark va biznes inkubatorlar texnik infratuzilma hamda mentorlik xizmatlarini taqdim etadi",
+          "Xususiy ventura fondlari (UZVC, Sturgeon Capital) dastlabki bosqich startaplarga investitsiya kiritadi",
+          "Davlat xaridlari tizimi orqali startap mahsulotlari bozorga kirishi osonlashtirilgan"
+        ]
+      },
+      {
+        "type": "STATS",
+        "title": "O'zbekiston startap ekotizimining raqamlarda ko'rinishi",
+        "position": 7,
+        "key_points": [
+          "IT-Park rezidentlari soni 2023-yilga kelib 1 000 dan oshdi (IT-Park rasmiy ma'lumoti)",
+          "2022-yilda startaplarga jalb etilgan xorijiy investitsiyalar hajmi 50 mln dollardan oshdi",
+          "IT sektori YaIMdagi ulushi 2017—2023 yillarda ikki barobarga oshganligi qayd etilgan",
+          "O'zbekistonda faoliyat yurituvchi akseleratorlar soni 2024-yilga kelib 12 taga yetdi"
+        ]
+      },
+      {
+        "type": "PROBLEMS_SOLUTIONS",
+        "title": "Ekotizimning muammolari va mumkin bo'lgan yechimlari",
+        "position": 8,
+        "key_points": [
+          "Muammo: venture kapitalning yetishmasligi — Yechim: davlat-xususiy sheriklikda ko'p bosqichli investitsiya fondlarini tashkil etish",
+          "Muammo: malakali texnik kadrlar tanqisligi — Yechim: universitetlar va IT-Park o'rtasida amaliyotga yo'naltirilgan qo'shma dasturlarni joriy etish",
+          "Muammo: qonunchilikdagi huquqiy bo'shliqlar (IP, crowdfunding) — Yechim: xalqaro tajribaga asoslangan innovatsion qonunchilik islohotlarini tezlashtirish"
+        ]
+      },
+      {
+        "type": "RECOMMENDATIONS",
+        "title": "Ekotizimni rivojlantirish bo'yicha tavsiyalar",
+        "position": 9,
+        "key_points": [
+          "Vazirlikka: startaplar uchun alohida huquqiy maqom va soddalashtirilgan ro'yxatdan o'tish tartibini qonunchilikka kiritish",
+          "Universitetlarga: talabalar startaplari uchun ichki inkubatorlar va «sandbox» muhitini tashkil etish",
+          "Xususiy investorlarga: dastlabki bosqich startaplarni qo'llab-quvvatlashga yo'naltirilgan biznes-angel tarmoqlarini kengaytirish",
+          "IT-Parkka: mintaqaviy texnoparklar tarmog'ini Toshkentdan tashqari viloyatlarga kengaytirish"
+        ]
+      },
+      {
+        "type": "CLOSING",
+        "title": "E'tiboringiz uchun rahmat!",
+        "position": 10,
+        "key_points": [
+          "Savollar va muhokamaga tayyorman",
+          "Foydalanilgan manbalar: IT-Park hisobotlari, «Raqamli O'zbekiston» dasturi, UNCTAD ma'lumotlari, Startup Genome 2023",
+          "Taqdimotchi: [Talaba ismi] | [Guruh] | 2025"
+        ]
+      }
+    ],
+    "deck_title": "O'zbekistonda startap ekotizimi"
+  },
+  "slides": [
+    {
+      "position": 1,
+      "type": "TITLE",
+      "status": "generated",
+      "content": {
+        "title": "O'zbekistonda startap ekotizimi",
+        "layout": "typographic_statement"
+      }
+    },
+    {
+      "position": 2,
+      "type": "AGENDA",
+      "status": "generated",
+      "content": {
+        "items": [
+          {
+            "text": "Startap tushunchasi va uning mohiyati"
+          },
+          {
+            "text": "O'zbekistonda ekotizimning shakllanish bosqichlari"
+          },
+          {
+            "text": "Asosiy yo'nalishlar va ishtirokchilar"
+          },
+          {
+            "text": "Davlat va xususiy sektorning roli"
+          },
+          {
+            "text": "Tizimli muammolar va mumkin bo'lgan yechimlar"
+          },
+          {
+            "text": "Tavsiyalar va xulosa"
+          }
+        ],
+        "title": "Reja"
+      }
+    },
+    {
+      "position": 3,
+      "type": "DEFINITION",
+      "status": "generated",
+      "content": {
+        "term": "Startap",
+        "kicker": "Asosiy tushuncha",
+        "layout": "default",
+        "aspects": [
+          {
+            "icon": "rocket",
+            "text": "Oddiy biznesdan farqli, startap nishonlangan bozorni tezda kengaytirishga qaratilgan bo'ladi.",
+            "label": "Tez o'sish maqsadi"
+          },
+          {
+            "icon": "idea",
+            "text": "Yangi texnologiya yoki raqamli mahsulot orqali mavjud muammoga yangicha yechim taklif etiladi.",
+            "label": "Innovatsion g'oya"
+          },
+          {
+            "icon": "users",
+            "text": "Cheklangan resurs sharoitida ham jamoaning moslashuvchanligi asosiy ustunlik bo'lib xizmat qiladi.",
+            "label": "Kichik, epchil jamoa"
+          }
+        ],
+        "definition": "Startap — <strong>bozordagi muammoni innovatsion yechim orqali hal etishga</strong> mo'ljallangan, tez o'sish potentsialiga ega yangi biznes tashkiloti; kichik jamoa, cheklangan resurs va yuqori noaniqlik sharoitida faoliyat yuritadi."
+      }
+    },
+    {
+      "position": 4,
+      "type": "TIMELINE",
+      "status": "generated",
+      "content": {
+        "steps": [
+          {
+            "body": "Rezidentlarga 7 yillik soliq va bojxona imtiyozlari berildi.",
+            "date": "2017",
+            "title": "IT-Park tashkil etildi"
+          },
+          {
+            "body": "Startaplar uchun davlat darajasida raqamli islohotlar yo'lga qo'yildi.",
+            "date": "2019",
+            "title": "«Raqamli O'zbekiston» dasturi"
+          },
+          {
+            "body": "Yagona startap platformasi va davlat ventura jamg'armasi tuzildi.",
+            "date": "2021",
+            "title": "Startup Uzbekistan ishga tushdi"
+          },
+          {
+            "body": "Akseleratorlar bilan aloqalar mustahkamlandi; startaplar global bozorga chiqdi.",
+            "date": "2023",
+            "title": "Xalqaro hamkorlik kengaydi"
+          }
+        ],
+        "title": "O'zbekiston startap ekotizimi bosqichma-bosqich shakllandi",
+        "layout": "rim_light",
+        "subtitle": "2017—2023 yillar: qonunchilik asoslari, platformalar va xalqaro hamkorlik"
+      }
+    },
+    {
+      "position": 5,
+      "type": "TURLAR",
+      "status": "generated",
+      "content": {
+        "items": [
+          {
+            "icon": "money",
+            "text": "<strong>Payme va Uzum Bank</strong> onlayn to'lov, raqamli kredit va moliyaviy xizmatlarni keng ommalashtirib yubordi.",
+            "label": "Fintech"
+          },
+          {
+            "icon": "education",
+            "text": "Ustoz.uz va Mohirdev kabi platformalar <strong>masofaviy ta'lim</strong> hamda kasbiy malaka oshirishni yetkazib beradi.",
+            "label": "Edtech"
+          },
+          {
+            "icon": "leaf",
+            "text": "IoT qurilmalari va raqamli tahlil orqali <strong>qishloq xo'jaligi</strong> samaradorligini oshirishga yo'naltirilgan yechimlar.",
+            "label": "Agrotech"
+          },
+          {
+            "icon": "globe",
+            "text": "Onlayn savdo platformalari va <strong>yetkazib berish xizmatlari</strong> ichki bozorda tobora kuchayib bormoqda.",
+            "label": "E-commerce va logistika"
+          }
+        ],
+        "title": "To'rtta soha O'zbekiston startap ekotizimini boshqarmoqda",
+        "kicker": "Asosiy yo'nalishlar",
+        "layout": "squircle_bento"
+      }
+    },
+    {
+      "position": 6,
+      "type": "CONTENT",
+      "status": "generated",
+      "content": {
+        "lead": "Qo'llab-quvvatlash tizimi ikki ustunda qurilgan: davlat imtiyozlari infratuzilma yaratadi, xususiy kapital esa o'sishni moliyalashtiradi.",
+        "title": "Davlat va xususiy sektor startaplarni birgalikda qo'llab-quvvatlaydi",
+        "layout": "changelog_lines",
+        "points": [
+          {
+            "icon": "shield",
+            "text": "<strong>IT-Park rezidentlari</strong> 7 yil davomida soliq va bojxona to'lovlaridan ozod etiladi — bu xarajatlarni sezilarli kamaytiradi.",
+            "heading": "Soliq va bojxona imtiyozlari"
+          },
+          {
+            "icon": "gear",
+            "text": "Texnoparklar startaplarga ishchi joy, server infratuzilmasi va tajribali mentorlar bilan ishlash imkonini beradi.",
+            "heading": "Texnopark va inkubatorlar"
+          },
+          {
+            "icon": "money",
+            "text": "UZVC va Sturgeon Capital kabi fondlar <strong>dastlabki bosqich</strong> startaplarga urug' kapital kiritib, o'sishini tezlashtiradi.",
+            "heading": "Venture fondlar investitsiyasi"
+          },
+          {
+            "icon": "flag",
+            "text": "Davlat xaridlari tizimiga kiritilgan o'zgarishlar startap mahsulotlarining davlat bozoriga chiqishini osonlashtiradi.",
+            "heading": "Davlat xaridlari imkoniyati"
+          }
+        ]
+      }
+    },
+    {
+      "position": 7,
+      "type": "STATS",
+      "status": "generated",
+      "content": {
+        "stats": [
+          {
+            "label": "IT-Park rezidenti",
+            "value": "1000",
+            "approx": true,
+            "description": "2023-yilga kelib ro'yxatdan o'tgan kompaniyalar soni"
+          },
+          {
+            "unit": "mln $",
+            "label": "xorijiy investitsiya",
+            "value": "50",
+            "approx": true,
+            "description": "2022-yilda startaplarga jalb etilgan xorijiy kapital"
+          },
+          {
+            "unit": "barobar",
+            "label": "IT ulushi o'sishi",
+            "value": "2",
+            "description": "IT sektorining YaIMdagi ulushi 2017—2023 yillarda ikki barobarga oshdi"
+          },
+          {
+            "label": "akselerator",
+            "value": "12",
+            "description": "O'zbekistonda 2024-yilga kelib faoliyat yurituvchi akseleratorlar soni"
+          }
+        ],
+        "title": "Raqamlar ekotizimning jadal o'sishini tasdiqlaydi",
+        "layout": "gradient_cards",
+        "source": "IT-Park rasmiy ma'lumotlari; ommaviy tahlil hisobotlari",
+        "insight": "Har bir ko'rsatkich startap muhitining kengayib, mustahkamlanib borayotganini ko'rsatadi.",
+        "subtitle": "2017-yildan buyon o'lchov ko'rsatkichlari sezilarli darajada yaxshilandi."
+      }
+    },
+    {
+      "position": 8,
+      "type": "PROBLEMS_SOLUTIONS",
+      "status": "generated",
+      "content": {
+        "pairs": [
+          {
+            "problem": "Venture kapital tanqisligi: mahalliy investorlar startaplarga kamdan-kam mablag' ajratadi.",
+            "solution": "Davlat-xususiy sheriklikda ko'p bosqichli investitsiya fondlarini tashkil etish."
+          },
+          {
+            "problem": "Malakali texnik kadrlar yetishmasligi universitetlar va bozor talabi orasidagi tafovutdan kelib chiqadi.",
+            "solution": "IT-Park va universitetlar o'rtasida amaliyotga yo'naltirilgan qo'shma o'quv dasturlarini joriy etish."
+          },
+          {
+            "problem": "IP huquqi va crowdfunding sohasidagi huquqiy bo'shliqlar startaplar faoliyatini qiyinlashtiradi.",
+            "solution": "Xalqaro tajribaga asoslangan innovatsion qonunchilik islohotlarini tezlashtirish."
+          }
+        ],
+        "title": "Ekotizimning uchta asosiy muammosi — va ularga yechim",
+        "kicker": "Tizimli muammolar",
+        "layout": "diff_view",
+        "subtitle": "Venture moliyalash, kadrlar va huquqiy bo'shliqlar ekotizim o'sishini cheklaydi — har biriga aniq yondashuv zarur."
+      }
+    },
+    {
+      "position": 9,
+      "type": "RECOMMENDATIONS",
+      "status": "generated",
+      "content": {
+        "items": [
+          {
+            "text": "Startaplarga <strong>alohida huquqiy maqom</strong> beruvchi va ro'yxatdan o'tishni soddalashtiruvchi normalarni qonunchilikka kiritish.",
+            "addressee": "Qonunchilik organlari uchun"
+          },
+          {
+            "text": "Talabalar startaplari uchun <strong>ichki inkubatorlar</strong> va «sandbox» muhitini tashkil etib, nazariyani amaliyot bilan bog'lash.",
+            "addressee": "Universitetlar uchun"
+          },
+          {
+            "text": "Dastlabki bosqich startaplarni moliyalash uchun <strong>biznes-angel tarmoqlarini</strong> kengaytirish va ularga rasmiy tus berish.",
+            "addressee": "Xususiy investorlar uchun"
+          },
+          {
+            "text": "Texnopark tarmog'ini <strong>viloyatlarga kengaytirish</strong> orqali ekotizimning geografik qamrovini oshirish.",
+            "addressee": "IT-Park uchun"
+          }
+        ],
+        "title": "Ekotizimni rivojlantirish bo'yicha tavsiyalar",
+        "kicker": "Har bir manfaatdor tomonga aniq vazifa",
+        "closing": "Bu to'rtta yo'nalish birgalikda amalga oshirilsagina, O'zbekiston startap ekotizimi o'z to'liq salohiyatini ro'yobga chiqara oladi."
+      }
+    },
+    {
+      "position": 10,
+      "type": "CLOSING",
+      "status": "generated",
+      "content": {
+        "title": "E'tiboringiz uchun rahmat!",
+        "layout": "default"
+      }
+    }
+  ],
+  "exports": [
+    {
+      "format": "pptx",
+      "fileSize": 4515634,
+      "createdAt": "2026-07-10T09:53:16.024Z"
+    },
+    {
+      "format": "pdf",
+      "fileSize": 2202148,
+      "createdAt": "2026-07-10T09:53:05.457Z"
+    }
+  ],
+  "jobs": [
+    {
+      "stage": "outline",
+      "status": "completed",
+      "modelUsed": "claude-sonnet-4-6",
+      "tokensUsed": 3799,
+      "promptTokens": 2101,
+      "completionTokens": 1698,
+      "costUsd": "0.03177",
+      "finishedAt": "2026-07-10T09:51:41.225Z"
+    },
+    {
+      "stage": "cards",
+      "status": "completed",
+      "modelUsed": "claude-sonnet-4-6",
+      "tokensUsed": 12521,
+      "promptTokens": 8404,
+      "completionTokens": 4117,
+      "costUsd": "0.08697",
+      "finishedAt": "2026-07-10T09:52:56.953Z"
+    }
+  ]
+}

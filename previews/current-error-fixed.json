@@ -1,0 +1,1763 @@
+{
+  "fitReport": {
+    "status": "underfilled",
+    "slides": [
+      {
+        "slideId": "1",
+        "slideIndex": 1,
+        "slideType": "TITLE",
+        "layoutVariant": "typographic_statement",
+        "status": "balanced",
+        "occupancy": 0.13116943359375,
+        "slots": [
+          {
+            "slotId": "title",
+            "path": "title",
+            "role": "title",
+            "clientWidth": 1119,
+            "clientHeight": 108,
+            "scrollWidth": 1119,
+            "scrollHeight": 115,
+            "actualLines": 2,
+            "maxLines": 3,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 7,
+            "occupancy": 0.13116943359375,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          }
+        ],
+        "repairAttempts": []
+      },
+      {
+        "slideId": "2",
+        "slideIndex": 2,
+        "slideType": "AGENDA",
+        "layoutVariant": "default",
+        "status": "underfilled",
+        "occupancy": 0.09441891776190864,
+        "slots": [
+          {
+            "slotId": "title",
+            "path": "title",
+            "role": "title",
+            "clientWidth": 1040,
+            "clientHeight": 51,
+            "scrollWidth": 1040,
+            "scrollHeight": 55,
+            "actualLines": 1,
+            "maxLines": 1,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 4,
+            "occupancy": 0.05741102430555556,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "items",
+            "path": "items.0.text",
+            "role": "list",
+            "clientWidth": 225,
+            "clientHeight": 27,
+            "scrollWidth": 225,
+            "scrollHeight": 27,
+            "actualLines": 1,
+            "maxLines": 2,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.0065466986762152775,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "items",
+            "path": "items.1.text",
+            "role": "list",
+            "clientWidth": 472,
+            "clientHeight": 27,
+            "scrollWidth": 472,
+            "scrollHeight": 27,
+            "actualLines": 1,
+            "maxLines": 2,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.013774130079481337,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "items",
+            "path": "items.2.text",
+            "role": "list",
+            "clientWidth": 324,
+            "clientHeight": 27,
+            "scrollWidth": 324,
+            "scrollHeight": 27,
+            "actualLines": 1,
+            "maxLines": 2,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.009450520409478082,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "items",
+            "path": "items.3.text",
+            "role": "list",
+            "clientWidth": 248,
+            "clientHeight": 27,
+            "scrollWidth": 248,
+            "scrollHeight": 27,
+            "actualLines": 1,
+            "maxLines": 2,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.007236544291178385,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          }
+        ],
+        "repairAttempts": []
+      },
+      {
+        "slideId": "3",
+        "slideIndex": 3,
+        "slideType": "RELEVANCE",
+        "layoutVariant": "default",
+        "status": "balanced",
+        "occupancy": 0.3566187879774305,
+        "slots": [
+          {
+            "slotId": "title",
+            "path": "title",
+            "role": "title",
+            "clientWidth": 1080,
+            "clientHeight": 102,
+            "scrollWidth": 1080,
+            "scrollHeight": 106,
+            "actualLines": 2,
+            "maxLines": 2,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 4,
+            "occupancy": 0.11923828125,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "lead",
+            "path": "lead",
+            "role": "body",
+            "clientWidth": 900,
+            "clientHeight": 107,
+            "scrollWidth": 900,
+            "scrollHeight": 107,
+            "actualLines": 3,
+            "maxLines": 3,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.10400390625,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "points",
+            "path": "points.0.text",
+            "role": "list",
+            "clientWidth": 997,
+            "clientHeight": 27,
+            "scrollWidth": 997,
+            "scrollHeight": 27,
+            "actualLines": 1,
+            "maxLines": 3,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.02876949734157986,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "points",
+            "path": "points.1.text",
+            "role": "list",
+            "clientWidth": 997,
+            "clientHeight": 27,
+            "scrollWidth": 997,
+            "scrollHeight": 27,
+            "actualLines": 1,
+            "maxLines": 3,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.02876949734157986,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "points",
+            "path": "points.2.text",
+            "role": "list",
+            "clientWidth": 997,
+            "clientHeight": 53,
+            "scrollWidth": 997,
+            "scrollHeight": 53,
+            "actualLines": 2,
+            "maxLines": 3,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.05753899468315972,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "source",
+            "path": "source",
+            "role": "meta",
+            "clientWidth": 1054,
+            "clientHeight": 16,
+            "scrollWidth": 1054,
+            "scrollHeight": 16,
+            "actualLines": 1,
+            "maxLines": 1,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.018298611111111113,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          }
+        ],
+        "repairAttempts": []
+      },
+      {
+        "slideId": "4",
+        "slideIndex": 4,
+        "slideType": "DEFINITION",
+        "layoutVariant": "default",
+        "status": "balanced",
+        "occupancy": 0.21528679741753473,
+        "slots": [
+          {
+            "slotId": "term",
+            "path": "term",
+            "role": "title",
+            "clientWidth": 1000,
+            "clientHeight": 55,
+            "scrollWidth": 1000,
+            "scrollHeight": 62,
+            "actualLines": 1,
+            "maxLines": 2,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 7,
+            "occupancy": 0.059763590494791664,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "definition",
+            "path": "definition",
+            "role": "body",
+            "clientWidth": 1000,
+            "clientHeight": 71,
+            "scrollWidth": 1000,
+            "scrollHeight": 71,
+            "actualLines": 2,
+            "maxLines": 5,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.07703993055555555,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "aspects",
+            "path": "aspects.0.text",
+            "role": "list",
+            "clientWidth": 298,
+            "clientHeight": 81,
+            "scrollWidth": 298,
+            "scrollHeight": 81,
+            "actualLines": 3,
+            "maxLines": 3,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.026161092122395833,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "aspects",
+            "path": "aspects.1.text",
+            "role": "list",
+            "clientWidth": 298,
+            "clientHeight": 81,
+            "scrollWidth": 298,
+            "scrollHeight": 81,
+            "actualLines": 3,
+            "maxLines": 3,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.026161092122395833,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "aspects",
+            "path": "aspects.2.text",
+            "role": "list",
+            "clientWidth": 298,
+            "clientHeight": 81,
+            "scrollWidth": 298,
+            "scrollHeight": 81,
+            "actualLines": 3,
+            "maxLines": 3,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.026161092122395833,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          }
+        ],
+        "repairAttempts": []
+      },
+      {
+        "slideId": "5",
+        "slideIndex": 5,
+        "slideType": "BATAFSIL",
+        "layoutVariant": "default",
+        "status": "balanced",
+        "occupancy": 0.20605805767907037,
+        "slots": [
+          {
+            "slotId": "title",
+            "path": "title",
+            "role": "title",
+            "clientWidth": 1040,
+            "clientHeight": 51,
+            "scrollWidth": 1040,
+            "scrollHeight": 55,
+            "actualLines": 1,
+            "maxLines": 2,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 4,
+            "occupancy": 0.05741102430555556,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "body",
+            "path": "body",
+            "role": "body",
+            "clientWidth": 647,
+            "clientHeight": 144,
+            "scrollWidth": 647,
+            "scrollHeight": 144,
+            "actualLines": 5,
+            "maxLines": 7,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.10101935148239136,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "points",
+            "path": "points.0.text",
+            "role": "list",
+            "clientWidth": 397,
+            "clientHeight": 45,
+            "scrollWidth": 397,
+            "scrollHeight": 45,
+            "actualLines": 2,
+            "maxLines": 2,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.019303441047668457,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "points",
+            "path": "points.1.text",
+            "role": "list",
+            "clientWidth": 371,
+            "clientHeight": 22,
+            "scrollWidth": 371,
+            "scrollHeight": 22,
+            "actualLines": 1,
+            "maxLines": 2,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.00902079979578654,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "points",
+            "path": "points.2.text",
+            "role": "list",
+            "clientWidth": 397,
+            "clientHeight": 45,
+            "scrollWidth": 397,
+            "scrollHeight": 45,
+            "actualLines": 2,
+            "maxLines": 2,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.019303441047668457,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          }
+        ],
+        "repairAttempts": []
+      },
+      {
+        "slideId": "6",
+        "slideIndex": 6,
+        "slideType": "TURLAR",
+        "layoutVariant": "squircle_bento",
+        "status": "underfilled",
+        "occupancy": 0.14603966606987848,
+        "slots": [
+          {
+            "slotId": "title",
+            "path": "title",
+            "role": "title",
+            "clientWidth": 1040,
+            "clientHeight": 51,
+            "scrollWidth": 1040,
+            "scrollHeight": 55,
+            "actualLines": 1,
+            "maxLines": 2,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 4,
+            "occupancy": 0.05741102430555556,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "items",
+            "path": "items.0.text",
+            "role": "list",
+            "clientWidth": 310,
+            "clientHeight": 66,
+            "scrollWidth": 310,
+            "scrollHeight": 66,
+            "actualLines": 3,
+            "maxLines": 4,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.02227935791015625,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "items",
+            "path": "items.1.text",
+            "role": "list",
+            "clientWidth": 310,
+            "clientHeight": 66,
+            "scrollWidth": 310,
+            "scrollHeight": 66,
+            "actualLines": 3,
+            "maxLines": 4,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.02227935791015625,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "items",
+            "path": "items.2.text",
+            "role": "list",
+            "clientWidth": 310,
+            "clientHeight": 66,
+            "scrollWidth": 310,
+            "scrollHeight": 66,
+            "actualLines": 3,
+            "maxLines": 4,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.02227935791015625,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "itemLabels",
+            "path": "items.0.label",
+            "role": "label",
+            "clientWidth": 310,
+            "clientHeight": 22,
+            "scrollWidth": 310,
+            "scrollHeight": 22,
+            "actualLines": 1,
+            "maxLines": 1,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.007263522677951389,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "itemLabels",
+            "path": "items.1.label",
+            "role": "label",
+            "clientWidth": 310,
+            "clientHeight": 22,
+            "scrollWidth": 310,
+            "scrollHeight": 22,
+            "actualLines": 1,
+            "maxLines": 1,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.007263522677951389,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "itemLabels",
+            "path": "items.2.label",
+            "role": "label",
+            "clientWidth": 310,
+            "clientHeight": 22,
+            "scrollWidth": 310,
+            "scrollHeight": 22,
+            "actualLines": 1,
+            "maxLines": 1,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.007263522677951389,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          }
+        ],
+        "repairAttempts": []
+      },
+      {
+        "slideId": "7",
+        "slideIndex": 7,
+        "slideType": "BATAFSIL",
+        "layoutVariant": "marginalia",
+        "status": "balanced",
+        "occupancy": 0.222900390625,
+        "slots": [
+          {
+            "slotId": "title",
+            "path": "title",
+            "role": "title",
+            "clientWidth": 1080,
+            "clientHeight": 51,
+            "scrollWidth": 1080,
+            "scrollHeight": 55,
+            "actualLines": 1,
+            "maxLines": 2,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 4,
+            "occupancy": 0.059619140625,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "body",
+            "path": "body",
+            "role": "body",
+            "clientWidth": 760,
+            "clientHeight": 198,
+            "scrollWidth": 760,
+            "scrollHeight": 198,
+            "actualLines": 6,
+            "maxLines": 7,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.16328125,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          }
+        ],
+        "repairAttempts": []
+      },
+      {
+        "slideId": "8",
+        "slideIndex": 8,
+        "slideType": "CONTENT",
+        "layoutVariant": "default",
+        "status": "balanced",
+        "occupancy": 0.33819975323147244,
+        "slots": [
+          {
+            "slotId": "title",
+            "path": "title",
+            "role": "title",
+            "clientWidth": 1040,
+            "clientHeight": 102,
+            "scrollWidth": 1040,
+            "scrollHeight": 106,
+            "actualLines": 2,
+            "maxLines": 2,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 4,
+            "occupancy": 0.11482204861111112,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "lead",
+            "path": "lead",
+            "role": "body",
+            "clientWidth": 760,
+            "clientHeight": 71,
+            "scrollWidth": 760,
+            "scrollHeight": 71,
+            "actualLines": 2,
+            "maxLines": 3,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.05855034722222222,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "points",
+            "path": "points.0.text",
+            "role": "list",
+            "clientWidth": 0,
+            "clientHeight": 0,
+            "scrollWidth": 0,
+            "scrollHeight": 0,
+            "actualLines": 3,
+            "maxLines": 4,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.04452789518568251,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "points",
+            "path": "points.1.text",
+            "role": "list",
+            "clientWidth": 0,
+            "clientHeight": 0,
+            "scrollWidth": 0,
+            "scrollHeight": 0,
+            "actualLines": 3,
+            "maxLines": 4,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.04681413438585069,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "points",
+            "path": "points.2.text",
+            "role": "list",
+            "clientWidth": 0,
+            "clientHeight": 0,
+            "scrollWidth": 0,
+            "scrollHeight": 0,
+            "actualLines": 3,
+            "maxLines": 4,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.04584209865993923,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "points",
+            "path": "points.3.text",
+            "role": "list",
+            "clientWidth": 0,
+            "clientHeight": 0,
+            "scrollWidth": 0,
+            "scrollHeight": 0,
+            "actualLines": 1,
+            "maxLines": 4,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.011660563151041666,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "pointHeadings",
+            "path": "points.0.heading",
+            "role": "label",
+            "clientWidth": 0,
+            "clientHeight": 0,
+            "scrollWidth": 0,
+            "scrollHeight": 0,
+            "actualLines": 1,
+            "maxLines": 1,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.0037369791666666667,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "pointHeadings",
+            "path": "points.1.heading",
+            "role": "label",
+            "clientWidth": 0,
+            "clientHeight": 0,
+            "scrollWidth": 0,
+            "scrollHeight": 0,
+            "actualLines": 1,
+            "maxLines": 1,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.0064961751302083336,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "pointHeadings",
+            "path": "points.2.heading",
+            "role": "label",
+            "clientWidth": 0,
+            "clientHeight": 0,
+            "scrollWidth": 0,
+            "scrollHeight": 0,
+            "actualLines": 1,
+            "maxLines": 1,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.00574951171875,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          }
+        ],
+        "repairAttempts": []
+      },
+      {
+        "slideId": "9",
+        "slideIndex": 9,
+        "slideType": "CONTENT",
+        "layoutVariant": "changelog_lines",
+        "status": "balanced",
+        "occupancy": 0.24372504340277779,
+        "slots": [
+          {
+            "slotId": "title",
+            "path": "title",
+            "role": "title",
+            "clientWidth": 1040,
+            "clientHeight": 102,
+            "scrollWidth": 1040,
+            "scrollHeight": 106,
+            "actualLines": 2,
+            "maxLines": 2,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 4,
+            "occupancy": 0.11482204861111112,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "lead",
+            "path": "lead",
+            "role": "body",
+            "clientWidth": 760,
+            "clientHeight": 107,
+            "scrollWidth": 760,
+            "scrollHeight": 107,
+            "actualLines": 3,
+            "maxLines": 3,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.08782552083333334,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "points",
+            "path": "points.0.text",
+            "role": "list",
+            "clientWidth": 0,
+            "clientHeight": 0,
+            "scrollWidth": 0,
+            "scrollHeight": 0,
+            "actualLines": 1,
+            "maxLines": 4,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.01038818359375,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "points",
+            "path": "points.1.text",
+            "role": "list",
+            "clientWidth": 0,
+            "clientHeight": 0,
+            "scrollWidth": 0,
+            "scrollHeight": 0,
+            "actualLines": 1,
+            "maxLines": 4,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.008326822916666667,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "points",
+            "path": "points.2.text",
+            "role": "list",
+            "clientWidth": 0,
+            "clientHeight": 0,
+            "scrollWidth": 0,
+            "scrollHeight": 0,
+            "actualLines": 1,
+            "maxLines": 4,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.012215983072916667,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "points",
+            "path": "points.3.text",
+            "role": "list",
+            "clientWidth": 0,
+            "clientHeight": 0,
+            "scrollWidth": 0,
+            "scrollHeight": 0,
+            "actualLines": 1,
+            "maxLines": 4,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.010146484375,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          }
+        ],
+        "repairAttempts": []
+      },
+      {
+        "slideId": "10",
+        "slideIndex": 10,
+        "slideType": "MISOL",
+        "layoutVariant": "default",
+        "status": "balanced",
+        "occupancy": 0.18709309895833334,
+        "slots": [
+          {
+            "slotId": "title",
+            "path": "title",
+            "role": "title",
+            "clientWidth": 1040,
+            "clientHeight": 102,
+            "scrollWidth": 1040,
+            "scrollHeight": 106,
+            "actualLines": 2,
+            "maxLines": 2,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 4,
+            "occupancy": 0.11482204861111112,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "body",
+            "path": "body",
+            "role": "body",
+            "clientWidth": 692,
+            "clientHeight": 75,
+            "scrollWidth": 692,
+            "scrollHeight": 75,
+            "actualLines": 3,
+            "maxLines": 6,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.05666707356770833,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "takeaway",
+            "path": "takeaway",
+            "role": "body",
+            "clientWidth": 692,
+            "clientHeight": 21,
+            "scrollWidth": 692,
+            "scrollHeight": 21,
+            "actualLines": 1,
+            "maxLines": 3,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.01560397677951389,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          }
+        ],
+        "repairAttempts": []
+      },
+      {
+        "slideId": "11",
+        "slideIndex": 11,
+        "slideType": "BATAFSIL",
+        "layoutVariant": "default",
+        "status": "balanced",
+        "occupancy": 0.26319567097557917,
+        "slots": [
+          {
+            "slotId": "title",
+            "path": "title",
+            "role": "title",
+            "clientWidth": 1040,
+            "clientHeight": 102,
+            "scrollWidth": 1040,
+            "scrollHeight": 106,
+            "actualLines": 2,
+            "maxLines": 2,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 4,
+            "occupancy": 0.11482204861111112,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "body",
+            "path": "body",
+            "role": "body",
+            "clientWidth": 647,
+            "clientHeight": 144,
+            "scrollWidth": 647,
+            "scrollHeight": 144,
+            "actualLines": 5,
+            "maxLines": 7,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.10104128122329711,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "points",
+            "path": "points.0.text",
+            "role": "list",
+            "clientWidth": 397,
+            "clientHeight": 45,
+            "scrollWidth": 397,
+            "scrollHeight": 45,
+            "actualLines": 2,
+            "maxLines": 2,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.019303441047668457,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "points",
+            "path": "points.1.text",
+            "role": "list",
+            "clientWidth": 359,
+            "clientHeight": 22,
+            "scrollWidth": 359,
+            "scrollHeight": 22,
+            "actualLines": 1,
+            "maxLines": 2,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.008725459045834012,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "points",
+            "path": "points.2.text",
+            "role": "list",
+            "clientWidth": 397,
+            "clientHeight": 45,
+            "scrollWidth": 397,
+            "scrollHeight": 45,
+            "actualLines": 2,
+            "maxLines": 2,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.019303441047668457,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          }
+        ],
+        "repairAttempts": []
+      },
+      {
+        "slideId": "12",
+        "slideIndex": 12,
+        "slideType": "MISOL",
+        "layoutVariant": "signal_ping",
+        "status": "balanced",
+        "occupancy": 0.2404751247829861,
+        "slots": [
+          {
+            "slotId": "title",
+            "path": "title",
+            "role": "title",
+            "clientWidth": 1040,
+            "clientHeight": 102,
+            "scrollWidth": 1040,
+            "scrollHeight": 106,
+            "actualLines": 2,
+            "maxLines": 2,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 4,
+            "occupancy": 0.11482204861111112,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "body",
+            "path": "body",
+            "role": "body",
+            "clientWidth": 692,
+            "clientHeight": 126,
+            "scrollWidth": 692,
+            "scrollHeight": 126,
+            "actualLines": 5,
+            "maxLines": 6,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.09444512261284722,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "takeaway",
+            "path": "takeaway",
+            "role": "body",
+            "clientWidth": 692,
+            "clientHeight": 42,
+            "scrollWidth": 692,
+            "scrollHeight": 42,
+            "actualLines": 2,
+            "maxLines": 3,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.03120795355902778,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          }
+        ],
+        "repairAttempts": []
+      },
+      {
+        "slideId": "13",
+        "slideIndex": 13,
+        "slideType": "PROBLEMS_SOLUTIONS",
+        "layoutVariant": "diff_view",
+        "status": "balanced",
+        "occupancy": 0.2982174343532986,
+        "slots": [
+          {
+            "slotId": "title",
+            "path": "title",
+            "role": "title",
+            "clientWidth": 1040,
+            "clientHeight": 102,
+            "scrollWidth": 1040,
+            "scrollHeight": 106,
+            "actualLines": 2,
+            "maxLines": 2,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 4,
+            "occupancy": 0.11482204861111112,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "subtitle",
+            "path": "subtitle",
+            "role": "body",
+            "clientWidth": 900,
+            "clientHeight": 25,
+            "scrollWidth": 900,
+            "scrollHeight": 25,
+            "actualLines": 1,
+            "maxLines": 2,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.0242462158203125,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "problems",
+            "path": "pairs.0.problem",
+            "role": "list",
+            "clientWidth": 447,
+            "clientHeight": 47,
+            "scrollWidth": 447,
+            "scrollHeight": 47,
+            "actualLines": 2,
+            "maxLines": 3,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.022735595703125,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "problems",
+            "path": "pairs.1.problem",
+            "role": "list",
+            "clientWidth": 447,
+            "clientHeight": 47,
+            "scrollWidth": 447,
+            "scrollHeight": 47,
+            "actualLines": 2,
+            "maxLines": 3,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.022735595703125,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "problems",
+            "path": "pairs.2.problem",
+            "role": "list",
+            "clientWidth": 447,
+            "clientHeight": 47,
+            "scrollWidth": 447,
+            "scrollHeight": 47,
+            "actualLines": 2,
+            "maxLines": 3,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.022735595703125,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "solutions",
+            "path": "pairs.0.solution",
+            "role": "list",
+            "clientWidth": 447,
+            "clientHeight": 70,
+            "scrollWidth": 447,
+            "scrollHeight": 70,
+            "actualLines": 3,
+            "maxLines": 3,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.0341033935546875,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "solutions",
+            "path": "pairs.1.solution",
+            "role": "list",
+            "clientWidth": 447,
+            "clientHeight": 47,
+            "scrollWidth": 447,
+            "scrollHeight": 47,
+            "actualLines": 2,
+            "maxLines": 3,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.022735595703125,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "solutions",
+            "path": "pairs.2.solution",
+            "role": "list",
+            "clientWidth": 447,
+            "clientHeight": 70,
+            "scrollWidth": 447,
+            "scrollHeight": 70,
+            "actualLines": 3,
+            "maxLines": 3,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.0341033935546875,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          }
+        ],
+        "repairAttempts": []
+      },
+      {
+        "slideId": "14",
+        "slideIndex": 14,
+        "slideType": "CONCLUSION",
+        "layoutVariant": "default",
+        "status": "underfilled",
+        "occupancy": 0.11015475802951388,
+        "slots": [
+          {
+            "slotId": "title",
+            "path": "title",
+            "role": "title",
+            "clientWidth": 1080,
+            "clientHeight": 51,
+            "scrollWidth": 1080,
+            "scrollHeight": 55,
+            "actualLines": 1,
+            "maxLines": 2,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 4,
+            "occupancy": 0.059619140625,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "closing",
+            "path": "closing",
+            "role": "body",
+            "clientWidth": 1054,
+            "clientHeight": 43,
+            "scrollWidth": 1054,
+            "scrollHeight": 43,
+            "actualLines": 2,
+            "maxLines": 2,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.050535617404513886,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          }
+        ],
+        "repairAttempts": []
+      },
+      {
+        "slideId": "15",
+        "slideIndex": 15,
+        "slideType": "CLOSING",
+        "layoutVariant": "default",
+        "status": "balanced",
+        "occupancy": 0.05231686512629191,
+        "slots": [
+          {
+            "slotId": "title",
+            "path": "title",
+            "role": "title",
+            "clientWidth": 762,
+            "clientHeight": 63,
+            "scrollWidth": 762,
+            "scrollHeight": 71,
+            "actualLines": 1,
+            "maxLines": 2,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 8,
+            "occupancy": 0.05231686512629191,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          }
+        ],
+        "repairAttempts": []
+      }
+    ],
+    "unresolved": [],
+    "attempts": [
+      {
+        "attempt": 1,
+        "action": "drop_optional_item",
+        "slideIndex": 7,
+        "slideType": "BATAFSIL",
+        "slotId": "points",
+        "detail": "removed one low-priority optional array item"
+      },
+      {
+        "attempt": 2,
+        "action": "drop_optional_item",
+        "slideIndex": 7,
+        "slideType": "BATAFSIL",
+        "slotId": "points",
+        "detail": "removed one low-priority optional array item"
+      },
+      {
+        "attempt": 3,
+        "action": "drop_optional_item",
+        "slideIndex": 7,
+        "slideType": "BATAFSIL",
+        "slotId": "points",
+        "detail": "removed one low-priority optional array item"
+      }
+    ]
+  },
+  "slides": [
+    {
+      "type": "TITLE",
+      "content": {
+        "title": "Elektron tijoratda mijoz ishonchini oshirish strategiyalari",
+        "layout": "typographic_statement"
+      }
+    },
+    {
+      "type": "AGENDA",
+      "content": {
+        "items": [
+          {
+            "text": "Mavzuning dolzarbligi"
+          },
+          {
+            "text": "Elektron tijorat va mijoz ishonchi tushunchalari"
+          },
+          {
+            "text": "Ishonchni oshirish strategiyalari"
+          },
+          {
+            "text": "Muammolar va xulosalar"
+          }
+        ],
+        "title": "Reja"
+      }
+    },
+    {
+      "type": "RELEVANCE",
+      "content": {
+        "lead": "Onlayn savdo kengaygan sari mijozlar tanlovi ham, xavotiri ham ortadi. Ishonch shu sharoitda xarid qarorini belgilovchi asosiy omillardan biriga aylanadi.",
+        "title": "Elektron tijoratda mijoz ishonchi nega bugun muhim?",
+        "kicker": "Dolzarblik",
+        "points": [
+          {
+            "text": "Raqobat kuchaygan bozorda mijozlar faqat narxga emas, platformaning ishonchliligiga ham e’tibor beradi."
+          },
+          {
+            "text": "Ishonch yetishmasa, xaridni yakunlash kamayadi va savdo hajmi barqaror o‘sish o‘rniga pasayishi mumkin."
+          },
+          {
+            "text": "Elektron tijorat bo‘yicha rasmiy tartibga solish mavjudligi ham bu sohada shaffoflik va ishonch zarurligini ko‘rsatadi."
+          }
+        ],
+        "source": "Lex.uz, O'RQ-792, 2022",
+        "evidenceId": "uz_ecommerce_law_2022"
+      }
+    },
+    {
+      "type": "DEFINITION",
+      "content": {
+        "term": "Elektron tijorat",
+        "layout": "default",
+        "aspects": [
+          {
+            "icon": "globe",
+            "text": "Geografik cheklovlarni kamaytirib, kengroq mijozlar guruhiga chiqish imkonini beradi.",
+            "label": "Bozor doirasi"
+          },
+          {
+            "icon": "tech",
+            "text": "Buyurtma, aloqa va boshqaruv jarayonlari onlayn platformalar orqali bajariladi.",
+            "label": "Raqamli muhit"
+          },
+          {
+            "icon": "money",
+            "text": "To‘lov va yetkazib berish jarayonlari raqamli vositalar bilan tezlashtiriladi.",
+            "label": "Tezkor operatsiya"
+          }
+        ],
+        "definition": "Elektron tijorat — tovar va xizmatlarni axborot texnologiyalari yordamida internet yoki boshqa raqamli tarmoqlar orqali sotish va sotib olish jarayoni."
+      }
+    },
+    {
+      "type": "BATAFSIL",
+      "content": {
+        "body": "Mijoz ishonchi tushunchasi va asosiy jihatlari Mijoz ishonchi – xaridorning xavfsizlik va sifatga bo‘lgan ishonchi Ishonchning shakllanishi ko‘plab omillarga bog‘liq Onlayn muhitda shaffoflik va kafolatlar muhim rol o‘ynaydi",
+        "title": "Mijoz ishonchi tushunchasi va asosiy jihatlari",
+        "points": [
+          {
+            "text": "Mijoz ishonchi – xaridorning xavfsizlik va sifatga bo‘lgan ishonchi"
+          },
+          {
+            "text": "Ishonchning shakllanishi ko‘plab omillarga bog‘liq"
+          },
+          {
+            "text": "Onlayn muhitda shaffoflik va kafolatlar muhim rol o‘ynaydi"
+          }
+        ]
+      }
+    },
+    {
+      "type": "TURLAR",
+      "content": {
+        "items": [
+          {
+            "icon": "check",
+            "text": "Mijoz mahsulot sifati, tavsifga mosligi va foydalanish natijasiga tayangan holda ishonadi.",
+            "label": "Mahsulotga ishonch"
+          },
+          {
+            "icon": "star",
+            "text": "Bu tur kompaniyaning obro‘si, izchil xulqi va bozor tajribasiga bog‘liq; u kutishni kamaytiradi.",
+            "label": "Brendga ishonch"
+          },
+          {
+            "icon": "shield",
+            "text": "Mijoz tranzaksiya xavfsizligi va ma’lumotlar himoyasiga ishonganida xaridni yakunlashga moyil bo‘ladi.",
+            "label": "To‘lov tizimiga ishonch"
+          }
+        ],
+        "title": "Mijoz ishonchining asosiy turlari",
+        "layout": "squircle_bento"
+      }
+    },
+    {
+      "type": "BATAFSIL",
+      "content": {
+        "body": "Ishonch odatda bir martada emas, balki mijozning saytda yo‘l topishi, ma’lumotni baholashi va xaridni yakunlash tajribasi orqali bosqichma-bosqich shakllanadi. Interfeysning qulayligi, mazmunning ravshanligi va kafolatlarning aniq ko‘rsatilishi xavfni kamaytiradi. Rag‘batlantiruvchi ijobiy tajriba ishonchni mustahkamlaydi, salbiy tajriba esa uni tez susaytiradi.",
+        "title": "Elektron tijoratda ishonch shakllanishi jarayoni",
+        "layout": "marginalia",
+        "points": []
+      }
+    },
+    {
+      "type": "CONTENT",
+      "content": {
+        "lead": "Ishonch xarid qarorini tezlashtiradi, yangi mijozlarni jalb qilishni yengillashtiradi va qayta xarid ehtimolini oshiradi.",
+        "title": "Mijoz ishonchi elektron tijoratda savdo va sodiqlikni belgilaydi",
+        "layout": "default",
+        "points": [
+          {
+            "icon": "chart",
+            "text": "Mijoz platformani ishonchli deb bilsa, xarid qilishdagi ikkilanish kamayadi va savdo hajmi barqarorroq shakllanadi.",
+            "heading": "Savdoga ta’siri"
+          },
+          {
+            "icon": "users",
+            "text": "Notanish do‘konda ishonch past bo‘lsa, foydalanuvchi tanlovni kechiktiradi; ishonch esa birinchi xaridga yo‘l ochadi.",
+            "heading": "Yangi mijozlar uchun omil"
+          },
+          {
+            "icon": "cycle",
+            "text": "Ijobiy tajriba ishonchni mustahkamlaydi, bu esa brendga qayta murojaat qilish va uzoq muddatli sodiqlikni kuchaytiradi.",
+            "heading": "Sodiqlik va qayta xarid"
+          },
+          {
+            "text": "Ishonch savdo hajmiga bevosita ta’sir ko‘rsatadi"
+          }
+        ],
+        "visual": {
+          "alt": "Geometric decoration for Mijoz ishonchi elektron tijoratda savdo va sodiqlikni belgilaydi",
+          "fit": "cover",
+          "url": "",
+          "query": "Elektron tijoratda mijoz ishonchini oshirish strategiyalari Mijoz ishonchi elektron tijoratda savdo va sodiqlikni belgilaydi slot-2",
+          "author": "Generated geometric layout",
+          "license": "decorative visual",
+          "provider": "Lumio Geometry"
+        }
+      }
+    },
+    {
+      "type": "CONTENT",
+      "content": {
+        "lead": "To‘lov tizimini tanlash va integratsiya qilish. Xavfsizlik sertifikatlarini joriy etish. Mijozni to‘liq xabardor qilish va qo‘llab-quvvatlash. To‘lovlar monitoringi va shaffof.",
+        "title": "Ishonchli to‘lov tizimlari orqali ishonch oshirish bosqichlari",
+        "layout": "changelog_lines",
+        "points": [
+          {
+            "text": "To‘lov tizimini tanlash va integratsiya qilish"
+          },
+          {
+            "text": "Xavfsizlik sertifikatlarini joriy etish"
+          },
+          {
+            "text": "Mijozni to‘liq xabardor qilish va qo‘llab-quvvatlash"
+          },
+          {
+            "text": "To‘lovlar monitoringi va shaffof hisobotlar"
+          }
+        ],
+        "visual": {
+          "alt": "Geometric decoration for Ishonchli to‘lov tizimlari orqali ishonch oshirish bosqichlari",
+          "fit": "cover",
+          "url": "",
+          "query": "Elektron tijoratda mijoz ishonchini oshirish strategiyalari Ishonchli to‘lov tizimlari orqali ishonch oshirish bosqichlari slot-1",
+          "author": "Generated geometric layout",
+          "license": "decorative visual",
+          "provider": "Lumio Geometry"
+        }
+      }
+    },
+    {
+      "type": "MISOL",
+      "content": {
+        "body": "Mahsulot va xizmat sifati mijoz ishonchiga ta’siri Sifatli mahsulot ishonchni oshiradi va salbiy fikrlarni kamaytiradi Yaxshi xizmat ko‘rsatish mijoz sadoqatini mustahkamlaydi Muntazam sifat nazorati ishonch uchun zarur",
+        "title": "Mahsulot va xizmat sifati mijoz ishonchiga ta’siri",
+        "takeaway": "Sifatli mahsulot ishonchni oshiradi va salbiy fikrlarni kamaytiradi"
+      }
+    },
+    {
+      "type": "BATAFSIL",
+      "content": {
+        "body": "Elektron tijorat platformalarida mijoz ma’lumotlari zamonaviy kriptografiya bilan shifrlanib xavfsiz saqlanadi. Maxfiylik siyosati aniq, foydalanuvchi roziligiga asoslangan va mijozga ma’lumotlari ustidan nazoratni beradi. Shuningdek, ma’lumotlarning uchinchi tomonlarga tarqatilmasligi qat’iy kafolatlanadi. Axborot xavfsizligi bu ishonchni mustahkamlaydi.",
+        "title": "Axborot xavfsizligi va maxfiylik strategiyalari: mijoz ishonchini mustahkamlash",
+        "layout": "default",
+        "points": [
+          {
+            "text": "Mijoz ma’lumotlarini himoyalash uchun zamonaviy kriptografiya usullari qo‘llaniladi"
+          },
+          {
+            "text": "Maxfiylik siyosati va foydalanuvchi roziligi zarur"
+          },
+          {
+            "text": "Ma’lumotlarning uchinchi tomonlarga tarqatilmasligi kafolatlanadi"
+          }
+        ]
+      }
+    },
+    {
+      "type": "MISOL",
+      "content": {
+        "body": "Mahalliy elektron savdo platformasida ishonch avvalo xavfsiz to‘lov va tez yetkazib berish orqali shakllanadi. Foydalanuvchi sharhlari hamda reytinglar xarid qilishdagi noaniqlikni kamaytiradi. Doimiy mijozlarga beriladigan chegirma va kafolatlar esa takroriy xaridni rag‘batlantirib, platformaning ishonchliligini amalda ko‘rsatadi.",
+        "icon": "check",
+        "title": "O‘zbekistondagi muvaffaqiyatli platforma misolida ishonch strategiyasi",
+        "layout": "signal_ping",
+        "takeaway": "Xavfsizlik, ijtimoiy tasdiq va mijozni qo‘llab-quvvatlash birgalikda ishonchni mustahkamlaydi."
+      }
+    },
+    {
+      "type": "PROBLEMS_SOLUTIONS",
+      "content": {
+        "pairs": [
+          {
+            "problem": "Xavfsizlik muammolari mijoz ma’lumotlari va to‘lovlarining xavfsizligini tahdid ostiga qo‘yadi.",
+            "solution": "Zamonaviy himoya vositalari va shifrlash texnologiyalarini joriy etish orqali xavfsizlikni mustahkamlash."
+          },
+          {
+            "problem": "Soxta mahsulotlar mijoz ishonchini pasaytiradi va brend obro‘siga zarar yetkazadi.",
+            "solution": "Qat’iy monitoring tizimi va muntazam audit yordamida soxta mahsulotlarni aniqlash va yo‘q qilish."
+          },
+          {
+            "problem": "Mijoz shikoyatlari tezkor va samarali hal etilmasa, ular ishonchsizlikka olib keladi.",
+            "solution": "Mijozlarni qo‘llab‑quvvatlashni kuchaytirish va muammolarni tez hal etuvchi mexanizmlarni joriy etish."
+          }
+        ],
+        "title": "Elektron tijoratda asosiy muammolar va ularning yechimlari",
+        "layout": "diff_view",
+        "subtitle": "Xavfsizlik, soxta mahsulotlar va mijoz shikoyatlarini samarali hal qilish"
+      }
+    },
+    {
+      "type": "CONCLUSION",
+      "content": {
+        "title": "Asosiy xulosalar va tavsiyalar",
+        "points": [
+          "Mijoz ishonchi elektron tijorat natijasini belgilovchi omillardan biri bo‘lib, uni mustahkamlash uzluksiz e’tibor talab qiladi.",
+          "Sifat, xavfsizlik va shaffoflik bir-birini to‘ldirganda, mijoz qarori barqarorroq bo‘ladi va qayta xarid ehtimoli ortadi.",
+          "Amaliyotda innovatsion yondashuvlar, jarayonlarni doimiy takomillashtirish va mijoz fikriga tayangan moslashuv zarur.",
+          "Mijoz ishonchini oshirish elektron tijorat muvaffaqiyati uchun muhim"
+        ],
+        "closing": "Xulosa qilib, ishonchni oshirish bir martalik choralar bilan emas, balki izchil strategiya bilan ta’minlanadi."
+      }
+    },
+    {
+      "type": "CLOSING",
+      "content": {
+        "title": "E'tiboringiz uchun rahmat!"
+      }
+    }
+  ]
+}

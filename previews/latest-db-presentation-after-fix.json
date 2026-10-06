@@ -1,0 +1,252 @@
+{
+  "id": "a198ce3d-b507-4ce8-9da8-0621d4ca9647",
+  "title": null,
+  "topicPrompt": "O‘zbekiston Respublikasida iste’molchilar huquqlarini himoya qilishning huquqiy asoslari",
+  "theme": "dark_premium",
+  "language": "uz",
+  "slideCount": 15,
+  "updatedAt": "2026-07-16T22:57:24.785Z",
+  "exports": [
+    {
+      "format": "pptx",
+      "fileSize": 9441341,
+      "createdAt": "2026-07-16T22:57:24.781Z"
+    },
+    {
+      "format": "pdf",
+      "fileSize": 5156708,
+      "createdAt": "2026-07-16T22:57:02.220Z"
+    }
+  ],
+  "jobs": [
+    {
+      "stage": "cards",
+      "status": "completed",
+      "modelUsed": "openai/gpt-5.4-mini",
+      "tokensUsed": 0,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "costUsd": "0",
+      "finishedAt": "2026-07-16T22:56:36.294Z"
+    },
+    {
+      "stage": "outline",
+      "status": "completed",
+      "modelUsed": "openai/gpt-4.1",
+      "tokensUsed": 0,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "costUsd": "0",
+      "finishedAt": "2026-07-16T22:56:32.274Z"
+    }
+  ],
+  "slides": [
+    {
+      "position": 1,
+      "layout": "TITLE",
+      "content": {
+        "title": "O‘zbekiston Respublikasida iste’molchilar huquqlarini himoya qilishning huquqiy asoslari",
+        "layout": "editorial_split"
+      }
+    },
+    {
+      "position": 2,
+      "layout": "AGENDA",
+      "content": {
+        "items": [
+          {
+            "text": "Iste’molchi ta’rifi va huquqiy asoslar"
+          },
+          {
+            "text": "Huquqiy, iqtisodiy va ijtimoiy yo‘nalishlar"
+          },
+          {
+            "text": "Davlat va nodavlat institutlari roli"
+          },
+          {
+            "text": "Muammolar hamda yakuniy xulosalar"
+          }
+        ],
+        "title": "Reja"
+      }
+    },
+    {
+      "position": 3,
+      "layout": "RELEVANCE",
+      "content": {
+        "kicker": "Dolzarblik",
+        "paragraph": "Bozor iqtisodiyoti sharoitida xaridor va foydalanuvchi ko‘pincha sifat, narx va axborot bo‘yicha teng bo‘lmagan holatda qoladi, shuning uchun uning manfaatlarini huquqiy jihatdan himoya qilish alohida ahamiyat kasb etadi. Sifatli mahsulot va ishonchli xizmatlar faqat yakka iste’molchi uchun emas, balki jamiyat farovonligi va iqtisodiy munosabatlarning barqarorligi uchun ham muhimdir. Raqobat kuchaygan sari bozorda adolatli muomala, shaffof shartlar va javobgarlik talabini mustahkamlash zarur bo‘ladi, chunki aynan huquqiy asoslar iste’molchining zaif pozitsiyasini muvozanatlashtiradi.",
+        "title": "Iste’molchilar huquqlarini himoya qilish bugungi kunda dolzarb masaladir"
+      }
+    },
+    {
+      "position": 4,
+      "layout": "DEFINITION",
+      "content": {
+        "kicker": "idea",
+        "paragraph": "Iste’molchi deganda tovar, ish yoki xizmatni shaxsiy ehtiyojini qondirish uchun oladigan yoki undan foydalanadigan shaxs tushuniladi. Bu ta’rifning markazida tijorat maqsadi emas, balki yakka tartibdagi ehtiyoj turadi, shuning uchun iste’molchi va tadbirkor o‘rtasidagi munosabatlarda manfaatlar muvozanati alohida ahamiyat kasb etadi. Iste’molchilar huquqlari esa tovar va xizmatlardan xavfsiz, sifatli hamda adolatli foydalanishni ta’minlaydigan huquqlar majmuasidir. Ularning aniqligi iste’molchi maqomini, himoya doirasini va buzilgan huquqni tiklash mexanizmlarini to‘g‘ri belgilashga xizmat qiladi.",
+        "term": "Iste’molchi atamasi"
+      }
+    },
+    {
+      "position": 5,
+      "layout": "BATAFSIL",
+      "content": {
+        "paragraph": "Iste’molchilar huquqlarini himoya qilish davlat uchun avvalo fuqarolarning iqtisodiy va ijtimoiy manfaatlarini kafolatlashga xizmat qiladi, chunki kundalik ehtiyojga oid tovar va xizmatlar sifati bevosita hayot darajasiga ta’sir ko‘rsatadi. Shu sababli himoya tizimi iste’molchini zararli yoki sifatsiz mahsulotdan asrash bilangina cheklanmay, bozorni sifat talablari asosida tartibga solishga ham yordam beradi. Bunday yondashuv ishlab chiqaruvchi va sotuvchini javobgarlikka undab, adolatli raqobat hamda halol tadbirkorlik muhitini kuchaytiradi.",
+        "title": "Iste’molchilar huquqlarini himoya qilishning asosiy maqsadlari davlat uchun muhm"
+      }
+    },
+    {
+      "position": 6,
+      "layout": "TURLAR",
+      "content": {
+        "items": [
+          {
+            "icon": "shield",
+            "text": "Huquqlar buzilganda qonuniy tartib va sud mexanizmlari ishga tushadi, shuning uchun u majburiy kafolat beradi.",
+            "label": "Huquqiy himoya"
+          },
+          {
+            "icon": "money",
+            "text": "Bu yo‘nalish narxning asoslanganligi va mahsulot sifati o‘rtasidagi muvozanatni saqlashga qaratiladi.",
+            "label": "Iqtisodiy himoya"
+          },
+          {
+            "icon": "users",
+            "text": "Jamoat tashkilotlari va davlat dasturlari orqali aholiga maslahat, yordam va himoya vositalari taqdim etiladi.",
+            "label": "Ijtimoiy himoya"
+          }
+        ],
+        "title": "Iste’molchilar huquqlarini himoya qilish turlari bir nechta yo‘nalishda amalga o",
+        "layout": "squircle_bento"
+      }
+    },
+    {
+      "position": 7,
+      "layout": "CONTENT",
+      "content": {
+        "kicker": "Qonunchilik manbalari",
+        "paragraph": "Iste’molchilar huquqlarini himoya qilish birgina alohida qonun bilan cheklanmay, huquqiy tizimning bir nechta qatlamiga tayanadi. Asosiy manba sifatida maxsus qonun iste’molchining huquqlarini belgilab, nizolarni ko‘rib chiqish va buzilgan huquqni tiklash tartibini umumiy asosda mustahkamlaydi. Fuqarolik kodeksi esa shartnoma, mulkiy javobgarlik va zarar qoplash kabi institutlar orqali bu kafolatlarni umumiy fuqarolik munosabatlari bilan bog‘laydi. Shu bilan birga, vazirlik va idoralar tomonidan qabul qilinadigan normativ hujjatlar amaliy tartiblarni aniqlashtirib, sohalar bo‘yicha talablarni bir xil qo‘llashga xizmat qiladi.",
+        "visual": {
+          "provider": "Lumio Geometry",
+          "query": "O‘zbekiston Respublikasida iste’molchilar huquqlarini himoya qilishning huquqiy asoslari O‘zbekiston Respublikasida asosiy qonunlar iste’molchilar huquqlarini kafolatlay slot-2",
+          "url": "",
+          "alt": "Geometric decoration for O‘zbekiston Respublikasida asosiy qonunlar iste’molchilar huquqlarini kafolatlay",
+          "author": "Generated geometric layout",
+          "license": "decorative visual",
+          "fit": "cover"
+        },
+        "title": "O‘zbekiston Respublikasida asosiy qonunlar iste’molchilar huquqlarini kafolatlaydi"
+      }
+    },
+    {
+      "position": 8,
+      "layout": "BATAFSIL",
+      "content": {
+        "paragraph": "Qonun iste’molchi va sotuvchi o‘rtasidagi munosabatlarda huquqiy muvozanatni belgilab, iste’molchining axborot olish, xavfsiz tovar va xizmatdan foydalanish hamda buzilgan huquqini tiklash imkoniyatlarini mustahkamlaydi. Shu bilan birga, u shartnoma tuzish jarayonida majburiyatlarning aniq bo‘lishini talab qiladi, chunki ochiq va to‘liq axborot iste’molchi tanlovining asosidir. Zarar yetkazilgan taqdirda kompensatsiya va da’vo tartiblari ham aynan shu huquqiy mexanizmlar orqali ishga tushadi. Natijada tovar va xizmat sifati ustidan nazorat kuchayib, huquqiy himoya amaliy kafolatga aylanadi.",
+        "title": "“Iste’molchilar huquqlarini himoya qilish to‘g‘risida”gi Qonunning asosiy jihat"
+      }
+    },
+    {
+      "position": 9,
+      "layout": "CONTENT",
+      "content": {
+        "paragraph": "Iste’molchilar huquqlarini himoya qilishda davlat organlari nazorat, muvofiqlashtirish va nizolarni hal etish orqali tizimning amaliy ishlashini ta’minlaydi. Monopoliyaga qarshi qo‘mita bozor ishtirokchilari xatti-harakatlarini kuzatib, raqobat buzilishi va iste’molchiga zarar yetkazuvchi holatlarni aniqlashga xizmat qiladi. Hududiy idoralar esa murojaatlarni joyida ko‘rib, muammo tezroq bartaraf etilishiga va huquqiy himoyaning aholiga yaqinlashishiga yordam beradi.",
+        "visual": {
+          "provider": "Lumio Geometry",
+          "query": "O‘zbekiston Respublikasida iste’molchilar huquqlarini himoya qilishning huquqiy asoslari Davlat organlari iste’molchilar huquqlarini himoya qilishda muhim rol o‘ynaydi slot-1",
+          "url": "",
+          "alt": "Geometric decoration for Davlat organlari iste’molchilar huquqlarini himoya qilishda muhim rol o‘ynaydi",
+          "author": "Generated geometric layout",
+          "license": "decorative visual",
+          "fit": "cover"
+        },
+        "title": "Davlat organlari iste’molchilar huquqlarini himoya qilishda muhim rol o‘ynaydi"
+      }
+    },
+    {
+      "position": 10,
+      "layout": "BATAFSIL",
+      "content": {
+        "paragraph": "Nodavlat notijorat tashkilotlari iste’molchi va tadbirkor o‘rtasidagi munosabatda muvozanatni saqlashga yordam beradi, chunki ular fuqarolarning shikoyatlarini umumlashtirib, amaliy muammolarni jamoatchilikka olib chiqadi. Bunday tashkilotlar iste’molchi huquqlari buzilgan holatlarda maslahat berish, murojaatlarni rasmiylashtirish va nizoni hal etish jarayonida fuqaroga ko‘maklashish orqali himoyani yanada yaqinlashtiradi. Ular jamoatchilik nazorati vositasida bozor munosabatlarida shaffoflikni kuchaytiradi, mustaqil ekspertiza orqali mahsulot va xizmatlar haqidagi baholashni asoslashga xizmat qiladi.",
+        "title": "Nodavlat tashkilotlari iste’molchi manfaatini himoya qiladi"
+      }
+    },
+    {
+      "position": 11,
+      "layout": "MISOL",
+      "content": {
+        "paragraph": "Bir iste’molchi sifatsiz mahsulotni xarid qilib, undan foydalanishda muammo yuzaga kelgach, avval sotuvchiga murojaat qiladi, ammo masala ixtiyoriy tartibda hal bo‘lmaydi. Shundan so‘ng u sudga murojaat qiladi va dalillar asosida zarar qoplatiladi. Bu holat huquq normalari faqat qog‘ozda emas, balki amalda ham iste’molchiga himoya berishini ko‘rsatadi. Demak, nizoni qonuniy yo‘l bilan hal qilish iste’molchi huquqlarini tiklashning samarali mexanizmidir.",
+        "title": "Hayotiy misol: Iste’molchi huquqi buzilishi va uni himoya qilish",
+        "icon": "shield",
+        "takeaway": "Sud orqali zarar qoplanganida iste’molchi huquqi amalda tiklanadi."
+      }
+    },
+    {
+      "position": 12,
+      "layout": "COMPARISON",
+      "content": {
+        "left": {
+          "items": [
+            "Nazorat asosan davlat organlari orqali amalga oshiriladi",
+            "Maxsus qonunlar huquqiy asosni belgilaydi",
+            "Shikoyat va tekshiruv jarayonlari rasmiy tartibga tayangan"
+          ],
+          "label": "O‘zbekiston",
+          "title": "Davlat markazlashgan yondashuvi"
+        },
+        "right": {
+          "items": [
+            "Mustaqil agentliklar nazoratda muhim o‘rin egallaydi",
+            "Iste’molchi uyushmalari faol ishtirok etadi",
+            "Jamoatchilik bosimi va ochiq axborot ta’siri kuchli"
+          ],
+          "label": "Xorijiy tizimlar",
+          "title": "Mustaqil institutlar va faol jamoatchilik"
+        },
+        "title": "O‘zbekiston va xorijda iste’molchilar huquqlarini himoya qilish tizimi farqlari",
+        "layout": "toggle_spectrum",
+        "subtitle": "Solishtirishda davlat boshqaruvi, jamoatchilik ishtiroki va nizolarni ko‘rib chiqish usullari ajralib turadi."
+      }
+    },
+    {
+      "position": 13,
+      "layout": "PROBLEMS_SOLUTIONS",
+      "content": {
+        "pairs": [
+          {
+            "problem": "Huquqiy xabardorlik past bo‘lgani uchun iste’molchi o‘z huquqini vaqtida anglamaydi.",
+            "solution": "Huquqiy targ‘ibot, sodda tushuntirish materiallari va muntazam ma’lumot yetkazish orqali bilimni oshirish lo"
+          },
+          {
+            "problem": "Jamoatchilik nazorati zaif bo‘lsa, buzilishlar kech aniqlanadi va noroziliklar samarasiz qoladi.",
+            "solution": "Nodavlat tashkilotlarini qo‘llab-quvvatlash, murojaat mexanizmlarini ochiq qilish va fuqarolik ishtirokini"
+          },
+          {
+            "problem": "Qonunlar ijrosi sustlashganda iste’molchi huquqi amalda kafolatlanmay qoladi.",
+            "solution": "Idoralararo hamkorlikni kuchaytirish, nazorat jarayonlarini muvofiqlashtirish va javobgarlikni aniqroq bel"
+          }
+        ],
+        "title": "Himoya tizimidagi muammolar va yechimlar",
+        "layout": "diff_view",
+        "subtitle": "Amaliy samaradorlikni oshirish uchun xabardorlik, nazorat va ijro mexanizmlarini kuchaytirish zarur."
+      }
+    },
+    {
+      "position": 14,
+      "layout": "CONCLUSION",
+      "content": {
+        "paragraph": "Xulosa qilib aytganda, iste’molchilar huquqlarini himoya qilish bo‘yicha huquqiy asoslar izchil takomillashib borayotgani tizimning o‘zini amaliyotda sinovdan o‘tkazayotganini ko‘rsatadi. Bunda davlat va nodavlat institutlarining hamkorligi muhim bo‘lib, u huquqiy me’yorlarning faqat qabul qilinishi emas, balki ularning samarali ishlashini ham ta’minlaydi. Iste’molchi manfaatining himoyasi esa bozordagi ishonchni mustahkamlaydi, sifatli mahsulot va xizmatlarga talabni kuchaytiradi hamda iqtisodiy barqarorlik uchun zarur shartlardan biriga aylanadi.",
+        "title": "Iste’molchilar huquqlarini himoya qilish barqaror taraqqiyot uchun zarur"
+      }
+    },
+    {
+      "position": 15,
+      "layout": "CLOSING",
+      "content": {
+        "title": "Diqqat bilan tinglaganingiz uchun rahmat!",
+        "layout": "default"
+      }
+    }
+  ]
+}

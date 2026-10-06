@@ -1,0 +1,975 @@
+<!doctype html><html lang="uz"><head><meta charset="utf-8">
+<title>Academic — Group C</title>
+<style>@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=PT+Serif:ital@0;1&display=swap');
+
+:root {
+  /* ---- Surfaces (spec §Color palette) ---- */
+  --primary-dark:    #0f172a;
+  --surface-base:    #ffffff;
+  --surface-raised:  #f8fafc;
+  --surface-sunken:  #f1f5f9;
+
+  /* ---- Text ---- */
+  --text-primary:    #0f172a;
+  --text-secondary:  #475569;
+  --text-muted:      #94a3b8;
+  --text-on-dark:    #ffffff;
+
+  /* ---- Accent (single accent per slide) ---- */
+  --accent:          #10b981;
+  --accent-strong:   #059669;
+  --accent-deep:     #065f46;
+  --accent-muted:    #d1fae5;
+
+  /* ---- Borders ---- */
+  --border:          #e2e8f0;
+  --border-strong:   #cbd5e1;
+
+  /* ---- Semantic status (problems / warnings / ref dots) ---- */
+  --danger:          #dc2626;
+  --danger-soft:     #fef2f2;
+  --success-soft:    #f0fdf4;
+  --warning:         #ea580c;
+  --info:            #2563eb;
+  --info-soft:       #dbeafe;
+
+  /* ---- Typography ---- */
+  --font-sans:  'Inter', system-ui, -apple-system, sans-serif;
+  --font-serif: 'PT Serif', Georgia, serif;
+
+  /* Type scale (px, 1920x1080 canvas) */
+  --type-display-1: 128px; /* STATS big number */
+  --type-display-2: 96px;  /* CLOSING / FINDING number */
+  --type-hero:      72px;   /* TITLE topic / DEFINITION term */
+  --type-h1:        56px;   /* main slide title (agenda/stats headers) */
+  --type-h2:        48px;   /* standard content-slide title */
+  --type-h3:        32px;   /* section header / quote */
+  --type-h4:        24px;   /* subsection / callouts */
+  --type-body:      20px;   /* body + bullets */
+  --type-small:     16px;   /* small body / notes */
+  --type-label:     14px;   /* meta / captions / source */
+  --type-micro:     12px;   /* uppercase eyebrow labels */
+  --type-nano:      10px;   /* ministry line on TITLE */
+
+  --lh-tight: 1.1;
+  --lh-snug:  1.25;
+  --lh-body:  1.5;
+  --lh-loose: 1.6;
+  --ls-label: 0.15em;  /* uppercase meta tracking */
+  --ls-tight: -0.02em; /* large titles */
+
+  /* Spacing scale — 8px baseline grid */
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 32px;
+  --space-5: 40px;
+  --space-6: 48px;
+  --space-7: 56px;
+  --space-8: 64px;
+  --space-9: 80px;
+  --space-10: 96px;
+
+  /* Radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;   /* pills */
+  --radius-full: 999px;
+
+  /* Stroke */
+  --stroke-1: 1px;
+  --stroke-2: 2px;
+  --stroke-4: 4px;
+
+  /* Canvas */
+  --canvas-w: 1920px;
+  --canvas-h: 1080px;
+  --safe: 96px;
+}
+
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html, body {
+  background: #64748b;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: geometricPrecision;
+  print-color-adjust: exact;
+  -webkit-print-color-adjust: exact;
+}
+img, svg { display: block; max-width: 100%; }
+
+body {
+  font-family: var(--font-sans);
+  color: var(--text-primary);
+  font-feature-settings: 'cv11', 'ss01';
+}
+
+/* ---- Deck stage (screen preview: slides stacked) ---- */
+.a-deck {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 48px;
+  padding: 48px 0;
+}
+
+/* ---- Slide canvas: fixed 1920x1080, overflow clipped ---- */
+.a-slide {
+  position: relative;
+  width: var(--canvas-w);
+  height: var(--canvas-h);
+  background: var(--surface-base);
+  color: var(--text-primary);
+  overflow: hidden;
+  flex: none;
+}
+
+/* Safe-area content region (96px inset on all sides) */
+.a-safe {
+  position: absolute;
+  inset: var(--safe);
+  display: flex;
+  flex-direction: column;
+}
+
+@page { size: 1920px 1080px; margin: 0; }
+@media print {
+  html, body { background: #fff; }
+  .a-deck { gap: 0; padding: 0; }
+  .a-slide { break-after: page; page-break-after: always; }
+  .a-slide:last-child { break-after: auto; page-break-after: auto; }
+}
+
+
+/* ---- Safe-area zone layout ---- */
+.a-body {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+/* ---- SlideHeader ---- */
+.a-head {
+  flex: none;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+.a-head__id { display: flex; flex-direction: column; gap: 4px; }
+.a-head__num,
+.a-head__label {
+  font-size: var(--type-label);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: var(--ls-label);
+  color: var(--text-muted);
+  line-height: 1.2;
+}
+.a-head__label { font-weight: 600; }
+
+.a-dots { display: flex; align-items: center; gap: 6px; padding-top: 6px; }
+.a-dot {
+  width: 8px; height: 8px;
+  border-radius: var(--radius-full);
+  background: transparent;
+  border: var(--stroke-1) solid var(--border-strong);
+}
+.a-dot.is-active { background: var(--accent); border-color: var(--accent); }
+
+/* ---- SlideFooter ---- */
+.a-foot {
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+.a-foot__univ,
+.a-foot__page {
+  font-size: var(--type-label);
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+}
+.a-foot__univ { text-transform: uppercase; letter-spacing: var(--ls-label); }
+
+/* ---- CitationPill ---- */
+.a-cite-inline {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+.a-cite {
+  display: inline-block;
+  font-size: 13px;
+  color: var(--text-secondary);
+  background: var(--surface-raised);
+  border: var(--stroke-1) solid var(--border);
+  padding: 8px 16px;
+}
+.a-cite--pill  { border-radius: var(--radius-lg); }
+.a-cite--block { border-radius: var(--radius-sm); }
+
+/* ---- PlaceholderChip ---- */
+.a-placeholder {
+  display: inline-block;
+  font-size: var(--type-label);
+  font-weight: 500;
+  color: var(--text-muted);
+  background: transparent;
+  border: var(--stroke-1) dashed var(--border-strong);
+  border-radius: var(--radius-sm);
+  padding: 6px 14px;
+}
+
+/* ---- Shared inline icon sizing (reuses templates/icons.ts <svg class="ico">) ---- */
+.ico { flex: none; }
+
+
+/* ---- shared slide primitives ---- */
+.a-h1 {
+  font-size: var(--type-h2);
+  font-weight: 600;
+  line-height: var(--lh-snug);
+  letter-spacing: var(--ls-tight);
+  color: var(--text-primary);
+}
+.a-eyebrow {
+  display: block;
+  font-size: var(--type-micro);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: var(--ls-label);
+  color: var(--text-secondary);
+}
+.a-eyebrow--accent { color: var(--accent); }
+.a-accent-line {
+  display: block;
+  width: 64px;
+  height: var(--stroke-2);
+  background: var(--accent);
+  margin-top: var(--space-3);
+}
+.a-accent-line--center { margin-left: auto; margin-right: auto; }
+
+/* ============ TITLE (editorial_split) ============ */
+.a-slide.is-title { background: var(--surface-base); }
+.a-title { display: flex; width: 100%; height: 100%; }
+.a-title__left {
+  width: 40%;
+  background: var(--primary-dark);
+  color: var(--text-on-dark);
+  padding: var(--space-10) var(--space-8);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.a-title__ministry {
+  font-size: var(--type-nano);
+  text-transform: uppercase;
+  letter-spacing: var(--ls-label);
+  line-height: 1.5;
+  opacity: 0.6;
+}
+.a-title__univ { font-size: 20px; font-weight: 600; line-height: 1.3; margin-top: var(--space-4); }
+.a-title__sub { font-size: var(--type-small); line-height: 1.4; opacity: 0.85; margin-top: var(--space-1); }
+.a-title__rule { display: block; width: 120px; height: 1px; background: rgba(255,255,255,0.2); margin-bottom: var(--space-3); }
+.a-title__eyebrow {
+  font-size: var(--type-micro);
+  text-transform: uppercase;
+  letter-spacing: var(--ls-label);
+  opacity: 0.6;
+  margin-bottom: 6px;
+}
+.a-title__name { font-size: 18px; font-weight: 500; }
+.a-title__name--sm { font-size: var(--type-small); }
+.a-title__meta { font-size: var(--type-label); opacity: 0.7; margin-top: 4px; }
+.a-title__foot .a-title__meta { opacity: 0.6; }
+
+.a-title__right {
+  width: 60%;
+  padding: var(--space-10);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.a-title__badge {
+  align-self: flex-start;
+  background: var(--accent-muted);
+  color: var(--accent-strong);
+  font-size: var(--type-micro);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  padding: 8px 16px;
+  border-radius: 6px;
+  margin-bottom: var(--space-6);
+}
+.a-title__topic {
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: var(--ls-tight);
+  color: var(--text-primary);
+  max-width: 95%;
+}
+.a-title__accent { display: block; width: 64px; height: var(--stroke-2); background: var(--accent); margin-top: var(--space-6); }
+.a-title__deco { position: absolute; right: var(--space-10); bottom: var(--space-10); display: flex; flex-direction: column; gap: 10px; align-items: flex-end; }
+.a-title__deco span { display: block; height: 1px; background: var(--text-muted); }
+.a-title__deco span:nth-child(1) { width: 80px; }
+.a-title__deco span:nth-child(2) { width: 60px; }
+.a-title__deco span:nth-child(3) { width: 40px; }
+
+/* ============ CONTENT ============ */
+.a-content { position: relative; height: 100%; display: flex; flex-direction: column; justify-content: center; }
+.a-content__main { position: relative; z-index: 1; max-width: 1360px; }
+.a-content__lead {
+  border-left: var(--stroke-4) solid var(--accent);
+  padding-left: var(--space-3);
+  font-size: var(--type-h4);
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--text-primary);
+  margin-top: var(--space-4);
+}
+.a-bullets { list-style: none; margin-top: var(--space-6); display: flex; flex-direction: column; gap: 20px; }
+.a-bullet { display: flex; align-items: flex-start; gap: var(--space-2); }
+.a-bullet__ico {
+  flex: none;
+  width: 40px; height: 40px;
+  display: grid; place-items: center;
+  background: var(--accent-muted);
+  color: var(--accent-strong);
+  border-radius: var(--radius-sm);
+}
+.a-bullet__text { font-size: 22px; line-height: 1.5; color: var(--text-primary); padding-top: 6px; }
+.a-bullet__head { font-weight: 600; }
+.a-content__cite { margin-top: var(--space-6); }
+.a-content__ghost {
+  position: absolute;
+  right: -12px; top: 50%;
+  transform: translateY(-50%);
+  font-size: 200px;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--surface-sunken);
+  text-transform: uppercase;
+  letter-spacing: -0.04em;
+  z-index: 0;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+/* ============ DEFINITION ============ */
+.a-def { display: flex; gap: var(--space-8); height: 100%; align-items: center; }
+.a-def__term { width: 40%; }
+.a-def__word {
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: var(--ls-tight);
+  color: var(--text-primary);
+  margin-top: var(--space-3);
+}
+.a-def__body { width: 60%; }
+.a-def__text {
+  font-size: 22px;
+  line-height: 1.55;
+  color: var(--text-primary);
+  margin-top: var(--space-2);
+}
+.a-def__note {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background: var(--surface-raised);
+  border: var(--stroke-1) solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 20px 24px;
+  margin-top: var(--space-3);
+}
+.a-def__note-lbl {
+  font-size: var(--type-micro);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: var(--ls-label);
+  color: var(--text-muted);
+}
+.a-def__note-txt { font-size: var(--type-small); line-height: 1.5; color: var(--text-secondary); }
+.a-def__cite { margin-top: var(--space-4); }
+
+/* ============ CONCLUSION ============ */
+.a-concl { height: 100%; display: flex; flex-direction: column; justify-content: center; text-align: center; }
+.a-concl__title { text-align: center; }
+.a-concl__summary {
+  font-size: var(--type-h3);
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--text-primary);
+  max-width: 1200px;
+  margin: var(--space-6) auto 0;
+  text-align: left;
+}
+.a-concl__cards { display: flex; gap: 20px; margin-top: var(--space-8); }
+.a-concl__card {
+  flex: 1;
+  background: var(--surface-base);
+  border: var(--stroke-1) solid var(--border);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  text-align: left;
+}
+.a-concl__ico { color: var(--accent); }
+.a-concl__ctext { font-size: 18px; line-height: 1.5; color: var(--text-primary); margin-top: var(--space-2); }
+
+/* ============ AGENDA ============ */
+.a-agenda__title { margin-top: var(--space-4); }
+.a-agenda { display: flex; gap: var(--space-8); margin-top: var(--space-6); flex: 1; min-height: 0; }
+.a-agenda__list { list-style: none; flex: 0 0 60%; }
+.a-agenda__row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: 20px 0;
+  border-bottom: var(--stroke-1) solid var(--border);
+}
+.a-agenda__num { flex: none; width: 48px; font-size: var(--type-h3); font-weight: 600; color: var(--accent); }
+.a-agenda__text { font-size: 22px; line-height: 1.4; color: var(--text-primary); }
+.a-agenda__detail { display: block; font-size: var(--type-small); color: var(--text-secondary); margin-top: 4px; }
+.a-agenda__side { flex: 0 0 30%; display: flex; flex-direction: column; justify-content: center; gap: var(--space-2); }
+.a-agenda__bars { display: flex; flex-direction: column; gap: 12px; }
+.a-agenda__bar { width: 80px; height: 16px; border-radius: 6px; background: var(--border); }
+.a-agenda__bar.is-active { background: var(--accent); }
+.a-agenda__count { font-size: var(--type-label); text-transform: uppercase; letter-spacing: var(--ls-label); color: var(--text-muted); margin-top: var(--space-3); }
+
+/* ============ RELEVANCE ============ */
+.a-rel__lead {
+  border-left: var(--stroke-4) solid var(--accent);
+  padding-left: var(--space-4);
+  font-size: var(--type-h4);
+  font-style: italic;
+  line-height: 1.4;
+  color: var(--text-primary);
+  margin-top: var(--space-5);
+  max-width: 1500px;
+}
+.a-rel__cards { display: flex; gap: var(--space-3); margin-top: var(--space-7); }
+.a-rel__card {
+  flex: 1;
+  background: var(--surface-base);
+  border: var(--stroke-1) solid var(--border);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+}
+.a-rel__num { font-size: var(--type-h3); font-weight: 700; color: var(--accent); }
+.a-rel__ctext { font-size: var(--type-body); line-height: 1.5; color: var(--text-primary); margin-top: var(--space-2); }
+.a-rel__card--stat { background: var(--primary-dark); border-color: var(--primary-dark); flex: 0 0 26%; }
+.a-rel__card--stat .a-rel__ctext { color: var(--text-on-dark); }
+.a-rel__stat-val { display: block; font-size: var(--type-display-2); font-weight: 700; line-height: 1; color: var(--accent); }
+.a-rel__stat-unit { font-size: var(--type-h3); margin-left: 4px; }
+.a-rel__cite { margin-top: var(--space-6); }
+
+/* ============ AIM_TASKS ============ */
+.a-aim__goal { margin-top: var(--space-5); }
+.a-aim__aim { font-size: var(--type-h4); font-weight: 500; line-height: 1.4; color: var(--text-primary); margin-top: var(--space-2); max-width: 1500px; }
+.a-aim__divider { display: flex; align-items: center; margin: var(--space-5) 0; }
+.a-aim__divider::before { content: ''; flex: 1; height: 1px; background: var(--border); }
+.a-aim__divider span { width: 32px; height: var(--stroke-2); background: var(--accent); }
+.a-aim__divider::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+.a-aim__grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-3); margin-top: var(--space-3); }
+.a-aim__cell {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+  background: var(--surface-raised);
+  border-radius: var(--radius-md);
+  padding: var(--space-3);
+}
+.a-aim__badge {
+  flex: none;
+  width: 40px; height: 40px;
+  display: grid; place-items: center;
+  background: var(--accent);
+  color: var(--text-on-dark);
+  font-size: 18px; font-weight: 700;
+  border-radius: var(--radius-full);
+}
+.a-aim__ctext { font-size: 18px; line-height: 1.4; color: var(--text-primary); padding-top: 6px; }
+
+/* ============ STATS ============ */
+.a-stats__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-4); margin-top: var(--space-7); }
+.a-stats__card {
+  background: var(--surface-base);
+  border: var(--stroke-1) solid var(--border);
+  border-radius: var(--radius-md);
+  padding: var(--space-6) var(--space-4);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.a-stats__label { font-size: var(--type-micro); font-weight: 600; text-transform: uppercase; letter-spacing: var(--ls-label); color: var(--text-secondary); }
+.a-stats__num { font-size: var(--type-display-1); font-weight: 700; line-height: 1; color: var(--accent); margin-top: var(--space-3); }
+.a-stats__unit { font-size: var(--type-h4); font-weight: 500; color: var(--text-secondary); margin-left: 6px; }
+.a-stats__rule { width: 32px; height: 1px; background: var(--border); margin: var(--space-4) 0 var(--space-2); }
+.a-stats__ctext { font-size: var(--type-small); line-height: 1.4; color: var(--text-primary); }
+.a-stats__insight {
+  display: inline-block;
+  background: var(--accent-muted);
+  color: var(--accent-deep);
+  font-size: var(--type-label);
+  font-weight: 500;
+  padding: 12px 20px;
+  border-radius: var(--radius-lg);
+  margin-top: var(--space-5);
+}
+.a-stats__cite { margin-top: var(--space-4); }
+
+/* ============ REFERENCES ============ */
+.a-ref__std {
+  display: inline-block;
+  background: var(--surface-sunken);
+  border: var(--stroke-1) solid var(--border);
+  border-radius: var(--radius-lg);
+  font-size: var(--type-micro);
+  font-weight: 500;
+  color: var(--text-secondary);
+  padding: 6px 12px;
+  margin-top: var(--space-2);
+}
+.a-ref__list {
+  list-style: none;
+  columns: 2;
+  column-gap: var(--space-6);
+  margin-top: var(--space-5);
+}
+.a-ref__item {
+  display: flex;
+  gap: var(--space-2);
+  break-inside: avoid;
+  padding: 12px 0 16px;
+  border-bottom: var(--stroke-1) solid var(--surface-sunken);
+}
+.a-ref__num {
+  flex: none;
+  position: relative;
+  width: 36px; height: 36px;
+  display: grid; place-items: center;
+  background: var(--surface-raised);
+  border: var(--stroke-1) solid var(--border);
+  border-radius: var(--radius-full);
+  font-size: var(--type-label);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+.a-ref__num::before {
+  content: '';
+  position: absolute;
+  top: -2px; left: -2px;
+  width: 10px; height: 10px;
+  border-radius: var(--radius-full);
+}
+.a-ref__num--law::before     { background: var(--accent); }
+.a-ref__num--book::before    { background: var(--info); }
+.a-ref__num--article::before { background: var(--warning); }
+.a-ref__num--web::before     { background: var(--text-muted); }
+.a-ref__text { font-size: var(--type-label); line-height: 1.5; color: var(--text-primary); }
+.a-ref__foot { display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); margin-top: var(--space-4); }
+.a-ref__legend { display: flex; gap: var(--space-3); flex-wrap: wrap; }
+.a-ref__leg { display: inline-flex; align-items: center; gap: 8px; font-size: var(--type-micro); color: var(--text-secondary); }
+.a-ref__dot { width: 10px; height: 10px; border-radius: var(--radius-full); }
+.a-ref__dot--law     { background: var(--accent); }
+.a-ref__dot--book    { background: var(--info); }
+.a-ref__dot--article { background: var(--warning); }
+.a-ref__dot--web     { background: var(--text-muted); }
+
+/* ============ BATAFSIL ============ */
+.a-bat__intro { font-size: var(--type-body); line-height: 1.5; color: var(--text-secondary); margin-top: var(--space-3); max-width: 1500px; }
+.a-bat__grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-3); margin-top: var(--space-6); }
+.a-bat__card {
+  position: relative;
+  background: var(--surface-base);
+  border: var(--stroke-1) solid var(--border);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+}
+.a-bat__badge {
+  display: grid; place-items: center;
+  width: 36px; height: 36px;
+  background: var(--accent-muted);
+  color: var(--accent-strong);
+  font-size: var(--type-label);
+  font-weight: 700;
+  border-radius: var(--radius-full);
+}
+.a-bat__corner {
+  position: absolute; top: var(--space-4); right: var(--space-4);
+  width: 24px; height: 24px;
+  border-top: var(--stroke-2) solid var(--accent);
+  border-right: var(--stroke-2) solid var(--accent);
+}
+.a-bat__ctext { font-size: 18px; line-height: 1.5; color: var(--text-primary); margin-top: var(--space-3); }
+
+/* ============ MISOL ============ */
+.a-misol { display: flex; gap: var(--space-6); height: 100%; align-items: stretch; }
+.a-misol__left { flex: 0 0 58%; display: flex; flex-direction: column; justify-content: center; }
+.a-misol__heading { font-size: var(--type-h3); font-weight: 600; line-height: 1.25; color: var(--text-primary); margin-top: var(--space-2); }
+.a-misol__body { font-size: var(--type-body); line-height: 1.6; color: var(--text-primary); margin-top: var(--space-4); max-width: 900px; }
+.a-misol__insight {
+  flex: 1;
+  background: var(--primary-dark);
+  border-radius: var(--radius-md);
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.a-misol__ilabel {
+  display: flex; align-items: center; gap: 10px;
+  font-size: var(--type-micro);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: var(--ls-label);
+  color: var(--accent);
+}
+.a-misol__itext { font-size: var(--type-h4); font-weight: 500; line-height: 1.4; color: var(--text-on-dark); margin-top: var(--space-3); }
+.a-misol__iline { width: 48px; height: var(--stroke-2); background: var(--accent); margin-top: var(--space-5); }
+
+/* ============ TURLAR ============ */
+.a-turlar__crit {
+  display: inline-block;
+  background: var(--surface-sunken);
+  border: var(--stroke-1) solid var(--border);
+  border-radius: var(--radius-lg);
+  font-size: var(--type-label);
+  font-weight: 500;
+  color: var(--text-secondary);
+  padding: 8px 16px;
+  margin-top: var(--space-3);
+}
+.a-turlar__grid { display: grid; gap: var(--space-3); margin-top: var(--space-6); flex: 1; align-content: center; }
+.a-turlar__card {
+  background: var(--surface-base);
+  border: var(--stroke-1) solid var(--border);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.a-turlar__ico {
+  width: 64px; height: 64px;
+  display: grid; place-items: center;
+  background: var(--accent-muted);
+  color: var(--accent-strong);
+  border-radius: var(--radius-full);
+}
+.a-turlar__label { font-size: var(--type-h4); font-weight: 600; color: var(--text-primary); margin-top: var(--space-3); }
+.a-turlar__text { font-size: var(--type-small); line-height: 1.5; color: var(--text-secondary); margin-top: var(--space-1); }
+
+/* ============ IQTIBOS ============ */
+.a-quote { height: 100%; display: flex; flex-direction: column; justify-content: center; max-width: 1400px; margin: 0 auto; position: relative; }
+.a-quote__mark {
+  font-family: var(--font-serif);
+  font-size: 200px;
+  font-weight: 700;
+  line-height: 0.6;
+  color: var(--accent-muted);
+  height: 90px;
+}
+.a-quote__text {
+  font-family: var(--font-serif);
+  font-size: 40px;
+  font-style: italic;
+  line-height: 1.4;
+  color: var(--text-primary);
+  margin-top: var(--space-4);
+}
+.a-quote__attr { margin-top: var(--space-6); }
+.a-quote__author { font-size: var(--type-h4); font-weight: 600; color: var(--text-primary); margin-top: var(--space-2); }
+.a-quote__cite { margin-top: var(--space-4); }
+
+/* ============ PROCESS ============ */
+.a-proc__flow { display: flex; align-items: stretch; gap: 8px; margin-top: var(--space-7); }
+.a-proc__step {
+  flex: 1;
+  background: var(--surface-base);
+  border: var(--stroke-1) solid var(--border);
+  border-radius: var(--radius-md);
+  padding: var(--space-3);
+  display: flex;
+  flex-direction: column;
+}
+.a-proc__num { font-size: var(--type-h3); font-weight: 700; color: var(--accent); }
+.a-proc__name { font-size: 18px; font-weight: 600; line-height: 1.3; color: var(--text-primary); margin-top: var(--space-3); }
+.a-proc__desc { font-size: var(--type-label); line-height: 1.5; color: var(--text-secondary); margin-top: var(--space-1); }
+.a-proc__arrow { flex: none; display: flex; align-items: center; color: var(--border-strong); }
+.a-proc__bar { position: relative; height: 4px; border-radius: 2px; background: var(--surface-sunken); margin-top: var(--space-6); }
+.a-proc__bar span { position: absolute; inset: 0; border-radius: 2px; background: var(--accent); }
+
+/* ============ COMPARISON ============ */
+.a-cmp { margin-top: var(--space-5); border: var(--stroke-1) solid var(--border); border-radius: var(--radius-md); overflow: hidden; }
+.a-cmp__head { display: grid; grid-template-columns: 1fr 1fr; }
+.a-cmp__hcell {
+  padding: var(--space-3) var(--space-4);
+  font-size: var(--type-h4);
+  font-weight: 700;
+  color: var(--text-primary);
+  border-bottom: var(--stroke-2) solid var(--border-strong);
+}
+.a-cmp__hcell span { display: block; font-size: var(--type-label); font-weight: 400; color: var(--text-secondary); margin-top: 4px; }
+.a-cmp__hcell--a { background: var(--surface-raised); border-right: var(--stroke-1) solid var(--border); border-bottom-color: var(--accent); }
+.a-cmp__hcell--b { background: var(--surface-base); }
+.a-cmp__row { display: grid; grid-template-columns: 1fr 1fr; border-top: var(--stroke-1) solid var(--border); }
+.a-cmp__row:first-child { border-top: 0; }
+.a-cmp__cell { padding: var(--space-3) var(--space-4); font-size: var(--type-body); line-height: 1.4; color: var(--text-primary); }
+.a-cmp__cell--a { background: var(--surface-raised); border-right: var(--stroke-1) solid var(--border); }
+.a-cmp__insight {
+  display: inline-block;
+  background: var(--accent-muted);
+  color: var(--accent-deep);
+  font-size: var(--type-label);
+  font-weight: 500;
+  padding: 12px 20px;
+  border-radius: var(--radius-lg);
+  margin-top: var(--space-5);
+}
+
+.a-deck { transform: scale(0.6); transform-origin: top center; }
+</style></head>
+<body><div class="a-deck">
+  <section class="a-slide is-batafsil">
+    <div class="a-safe">
+      
+  <header class="a-head">
+    <div class="a-head__id">
+      <span class="a-head__num">07</span>
+      <span class="a-head__label">BATAFSIL BAYON</span>
+    </div>
+    <div class="a-dots"><span class="a-dot"></span><span class="a-dot"></span><span class="a-dot is-active"></span><span class="a-dot"></span><span class="a-dot"></span><span class="a-dot"></span></div>
+  </header>
+      <div class="a-body">
+    <h1 class="a-h1">Konstitutsiyaviy normalarning o‘ziga xos belgilari</h1>
+    <p class="a-bat__intro">Konstitutsiyaviy-huquqiy normalar boshqa huquq normalaridan bir qator jihatlari bilan farqlanadi.</p>
+    <div class="a-bat__grid">
+      <div class="a-bat__card">
+        <span class="a-bat__badge">1</span>
+        <span class="a-bat__corner"></span>
+        <p class="a-bat__ctext">Oliy yuridik kuch: Konstitutsiya normalari barcha boshqa normalardan ustun turadi.</p>
+      </div>
+      <div class="a-bat__card">
+        <span class="a-bat__badge">2</span>
+        <span class="a-bat__corner"></span>
+        <p class="a-bat__ctext">Umumiy tartibga solish: ular eng muhim, tamal munosabatlarni belgilaydi.</p>
+      </div>
+      <div class="a-bat__card">
+        <span class="a-bat__badge">3</span>
+        <span class="a-bat__corner"></span>
+        <p class="a-bat__ctext">Maxsus himoya: konstitutsiyaviy nazorat mexanizmi orqali qo‘riqlanadi.</p>
+      </div>
+      <div class="a-bat__card">
+        <span class="a-bat__badge">4</span>
+        <span class="a-bat__corner"></span>
+        <p class="a-bat__ctext">Barqarorlik: o‘zgartirish uchun murakkab maxsus tartib nazarda tutilgan.</p>
+      </div></div></div>
+      
+  <footer class="a-foot">
+    <span class="a-foot__univ">TDYU</span>
+    <span class="a-foot__page">08 / 18</span>
+  </footer>
+    </div>
+  </section>
+
+  <section class="a-slide is-misol">
+    <div class="a-safe">
+      
+  <header class="a-head">
+    <div class="a-head__id">
+      <span class="a-head__num">08</span>
+      <span class="a-head__label">AMALIY MISOL</span>
+    </div>
+    <div class="a-dots"><span class="a-dot"></span><span class="a-dot"></span><span class="a-dot is-active"></span><span class="a-dot"></span><span class="a-dot"></span><span class="a-dot"></span></div>
+  </header>
+      <div class="a-body">
+    <div class="a-misol">
+      <div class="a-misol__left">
+        <span class="a-eyebrow a-eyebrow--accent">Misol</span>
+        <h2 class="a-misol__heading">Konstitutsiyaviy huquqlarning bevosita amal qilishi</h2>
+        <p class="a-misol__body">O‘zbekiston Respublikasi Konstitutsiyasining 35-moddasiga muvofiq, har bir shaxs davlat organlariga murojaat qilish huquqiga ega. Fuqaro o‘z huquqi buzilganda to‘g‘ridan-to‘g‘ri sudga da’vo bilan murojaat qilishi mumkin.</p>
+      </div>
+      
+      <aside class="a-misol__insight">
+        <span class="a-misol__ilabel"><svg class="ico" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v18M5 7h14M5 7l-3 6a3 3 0 0 0 6 0L5 7Zm14 0-3 6a3 3 0 0 0 6 0l-3-6ZM7 21h10"/></svg><span>Misol nimani ko‘rsatadi</span></span>
+        <p class="a-misol__itext">Bu konstitutsiyaviy normalarning bevosita, vositachi normalarsiz amal qilishini ko‘rsatadi.</p>
+        <span class="a-misol__iline"></span>
+      </aside>
+    </div></div>
+      
+  <footer class="a-foot">
+    <span class="a-foot__univ">TDYU</span>
+    <span class="a-foot__page">09 / 18</span>
+  </footer>
+    </div>
+  </section>
+
+  <section class="a-slide is-turlar">
+    <div class="a-safe">
+      
+  <header class="a-head">
+    <div class="a-head__id">
+      <span class="a-head__num">09</span>
+      <span class="a-head__label">TURLARI VA TASNIFI</span>
+    </div>
+    <div class="a-dots"><span class="a-dot"></span><span class="a-dot"></span><span class="a-dot is-active"></span><span class="a-dot"></span><span class="a-dot"></span><span class="a-dot"></span></div>
+  </header>
+      <div class="a-body">
+    <h1 class="a-h1">Konstitutsiyaviy-huquqiy normalarning turlari</h1>
+    <span class="a-turlar__crit">Tasnif mezoni: tartibga solish xususiyatiga ko‘ra</span>
+    <div class="a-turlar__grid" style="grid-template-columns:repeat(4,1fr)">
+      <div class="a-turlar__card">
+        <span class="a-turlar__ico"><svg class="ico" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8.5 12.5l2.5 2.5 4.5-5"/></svg></span>
+        <p class="a-turlar__label">Vakolat beruvchi</p>
+        <p class="a-turlar__text">Subyektga muayyan huquqni amalga oshirish imkonini beradi.</p>
+      </div>
+      <div class="a-turlar__card">
+        <span class="a-turlar__ico"><svg class="ico" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 3.8 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.8a2 2 0 0 0-3.4 0Z"/><path d="M12 9v4M12 17h.01"/></svg></span>
+        <p class="a-turlar__label">Majburlovchi</p>
+        <p class="a-turlar__text">Muayyan harakatni bajarish vazifasini yuklaydi.</p>
+      </div>
+      <div class="a-turlar__card">
+        <span class="a-turlar__ico"><svg class="ico" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span>
+        <p class="a-turlar__label">Taqiqlovchi</p>
+        <p class="a-turlar__text">Muayyan xatti-harakatdan tiyilishni talab qiladi.</p>
+      </div>
+      <div class="a-turlar__card">
+        <span class="a-turlar__ico"><svg class="ico" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5v14Z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"/></svg></span>
+        <p class="a-turlar__label">Ta’rif beruvchi</p>
+        <p class="a-turlar__text">Tushuncha, maqsad va tamoyillarni belgilaydi.</p>
+      </div></div></div>
+      
+  <footer class="a-foot">
+    <span class="a-foot__univ">TDYU</span>
+    <span class="a-foot__page">10 / 18</span>
+  </footer>
+    </div>
+  </section>
+
+  <section class="a-slide is-iqtibos">
+    <div class="a-safe">
+      
+  <header class="a-head">
+    <div class="a-head__id">
+      <span class="a-head__num">10</span>
+      <span class="a-head__label">IQTIBOS</span>
+    </div>
+    <div class="a-dots"><span class="a-dot"></span><span class="a-dot"></span><span class="a-dot"></span><span class="a-dot is-active"></span><span class="a-dot"></span><span class="a-dot"></span></div>
+  </header>
+      <div class="a-body">
+    <div class="a-quote">
+      <span class="a-quote__mark">&ldquo;</span>
+      <blockquote class="a-quote__text">Konstitutsiya — bu davlatning bosh qonuni bo‘lib, unda xalq irodasi va davlat suvereniteti o‘z ifodasini topadi.</blockquote>
+      <div class="a-quote__attr">
+        <span class="a-accent-line"></span>
+        <p class="a-quote__author">A. X. Saidov</p>
+      </div>
+      <div class="a-quote__cite"><span class="a-cite a-cite--block">[4] Saidov A. X. Konstitutsiyaviy huquq. — Toshkent: Adolat, 2021. — B. 15.</span></div>
+    </div></div>
+      
+  <footer class="a-foot">
+    <span class="a-foot__univ">TDYU</span>
+    <span class="a-foot__page">11 / 18</span>
+  </footer>
+    </div>
+  </section>
+
+  <section class="a-slide is-process">
+    <div class="a-safe">
+      
+  <header class="a-head">
+    <div class="a-head__id">
+      <span class="a-head__num">11</span>
+      <span class="a-head__label">JARAYON BOSQICHLARI</span>
+    </div>
+    <div class="a-dots"><span class="a-dot"></span><span class="a-dot"></span><span class="a-dot"></span><span class="a-dot is-active"></span><span class="a-dot"></span><span class="a-dot"></span></div>
+  </header>
+      <div class="a-body">
+    <h1 class="a-h1">Qonun qabul qilish jarayoni bosqichlari</h1>
+    <div class="a-proc__flow">
+      <div class="a-proc__step">
+        <span class="a-proc__num">1</span>
+        <p class="a-proc__name">Qonunchilik tashabbusi</p>
+        <p class="a-proc__desc">Vakolatli subyekt qonun loyihasini taqdim etadi.</p>
+      </div><span class="a-proc__arrow"><svg class="ico" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      <div class="a-proc__step">
+        <span class="a-proc__num">2</span>
+        <p class="a-proc__name">Muhokama</p>
+        <p class="a-proc__desc">Loyiha Qonunchilik palatasida bosqichma-bosqich ko‘rib chiqiladi.</p>
+      </div><span class="a-proc__arrow"><svg class="ico" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      <div class="a-proc__step">
+        <span class="a-proc__num">3</span>
+        <p class="a-proc__name">Qabul qilish</p>
+        <p class="a-proc__desc">Deputatlar ovoz berish orqali qonunni qabul qiladi.</p>
+      </div><span class="a-proc__arrow"><svg class="ico" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      <div class="a-proc__step">
+        <span class="a-proc__num">4</span>
+        <p class="a-proc__name">Ma’qullash</p>
+        <p class="a-proc__desc">Senat qonunni ma’qullaydi.</p>
+      </div><span class="a-proc__arrow"><svg class="ico" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      <div class="a-proc__step">
+        <span class="a-proc__num">5</span>
+        <p class="a-proc__name">Imzolash va e’lon</p>
+        <p class="a-proc__desc">Prezident imzolaydi va qonun rasmiy e’lon qilinadi.</p>
+      </div></div>
+    <div class="a-proc__bar"><span></span></div></div>
+      
+  <footer class="a-foot">
+    <span class="a-foot__univ">TDYU</span>
+    <span class="a-foot__page">12 / 18</span>
+  </footer>
+    </div>
+  </section>
+
+  <section class="a-slide is-comparison">
+    <div class="a-safe">
+      
+  <header class="a-head">
+    <div class="a-head__id">
+      <span class="a-head__num">12</span>
+      <span class="a-head__label">QIYOSIY TAHLIL</span>
+    </div>
+    <div class="a-dots"><span class="a-dot"></span><span class="a-dot"></span><span class="a-dot"></span><span class="a-dot"></span><span class="a-dot is-active"></span><span class="a-dot"></span></div>
+  </header>
+      <div class="a-body">
+    <h1 class="a-h1">Qonun va qonunosti hujjatining qiyosiy tahlili</h1>
+    <div class="a-cmp">
+      <div class="a-cmp__head">
+        <div class="a-cmp__hcell a-cmp__hcell--a">Qonun</div>
+        <div class="a-cmp__hcell a-cmp__hcell--b">Qonunosti hujjati</div>
+      </div>
+      <div class="a-cmp__rows">
+      <div class="a-cmp__row">
+        <div class="a-cmp__cell a-cmp__cell--a">Oliy Majlis palatalari</div>
+        <div class="a-cmp__cell a-cmp__cell--b">Ijro hokimiyati organlari</div>
+      </div>
+      <div class="a-cmp__row">
+        <div class="a-cmp__cell a-cmp__cell--a">Yuqori</div>
+        <div class="a-cmp__cell a-cmp__cell--b">Qonunga bo‘ysunadi</div>
+      </div>
+      <div class="a-cmp__row">
+        <div class="a-cmp__cell a-cmp__cell--a">Eng muhim munosabatlar</div>
+        <div class="a-cmp__cell a-cmp__cell--b">Qonunni aniqlashtiradi</div>
+      </div>
+      <div class="a-cmp__row">
+        <div class="a-cmp__cell a-cmp__cell--a">Murakkab, ko‘p bosqichli</div>
+        <div class="a-cmp__cell a-cmp__cell--b">Soddalashtirilgan</div>
+      </div></div>
+    </div>
+    <div class="a-cmp__insight">Xulosa: qonun har doim yuqori yuridik kuchga ega.</div></div>
+      
+  <footer class="a-foot">
+    <span class="a-foot__univ">TDYU</span>
+    <span class="a-foot__page">13 / 18</span>
+  </footer>
+    </div>
+  </section></div></body></html>

@@ -19,8 +19,7 @@ import { ConfigService } from '@nestjs/config';
           password: config.get<string>('app.redis.password'),
         },
         defaultJobOptions: {
-          attempts: 3,
-          backoff: { type: 'exponential', delay: 2000 },
+          attempts: 1,
           removeOnComplete: 100,
           removeOnFail: 500,
         },

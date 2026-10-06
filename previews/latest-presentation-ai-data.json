@@ -1,0 +1,356 @@
+{
+  "presentation": {
+    "id": "bac4380b-ffb3-442c-b5b9-21c2248a88f4",
+    "topic": "Sunʼiy intellekt 2026: holat va kelajak",
+    "language": "uz",
+    "slideCount": 10,
+    "status": "done",
+    "theme": {
+      "key": "dark_premium",
+      "name": "🌑 Dark Premium"
+    },
+    "createdAt": "2026-07-10T10:16:07.035Z",
+    "updatedAt": "2026-07-10T10:18:52.835Z"
+  },
+  "outline": {
+    "slides": [
+      {
+        "type": "TITLE",
+        "title": "Sun'iy intellekt 2026: holat va kelajak",
+        "position": 1,
+        "key_points": [
+          "O'zbekiston davlat universiteti, Axborot texnologiyalari fakulteti",
+          "Tayyorlagan: [Talaba ismi]",
+          "Ilmiy rahbar: [O'qituvchi ismi]",
+          "2026-yil"
+        ]
+      },
+      {
+        "type": "AGENDA",
+        "title": "Reja",
+        "position": 2,
+        "key_points": [
+          "Sun'iy intellekt tushunchasi va asosiy yo'nalishlari",
+          "2026-yildagi global holat va ko'rsatkichlar",
+          "Asosiy texnologiyalar va ularning tasnifi",
+          "Ijtimoiy va iqtisodiy ta'sir",
+          "Muammolar va yechimlar",
+          "Kelajak istiqbollari va xulosalar"
+        ]
+      },
+      {
+        "type": "DEFINITION",
+        "title": "Sun'iy intellekt nima?",
+        "position": 3,
+        "key_points": [
+          "Sun'iy intellekt — mashinalarga inson aqliy faoliyatiga xos vazifalarni bajarishga imkon beruvchi texnologiyalar majmui",
+          "Asosiy yo'nalishlar: mashinaviy o'rganish, chuqur o'rganish, tabiiy tilni qayta ishlash",
+          "Tor SI (task-specific) va keng SI (general AI) farqlanadi",
+          "John McCarthy (1956): «Aqlli mashinalarni yaratish ilmi va muhandisligi»"
+        ]
+      },
+      {
+        "type": "STATS",
+        "title": "2026-yilda SI bozori: asosiy raqamlar",
+        "position": 4,
+        "key_points": [
+          "Global SI bozori hajmi 2026-yilda 500 mlrd dollardan oshishi bashorat qilingan (Statista, 2024)",
+          "Dunyodagi yirik kompaniyalarning 80% dan ko'pi SI vositalarini faol qo'llaydi (McKinsey, 2025)",
+          "SI sohasidagi ish o'rinlari 2020–2026 yillarda 40% ga ko'paydi (World Economic Forum)",
+          "O'zbekistonda raqamli iqtisodiyot dasturi doirasida SI loyihalariga ajratilgan mablag' — 150 mln dollar (IT Park, 2025)"
+        ]
+      },
+      {
+        "type": "TURLAR",
+        "title": "Sun'iy intellektning asosiy turlari",
+        "position": 5,
+        "key_points": [
+          "Tor SI (Narrow AI): bitta aniq vazifani bajaradi — tavsiya tizimlari, nutqni tanish, tibbiy diagnostika",
+          "Umumiy SI (AGI): insoniy darajada turli sohalarda mustaqil fikrlay oladi — nazariy bosqichda",
+          "Generativ SI: matn, rasm, kod yaratadi — GPT-4o, Gemini, Claude misollari",
+          "Avtonom tizimlar: mustaqil qaror qabul qiladi — o'z-o'zidan yuradigan transport, robototexnika"
+        ]
+      },
+      {
+        "type": "CONTENT",
+        "title": "Generativ SI 2025–2026-yillarda sifat sakrashini amalga oshirdi",
+        "position": 6,
+        "key_points": [
+          "Multimodal modellar matn, ovoz, rasm va videoni bir vaqtda qabul qilib, ishlov bera oladi",
+          "Kontekst oynasi 1 million tokenga yetdi — bu butun kitobni bir seansda tahlil qilish imkonini beradi",
+          "Modellarni aniq sohaga moslashtirish (fine-tuning) xarajati 10 baravar kamaydi",
+          "Ta'lim, sog'liqni saqlash, huquq va ilmiy tadqiqotlarda keng tatbiq etilmoqda"
+        ]
+      },
+      {
+        "type": "COMPARISON",
+        "title": "An'anaviy dasturlash va SI yondashuvi: farqlar",
+        "position": 7,
+        "key_points": [
+          "An'anaviy dasturlash: qat'iy qoidalar, dasturchi tomonidan yozilgan mantiq, statik natija",
+          "SI yondashuvi: ma'lumotlardan o'z-o'zidan o'rganish, ehtimollik asosida qaror, dinamik moslashuv",
+          "An'anaviy tizim: yangi holat uchun qo'lda yangilash talab etiladi",
+          "SI tizimi: yangi ma'lumotlar bilan o'z-o'zidan takomillashadi"
+        ]
+      },
+      {
+        "type": "PROBLEMS_SOLUTIONS",
+        "title": "SI rivojlanishidagi muammolar va yechimlar",
+        "position": 8,
+        "key_points": [
+          "Muammo: algoritmik tarafkashlik (bias) — noto'g'ri va adolatsiz natijalar; Yechim: xilma-xil, tekshirilgan ma'lumotlar to'plami va mustaqil audit",
+          "Muammo: shaffoflikning yo'qligi — 'qora quti' modellari; Yechim: izohlanuvchan SI (XAI) usullarini joriy etish",
+          "Muammo: ish o'rinlari qisqarishi xavfi; Yechim: qayta tayyorlash dasturlari va yangi kasblarni rivojlantirish",
+          "Muammo: ma'lumotlar xavfsizligi va maxfiylik; Yechim: mahalliy (on-device) ishlov va qat'iy me'yoriy-huquqiy baza"
+        ]
+      },
+      {
+        "type": "CONCLUSION",
+        "title": "Xulosalar",
+        "position": 9,
+        "key_points": [
+          "Sun'iy intellekt 2026-yilda tor vositadan universal platforma darajasiga ko'tarildi va barcha sohalarga kirib bormoqda",
+          "Texnologiyaning samarasi uning qay darajada mas'uliyatli, shaffof va adolatli qo'llanishiga bog'liq",
+          "O'zbekiston uchun SI nafaqat texnologik, balki iqtisodiy va ijtimoiy rivojlanish omilidir",
+          "Kadrlar tayyorlash, me'yoriy baza va xalqaro hamkorlik — muvaffaqiyatning asosiy shartlari"
+        ]
+      },
+      {
+        "type": "CLOSING",
+        "title": "E'tiboringiz uchun rahmat!",
+        "position": 10,
+        "key_points": [
+          "Savollar va muhokamaga tayyormiz",
+          "Taqdimotchi: [Talaba ismi]",
+          "Ilmiy rahbar: [O'qituvchi ismi]",
+          "2026-yil"
+        ]
+      }
+    ],
+    "deck_title": "Sun'iy intellekt 2026: holat va kelajak"
+  },
+  "slides": [
+    {
+      "position": 1,
+      "type": "TITLE",
+      "status": "generated",
+      "content": {
+        "title": "Sun'iy intellekt 2026: holat va kelajak",
+        "layout": "typographic_statement"
+      }
+    },
+    {
+      "position": 2,
+      "type": "AGENDA",
+      "status": "generated",
+      "content": {
+        "items": [
+          {
+            "text": "Sun'iy intellekt tushunchasi va asosiy yo'nalishlari"
+          },
+          {
+            "text": "2026-yildagi global bozor holati va ko'rsatkichlar"
+          },
+          {
+            "text": "Asosiy SI turlari va ularning tasnifi"
+          },
+          {
+            "text": "Generativ SI: so'nggi texnologik sifat sakrashi"
+          },
+          {
+            "text": "An'anaviy dasturlash va SI yondashuvining farqlari"
+          },
+          {
+            "text": "Muammolar, yechimlar va O'zbekiston uchun xulosalar"
+          }
+        ],
+        "title": "Reja"
+      }
+    },
+    {
+      "position": 3,
+      "type": "DEFINITION",
+      "status": "generated",
+      "content": {
+        "term": "Sun'iy intellekt",
+        "paragraph": "Sun'iy intellekt — mashinalarga inson aqliy faoliyatiga xos vazifalarni bajarishga imkon beruvchi texnologiyalar majmuidir. John McCarthy 1956-yilda uni <strong>«aqlli mashinalarni yaratish ilmi va muhandisligi»</strong> deb ta'riflagan bo'lib, bu ta'rif bugun ham o'z kuchini saqlab qolmoqda. Soha uchta asosiy yo'nalishni o'z ichiga oladi: mashinaviy o'rganish, chuqur o'rganish va tabiiy tilni qayta ishlash. Shu bilan birga, hozirgi tizimlarning aksariyati tor SI — bitta muayyan vazifaga mo'ljallangan — turiga mansub, umumiy aqlga ega keng SI esa hali tadqiqot bosqichida qolmoqda."
+      }
+    },
+    {
+      "position": 4,
+      "type": "STATS",
+      "status": "generated",
+      "content": {
+        "stats": [
+          {
+            "unit": "mlrd $",
+            "label": "global SI bozori hajmi",
+            "value": "500",
+            "approx": true,
+            "description": "2026-yilda kutilayotgan bozor qiymati"
+          },
+          {
+            "unit": "%",
+            "label": "yirik kompaniyalar",
+            "value": "80",
+            "approx": true,
+            "description": "SI vositalarini faol qo'llayotgan ulushi"
+          },
+          {
+            "unit": "%",
+            "label": "yangi ish o'rinlari",
+            "value": "40",
+            "approx": true,
+            "description": "2020–2026 yillar orasida SI sohasida o'sish"
+          },
+          {
+            "unit": "mln $",
+            "label": "O'zbekiston SI investitsiyasi",
+            "value": "150",
+            "description": "raqamli iqtisodiyot dasturi doirasida ajratilgan mablag'"
+          }
+        ],
+        "title": "2026-yilda SI bozori jadal o'sish bosqichida",
+        "layout": "gradient_cards",
+        "source": "Statista 2024; McKinsey 2025; World Economic Forum; IT Park 2025",
+        "insight": "SI endi tor ixtisoslik emas — u global iqtisodiyotning <strong>strategik infratuzilmasiga</strong> aylandi.",
+        "subtitle": "Global va mahalliy raqamlar texnologiyaning qanchalik keng tarqalganini ko'rsatadi."
+      }
+    },
+    {
+      "position": 5,
+      "type": "TURLAR",
+      "status": "generated",
+      "content": {
+        "items": [
+          {
+            "icon": "target",
+            "text": "Faqat bitta aniq vazifani bajaradi: tavsiya tizimlari, nutqni tanish va tibbiy diagnostika bunga misol.",
+            "label": "Tor SI (Narrow AI)"
+          },
+          {
+            "icon": "brain",
+            "text": "Insoniy darajada turli sohalarda mustaqil fikrlay oladi — hozircha nazariy bosqichda qolmoqda.",
+            "label": "Umumiy SI (AGI)"
+          },
+          {
+            "icon": "rocket",
+            "text": "Matn, rasm va kod yaratadi; GPT-4o, Gemini va Claude eng taniqli vakillari hisoblanadi.",
+            "label": "Generativ SI"
+          },
+          {
+            "icon": "gear",
+            "text": "Mustaqil qaror qabul qiladi: o'z-o'zidan yuradigan transport va robototexnika asosiy misollardir.",
+            "label": "Avtonom tizimlar"
+          }
+        ],
+        "title": "Sun'iy intellekt to'rt asosiy turga bo'linadi",
+        "kicker": "Tasnif",
+        "layout": "squircle_bento"
+      }
+    },
+    {
+      "position": 6,
+      "type": "CONTENT",
+      "status": "generated",
+      "content": {
+        "title": "Generativ SI 2025–2026-yillarda sifat sakrashini amalga oshirdi",
+        "kicker": "Texnologik sakrash",
+        "paragraph": "2025–2026-yillarda generativ SI modellari <strong>multimodal qobiliyat</strong> kasb etdi: matn, ovoz, rasm va videoni bir seansda qabul qilib, kompleks vazifalarga bir vaqtning o'zida ishlov bera oladi. Shu bilan birga, kontekst oynasining 1 million tokengacha kengayishi butun kitob yoki yirik ilmiy hisobotni uzluksiz tahlil qilish imkonini beradi. Bu o'z navbatida modellarni aniq sohaga moslashtirish xarajatini sezilarli darajada pasaytirdi, natijada ta'lim, sog'liqni saqlash, huquq va ilmiy tadqiqot sohalarida tatbiq etish avvalgi yillarga qaraganda ancha kengroq miqyosda amalga oshirilmoqda."
+      }
+    },
+    {
+      "position": 7,
+      "type": "COMPARISON",
+      "status": "generated",
+      "content": {
+        "left": {
+          "items": [
+            "Har bir qaror qat'iy qoidalar asosida ishlaydi",
+            "Yangi holat uchun kodni qo'lda yangilash shart",
+            "Natija oldindan belgilangan va statik bo'ladi"
+          ],
+          "label": "An'anaviy dasturlash",
+          "title": "Dasturchi yozgan mantiq"
+        },
+        "right": {
+          "items": [
+            "Model misollardan o'z-o'zidan qonuniyat topadi",
+            "Yangi ma'lumotlar bilan avtomatik takomillashadi",
+            "Qaror ehtimollik asosida va dinamik moslashadi"
+          ],
+          "label": "SI yondashuvi",
+          "title": "Ma'lumotdan o'rganish"
+        },
+        "title": "Qat'iy qoidalar va o'z-o'zidan o'rganish — ikki tub yondashuv",
+        "layout": "toggle_spectrum",
+        "subtitle": "An'anaviy dasturlash va SI ning ishlash mantiqidagi asosiy farq"
+      }
+    },
+    {
+      "position": 8,
+      "type": "PROBLEMS_SOLUTIONS",
+      "status": "generated",
+      "content": {
+        "pairs": [
+          {
+            "problem": "Algoritmik tarafkashlik — noto'g'ri va adolatsiz natijalar",
+            "solution": "Xilma-xil ma'lumotlar to'plami va mustaqil audit joriy etish"
+          },
+          {
+            "problem": "'Qora quti' modellari — qarorlarni izohlash imkonsiz",
+            "solution": "Izohlanuvchan SI (XAI) usullarini keng qo'llash"
+          },
+          {
+            "problem": "Ish o'rinlari qisqarishi va mehnat bozoridagi xavf",
+            "solution": "Qayta tayyorlash dasturlari va yangi kasblarni rivojlantirish"
+          }
+        ],
+        "title": "Muammolar va yechimlar",
+        "layout": "diff_view",
+        "subtitle": "SI rivojlanishining to'rtta eng dolzarb texnik-etik to'sig'i va ularga amaliy yechimlar"
+      }
+    },
+    {
+      "position": 9,
+      "type": "CONCLUSION",
+      "status": "generated",
+      "content": {
+        "title": "Xulosalar",
+        "closing": "Strategik yondashuvsiz SI imkoniyatlari to'liq samaraga aylana olmaydi — bu O'zbekiston uchun ham istisno emas.",
+        "paragraph": "Sun'iy intellekt 2026-yilga kelib <strong>universal platformaga</strong> aylandi va iqtisodiyot, ta'lim, sog'liqni saqlash kabi sohalarga izchil kirib bormoqda. Shu bilan birga, texnologiyaning haqiqiy samarasi uning mas'uliyatli, shaffof va adolatli qo'llanishiga to'g'ridan-to'g'ri bog'liq — algoritmik tarafkashlik va nazorat tizimlarining zaifligi asosiy to'siq bo'lib qolmoqda. O'zbekiston uchun SI strategik rivojlanish omili sifatida muhim ahamiyat kasb etadi; natijada kadrlar tayyorlash, me'yoriy-huquqiy baza va xalqaro hamkorlik muvaffaqiyatning hal qiluvchi shartlari hisoblanadi."
+      }
+    },
+    {
+      "position": 10,
+      "type": "CLOSING",
+      "status": "generated",
+      "content": {
+        "title": "E'tiboringiz uchun rahmat!",
+        "layout": "default"
+      }
+    }
+  ],
+  "generationJobs": [
+    {
+      "stage": "outline",
+      "status": "completed",
+      "modelUsed": "claude-sonnet-4-6",
+      "tokensUsed": 5654,
+      "promptTokens": 3962,
+      "completionTokens": 1692,
+      "costUsd": "0.03727",
+      "finishedAt": "2026-07-10T10:17:24.435Z"
+    },
+    {
+      "stage": "cards",
+      "status": "completed",
+      "modelUsed": "claude-sonnet-4-6",
+      "tokensUsed": 12508,
+      "promptTokens": 8631,
+      "completionTokens": 3877,
+      "costUsd": "0.08405",
+      "finishedAt": "2026-07-10T10:18:35.899Z"
+    }
+  ]
+}

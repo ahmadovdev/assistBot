@@ -1,0 +1,22 @@
+{
+  "id": "title-overflow-check",
+  "theme": "dark_premium",
+  "language": "uz",
+  "slides": [
+    {
+      "position": 1,
+      "layout": "TITLE",
+      "content": {
+        "layout": "typographic_statement",
+        "title": "O'zbekiston Respublikasida iste'molchilar huquqlarini himoya qilishning huquqiy asoslari"
+      }
+    },
+    {
+      "position": 2,
+      "layout": "CLOSING",
+      "content": {
+        "title": "E'tiboringiz uchun rahmat!"
+      }
+    }
+  ]
+}

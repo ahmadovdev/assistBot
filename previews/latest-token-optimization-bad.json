@@ -1,0 +1,254 @@
+{
+  "id": "f45e05ac-bb22-48af-be95-c95058546433",
+  "theme": "dark_premium",
+  "slides": [
+    {
+      "type": "TITLE",
+      "content": {
+        "title": "O'zbekistonda Startap Ekotizimi: Holat, Muammolar va Rivojlanish Yo'nalishlari",
+        "layout": "editorial_split"
+      }
+    },
+    {
+      "type": "AGENDA",
+      "content": {
+        "items": [
+          {
+            "text": "Startap tushunchasi va ekotizim modellari"
+          },
+          {
+            "text": "O'zbekistonda startap qo'llab-quvvatlash tizimi"
+          },
+          {
+            "text": "Asosiy muammolar va yechimlar"
+          },
+          {
+            "text": "Kelajakdagi rivojlanish istiqbollari"
+          }
+        ],
+        "title": "Taqdimot Rejasi"
+      }
+    },
+    {
+      "type": "DEFINITION",
+      "content": {
+        "term": "Startap Tushunchasi va Xususiyatlari",
+        "layout": "term_axis",
+        "aspects": [
+          {
+            "icon": "check",
+            "text": "Uning asosiy maqsadi — shkala (masshtab) qobiliyatiga ega bo'lgan biznes modelini yaratish.",
+            "label": "Jihat 1"
+          },
+          {
+            "icon": "layers",
+            "text": "Oddiy kichik biznesdan farqi: startap tez o'sish va global bozorga chiqishga qaratilgan.",
+            "label": "Jihat 2"
+          },
+          {
+            "icon": "target",
+            "text": "Noto'liq ma'lumotlik sharoitida eksperimental yondashuv va tez iteratsiya (o'zgartirish) muhim.",
+            "label": "Jihat 3"
+          }
+        ],
+        "definition": "Startap — innovatsion g'oyaga asoslangan, yuqori o'sish salohiyatiga ega bo'lgan yosh kompaniya."
+      }
+    },
+    {
+      "type": "BATAFSIL",
+      "content": {
+        "title": "Startap ekotizimi tarkibiy qismlari va ularning o'zaro bog'liqligi",
+        "kicker": "Batafsil",
+        "layout": "default",
+        "paragraph": "Startap ekotizimi inson kapitali, moliya, infratuzilma va hukumat siyosatining o'zaro ta'siri orqali shakllanadi. Malakali mutaxassislar va mentorlarning ishtiroki innovatsiyani rag'batlantiradi, angel investitsiyalar va davlat grantlari g'oyalarni amaliyotga tatbiq etish uchun zarur resurslarni ta'minlaydi. Inkubatorlar va akseleratorlar biznes modelini tezlashtirib raqobatbardoshlikni oshiradi. O'zbekistonda joriy etilgan soliq imtiyozlari va qonunchilik islohotlari esa bu jarayonni qo'llab-quvvatlovchi qulay muhit yaratadi."
+      }
+    },
+    {
+      "type": "RELEVANCE",
+      "content": {
+        "title": "Iqtisodiy o'sish uchun startaplar strategik omil",
+        "kicker": "Dolzarblik",
+        "paragraph": "O'zbekiston iqtisodiyoti neft-gaz va xomashyoga juda bog'liq bo'lishdan chiqish maqsadida innovatsion startaplar raqamli transformatsiyani tezlashtiruvchi asosiy kuchga aylanmoqda; ular yoshlar bandligini oshirib, yuqori qo'shimcha qiymatli ish o'rinlari yaratish orqali ijtimoiy barqarorlikni mustahkamlaydi va eksport salohiyatini kengaytiradi. Shu sababli startap ekotizimini rivojlantirish strategik ahamiyatga ega, davlat tomonidan joriy etilayotgan maxsus soliq imtiyozlari va ijtimoiy ta'minotdan ozod qilish choralari esa bu yo'nalishga barqaror qo'llab-quvvatlash ko'rsatadi."
+      }
+    },
+    {
+      "type": "CONTENT",
+      "content": {
+        "lead": "O'zbekistonda startap ekotizimi bir nechta muhim g‘oya orqali izohlanadi.",
+        "title": "Davlat Qo'llab-Quvvatlash Choralari",
+        "layout": "changelog_lines",
+        "points": [
+          {
+            "text": "Startap kompaniyalari uchun yengillashtirilgan soliq rejimlari va soliq imtiyozlari."
+          },
+          {
+            "text": "Birinchi 3 yil davomida ijtimoiy soliq to'lovlaridan ozod qilish."
+          },
+          {
+            "text": "Davlat byudjeti mablag'lari hisobiga grantlar ajratish tizimi."
+          },
+          {
+            "text": "Xususiy sektor ishtirokida maxsus iqtisodiy zonalar va texnoparklar tashkil etish."
+          }
+        ]
+      }
+    },
+    {
+      "type": "BATAFSIL",
+      "content": {
+        "body": "O'zbekistonda startap ekotizimi doirasidagi muhim jihat sabab, mexanizm va natija bog‘lanishida tahlil qilinadi. Bunday yondashuv mavzuning ichki mantiqini ochib, amaliy ahamiyatini tushunarli ko‘rsatadi.",
+        "title": "Moliyaviy Qo'llab-Quvvatlash Manbalari",
+        "layout": "marginalia",
+        "points": [
+          {
+            "text": "MASAK va AKA kabi agentliklar orqali startaplar uchun maxsus moliyaviy dasturlar."
+          },
+          {
+            "text": "Inkubator va akselerator dasturlari: g'oyani prototipgacha yetkazish va mentorlik."
+          },
+          {
+            "text": "Angels Investitsiya Klubi va Venture Fondlar faoliyatini rag'batlantirish."
+          }
+        ]
+      }
+    },
+    {
+      "type": "PROCESS",
+      "content": {
+        "steps": [
+          {
+            "body": "0-bosqich: G'oya va prototip (MVP) yaratish, bozor tadqiqoti. bo‘yicha asosiy amal bajarilib, keyingi qadam uchun aniq natija tayyorlanadi.",
+            "title": "Bosqich 1"
+          },
+          {
+            "body": "Seed bosqich: Boshlang'ich kapital, jamoa shakllantirish, ilk mijozlar. bo‘yicha asosiy amal bajarilib, keyingi qadam uchun aniq natija tayyorlanadi.",
+            "title": "Bosqich 2"
+          },
+          {
+            "body": "Series A: O'sish bosqichi, mahsulotni takomillashtirish, bozor ulushini kengaytirish. bo‘yicha asosiy amal bajarilib, keyingi qadam uchun aniq natija tayyorlanadi.",
+            "title": "Bosqich 3"
+          }
+        ],
+        "title": "Startap Rivojlanish Bosqichlari",
+        "layout": "switchback_path"
+      }
+    },
+    {
+      "type": "PROBLEMS_SOLUTIONS",
+      "content": {
+        "pairs": [
+          {
+            "problem": "Valyuta cheklovlari va yuqori investitsion risklar tashqi mablag'larni jalb qilishni qiyinlashtiradi",
+            "solution": "Xalqaro sug'urta mexanizmlarini joriy etish va moliyaviy barqarorlikni ta'minlash"
+          },
+          {
+            "problem": "Yuqori malakali IT mutaxassislarining yetishmasligi startaplarning texnik sig'imini cheklaydi",
+            "solution": "Universitetlarda amaliy ta'limni kuchaytirish va xorijiy ekspertlarni jalb qilish"
+          },
+          {
+            "problem": "Qonunchilikdagi chalkashliklar va byurokratik to'siqlar biznes jarayonlarini sekinlashtiradi",
+            "solution": "Raqamli hujjat ayirboshlashni kengaytirish va regulyator sirtog'ni joriy qilish"
+          }
+        ],
+        "title": "Asosiy Muammolar va To'siqlar",
+        "kicker": "9/15",
+        "layout": "matrix",
+        "subtitle": "Ekotizim rivojlanishidagi qiyinchiliklar va ularni bartaraf etish yo'llari"
+      }
+    },
+    {
+      "type": "CONTENT",
+      "content": {
+        "lead": "O'zbekistonda startap ekotizimi bir nechta muhim g‘oya orqali izohlanadi.",
+        "title": "Yechimlar va Strategik Yo'nalishlar",
+        "layout": "changelog_lines",
+        "points": [
+          {
+            "text": "Ta'lim tizimini innovatsion g'oyalar bilan bog'lash va amaliy ko'nikmalarni oshirish."
+          },
+          {
+            "text": "Investitsion muhitni yaxshilash uchun qonun hujjatlarini soddalashtirish."
+          },
+          {
+            "text": "Yirik korporatsiyalar va startaplar o'rtasida hamkorlikni rag'batlantirish (Open Innovation)."
+          },
+          {
+            "text": "Xalqaro hamkorlikni kengaytirish: xorijiy bozorlarga chiqishni qo'llab-quvvatlash."
+          }
+        ]
+      }
+    },
+    {
+      "type": "COMPARISON",
+      "content": {
+        "left": {
+          "items": [
+            "Qozog'iston: Keng moliyaviy bazaga ega, lekin raqobat kuchaymoqda.",
+            "Qirg'iziston: Past xarajatlar, lekin infratuzilma va qonunchilik zaif."
+          ],
+          "label": "Birinchi",
+          "title": "Asosiy yondashuv"
+        },
+        "right": {
+          "items": [
+            "Qirg'iziston: Past xarajatlar, lekin infratuzilma va qonunchilik zaif.",
+            "O'zbekiston: Katta ichki bozor va yosh aholi, davlat qo'llab-quvvatlashi kuchli."
+          ],
+          "label": "Ikkinchi",
+          "title": "Muqobil yondashuv"
+        },
+        "title": "Ikki yondashuvning asosiy farqlari",
+        "layout": "toggle_spectrum",
+        "subtitle": "Yondashuvlar vazifasi, qo‘llanishi va natijasi bo‘yicha qiyoslanadi."
+      }
+    },
+    {
+      "type": "MISOL",
+      "content": {
+        "body": "O'zbekistonda startap ekotizimi amaliy vaziyatda kuzatilganda, asosiy omillar ketma-ket baholanadi va natija ular o‘rtasidagi bog‘lanish orqali izohlanadi.",
+        "icon": "check",
+        "title": "Mavzuni tushuntiruvchi amaliy misol",
+        "layout": "case_study",
+        "takeaway": "Misol nazariy fikrning amalda qanday ishlashini ko‘rsatadi."
+      }
+    },
+    {
+      "type": "CONTENT",
+      "content": {
+        "lead": "O'zbekistonda startap ekotizimi bir nechta muhim g‘oya orqali izohlanadi.",
+        "title": "Kelajak Tendensiyalari: AI va Raqamli Iqtisodiyot",
+        "layout": "changelog_lines",
+        "points": [
+          {
+            "text": "Sun'iy intellekt (AI) va katta ma'lumotlar (Big Data) sohasidagi startaplarning o'sishi."
+          },
+          {
+            "text": "FinTech va InsurTech sohasida yangi xizmat ko'rsatish modellarining paydo bo'lishi."
+          },
+          {
+            "text": "AgroTech: qishloq xo'jaligida raqamli texnologiyalarni joriy etish."
+          },
+          {
+            "text": "GreenTech: ekologik toza texnologiyalar va barqaror rivojlanish g'oyalarini qo'llab-quvvatlash."
+          }
+        ]
+      }
+    },
+    {
+      "type": "CONCLUSION",
+      "content": {
+        "title": "Xulosa va Asosiy Ta'sirlar",
+        "kicker": "Tahlil va istiqbollar",
+        "closing": "Shu sababli, tizimli yondashuv va barcha ishtirokchilarning uyg'un harakati ekotizimning kelajakdagi barqaror rivojlanishini belgilaydi.",
+        "paragraph": "O'zbekiston startap ekotizimi davlat tomonidan yaratilgan maxsus soliq imtiyozlari va ijtimoiy ta'minotdan ozod qilish kabi qo'llab-quvvatlash choralari tufayli dinamik rivojlanmoqda, ammo barqaror o'sishni ta'minlash uchun xususiy sektor ishtirokini kengaytirish va moliyaviy vositachilar tarmog'ini mustahkamlash zarur, bu esa o'z navbatida ta'lim tizimini modernizatsiya qilish va raqamli infratuzilmani yaxshilash orqali raqobatbardosh kadrlar tayyorlashni talab qiladi, natijada xalqaro hamkorlik va bozorga chiqish strategiyalari startaplarning global miqyosda muvaffaqiyat qozonishiga zamin yaratadi."
+      }
+    },
+    {
+      "type": "CLOSING",
+      "content": {
+        "title": "Muhokama uchun minnatdorchilik",
+        "layout": "default"
+      }
+    }
+  ]
+}

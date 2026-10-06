@@ -6,6 +6,10 @@ import { QUEUES } from '../../infra/queue/queue.constants';
 import { BrowserService } from './browser.service';
 import { RenderService } from './render.service';
 import { RenderProcessor } from './render.processor';
+import { runsWorkers } from '../../common/config/role';
+
+// Only the worker process consumes render jobs (see generation.module.ts).
+const processors = runsWorkers() ? [RenderProcessor] : [];
 
 @Module({
   imports: [
@@ -13,6 +17,6 @@ import { RenderProcessor } from './render.processor';
     PresentationsModule,
     BullModule.registerQueue({ name: QUEUES.RENDER }),
   ],
-  providers: [BrowserService, RenderService, RenderProcessor],
+  providers: [BrowserService, RenderService, ...processors],
 })
 export class RenderModule {}

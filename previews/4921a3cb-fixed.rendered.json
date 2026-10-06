@@ -1,0 +1,1262 @@
+{
+  "id": "4921a3cb-ac1a-4f0c-9ff2-c7809a5d9e1e",
+  "theme": "dark_premium",
+  "fitReport": {
+    "status": "underfilled",
+    "slides": [
+      {
+        "slideId": "1",
+        "slideIndex": 1,
+        "slideType": "TITLE",
+        "layoutVariant": "typographic_statement",
+        "status": "balanced",
+        "occupancy": 0.26531982421875,
+        "slots": [
+          {
+            "slotId": "title",
+            "path": "title",
+            "role": "title",
+            "clientWidth": 1080,
+            "clientHeight": 226,
+            "scrollWidth": 1080,
+            "scrollHeight": 235,
+            "actualLines": 3,
+            "maxLines": 3,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 9,
+            "occupancy": 0.26531982421875,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          }
+        ],
+        "repairAttempts": []
+      },
+      {
+        "slideId": "2",
+        "slideIndex": 2,
+        "slideType": "AGENDA",
+        "layoutVariant": "default",
+        "status": "underfilled",
+        "occupancy": 0.1034611807929145,
+        "slots": [
+          {
+            "slotId": "title",
+            "path": "title",
+            "role": "title",
+            "clientWidth": 1040,
+            "clientHeight": 51,
+            "scrollWidth": 1040,
+            "scrollHeight": 55,
+            "actualLines": 1,
+            "maxLines": 1,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 4,
+            "occupancy": 0.05741102430555556,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "items",
+            "path": "items.0.text",
+            "role": "list",
+            "clientWidth": 454,
+            "clientHeight": 27,
+            "scrollWidth": 454,
+            "scrollHeight": 27,
+            "actualLines": 1,
+            "maxLines": 2,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.013246949513753254,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "items",
+            "path": "items.1.text",
+            "role": "list",
+            "clientWidth": 386,
+            "clientHeight": 27,
+            "scrollWidth": 386,
+            "scrollHeight": 27,
+            "actualLines": 1,
+            "maxLines": 2,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.011249404483371311,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "items",
+            "path": "items.2.text",
+            "role": "list",
+            "clientWidth": 332,
+            "clientHeight": 27,
+            "scrollWidth": 332,
+            "scrollHeight": 27,
+            "actualLines": 1,
+            "maxLines": 2,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.00967970954047309,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "items",
+            "path": "items.3.text",
+            "role": "list",
+            "clientWidth": 407,
+            "clientHeight": 27,
+            "scrollWidth": 407,
+            "scrollHeight": 27,
+            "actualLines": 1,
+            "maxLines": 2,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.011874092949761285,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          }
+        ],
+        "repairAttempts": []
+      },
+      {
+        "slideId": "3",
+        "slideIndex": 3,
+        "slideType": "RELEVANCE",
+        "layoutVariant": "default",
+        "status": "underfilled",
+        "occupancy": 0.11923828125,
+        "slots": [
+          {
+            "slotId": "title",
+            "path": "title",
+            "role": "title",
+            "clientWidth": 1080,
+            "clientHeight": 102,
+            "scrollWidth": 1080,
+            "scrollHeight": 106,
+            "actualLines": 2,
+            "maxLines": 2,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 4,
+            "occupancy": 0.11923828125,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          }
+        ],
+        "repairAttempts": []
+      },
+      {
+        "slideId": "4",
+        "slideIndex": 4,
+        "slideType": "DEFINITION",
+        "layoutVariant": "default",
+        "status": "underfilled",
+        "occupancy": 0.05789930555555556,
+        "slots": [
+          {
+            "slotId": "term",
+            "path": "term",
+            "role": "title",
+            "clientWidth": 920,
+            "clientHeight": 58,
+            "scrollWidth": 920,
+            "scrollHeight": 66,
+            "actualLines": 1,
+            "maxLines": 2,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 8,
+            "occupancy": 0.05789930555555556,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          }
+        ],
+        "repairAttempts": []
+      },
+      {
+        "slideId": "5",
+        "slideIndex": 5,
+        "slideType": "BATAFSIL",
+        "layoutVariant": "default",
+        "status": "underfilled",
+        "occupancy": 0.11923828125,
+        "slots": [
+          {
+            "slotId": "title",
+            "path": "title",
+            "role": "title",
+            "clientWidth": 1080,
+            "clientHeight": 102,
+            "scrollWidth": 1080,
+            "scrollHeight": 106,
+            "actualLines": 2,
+            "maxLines": 2,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 4,
+            "occupancy": 0.11923828125,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          }
+        ],
+        "repairAttempts": []
+      },
+      {
+        "slideId": "6",
+        "slideIndex": 6,
+        "slideType": "TURLAR",
+        "layoutVariant": "squircle_bento",
+        "status": "balanced",
+        "occupancy": 0.21768368191189236,
+        "slots": [
+          {
+            "slotId": "title",
+            "path": "title",
+            "role": "title",
+            "clientWidth": 1040,
+            "clientHeight": 51,
+            "scrollWidth": 1040,
+            "scrollHeight": 55,
+            "actualLines": 1,
+            "maxLines": 2,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 4,
+            "occupancy": 0.05741102430555556,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "items",
+            "path": "items.0.text",
+            "role": "list",
+            "clientWidth": 461,
+            "clientHeight": 68,
+            "scrollWidth": 461,
+            "scrollHeight": 68,
+            "actualLines": 3,
+            "maxLines": 4,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.034163258870442706,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "items",
+            "path": "items.1.text",
+            "role": "list",
+            "clientWidth": 461,
+            "clientHeight": 46,
+            "scrollWidth": 461,
+            "scrollHeight": 46,
+            "actualLines": 2,
+            "maxLines": 4,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.022775505913628473,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "items",
+            "path": "items.2.text",
+            "role": "list",
+            "clientWidth": 461,
+            "clientHeight": 46,
+            "scrollWidth": 461,
+            "scrollHeight": 46,
+            "actualLines": 2,
+            "maxLines": 4,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.022775505913628473,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "items",
+            "path": "items.3.text",
+            "role": "list",
+            "clientWidth": 461,
+            "clientHeight": 68,
+            "scrollWidth": 461,
+            "scrollHeight": 68,
+            "actualLines": 3,
+            "maxLines": 4,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.034163258870442706,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "itemLabels",
+            "path": "items.0.label",
+            "role": "label",
+            "clientWidth": 461,
+            "clientHeight": 23,
+            "scrollWidth": 461,
+            "scrollHeight": 23,
+            "actualLines": 1,
+            "maxLines": 1,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.01159878200954861,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "itemLabels",
+            "path": "items.1.label",
+            "role": "label",
+            "clientWidth": 461,
+            "clientHeight": 23,
+            "scrollWidth": 461,
+            "scrollHeight": 23,
+            "actualLines": 1,
+            "maxLines": 1,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.01159878200954861,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "itemLabels",
+            "path": "items.2.label",
+            "role": "label",
+            "clientWidth": 461,
+            "clientHeight": 23,
+            "scrollWidth": 461,
+            "scrollHeight": 23,
+            "actualLines": 1,
+            "maxLines": 1,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.01159878200954861,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "itemLabels",
+            "path": "items.3.label",
+            "role": "label",
+            "clientWidth": 461,
+            "clientHeight": 23,
+            "scrollWidth": 461,
+            "scrollHeight": 23,
+            "actualLines": 1,
+            "maxLines": 1,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.01159878200954861,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          }
+        ],
+        "repairAttempts": []
+      },
+      {
+        "slideId": "7",
+        "slideIndex": 7,
+        "slideType": "BATAFSIL",
+        "layoutVariant": "default",
+        "status": "balanced",
+        "occupancy": 0.3231608072916667,
+        "slots": [
+          {
+            "slotId": "title",
+            "path": "title",
+            "role": "title",
+            "clientWidth": 1080,
+            "clientHeight": 51,
+            "scrollWidth": 1080,
+            "scrollHeight": 55,
+            "actualLines": 1,
+            "maxLines": 2,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 4,
+            "occupancy": 0.059619140625,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "paragraph",
+            "path": "paragraph",
+            "role": "body",
+            "clientWidth": 920,
+            "clientHeight": 264,
+            "scrollWidth": 920,
+            "scrollHeight": 264,
+            "actualLines": 8,
+            "maxLines": 10,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.2635416666666667,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          }
+        ],
+        "repairAttempts": []
+      },
+      {
+        "slideId": "8",
+        "slideIndex": 8,
+        "slideType": "CONTENT",
+        "layoutVariant": "default",
+        "status": "balanced",
+        "occupancy": 0.35711135864257815,
+        "slots": [
+          {
+            "slotId": "title",
+            "path": "title",
+            "role": "title",
+            "clientWidth": 1040,
+            "clientHeight": 102,
+            "scrollWidth": 1040,
+            "scrollHeight": 106,
+            "actualLines": 2,
+            "maxLines": 2,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 4,
+            "occupancy": 0.11482204861111112,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "lead",
+            "path": "lead",
+            "role": "body",
+            "clientWidth": 760,
+            "clientHeight": 71,
+            "scrollWidth": 760,
+            "scrollHeight": 71,
+            "actualLines": 2,
+            "maxLines": 3,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.05855034722222222,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "paragraph",
+            "path": "paragraph",
+            "role": "body",
+            "clientWidth": 586,
+            "clientHeight": 289,
+            "scrollWidth": 586,
+            "scrollHeight": 289,
+            "actualLines": 10,
+            "maxLines": 10,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.1837389628092448,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          }
+        ],
+        "repairAttempts": []
+      },
+      {
+        "slideId": "9",
+        "slideIndex": 9,
+        "slideType": "BATAFSIL",
+        "layoutVariant": "default",
+        "status": "underfilled",
+        "occupancy": 0.059619140625,
+        "slots": [
+          {
+            "slotId": "title",
+            "path": "title",
+            "role": "title",
+            "clientWidth": 1080,
+            "clientHeight": 51,
+            "scrollWidth": 1080,
+            "scrollHeight": 55,
+            "actualLines": 1,
+            "maxLines": 2,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 4,
+            "occupancy": 0.059619140625,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          }
+        ],
+        "repairAttempts": []
+      },
+      {
+        "slideId": "10",
+        "slideIndex": 10,
+        "slideType": "CONTENT",
+        "layoutVariant": "default",
+        "status": "balanced",
+        "occupancy": 0.20264756944444445,
+        "slots": [
+          {
+            "slotId": "title",
+            "path": "title",
+            "role": "title",
+            "clientWidth": 1040,
+            "clientHeight": 102,
+            "scrollWidth": 1040,
+            "scrollHeight": 106,
+            "actualLines": 2,
+            "maxLines": 2,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 4,
+            "occupancy": 0.11482204861111112,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "lead",
+            "path": "lead",
+            "role": "body",
+            "clientWidth": 760,
+            "clientHeight": 107,
+            "scrollWidth": 760,
+            "scrollHeight": 107,
+            "actualLines": 3,
+            "maxLines": 3,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.08782552083333334,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          }
+        ],
+        "repairAttempts": []
+      },
+      {
+        "slideId": "11",
+        "slideIndex": 11,
+        "slideType": "COMPARISON",
+        "layoutVariant": "toggle_spectrum",
+        "status": "underfilled",
+        "occupancy": 0.1949435763888889,
+        "slots": [
+          {
+            "slotId": "title",
+            "path": "title",
+            "role": "title",
+            "clientWidth": 1040,
+            "clientHeight": 102,
+            "scrollWidth": 1040,
+            "scrollHeight": 106,
+            "actualLines": 2,
+            "maxLines": 2,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 4,
+            "occupancy": 0.11482204861111112,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "subtitle",
+            "path": "subtitle",
+            "role": "body",
+            "clientWidth": 1040,
+            "clientHeight": 71,
+            "scrollWidth": 1040,
+            "scrollHeight": 71,
+            "actualLines": 2,
+            "maxLines": 2,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.08012152777777778,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          }
+        ],
+        "repairAttempts": []
+      },
+      {
+        "slideId": "12",
+        "slideIndex": 12,
+        "slideType": "CONTENT",
+        "layoutVariant": "default",
+        "status": "balanced",
+        "occupancy": 0.34983723958333335,
+        "slots": [
+          {
+            "slotId": "title",
+            "path": "title",
+            "role": "title",
+            "clientWidth": 1080,
+            "clientHeight": 102,
+            "scrollWidth": 1080,
+            "scrollHeight": 106,
+            "actualLines": 2,
+            "maxLines": 2,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 4,
+            "occupancy": 0.11923828125,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "paragraph",
+            "path": "paragraph",
+            "role": "body",
+            "clientWidth": 920,
+            "clientHeight": 231,
+            "scrollWidth": 920,
+            "scrollHeight": 231,
+            "actualLines": 7,
+            "maxLines": 10,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.23059895833333333,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          }
+        ],
+        "repairAttempts": []
+      },
+      {
+        "slideId": "13",
+        "slideIndex": 13,
+        "slideType": "PROBLEMS_SOLUTIONS",
+        "layoutVariant": "diff_view",
+        "status": "balanced",
+        "occupancy": 0.3224636501736111,
+        "slots": [
+          {
+            "slotId": "title",
+            "path": "title",
+            "role": "title",
+            "clientWidth": 1040,
+            "clientHeight": 102,
+            "scrollWidth": 1040,
+            "scrollHeight": 106,
+            "actualLines": 2,
+            "maxLines": 2,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 4,
+            "occupancy": 0.11482204861111112,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "subtitle",
+            "path": "subtitle",
+            "role": "body",
+            "clientWidth": 900,
+            "clientHeight": 50,
+            "scrollWidth": 900,
+            "scrollHeight": 50,
+            "actualLines": 2,
+            "maxLines": 2,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.048492431640625,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "problems",
+            "path": "pairs.0.problem",
+            "role": "list",
+            "clientWidth": 447,
+            "clientHeight": 70,
+            "scrollWidth": 447,
+            "scrollHeight": 70,
+            "actualLines": 3,
+            "maxLines": 3,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.0341033935546875,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "problems",
+            "path": "pairs.1.problem",
+            "role": "list",
+            "clientWidth": 447,
+            "clientHeight": 47,
+            "scrollWidth": 447,
+            "scrollHeight": 47,
+            "actualLines": 2,
+            "maxLines": 3,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.022735595703125,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "problems",
+            "path": "pairs.2.problem",
+            "role": "list",
+            "clientWidth": 447,
+            "clientHeight": 47,
+            "scrollWidth": 447,
+            "scrollHeight": 47,
+            "actualLines": 2,
+            "maxLines": 3,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.022735595703125,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "solutions",
+            "path": "pairs.0.solution",
+            "role": "list",
+            "clientWidth": 447,
+            "clientHeight": 47,
+            "scrollWidth": 447,
+            "scrollHeight": 47,
+            "actualLines": 2,
+            "maxLines": 3,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.022735595703125,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "solutions",
+            "path": "pairs.1.solution",
+            "role": "list",
+            "clientWidth": 447,
+            "clientHeight": 70,
+            "scrollWidth": 447,
+            "scrollHeight": 70,
+            "actualLines": 3,
+            "maxLines": 3,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.0341033935546875,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "solutions",
+            "path": "pairs.2.solution",
+            "role": "list",
+            "clientWidth": 447,
+            "clientHeight": 47,
+            "scrollWidth": 447,
+            "scrollHeight": 47,
+            "actualLines": 2,
+            "maxLines": 3,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.022735595703125,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          }
+        ],
+        "repairAttempts": []
+      },
+      {
+        "slideId": "14",
+        "slideIndex": 14,
+        "slideType": "CONCLUSION",
+        "layoutVariant": "default",
+        "status": "balanced",
+        "occupancy": 0.257275390625,
+        "slots": [
+          {
+            "slotId": "title",
+            "path": "title",
+            "role": "title",
+            "clientWidth": 1080,
+            "clientHeight": 51,
+            "scrollWidth": 1080,
+            "scrollHeight": 55,
+            "actualLines": 1,
+            "maxLines": 2,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 4,
+            "occupancy": 0.059619140625,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          },
+          {
+            "slotId": "paragraph",
+            "path": "paragraph",
+            "role": "body",
+            "clientWidth": 920,
+            "clientHeight": 198,
+            "scrollWidth": 920,
+            "scrollHeight": 198,
+            "actualLines": 6,
+            "maxLines": 10,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 0,
+            "occupancy": 0.19765625,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          }
+        ],
+        "repairAttempts": []
+      },
+      {
+        "slideId": "15",
+        "slideIndex": 15,
+        "slideType": "CLOSING",
+        "layoutVariant": "default",
+        "status": "balanced",
+        "occupancy": 0.05241013685862223,
+        "slots": [
+          {
+            "slotId": "title",
+            "path": "title",
+            "role": "title",
+            "clientWidth": 764,
+            "clientHeight": 63,
+            "scrollWidth": 764,
+            "scrollHeight": 71,
+            "actualLines": 1,
+            "maxLines": 2,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 8,
+            "occupancy": 0.05241013685862223,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          }
+        ],
+        "repairAttempts": []
+      }
+    ],
+    "unresolved": [],
+    "attempts": []
+  },
+  "slides": [
+    {
+      "type": "TITLE",
+      "content": {
+        "title": "O‘zbekiston Respublikasi shartnoma huquqining asosiy tamoyillari",
+        "layout": "typographic_statement"
+      }
+    },
+    {
+      "type": "AGENDA",
+      "content": {
+        "items": [
+          {
+            "text": "Shartnoma huquqi tamoyillarining dolzarbligi"
+          },
+          {
+            "text": "Asosiy tushunchalar va umumiy tavsif"
+          },
+          {
+            "text": "Tamoyillar turlari va chuqur tahlil"
+          },
+          {
+            "text": "Xulosalar va amaliy muammolar yechimi"
+          }
+        ],
+        "title": "Taqdimot rejası"
+      }
+    },
+    {
+      "type": "RELEVANCE",
+      "content": {
+        "lead": "Shartnoma huquqi tamoyillari bugungi kun uchun dolzarb Bozor iqtisodiyotida erkin shartnoma munosabatlari muhim Huquqiy barqarorlik va ishonchni mustahkamlashda tamoyillar zarur.",
+        "title": "Shartnoma huquqi tamoyillari bugungi kun uchun dolzarb",
+        "kicker": "Dolzarblik",
+        "points": [
+          {
+            "text": "Bozor iqtisodiyotida erkin shartnoma munosabatlari muhim"
+          },
+          {
+            "text": "Huquqiy barqarorlik va ishonchni mustahkamlashda tamoyillar zarur"
+          },
+          {
+            "text": "Xalqaro bitimlar amaliyotida tamoyillar dolzarbligi oshmoqda"
+          }
+        ],
+        "paragraph": "Bozor iqtisodiyotida bitimlar soni va murakkabligi ortgan sari tomonlarning erkin tanlovi bilan birga huquqiy mezonlarga ham ehtiyoj kuchayadi. Shartnoma huquqi tamoyillari aynan shu ehtiyojni qondirib, kelishuv tuzish, uni bajarish va zarur hollarda bekor qilishda oldindan anglanadigan tartibni shakllantiradi. <strong>Erkinlik, tenglik, yaxshi niyat va majburiyatlarga sodiqlik</strong> munosabatlarga ishonch beradi, nizolarni kamaytiradi va fuqarolik aylanmasining barqarorligini ta’minlaydi. Xalqaro bitimlar ko‘paygan sharoitda esa bu tamoyillar turli huquqiy muhitlar o‘rtasida umumiy tushuncha yaratib, savdo va hamkorlikni yanada ishonchli,"
+      }
+    },
+    {
+      "type": "DEFINITION",
+      "content": {
+        "term": "Shartnoma huquqi",
+        "kicker": "book",
+        "aspects": [
+          {
+            "text": "Shartnoma huquqi — fuqarolik huquqining sohasi",
+            "label": "Shartnoma huquqi"
+          },
+          {
+            "text": "Tomonlar o‘rtasidagi huquqiy munosabatlarni belgilaydi",
+            "label": "Tomonlar o‘rtasidagi huquqiy"
+          },
+          {
+            "text": "Shartnomalar tuzish, bajarish va bekor qilish tartibi asoslanadi",
+            "label": "Shartnomalar tuzish"
+          }
+        ],
+        "paragraph": "Shartnoma huquqi — fuqarolik huquqining shartnomaviy munosabatlarni tartibga soluvchi sohasi bo‘lib, u tomonlar o‘rtasida huquq va majburiyatlarning kelishuv asosida vujudga kelishini belgilaydi. <strong>Uningshodiy mazmuni</strong> shartnoma tuzish erkinligi, taraflarning tengligi va kelishilgan shartlarga rioya qilish zaruratida namoyon bo‘ladi. Shu sababli bu soha shartnomalarning qanday tuzilishi, bajarilishi va zarurat tug‘ilganda bekor qilinishiga oid umumiy tartibni aniqlaydi hamda munosabatlarda huquqiy aniqlikni ta’minlaydi.",
+        "definition": "Shartnoma huquqi: asosiy tushuncha Shartnoma huquqi — fuqarolik huquqining sohasi Tomonlar o‘rtasidagi huquqiy munosabatlarni belgilaydi Shartnomalar tuzish, bajarish va bekor qilish tartibi asoslanadi"
+      }
+    },
+    {
+      "type": "BATAFSIL",
+      "content": {
+        "body": "Shartnoma huquqining asosiy tamoyillari huquqiy asos yaratadi Har bir shartnoma tamoyillarga asoslanadi Tamoyillar qonun ustuvorligini ta’minlaydi Tomonlar o‘rtasida ishonchni mustahkamlaydi",
+        "title": "Shartnoma tamoyillari huquqiy asos va ishonchni yaratadi",
+        "kicker": "Batafsil",
+        "points": [
+          {
+            "text": "Har bir shartnoma tamoyillarga asoslanadi"
+          },
+          {
+            "text": "Tamoyillar qonun ustuvorligini ta’minlaydi"
+          },
+          {
+            "text": "Tomonlar o‘rtasida ishonchni mustahkamlaydi"
+          }
+        ],
+        "paragraph": "Shartnoma tuzish, bajarish va bekor qilish jarayoni alohida kelishuvlardan iborat bo‘lsa-da, ularning barchasi umumiy tamoyillarga tayanadi. Bu tamoyillar taraflarning xulqini huquqiy mezonga solib, ixtiyoriylik bilan majburiy tartib o‘rtasida muvozanat yaratadi. <strong>Qonun ustuvorligi</strong> aynan shu yerda namoyon bo‘ladi, chunki shartnomaviy munosabatlarda qarorlar shaxsiy istak bilan emas, huquqiy qoidalar bilan belgilangan chegarada amalga oshadi. Natijada tomonlar bir-birining huquq va manfaatlari himoyalanganiga ishonadi, bu esa nizolarni kamaytirib, munosabatlarning barqarorligini mustahkamlaydi."
+      }
+    },
+    {
+      "type": "TURLAR",
+      "content": {
+        "items": [
+          {
+            "icon": "compass",
+            "text": "Bu tur shartnoma tuzishda tomonning o‘z irodasiga tayanishini bildiradi, shuning uchun u tashqi majburlashdan farqlanadi.",
+            "label": "Erkinlik tamoyili"
+          },
+          {
+            "icon": "scale",
+            "text": "Bu turda ishtirokchilar bir-biriga bo‘ysunmaydi, balki huquq va majburiyatlarda teng mavqega ega bo‘ladi.",
+            "label": "Tenglik tamoyili"
+          },
+          {
+            "icon": "shield",
+            "text": "Bu kategoriya vijdonlilik va halollikni talab qiladi, shu bilan u faqat formal kelishuvdan mazmunan ajraladi.",
+            "label": "Yaxshi niyat va adolat"
+          },
+          {
+            "icon": "check",
+            "text": "Bu tur shartga sodiqlikni ifodalaydi, ya’ni kelishilgan vazifani bajarish keyingi munosabatlarning asosiga aylanadi.",
+            "label": "Majburiyatlarni bajarish"
+          }
+        ],
+        "title": "Shartnoma huquqi tamoyillarining turlari",
+        "layout": "squircle_bento"
+      }
+    },
+    {
+      "type": "BATAFSIL",
+      "content": {
+        "body": "Erkinlik tamoyilining mazmuni va ahamiyati Erkinlik tamoyili tomonlarga shartnoma tuzishda mustaqillik beradi. Tomonlar o‘z ixtiyori bilan majburiyatlarni belgilash huquqiga ega bo‘ladi. Istalgan shartlarni erkin kelishib olish Qonun bilan cheklovlar faqat zarur hollarda Bozor munosabatlarining rivojlanishiga xizmat qiladi",
+        "title": "Erkinlik tamoyilining mazmuni va ahamiyati",
+        "kicker": "Erkinlik tamoyili",
+        "points": [
+          {
+            "text": "Erkinlik tamoyili tomonlarga shartnoma tuzishda mustaqillik beradi."
+          },
+          {
+            "text": "Istalgan shartlarni erkin kelishib olish"
+          },
+          {
+            "text": "Qonun bilan cheklovlar faqat zarur hollarda"
+          }
+        ],
+        "paragraph": "Erkinlik tamoyili shartnoma tuzishda tomonlarga o‘z manfaatini mustaqil belgilash, kontragentni tanlash va majburiyat mazmunini kelishish imkonini beradi. Shu sababli shartnoma majburlash vositasi emas, balki iroda uyg‘unlashuvi natijasi sifatida namoyon bo‘ladi. Tomonlar qonunga zid bo‘lmagan shartlarni o‘z ehtiyojiga mos ravishda belgilaganda, munosabatlarning moslashuvchanligi oshadi va iqtisodiy aylanish tezlashadi. Biroq bu erkinlik mutlaq emas, chunki u qonun, axloq va boshqalarning huquqlarini buzmasligi kerak. Ana shu muvozanat bozor munosabatlarida tashabbusni rag‘batlantirib, huquqiy tartib va ishonchni saqlaydi."
+      }
+    },
+    {
+      "type": "CONTENT",
+      "content": {
+        "lead": "Tenglik tamoyilining mohiyati va amaliy ifodasi Tenglik tamoyili tomonlarning huquq va majburiyatlari tengligini anglatadi.",
+        "title": "Tenglik tamoyilining mohiyati va amaliy ifodasi",
+        "kicker": "Tenglik va adolat",
+        "points": [
+          {
+            "text": "Tenglik tamoyili tomonlarning huquq va majburiyatlari tengligini anglatadi. Bu tamoyil diskriminatsiyani oldini oladi va adolatli bitimlarni ta’minlaydi."
+          },
+          {
+            "text": "Hamma tomonlar uchun bir xil shartlar"
+          },
+          {
+            "text": "Sud muhokamalarida teng huquqli himoya"
+          },
+          {
+            "text": "Shartnoma shartlarini bosim ostida tuzmaslik"
+          }
+        ],
+        "visual": {
+          "alt": "Geometric decoration for Tenglik tamoyilining mohiyati va amaliy ifodasi",
+          "fit": "cover",
+          "url": "",
+          "query": "O‘zbekiston Respublikasida shartnoma huquqining asosiy tamoyillari Tenglik tamoyilining mohiyati va amaliy ifodasi slot-2",
+          "author": "Generated geometric layout",
+          "license": "decorative visual",
+          "provider": "Lumio Geometry"
+        },
+        "paragraph": "Tenglik tamoyili shartnoma munosabatlarida taraflarning bir-biridan ustun qo‘yilmasligini, huquq va majburiyatlarning muvozanatda bo‘lishini ta’minlaydi. Shu sababli shartlar barcha ishtirokchilar uchun bir xil mezonlarda belgilanadi, bu esa yashirin kamsitish va asossiz afzalliklarni kamaytiradi. Amaliyotda bu tamoyil sud muhokamalarida har ikki tomonga teng huquqli himoya berishda, shartnoma loyihasini erkin ko‘rib chiqishda va bosim ostida majburiy kelishuvlarni cheklashda namoyon bo‘ladi. Natijada bitimning adolatliligi kuchayib, tomonlar o‘rtasidagi ishonch mustahkamlanadi."
+      }
+    },
+    {
+      "type": "BATAFSIL",
+      "content": {
+        "body": "Yaxshi niyat va adolat tamoyilining sharhi Tomonlar shartnoma tuzishda halol va vijdonli bo‘lishi lozim. Adolat tamoyili esa har ikki tomon manfaatlarini inobatga oladi. Halollik va ochiqlik Vijdonlilik me’yorlariga rioya qilish Adolatli natijaga intilish",
+        "title": "Yaxshi niyat va adolat tamoyilining sharhi",
+        "points": [
+          {
+            "text": "Tomonlar shartnoma tuzishda halol va vijdonli bo‘lishi lozim."
+          },
+          {
+            "text": "Halollik va ochiqlik"
+          },
+          {
+            "text": "Vijdonlilik me’yorlariga rioya qilish"
+          }
+        ],
+        "paragraph": "Yaxshi niyat tamoyili shartnoma munosabatlarida tomonlardan faqat o‘z manfaatini emas, balki qarshi tomonning qonuniy kutishlarini ham inobatga olishni talab qiladi. Bu tamoyil halollik, ochiqlik va vijdonlilik orqali namoyon bo‘lib, muzokara, tuzish va ijro jarayonida yashirin zarar yetkazish yoki maqsadni ataylab buzishni cheklaydi. Adolat tamoyili esa manfaatlar muvozanatini saqlashga xizmat qilib, shartnoma shartlari bir tomon uchun haddan tashqari og‘ir yoki ikkinchi tomon uchun asossiz yengil bo‘lib qolmasligini nazarda tutadi. Shuning uchun <strong>yaxshi niyat va adolat birgalikda shartnoma munosabatlarini ishonchli va muvozanatli huq"
+      }
+    },
+    {
+      "type": "CONTENT",
+      "content": {
+        "lead": "Majburiyatlarni bajarish tamoyili ishonch asosini yaratadi Tomonlar o‘z majburiyatlarini lozim darajada bajarishi shart Majburiyatlarni buzish huquqiy javobgarlikka olib keladi.",
+        "title": "Majburiyatlarni bajarish tamoyili ishonch asosini yaratadi",
+        "kicker": "check",
+        "points": [
+          {
+            "text": "Tomonlar o‘z majburiyatlarini lozim darajada bajarishi shart"
+          },
+          {
+            "text": "Majburiyatlarni buzish huquqiy javobgarlikka olib keladi"
+          },
+          {
+            "text": "Ishonchli huquqiy muhitni shakllantiradi"
+          }
+        ],
+        "visual": {
+          "alt": "Geometric decoration for Majburiyatlarni bajarish tamoyili ishonch asosini yaratadi",
+          "fit": "cover",
+          "url": "",
+          "query": "O‘zbekiston Respublikasida shartnoma huquqining asosiy tamoyillari Majburiyatlarni bajarish tamoyili ishonch asosini yaratadi slot-1",
+          "author": "Generated geometric layout",
+          "license": "decorative visual",
+          "provider": "Lumio Geometry"
+        },
+        "paragraph": "Shartnomaviy munosabatlarda majburiyatlarni lozim darajada bajarish tomonlar kutgan natijaning amalga oshishini ta’minlaydi va shu orqali ishonchni mustahkamlaydi. Agar taraflardan biri shartga rioya qilmasa, huquqiy javobgarlik yuzaga keladi va bu kelishuvning barqarorligini zaiflashtiradi. Shu sababli bajarish tamoyili faqat intizomiy talab emas, balki shartnoma ijrosini oldindan aytish mumkin bo‘lgan huquqiy muhitga aylantiradigan <strong>ishonch mexanizmi</strong>dir."
+      }
+    },
+    {
+      "type": "COMPARISON",
+      "content": {
+        "left": {
+          "items": [
+            "Tamoyillar aniqroq belgilangan va izchil qo‘llanadi",
+            "Milliy ijtimoiy qadriyatlar bilan uyg‘unlashtiriladi",
+            "Amaliyotda barqarorlik va huquqiy aniqlik kuchli"
+          ],
+          "label": "O‘zbekiston"
+        },
+        "right": {
+          "items": [
+            "Ko‘proq moslashuvchan talqin ustun bo‘lishi mumkin",
+            "Xalqaro standartlar va umumiy tamoyillarga tayanadi",
+            "Qo‘llash usuli huquqiy an’anaga qarab o‘zgaradi"
+          ],
+          "label": "Xorij davlatlari"
+        },
+        "title": "O‘zbekiston va xorijda shartnoma tamoyillarining talqin va qo‘llanishdagi farql",
+        "kicker": "Taqqosiy tahlil",
+        "layout": "toggle_spectrum",
+        "subtitle": "Ikki yondashuv bir xil asosiy g‘oyalarni tan olsa-da, ularni shakllantirish va amaliy qo‘llash usullari turlicha ko‘rinadi."
+      }
+    },
+    {
+      "type": "CONTENT",
+      "content": {
+        "lead": "Shartnoma tamoyillari huquqiy muhofazada muhim rol o‘ynaydi Tamoyillar nizolarni hal qilishda asosiy mezon Sud amaliyotida muhim dalil sifatida qo‘llaniladi Huquqiy barqarorlik.",
+        "title": "Shartnoma tamoyillari huquqiy muhofazada muhim rol o‘ynaydi",
+        "kicker": "shield",
+        "points": [
+          {
+            "text": "Tamoyillar nizolarni hal qilishda asosiy mezon"
+          },
+          {
+            "text": "Sud amaliyotida muhim dalil sifatida qo‘llaniladi"
+          },
+          {
+            "text": "Huquqiy barqarorlik va adolatga erishish kafolati"
+          }
+        ],
+        "paragraph": "Shartnoma tamoyillari nizolar paytida huquqiy bahoni yo‘naltiruvchi mezon bo‘lib xizmat qiladi, chunki ular tomonlarning xulqini shartnoma mazmuni bilan birga adolat va vijdonlilik nuqtai nazaridan ham tekshirishga imkon beradi. Sud va boshqa huquqni qo‘llovchi organlar aynan shu tamoyillar yordamida majburiyat qaysi tarafdan buzilganini, qaysi talqin huquqiy muvozanatni saqlashini aniqlaydi. Natijada tamoyillar nafaqat kelishmovchilikni hal etadi, balki qarorlarning izchil bo‘lishini ta’minlab, huquqiy barqarorlik va adolatga erishish uchun kafolat yaratadi."
+      }
+    },
+    {
+      "type": "PROBLEMS_SOLUTIONS",
+      "content": {
+        "pairs": [
+          {
+            "problem": "Shartnoma erkinligi ba’zan ortiqcha cheklovlar bilan torayib, tomonlarning kelishuv imkonini kamaytiradi.",
+            "solution": "Qonunchilikni aniqlashtirish va asossiz cheklovlarni qisqartirish orqali erkinlik bilan jamoat manfaatlari o"
+          },
+          {
+            "problem": "Tenglik tamoyili ayrim holatlarda amalda buzilib, kuchliroq tomon ustun mavqega ega bo‘lib qoladi.",
+            "solution": "Sud nazoratini kuchaytirish va zaif tomon huquqlarini samarali himoya qilish tenglikni amaliy mazmunga ayl{"
+          },
+          {
+            "problem": "Tamoyillar ko‘pincha turlicha talqin qilinib, bir xil huquqiy vaziyatda turli qarorlar yuzaga keladi.",
+            "solution": "Aniq me’yoriy hujjatlar ishlab chiqish va izohlarni bir xillashtirish sud hamda amaliyot uchun barqaror yo"
+          }
+        ],
+        "title": "Tamoyillarni qo‘llashdagi muammolar va yechimlar",
+        "layout": "diff_view",
+        "subtitle": "Amaliyotda erkinlik, tenglik va talqin bir xilligi bo‘yicha uchraydigan asosiy muammolar hamda ularni bartaraf etish yo‘llari"
+      }
+    },
+    {
+      "type": "CONCLUSION",
+      "content": {
+        "title": "Asosiy xulosalar",
+        "points": [
+          "Shartnoma huquqi tamoyillari — huquqiy munosabatlarning poydevori",
+          "Erkinlik, tenglik, adolat va sodiqlik tamoyillari muhim ahamiyatga ega",
+          "Tamoyillarni to‘g‘ri qo‘llash adolatli huquqiy muhit yaratadi"
+        ],
+        "paragraph": "Xulosa qilib aytganda, shartnoma huquqi tamoyillari huquqiy munosabatlarning poydevorini tashkil etadi, chunki ular shartnoma tuzish, bajarish va bekor qilish jarayoniga umumiy mezon beradi. Erkinlik, tenglik, adolat va sodiqlik tamoyillari taraflar manfaatlarini muvozanatlashtirib, ularning o‘zaro ishonchini mustahkamlaydi. Shu bois tamoyillarni to‘g‘ri qo‘llash huquqiy barqarorlikni kuchaytiradi va adolatli muhitning shakllanishiga xizmat qiladi."
+      }
+    },
+    {
+      "type": "CLOSING",
+      "content": {
+        "title": "E’tiboringiz uchun rahmat!",
+        "layout": "default"
+      }
+    }
+  ]
+}

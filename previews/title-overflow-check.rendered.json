@@ -1,0 +1,86 @@
+{
+  "id": "title-overflow-check",
+  "theme": "dark_premium",
+  "fitReport": {
+    "status": "balanced",
+    "slides": [
+      {
+        "slideId": "1",
+        "slideIndex": 1,
+        "slideType": "TITLE",
+        "layoutVariant": "typographic_statement",
+        "status": "balanced",
+        "occupancy": 0.0825777859157986,
+        "slots": [
+          {
+            "slotId": "title",
+            "path": "title",
+            "role": "title",
+            "clientWidth": 1119,
+            "clientHeight": 68,
+            "scrollWidth": 1119,
+            "scrollHeight": 72,
+            "actualLines": 2,
+            "maxLines": 3,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 4,
+            "occupancy": 0.0825777859157986,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          }
+        ],
+        "repairAttempts": []
+      },
+      {
+        "slideId": "2",
+        "slideIndex": 2,
+        "slideType": "CLOSING",
+        "layoutVariant": "default",
+        "status": "balanced",
+        "occupancy": 0.05231686512629191,
+        "slots": [
+          {
+            "slotId": "title",
+            "path": "title",
+            "role": "title",
+            "clientWidth": 762,
+            "clientHeight": 63,
+            "scrollWidth": 762,
+            "scrollHeight": 71,
+            "actualLines": 1,
+            "maxLines": 2,
+            "overflowX": false,
+            "overflowY": false,
+            "overflowPxX": 0,
+            "overflowPxY": 8,
+            "occupancy": 0.05231686512629191,
+            "outsideSlideBounds": false,
+            "clippedByCss": false,
+            "overlaps": []
+          }
+        ],
+        "repairAttempts": []
+      }
+    ],
+    "unresolved": [],
+    "attempts": []
+  },
+  "slides": [
+    {
+      "type": "TITLE",
+      "content": {
+        "layout": "typographic_statement",
+        "title": "O'zbekiston Respublikasida iste'molchilar huquqlarini himoya qilishning huquqiy asoslari"
+      }
+    },
+    {
+      "type": "CLOSING",
+      "content": {
+        "title": "E'tiboringiz uchun rahmat!"
+      }
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "id": "stats-evidence-dashboard-qa",
+  "theme": "dark_premium",
+  "slides": [
+    {
+      "type": "STATS",
+      "content": {
+        "layout": "evidence_dashboard",
+        "title": "Startap ekotizimining asosiy ko‘rsatkichlari",
+        "subtitle": "Uchta ko‘rsatkich bozor faolligi va investitsiya oqimini birgalikda ochadi.",
+        "stats": [
+          {
+            "value": "150",
+            "unit": "dan ortiq",
+            "approx": true,
+            "label": "yangi startap",
+            "description": "Yil davomida ro‘yxatdan o‘tgan loyihalar"
+          },
+          {
+            "value": "21",
+            "unit": "mln $",
+            "label": "jalb qilingan kapital",
+            "description": "Startaplarga yo‘naltirilgan investitsiya"
+          },
+          {
+            "value": "70",
+            "unit": "ta",
+            "approx": true,
+            "label": "akseleratsiya ishtirokchisi",
+            "description": "Rivojlantirish dasturlarida qatnashgan loyihalar"
+          }
+        ],
+        "insight": "Yangi loyihalar soni kapital va akseleratsiya imkoniyatlari bilan birga o‘smoqda.",
+        "source": "IT Park rasmiy hisoboti, 2025"
+      }
+    },
+    {
+      "type": "STATS",
+      "content": {
+        "layout": "evidence_dashboard",
+        "title": "Raqamli ta’lim qamrovi kengaymoqda",
+        "subtitle": "To‘rtta ko‘rsatkich infratuzilma, ishtirok va natijani qiyoslaydi.",
+        "stats": [
+          {
+            "value": "82",
+            "unit": "%",
+            "label": "qamrov darajasi",
+            "description": "Raqamli platformalardan foydalanuvchi talabalar"
+          },
+          {
+            "value": "14",
+            "unit": "ming",
+            "label": "faol foydalanuvchi",
+            "description": "Oy davomida tizimga kirgan talabalar"
+          },
+          {
+            "value": "340",
+            "unit": "ta",
+            "label": "elektron kurs",
+            "description": "Platformadagi faol o‘quv modullari"
+          },
+          {
+            "value": "27",
+            "unit": "%",
+            "label": "natija o‘sishi",
+            "description": "Topshiriqlarni vaqtida bajarishdagi o‘zgarish"
+          }
+        ],
+        "insight": "Qamrovning o‘sishi elektron kurslar soni va muntazam foydalanish bilan qo‘llab-quvvatlangan.",
+        "source": "Lumio QA uchun namunaviy ma’lumot"
+      }
+    }
+  ]
+}
